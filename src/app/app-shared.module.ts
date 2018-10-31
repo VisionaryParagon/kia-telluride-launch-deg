@@ -19,6 +19,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faCaretDown,
+  faCheck,
   faChevronDown,
   faChevronLeft,
   faChevronRight,
@@ -36,6 +37,7 @@ import { CookieModule } from 'ngx-cookie';
 
 // Icons for fontawesome library
 library.add(faCaretDown);
+library.add(faCheck);
 library.add(faChevronDown);
 library.add(faChevronLeft);
 library.add(faChevronRight);

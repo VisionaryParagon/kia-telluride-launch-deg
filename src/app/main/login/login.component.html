@@ -66,7 +66,7 @@
                   <label class="form-check-label">
                     <input type="radio" class="form-check-input" value="AM" required [(ngModel)]="user.session" name="session" #session="ngModel">
                     <div class="selector" [class.selected]="user.session === 'AM'" [class.nope]="session.errors && sessionChecked">
-                      <i class="fa fa-check" *ngIf="user.session === 'AM'"></i>
+                      <fa-icon [icon]="['fas', 'check']" *ngIf="user.session === 'AM'"></fa-icon>
                       <span>AM</span>
                     </div>
                   </label>
@@ -75,7 +75,7 @@
                   <label class="form-check-label">
                     <input type="radio" class="form-check-input" value="PM" required [(ngModel)]="user.session" name="session" #session="ngModel">
                     <div class="selector" [class.selected]="user.session === 'PM'" [class.nope]="session.errors && sessionChecked">
-                      <i class="fa fa-check" *ngIf="user.session === 'PM'"></i>
+                      <fa-icon [icon]="['fas', 'check']" *ngIf="user.session === 'PM'"></fa-icon>
                       <span>PM</span>
                     </div>
                   </label>
@@ -111,21 +111,41 @@
               <fieldset class="form-group my-4">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="radio" class="form-check-input" value="Freedom" required [(ngModel)]="user.team" name="team" #team="ngModel">
-                    <div class="selector teams" id="team1" [class.selected]="user.team === 'Freedom'">
-                      <div class="bgOverlay" *ngIf="user.team !== 'Freedom'"></div>
-                      <i class="fa fa-check" *ngIf="user.team === 'Freedom'"></i>
-                      <span>Freedom</span>
+                    <input type="radio" class="form-check-input" value="Team 1" required [(ngModel)]="user.team" name="team" #team="ngModel">
+                    <div class="selector teams" id="team1" [class.selected]="user.team === 'Team 1'">
+                      <div class="bgOverlay" *ngIf="user.team !== 'Team 1'"></div>
+                      <fa-icon [icon]="['fas', 'check']" *ngIf="user.team === 'Team 1'"></fa-icon>
+                      <span>Team 1</span>
                     </div>
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="radio" class="form-check-input" value="Adventure" required [(ngModel)]="user.team" name="team" #team="ngModel">
-                    <div class="selector teams" id="team2" [class.selected]="user.team === 'Adventure'">
-                      <div class="bgOverlay" *ngIf="user.team !== 'Adventure'"></div>
-                      <i class="fa fa-check" *ngIf="user.team === 'Adventure'"></i>
-                      <span>Adventure</span>
+                    <input type="radio" class="form-check-input" value="Team 2" required [(ngModel)]="user.team" name="team" #team="ngModel">
+                    <div class="selector teams" id="team2" [class.selected]="user.team === 'Team 2'">
+                      <div class="bgOverlay" *ngIf="user.team !== 'Team 2'"></div>
+                      <fa-icon [icon]="['fas', 'check']" *ngIf="user.team === 'Team 2'"></fa-icon>
+                      <span>Team 2</span>
+                    </div>
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" value="Team 3" required [(ngModel)]="user.team" name="team" #team="ngModel">
+                    <div class="selector teams" id="team3" [class.selected]="user.team === 'Team 3'">
+                      <div class="bgOverlay" *ngIf="user.team !== 'Team 3'"></div>
+                      <fa-icon [icon]="['fas', 'check']" *ngIf="user.team === 'Team 3'"></fa-icon>
+                      <span>Team 3</span>
+                    </div>
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" value="Team 4" required [(ngModel)]="user.team" name="team" #team="ngModel">
+                    <div class="selector teams" id="team4" [class.selected]="user.team === 'Team 4'">
+                      <div class="bgOverlay" *ngIf="user.team !== 'Team 4'"></div>
+                      <fa-icon [icon]="['fas', 'check']" *ngIf="user.team === 'Team 4'"></fa-icon>
+                      <span>Team 4</span>
                     </div>
                   </label>
                 </div>

@@ -119,6 +119,7 @@ fieldset {
         }
 
         span {
+          width: 100%;
           z-index: 2;
 
           &.light {
@@ -142,6 +143,14 @@ fieldset {
 
           &#team2 {
             background-image: url(./assets/images/team-adventure-bg.jpg);
+          }
+
+          &#team3 {
+            background-image: url(./assets/images/team-adventure-bg.jpg);
+          }
+
+          &#team4 {
+            background-image: url(./assets/images/team-freedom-bg.jpg);
           }
 
           &.selected {
