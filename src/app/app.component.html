@@ -1,21 +1,62 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<header>
+  <nav>
+    <button id="backBtn" [class.on]="notHome" *ngIf="isLoggedIn" (touchstart)="outsideNav(); closeSubNav()" (click)="goBack()"><fa-icon [icon]="['fas', 'chevron-left']"></fa-icon></button>
 
-<router-outlet></router-outlet>
+    <button id="logoBtn" [class.centered]="isLoggedIn && notHome" routerLink="/" (touchstart)="outsideNav(); closeSubNav()"><img src="../assets/images/kia-logo.png" height="100%" alt="Jeep Logo"></button>
+
+    <button id="notesBtn" [class.hasNotes]="hasNotes" *ngIf="isLoggedIn" (touchstart)="outsideNav()" (click)="openNotes()"><fa-icon [icon]="['fas', 'edit']"></fa-icon></button>
+
+    <button id="leaderBtn" *ngIf="isLoggedIn" (touchstart)="outsideNav()" (click)="openLeaderboard()"><fa-icon [icon]="['fas', 'trophy']"></fa-icon></button>
+
+    <button id="navBtn" [class.open]="state === 'active'" (click)="toggleNav()"><!-- *ngIf="isLoggedIn || isLoggedInAdmin" -->
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <div id="navMenu" [@navMenu]="state">
+    <div *ngIf="!isAdmin">
+      <a routerLink="/" (click)="closeNav(); closeSubNav()">Home</a>
+      <a routerLink="/" (click)="closeNav(); closeSubNav()">Pre-Event</a>
+      <a routerLink="/" (click)="closeNav(); closeSubNav()">Module 1</a>
+      <a routerLink="/" (click)="closeNav(); closeSubNav()">Module 2</a>
+      <a routerLink="/" (click)="closeNav(); closeSubNav()">Closing</a>
+      <!--
+      <a routerLink="/base-camp" (click)="closeNav(); closeSubNav()">Base Camp</a>
+      <a (click)="toggleSubNav(1)">Wrangler Generations <i class="fa fa-angle-down" [class.up]="subState1 === 'active'"></i></a>
+      <div class="subNav" [@navMenu]="subState1">
+        <a routerLink="/generations/press-quotes" (click)="closeNav()">Press Quotes</a>
+        <a routerLink="/generations/hands-on" (click)="closeNav()">Hands-on Comparison</a>
+        <a routerLink="/generations/4x4-essentials" (click)="closeNav()">4x4 Essentials</a>
+        <a routerLink="/generations/key-takeaways" (click)="closeNav()">Key Takeaways</a>
+      </div>
+      <a (click)="toggleSubNav(2)">New Gen Deep Dive <i class="fa fa-angle-down" [class.up]="subState2 === 'active'"></i></a>
+      <div class="subNav" [@navMenu]="subState2">
+        <a routerLink="/deep-dive/walkaround" (click)="closeNav()">Walkaround</a>
+        <a routerLink="/deep-dive/delivery" (click)="closeNav()">Delivery Practice</a>
+        <a routerLink="/deep-dive/quiz" (click)="closeNav()">Knowledge Checkpoint Quiz</a>
+        <a routerLink="/deep-dive/key-takeaways" (click)="closeNav()">Key Takeaways</a>
+      </div>
+      <a routerLink="/summit" (click)="closeNav(); closeSubNav()">The Summit</a>
+      -->
+      <a (click)="closeNav(); closeSubNav(); openNotes()">Notes</a>
+      <a (click)="closeNav(); closeSubNav(); openLeaderboard()">Leaderboards</a>
+      <a (click)="closeNav(); closeSubNav(); logout()">Logout</a>
+    </div>
+    <div *ngIf="isAdmin">
+      <a routerLink="/admin" (click)="closeNav(); closeSubNav()">Admin Home</a>
+      <!--
+      <a routerLink="/admin/group" (click)="closeNav(); closeSubNav()">Select Group</a>
+      <a routerLink="/admin/users" (click)="closeNav(); closeSubNav()">New User</a>
+      <a routerLink="/admin/showdown" (click)="closeNav(); closeSubNav()">Showdown</a>
+      <a routerLink="/admin/report" (click)="closeNav(); closeSubNav()">User Report</a>
+      -->
+      <a (click)="closeNav(); closeSubNav(); logoutAdmin()">Logout</a>
+    </div>
+  </div>
+</header>
+
+<div (touchstart)="outsideNav()">
+  <router-outlet></router-outlet>
+</div>

@@ -1,1 +1,664 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/scss/bootstrap.scss";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "fonts.css";
+
+$client-font: design-k,
+Helvetica,
+Arial,
+sans-serif;
+$client-red: #bb162b;
+$client-gray: #7e8083;
+$error-color: #f00;
+
+* {
+  box-sizing: border-box;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+}
+
+html,
+body {
+  background: #fff;
+  color: #000;
+  font-family: $client-font;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+
+/*~~  Typography ~~*/
+
+
+/*~~  Forms and Buttons ~~*/
+
+.form-group {
+  margin: 1rem 0;
+  text-align: left;
+
+  label {
+    margin: 0;
+  }
+
+  .form-control {
+    border-radius: 0;
+    height: auto;
+    margin: .5rem 0;
+    padding: .75rem 1rem;
+  }
+}
+
+fieldset {
+  &.form-group {
+    text-align: center;
+
+    .form-check {
+      display: inline-block;
+      margin: 0 .25rem;
+      padding: 0;
+
+      label {
+        padding: 0;
+      }
+
+      input {
+        display: none;
+      }
+
+      .selector {
+        border: 1px solid #ccc;
+        border-radius: 15%;
+        font-size: 36px;
+        font-weight: 700;
+        height: 135px;
+        padding: 0;
+        position: relative;
+        text-align: center;
+        -moz-transition: border .25s;
+        -o-transition: border .25s;
+        -webkit-transition: border .25s;
+        transition: border .25s;
+        width: 135px;
+
+        &.selected {
+          border: 10px solid $client-red;
+        }
+
+        .bgOverlay {
+          background-color: $client-red;
+          border-radius: 15%;
+          height: 101%;
+          opacity: 0.8;
+          position: absolute;
+          width: 101%;
+          z-index: 1;
+        }
+
+        img,
+        fa-icon,
+        span {
+          left: 50%;
+          position: absolute;
+          top: 50%;
+          -moz-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          -o-transform: translate(-50%, -50%);
+          -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+        }
+
+        img {
+          border-radius: 50%;
+          z-index: 0;
+        }
+
+        fa-icon {
+          color: $client-red;
+          font-size: 65px;
+          opacity: 0.8;
+          z-index: 1;
+        }
+
+        span {
+          z-index: 2;
+
+          &.light {
+            color: #fff;
+          }
+        }
+
+        &.teams {
+          background-origin: border-box;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          border: none;
+          color: #fff;
+          font-size: 18px;
+          text-transform: uppercase;
+
+          &#team1 {
+            background-image: url(./assets/images/team-freedom-bg.jpg);
+          }
+
+          &#team2 {
+            background-image: url(./assets/images/team-adventure-bg.jpg);
+          }
+
+          &.selected {
+            border: 10px solid rgba(255, 255, 255, 0.5);
+          }
+
+          fa-icon {
+            color: #fff;
+            opacity: 0.5;
+          }
+        }
+
+        &.nope {
+          background: none;
+          border-color: $error-color !important;
+          color: inherit;
+        }
+      }
+    }
+  }
+}
+
+form.quiz {
+  fieldset {
+    &.form-group {
+      .form-check {
+        display: block;
+        margin: 15px 0;
+
+        label {
+          align-items: center;
+          display: flex;
+        }
+
+        .selector {
+          flex: 0 0 60px;
+          height: 60px;
+          margin: 0 10px 0 0;
+
+          &.selected {
+            border: 7px solid $client-red;
+          }
+
+          fa-icon {
+            font-size: 35px;
+            z-index: 2;
+          }
+
+          span {
+            color: #ccc;
+            z-index: 1;
+          }
+        }
+
+        .answer {
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+
+.matching {
+  fieldset {
+    &.form-group {
+      .form-check {
+        display: block;
+        margin: .25rem 0;
+        text-align: center;
+
+        .selector {
+          border-radius: 5px;
+          font-size: 18px;
+          height: 50px;
+          width: 200px;
+
+          &.yup {
+            background: none;
+            border-color: #5AA454 !important;
+            border-width: 7px;
+            color: inherit;
+
+            fa-icon {
+              color: #5AA454;
+              font-size: 40px;
+            }
+          }
+
+          &.nope {
+            border-color: #A10A28 !important;
+            border-width: 7px;
+
+            fa-icon {
+              color: #A10A28;
+              font-size: 40px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.list-group {
+  margin: 0 0 30px;
+}
+
+.list-group-item {
+  color: #000;
+  font-size: 16px;
+  padding: .75rem;
+}
+
+.list-group-item .form-check {
+  margin: 0;
+}
+
+.list-group-item-success {
+  background-color: $client-red;
+}
+
+.kiaBtn {
+  background: #fff;
+  border: 1px solid $client-red;
+  color: #000;
+  cursor: pointer;
+  font-family: $client-font;
+  font-weight: normal;
+  margin: 1rem 0;
+  min-width: 150px;
+  padding: .75rem 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  -moz-transition: all 250ms;
+  -o-transition: all 250ms;
+  -webkit-transition: all 250ms;
+  transition: all 250ms;
+
+  &.dark {
+    background: #000;
+    color: #fff;
+  }
+
+  &.large {
+    display: block;
+    padding: 2rem 0;
+    width: 100%;
+  }
+
+  &:hover {
+    background: $client-red;
+    color: #fff;
+  }
+}
+
+.nope {
+  label {
+    color: $error-color;
+  }
+
+  input {
+    border-color: $error-color;
+    color: $error-color;
+  }
+}
+
+.errorMsg {
+  color: $error-color;
+
+  p {
+    margin: 0;
+  }
+}
+
+
+/*~~  Header ~~*/
+
+header {
+  background: #fff;
+  height: 50px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+
+  nav {
+    border-bottom: 2px solid $client-red;
+    height: 100%;
+    position: relative;
+
+    #logoBtn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      height: 50px;
+      left: 15px;
+      padding: 0;
+      position: absolute;
+      top: 0;
+      -moz-transition: all 0.25s ease-in-out;
+      -o-transition: all 0.25s ease-in-out;
+      -webkit-transition: all 0.25s ease-in-out;
+      transition: all 0.25s ease-in-out;
+
+      &.centered {
+        left: 50px;
+      }
+
+      img {
+        height: 50%;
+        width: auto;
+      }
+    }
+
+    #backBtn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      height: 50px;
+      font-size: 36px;
+      left: -50px;
+      padding: 0;
+      position: absolute;
+      top: 0;
+      -moz-transition: all 0.25s ease-in-out;
+      -o-transition: all 0.25s ease-in-out;
+      -webkit-transition: all 0.25s ease-in-out;
+      transition: all 0.25s ease-in-out;
+      width: 50px;
+
+      &.on {
+        left: 0;
+      }
+    }
+
+    #notesBtn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      height: 50px;
+      font-size: 24px;
+      padding: 0;
+      position: absolute;
+      right: 100px;
+      top: 0;
+      width: 50px;
+
+      &.hasNotes {
+        color: $client-red;
+      }
+    }
+
+    #leaderBtn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      height: 50px;
+      font-size: 24px;
+      padding: 0;
+      position: absolute;
+      right: 50px;
+      top: 0;
+      width: 50px;
+    }
+
+    #navBtn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      height: 50px;
+      padding: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 50px;
+
+      span {
+        background: #000;
+        display: block;
+        height: 2px;
+        left: 50%;
+        opacity: 1;
+        position: absolute;
+        -moz-transform: rotate(0deg) translateX(-50%);
+        -ms-transform: rotate(0deg) translateX(-50%);
+        -o-transform: rotate(0deg) translateX(-50%);
+        -webkit-transform: rotate(0deg) translateX(-50%);
+        transform: rotate(0deg) translateX(-50%);
+        -moz-transition: all 0.25s ease-in-out;
+        -o-transition: all 0.25s ease-in-out;
+        -webkit-transition: all 0.25s ease-in-out;
+        transition: all 0.25s ease-in-out;
+        width: 22px;
+
+        &:first-child {
+          top: 32%;
+          -moz-transform-origin: right center;
+          -ms-transform-origin: right center;
+          -o-transform-origin: right center;
+          -webkit-transform-origin: right center;
+          transform-origin: right center;
+        }
+
+        &:nth-child(2) {
+          top: 50%;
+        }
+
+        &:nth-child(3) {
+          top: 68%;
+          -moz-transform-origin: right center;
+          -ms-transform-origin: right center;
+          -o-transform-origin: right center;
+          -webkit-transform-origin: right center;
+          transform-origin: right center;
+        }
+      }
+
+      &.open {
+        span {
+          &:first-child {
+            left: 25%;
+            top: 34%;
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+          }
+
+          &:nth-child(2) {
+            opacity: 0;
+          }
+
+          &:nth-child(3) {
+            left: 25%;
+            top: 66%;
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+          }
+        }
+      }
+    }
+  }
+
+  #navMenu {
+    background: #fff;
+    border-bottom: 2px solid $client-red;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    height: auto;
+    max-height: calc(100vh - 50px);
+    overflow: auto;
+    width: 100%;
+
+    a {
+      border-bottom: 1px solid #e1e1e1;
+      color: #000;
+      display: block;
+      font-family: $client-font;
+      font-size: 16px;
+      letter-spacing: 2px;
+      line-height: 1;
+      margin: 0;
+      padding: 20px 15px 15px;
+      text-decoration: none;
+
+      &:last-child {
+        border: none;
+      }
+
+      fa-icon {
+        float: right;
+        font-size: 22px;
+        margin: -5px 0 0;
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -moz-transition: transform 0.25s;
+        -o-transition: transform 0.25s;
+        -webkit-transition: transform 0.25s;
+        transition: transform 0.25s;
+
+        &.up {
+          -moz-transform: rotate(-180deg);
+          -ms-transform: rotate(-180deg);
+          -o-transform: rotate(-180deg);
+          -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+        }
+      }
+    }
+
+    .subNav {
+      background: #d7d7d7;
+      border-bottom: 1px solid #dcdcda;
+      overflow: hidden;
+
+      a {
+        padding: 20px 15px 15px 25px;
+      }
+    }
+  }
+}
+
+
+/*~~  Login ~~*/
+
+#login {
+  background-color: #fff;
+  background-image: url(./assets/images/login-bg-900.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 11;
+
+  #splash {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
+
+  .container {
+    text-align: center;
+
+    img {
+      height: auto;
+      margin: 2rem 0;
+      width: 80%;
+    }
+  }
+}
+
+
+/*~~  Content ~~*/
+
+section {
+  padding: 50px 0;
+}
+
+.container {
+  max-width: 768px;
+}
+
+
+/*~~  Material Design Elements ~~*/
+
+mat-horizontal-stepper.mat-stepper-horizontal {
+  background: none;
+
+  div.mat-horizontal-stepper-header-container {
+    display: none;
+  }
+
+  div.mat-horizontal-content-container {
+    padding: 0;
+  }
+}
+
+.mat-spinner circle {
+  stroke: $client-red;
+}
+
+.kiaBtn .mat-spinner circle {
+  stroke: $client-gray;
+}
+
+
+/*~~ Pseudo Class Overrides ~~*/
+
+*:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.form-control:focus {
+  border-color: #fff;
+  -moz-box-shadow: 0 0 8px #fff !important;
+  -webkit-box-shadow: 0 0 8px #fff !important;
+  box-shadow: 0 0 8px #fff !important;
+  outline: none !important;
+}
+
+
+/*~~ Media Queries ~~*/
+
+@media all and (orientation: portrait) {}
+
+@media all and (max-width: 991px) and (orientation: landscape) {}
+
+@media all and (min-width: 768px) {}
+
+@media all and (min-width: 992px) {
+  #login {
+    background-image: url(./assets/images/login-bg-1440.jpg);
+  }
+}
+
+@media all and (min-width: 1200px) {
+  #login {
+    background-image: url(./assets/images/login-bg-2560.jpg);
+  }
+}

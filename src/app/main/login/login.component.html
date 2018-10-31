@@ -1,0 +1,205 @@
+<div id="login">
+  <div id="splash" [@fade]="true" *ngIf="!clicked">
+    <div class="container">
+      <img src="../../../assets/images/game-on-logo.png" alt="Game On | 20MY Kia Telluride Launch">
+
+      <button class="kiaBtn" (click)="registerBtn(stepper, 0)">Let&rsquo;s Go!</button>
+    </div>
+  </div>
+
+  <div class="container" [@fade]="true" *ngIf="clicked && reg">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-10 col-md-8 text-center">
+        <img src="../../../assets/images/game-on-logo.png" alt="Game On | 20MY Kia Telluride Launch">
+
+        <form #registrationForm="ngForm" novalidate>
+          <mat-horizontal-stepper #stepper>
+            <mat-step>
+              <h4>Welcome to the<br>
+                In&#8209;Dealership&nbsp;Experience!</h4>
+
+              <div class="form-group" [class.nope]="(first_name.errors && last_name.errors) && kidChecked">
+                <label>Name</label>
+                <div [class.nope]="first_name.errors && kidChecked">
+                  <input type="text" class="form-control" autocomplete="off" required placeholder="First Name" [(ngModel)]="user.first_name" name="first_name" #first_name="ngModel" (ngModelChange)="hideError()">
+                </div>
+
+                <div class="errorMsg" [@topDown]="true" *ngIf="first_name.errors && kidChecked">
+                  <p>First Name is required</p>
+                </div>
+
+                <div [class.nope]="last_name.errors && kidChecked">
+                  <input type="text" class="form-control" autocomplete="off" required placeholder="Last Name" [(ngModel)]="user.last_name" name="last_name" #last_name="ngModel" (ngModelChange)="hideError()">
+                </div>
+
+                <div class="errorMsg" [@topDown]="true" *ngIf="last_name.errors && kidChecked">
+                  <p>Last Name is required</p>
+                </div>
+              </div>
+
+              <div class="form-group my-4" [class.nope]="dealer.errors && kidChecked">
+                <label for="dealer">Dealer Code</label>
+                <input type="text" class="form-control" autocomplete="off" required [(ngModel)]="user.dealer" name="dealer" #dealer="ngModel" (ngModelChange)="hideError()">
+
+                <div class="errorMsg" [@topDown]="true" *ngIf="dealer.errors && kidChecked">
+                  <p>Dealer Code is required</p>
+                </div>
+              </div>
+
+              <div class="errorMsg" [@topDown]="true" *ngIf="error">
+                Something went wrong... Please make sure you have a WiFi or mobile data connection and try refreshing your&nbsp;browser.
+              </div>
+
+              <button class="kiaBtn" [disabled]="loading" (click)="checkUser(user, stepper, 1)">
+                <span *ngIf="!loading">Next</span>
+                <span *ngIf="loading">
+                  <mat-spinner class="mx-auto" [diameter]="20" [strokeWidth]="3"></mat-spinner>
+                </span>
+              </button>
+            </mat-step>
+            <mat-step>
+              <h4>Hello, {{ user.first_name }}!<br>
+                Select your&nbsp;session:</h4>
+
+              <fieldset class="form-group">
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" value="AM" required [(ngModel)]="user.session" name="session" #session="ngModel">
+                    <div class="selector" [class.selected]="user.session === 'AM'" [class.nope]="session.errors && sessionChecked">
+                      <i class="fa fa-check" *ngIf="user.session === 'AM'"></i>
+                      <span>AM</span>
+                    </div>
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" value="PM" required [(ngModel)]="user.session" name="session" #session="ngModel">
+                    <div class="selector" [class.selected]="user.session === 'PM'" [class.nope]="session.errors && sessionChecked">
+                      <i class="fa fa-check" *ngIf="user.session === 'PM'"></i>
+                      <span>PM</span>
+                    </div>
+                  </label>
+                </div>
+              </fieldset>
+
+              <div class="text-center">
+                <div class="errorMsg">
+                  <div [@topDown]="true" *ngIf="session.errors && sessionChecked">
+                    Please select your session
+                  </div>
+
+                  <div [@topDown]="true" *ngIf="error">
+                    Something went wrong... Please make sure you have a WiFi or mobile data connection and try refreshing your&nbsp;browser.
+                  </div>
+                </div>
+
+                <button class="kiaBtn" [disabled]="loading" (click)="checkSession(user.session, stepper, 2)">
+                  <span *ngIf="!loading">Next</span>
+                  <span *ngIf="loading">
+                    <mat-spinner class="mx-auto" [diameter]="20" [strokeWidth]="3"></mat-spinner>
+                  </span>
+                </button>
+
+                <p>Not {{ user.first_name }}? <a (click)="changeStep(stepper, 0)">Go back.</a></p>
+              </div>
+            </mat-step>
+            <mat-step>
+              <h4>Last step!<br>
+                Select your&nbsp;team:</h4>
+
+
+              <fieldset class="form-group my-4">
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" value="Freedom" required [(ngModel)]="user.team" name="team" #team="ngModel">
+                    <div class="selector teams" id="team1" [class.selected]="user.team === 'Freedom'">
+                      <div class="bgOverlay" *ngIf="user.team !== 'Freedom'"></div>
+                      <i class="fa fa-check" *ngIf="user.team === 'Freedom'"></i>
+                      <span>Freedom</span>
+                    </div>
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" value="Adventure" required [(ngModel)]="user.team" name="team" #team="ngModel">
+                    <div class="selector teams" id="team2" [class.selected]="user.team === 'Adventure'">
+                      <div class="bgOverlay" *ngIf="user.team !== 'Adventure'"></div>
+                      <i class="fa fa-check" *ngIf="user.team === 'Adventure'"></i>
+                      <span>Adventure</span>
+                    </div>
+                  </label>
+                </div>
+              </fieldset>
+
+              <div class="text-center">
+                <div class="errorMsg">
+                  <div [@topDown]="true" *ngIf="team.errors && regSubmitted">
+                    Please select your Team
+                  </div>
+
+                  <div [@topDown]="true" *ngIf="error">
+                    Something went wrong... Please make sure you have a WiFi or mobile data connection and try refreshing your&nbsp;browser.
+                  </div>
+                </div>
+
+                <button class="kiaBtn" [disabled]="loading" (click)="register(user, registrationForm.valid)">
+                  <span *ngIf="!loading">Submit</span>
+                  <span *ngIf="loading">
+                    <mat-spinner class="mx-auto" [diameter]="20" [strokeWidth]="3"></mat-spinner>
+                  </span>
+                </button>
+
+                <p>Not {{ user.first_name }}? <a (click)="changeStep(stepper, 0)">Go back.</a></p>
+              </div>
+            </mat-step>
+          </mat-horizontal-stepper>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" [@fade]="true" *ngIf="clicked && log">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-10 col-md-8 text-center">
+        <img src="../../../assets/images/game-on-logo.png" alt="Game On | 20MY Kia Telluride Launch">
+
+        <h4>Welcome back to the<br>
+          In&#8209;Dealership&nbsp;Experience!</h4>
+
+        <form #loginForm="ngForm" novalidate>
+          <div class="form-group my-4" [class.nope]="kidInvalid || registered || (submitted && kid.errors)">
+            <label for="kid">KID Code</label>
+            <input type="text" class="form-control" autocomplete="off" required [(ngModel)]="user.kid" name="kid" #kid="ngModel" (ngModelChange)="hideError(); toUppercase(user.kid)">
+          </div>
+
+          <div class="text-center">
+            <div class="errorMsg">
+              <div [@topDown]="true" *ngIf="kid.errors && submitted">
+                KID Code is required
+              </div>
+
+              <div [@topDown]="true" *ngIf="!kid.errors && kidInvalid">
+                Invalid KID Code
+              </div>
+
+              <div [@topDown]="true" *ngIf="!kid.errors && registered">
+                This KID is not registered.<br> Please <a (click)="registerBtn(stepper, 0)">register</a> to continue.
+              </div>
+
+              <div [@topDown]="true" *ngIf="error">
+                It appears there was an issue connecting to your user information. Please make sure you have a WiFi or mobile data connection and try refreshing your&nbsp;browser.
+              </div>
+            </div>
+
+            <button class="kiaBtn" [disabled]="loading" (click)="login(user)">
+              <span *ngIf="!loading">Submit</span>
+              <span *ngIf="loading">
+                <mat-spinner class="mx-auto" [diameter]="20" [strokeWidth]="3"></mat-spinner>
+              </span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
