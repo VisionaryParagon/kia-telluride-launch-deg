@@ -28,6 +28,16 @@ body {
 
 /*~~  Typography ~~*/
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-family: $client-font;
+}
+
 
 /*~~  Forms and Buttons ~~*/
 
@@ -613,8 +623,10 @@ section {
 
 /*~~  Material Design Elements ~~*/
 
-mat-horizontal-stepper.mat-stepper-horizontal {
+mat-horizontal-stepper.mat-stepper-horizontal,
+mat-vertical-stepper.mat-stepper-vertical {
   background: none;
+  font-family: $client-font;
 
   div.mat-horizontal-stepper-header-container {
     display: none;
