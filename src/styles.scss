@@ -21,7 +21,7 @@ body {
   background: #fff;
   color: #000;
   font-family: $client-font;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
 }
 
@@ -153,14 +153,6 @@ fieldset {
 
           &#team2 {
             background-image: url(./assets/images/team-adventure-bg.jpg);
-          }
-
-          &#team3 {
-            background-image: url(./assets/images/team-adventure-bg.jpg);
-          }
-
-          &#team4 {
-            background-image: url(./assets/images/team-freedom-bg.jpg);
           }
 
           &.selected {
