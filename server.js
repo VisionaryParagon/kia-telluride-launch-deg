@@ -56,7 +56,7 @@ passport.deserializeUser(admin.deserializeUser());
 
 // https redirect
 app.all('*', (req, res, next) => {
-  if (req.headers['x-forwarded-proto'] == 'https' || req.hostname != 'deg.2018jlwranglerevent.com') {
+  if (req.headers['x-forwarded-proto'] == 'https' || req.hostname != '20telluride.com') {
     next();
   } else {
     console.log(req.protocol + process.env.PORT + '' + req.hostname + req.url);

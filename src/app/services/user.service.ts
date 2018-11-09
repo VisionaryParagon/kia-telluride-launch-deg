@@ -21,18 +21,9 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-  // check sid
-  checkKid(value) {
-    return this.http.post<any>(this.userUrl + '/new-sid', value)
-      .pipe(
-        retry(3),
-        catchError(this.handleError)
-      );
-  }
-
   // validate user
   checkUser(value) {
-    return this.http.post<any>(this.userUrl + '/sid', value)
+    return this.http.post<any>(this.userUrl + '/email', value)
       .pipe(
         retry(3),
         catchError(this.handleError)

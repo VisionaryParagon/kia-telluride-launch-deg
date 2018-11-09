@@ -4,31 +4,16 @@ const router = express.Router();
 // user model
 const user = require('../models/user');
 
-// check sid duplicates
-router.post('/users/new-sid', function (req, res) {
-  user.findOne({
-    sid: req.body.sid
-  }, function (err, data) {
-    let code = {
-      used: false
-    };
-    if (err) return res.status(500).send(err);
-    if (!data) return res.status(200).send(code);
-    code.used = true;
-    return res.status(200).send(code);
-  });
-});
-
 // check if user exists
-router.post('/users/sid', function (req, res) {
+router.post('/users/email', function (req, res) {
   user.findOne({
-    sid: req.body.sid
+    email: req.body.email
   }, function (err, data) {
-    let code = {
+    const notFound = {
       message: 'User not in system'
     };
     if (err) return res.status(500).send(err);
-    if (!data) return res.status(200).send(code);
+    if (!data) return res.status(200).send(notFound);
     return res.status(200).send(data);
   });
 });
@@ -42,8 +27,8 @@ router.post('/users/points', function (req, res) {
     if (err) return res.status(500).send(err);
 
     const teamNames = {
-      team1: 'Freedom',
-      team2: 'Adventure'
+      team1: 'Team Prestige',
+      team2: 'Team Innovative'
     };
 
     const team1Users = data.filter(user => user.team === teamNames.team1);
@@ -94,7 +79,7 @@ router.post('/users/points', function (req, res) {
       return info.points / count;
     }
 
-    let allPoints = [
+    const allPoints = [
       {
         name: teamNames.team1,
         value: countEm(team1Data)
@@ -128,7 +113,7 @@ router.get('/users', function (req, res) {
 // get one user
 router.get('/users/:id', function (req, res) {
   user.findById(req.params.id, function (err, user) {
-    let notFound = {
+    const notFound = {
       message: 'User not in system'
     };
     if (err) return res.status(500).send(err);
@@ -140,7 +125,7 @@ router.get('/users/:id', function (req, res) {
 // delete user
 router.delete('/users/:id', function (req, res) {
   user.findByIdAndRemove(req.params.id, function (err, user) {
-    let deleted = {
+    const deleted = {
       message: 'User deleted'
     };
     if (err) return res.status(500).send(err);

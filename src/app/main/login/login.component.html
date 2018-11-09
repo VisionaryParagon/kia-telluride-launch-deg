@@ -1,16 +1,28 @@
 <div id="login">
   <div id="splash" [@fade]="true" *ngIf="!clicked">
-    <div class="container">
-      <img src="../../../assets/images/game-on-logo.png" alt="Game On | 20MY Kia Telluride Launch">
+    <div class="container text-center">
+      <div class="logo">
+        <img src="../../../assets/images/game-on-logo.png" width="70%" alt="Game On">
 
-      <button class="kiaBtn" (click)="registerBtn(stepper, 0)">Let&rsquo;s Go!</button>
+        <div class="logoBorder"></div>
+
+        <h1>2020 Kia Telluride</h1>
+      </div>
+
+      <button class="kiaBtn" (click)="login(stepper, 0)">Let&rsquo;s Go!</button>
     </div>
   </div>
 
-  <div class="container" [@fade]="true" *ngIf="clicked && reg">
+  <div class="container" [@fade]="true" *ngIf="clicked">
     <div class="row justify-content-center">
       <div class="col-12 col-sm-10 col-md-8 text-center">
-        <img src="../../../assets/images/game-on-logo.png" alt="Game On | 20MY Kia Telluride Launch">
+        <div class="logo">
+          <img src="../../../assets/images/game-on-logo.png" width="70%" alt="Game On">
+
+          <div class="logoBorder"></div>
+
+          <h1>2020 Kia Telluride</h1>
+        </div>
 
         <form #registrationForm="ngForm" novalidate>
           <mat-horizontal-stepper #stepper>
@@ -18,30 +30,40 @@
               <h4>Welcome to the<br>
                 In&#8209;Dealership&nbsp;Experience!</h4>
 
-              <div class="form-group" [class.nope]="(first_name.errors && last_name.errors) && kidChecked">
+              <div class="form-group" [class.nope]="(first_name.errors && last_name.errors) && userChecked">
                 <label>Name</label>
-                <div [class.nope]="first_name.errors && kidChecked">
+                <div [class.nope]="first_name.errors && userChecked">
                   <input type="text" class="form-control" autocomplete="off" required placeholder="First Name" [(ngModel)]="user.first_name" name="first_name" #first_name="ngModel" (ngModelChange)="hideError()">
                 </div>
 
-                <div class="errorMsg" [@topDown]="true" *ngIf="first_name.errors && kidChecked">
+                <div class="errorMsg" [@topDown]="true" *ngIf="first_name.errors && userChecked">
                   <p>First Name is required</p>
                 </div>
 
-                <div [class.nope]="last_name.errors && kidChecked">
+                <div [class.nope]="last_name.errors && userChecked">
                   <input type="text" class="form-control" autocomplete="off" required placeholder="Last Name" [(ngModel)]="user.last_name" name="last_name" #last_name="ngModel" (ngModelChange)="hideError()">
                 </div>
 
-                <div class="errorMsg" [@topDown]="true" *ngIf="last_name.errors && kidChecked">
+                <div class="errorMsg" [@topDown]="true" *ngIf="last_name.errors && userChecked">
                   <p>Last Name is required</p>
                 </div>
               </div>
 
-              <div class="form-group my-4" [class.nope]="dealer.errors && kidChecked">
+              <div class="form-group my-4" [class.nope]="email.errors && userChecked">
+                <label for="email">Kia University Email</label>
+                <input type="text" class="form-control" autocomplete="off" placeholder="name@kiauniversity.com" required pattern="^[^\s@]+(@kiauniversity.com)$" [(ngModel)]="user.email" name="email" #email="ngModel" (ngModelChange)="hideError()">
+
+                <div class="errorMsg" [@topDown]="true" *ngIf="email.errors && userChecked">
+                  <p *ngIf="email.errors.required">Email is required</p>
+                  <p *ngIf="email.errors.pattern">Email is invalid</p>
+                </div>
+              </div>
+
+              <div class="form-group my-4" [class.nope]="dealer.errors && userChecked">
                 <label for="dealer">Dealer Code</label>
                 <input type="text" class="form-control" autocomplete="off" required [(ngModel)]="user.dealer" name="dealer" #dealer="ngModel" (ngModelChange)="hideError()">
 
-                <div class="errorMsg" [@topDown]="true" *ngIf="dealer.errors && kidChecked">
+                <div class="errorMsg" [@topDown]="true" *ngIf="dealer.errors && userChecked">
                   <p>Dealer Code is required</p>
                 </div>
               </div>
@@ -50,7 +72,7 @@
                 Something went wrong... Please make sure you have a WiFi or mobile data connection and try refreshing your&nbsp;browser.
               </div>
 
-              <button class="kiaBtn" [disabled]="loading" (click)="checkUser(user, stepper, 1)">
+              <button class="kiaBtn" [disabled]="loading" (click)="checkUser(user, email.valid, stepper, 1)">
                 <span *ngIf="!loading">Next</span>
                 <span *ngIf="loading">
                   <mat-spinner class="mx-auto" [diameter]="20" [strokeWidth]="3"></mat-spinner>
@@ -111,11 +133,11 @@
               <fieldset class="form-group my-4">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="radio" class="form-check-input" value="Team Premium" required [(ngModel)]="user.team" name="team" #team="ngModel">
-                    <div class="selector teams" id="team1" [class.selected]="user.team === 'Team Premium'">
-                      <div class="bgOverlay" *ngIf="user.team !== 'Team Premium'"></div>
-                      <fa-icon [icon]="['fas', 'check']" *ngIf="user.team === 'Team Premium'"></fa-icon>
-                      <span>Team Premium</span>
+                    <input type="radio" class="form-check-input" value="Team Prestige" required [(ngModel)]="user.team" name="team" #team="ngModel">
+                    <div class="selector teams" id="team1" [class.selected]="user.team === 'Team Prestige'">
+                      <!-- <div class="bgOverlay" *ngIf="user.team !== 'Team Prestige'"></div> -->
+                      <fa-icon [icon]="['fas', 'check']" *ngIf="user.team === 'Team Prestige'"></fa-icon>
+                      <span>Team Prestige</span>
                     </div>
                   </label>
                 </div>
@@ -123,7 +145,7 @@
                   <label class="form-check-label">
                     <input type="radio" class="form-check-input" value="Team Innovative" required [(ngModel)]="user.team" name="team" #team="ngModel">
                     <div class="selector teams" id="team2" [class.selected]="user.team === 'Team Innovative'">
-                      <div class="bgOverlay" *ngIf="user.team !== 'Team Innovative'"></div>
+                      <!-- <div class="bgOverlay" *ngIf="user.team !== 'Team Innovative'"></div> -->
                       <fa-icon [icon]="['fas', 'check']" *ngIf="user.team === 'Team Innovative'"></fa-icon>
                       <span>Team Innovative</span>
                     </div>
@@ -153,51 +175,6 @@
               </div>
             </mat-step>
           </mat-horizontal-stepper>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <div class="container" [@fade]="true" *ngIf="clicked && log">
-    <div class="row justify-content-center">
-      <div class="col-12 col-sm-10 col-md-8 text-center">
-        <img src="../../../assets/images/game-on-logo.png" alt="Game On | 20MY Kia Telluride Launch">
-
-        <h4>Welcome back to the<br>
-          In&#8209;Dealership&nbsp;Experience!</h4>
-
-        <form #loginForm="ngForm" novalidate>
-          <div class="form-group my-4" [class.nope]="kidInvalid || registered || (submitted && kid.errors)">
-            <label for="kid">KID Code</label>
-            <input type="text" class="form-control" autocomplete="off" required [(ngModel)]="user.kid" name="kid" #kid="ngModel" (ngModelChange)="hideError(); toUppercase(user.kid)">
-          </div>
-
-          <div class="text-center">
-            <div class="errorMsg">
-              <div [@topDown]="true" *ngIf="kid.errors && submitted">
-                KID Code is required
-              </div>
-
-              <div [@topDown]="true" *ngIf="!kid.errors && kidInvalid">
-                Invalid KID Code
-              </div>
-
-              <div [@topDown]="true" *ngIf="!kid.errors && registered">
-                This KID is not registered.<br> Please <a (click)="registerBtn(stepper, 0)">register</a> to continue.
-              </div>
-
-              <div [@topDown]="true" *ngIf="error">
-                It appears there was an issue connecting to your user information. Please make sure you have a WiFi or mobile data connection and try refreshing your&nbsp;browser.
-              </div>
-            </div>
-
-            <button class="kiaBtn" [disabled]="loading" (click)="login(user)">
-              <span *ngIf="!loading">Submit</span>
-              <span *ngIf="loading">
-                <mat-spinner class="mx-auto" [diameter]="20" [strokeWidth]="3"></mat-spinner>
-              </span>
-            </button>
-          </div>
         </form>
       </div>
     </div>

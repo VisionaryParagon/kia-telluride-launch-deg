@@ -7,6 +7,7 @@ Helvetica,
 Arial,
 sans-serif;
 $client-red: #bb162b;
+$client-light-gray: #e4e5e6;
 $client-gray: #7e8083;
 $error-color: #f00;
 
@@ -18,7 +19,7 @@ $error-color: #f00;
 
 html,
 body {
-  background: #fff;
+  background: $client-light-gray;
   color: #000;
   font-family: $client-font;
   font-size: 16px;
@@ -138,21 +139,17 @@ fieldset {
         }
 
         &.teams {
-          background-origin: border-box;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
           border: none;
           color: #fff;
           font-size: 18px;
           text-transform: uppercase;
 
           &#team1 {
-            background-image: url(./assets/images/team-freedom-bg.jpg);
+            background: $client-red;
           }
 
           &#team2 {
-            background-image: url(./assets/images/team-adventure-bg.jpg);
+            background: $client-gray;
           }
 
           &.selected {
@@ -574,6 +571,7 @@ header {
   background-size: cover;
   bottom: 0;
   left: 0;
+  overflow: auto;
   position: fixed;
   right: 0;
   top: 0;
@@ -589,15 +587,21 @@ header {
     right: 0;
     top: 0;
   }
+}
 
-  .container {
-    text-align: center;
+.logo {
+  margin: 1rem 0;
+  text-align: center;
 
-    img {
-      height: auto;
-      margin: 2rem 0;
-      width: 80%;
-    }
+  .logoBorder {
+    border-top: 1px solid #000;
+    margin: .75rem auto .5rem;
+    width: 85%;
+  }
+
+  h1 {
+    font-size: 28px;
+    margin: 0;
   }
 }
 
