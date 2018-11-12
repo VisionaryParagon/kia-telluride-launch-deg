@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
   clicked = false;
   anyVal: any;
   loading = false;
+  submitted = false;
   userChecked = false;
   sessionChecked = false;
   regSubmitted = false;
@@ -67,21 +68,17 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  login(stepper, idx) {
-    this.clicked = true;
-    this.changeStep(stepper, idx);
-  }
+  login(user, emailValid, stepper, idx) {
+    this.submitted = true;
 
-  checkUser(user, emailValid, stepper, idx) {
-    this.userChecked = true;
-
-    if (user.first_name && user.last_name && emailValid && user.dealer) {
+    if (emailValid) {
       this.loading = true;
 
       this.userService.checkUser(user)
         .subscribe(res => {
           if (!res._id) {
             this.loading = false;
+            this.clicked = true;
             this.changeStep(stepper, idx);
           } else {
             // Set cookie
@@ -97,7 +94,25 @@ export class LoginComponent implements OnInit {
             // Redirect to saved URL or home
             this.router.navigateByUrl(this.returnUrl);
           }
+        },
+        err => {
+          this.showError();
+          this.loading = false;
         });
+    }
+    return false;
+  }
+
+  checkUser(user, stepper, idx) {
+    this.userChecked = true;
+
+    if (user.first_name && user.last_name && user.dealer) {
+      this.changeStep(stepper, idx);
+
+      this.userChecked = false;
+      this.loading = false;
+    } else {
+      this.loading = false;
     }
     return false;
   }
@@ -144,6 +159,12 @@ export class LoginComponent implements OnInit {
         });
     }
     return false;
+  }
+
+  startOver() {
+    this.submitted = this.userChecked = this.sessionChecked = this.regSubmitted = false;
+    this.user = new User();
+    this.clicked = false;
   }
 
   showError() {
