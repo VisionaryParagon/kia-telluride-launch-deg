@@ -1,33 +1,43 @@
 @font-face {
-    font-family: 'design-k';
-    src: url('./assets/fonts/designkm.eot');
-    src: url('./assets/fonts/designkm.eot?#iefix') format('embedded-opentype'),
-        url('./assets/fonts/designkm.woff') format('woff'),
-        url('./assets/fonts/designkm.ttf') format('truetype'),
-        url('./assets/fonts/designkm.svg#DesignKOTFM') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'design-k';
+  src: url('./assets/fonts/designkm.eot');
+  src: url('./assets/fonts/designkm.eot?#iefix') format('embedded-opentype'),
+    url('./assets/fonts/designkm.woff') format('woff'),
+    url('./assets/fonts/designkm.ttf') format('truetype'),
+    url('./assets/fonts/designkm.svg#DesignKOTFM') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'design-k';
-    src: url('./assets/fonts/designkb.eot');
-    src: url('./assets/fonts/designkb.eot?#iefix') format('embedded-opentype'),
-        url('./assets/fonts/designkb.woff') format('woff'),
-        url('./assets/fonts/designkb.ttf') format('truetype'),
-        url('./assets/fonts/designkb.svg#DesignKOTFB') format('svg');
-    font-weight: bold;
-    font-style: normal;
+  font-family: 'design-k';
+  src: url('./assets/fonts/designkb.eot');
+  src: url('./assets/fonts/designkb.eot?#iefix') format('embedded-opentype'),
+    url('./assets/fonts/designkb.woff') format('woff'),
+    url('./assets/fonts/designkb.ttf') format('truetype'),
+    url('./assets/fonts/designkb.svg#DesignKOTFB') format('svg');
+  font-weight: bold;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'design-k';
-    src: url('./assets/fonts/designkl.eot');
-    src: url('./assets/fonts/designkl.eot?#iefix') format('embedded-opentype'),
-        url('./assets/fonts/designkl.woff') format('woff'),
-        url('./assets/fonts/designkl.ttf') format('truetype'),
-        url('./assets/fonts/designkl.svg#DesignKOTFL') format('svg');
-    font-weight: 300;
-    font-style: normal;
+  font-family: 'design-k';
+  src: url('./assets/fonts/designkl.eot');
+  src: url('./assets/fonts/designkl.eot?#iefix') format('embedded-opentype'),
+    url('./assets/fonts/designkl.woff') format('woff'),
+    url('./assets/fonts/designkl.ttf') format('truetype'),
+    url('./assets/fonts/designkl.svg#DesignKOTFL') format('svg');
+  font-weight: 300;
+  font-style: normal;
 }
 
+@font-face {
+  font-family: "blippar";
+  src: url("./assets/fonts/blippar-icons.eot");
+  src: url("./assets/fonts/blippar-icons.eot?#iefix") format("embedded-opentype"),
+    url("./assets/fonts/blippar-icons.woff") format("woff"),
+    url("./assets/fonts/blippar-icons.ttf") format("truetype"),
+    url("./assets/fonts/blippar-icons.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}

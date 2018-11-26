@@ -53,10 +53,6 @@ export class LoginComponent implements OnInit {
     // this.returnUrl = '/';
   }
 
-  toUppercase(val) {
-    this.user.kid = val.toUpperCase();
-  }
-
   changeStep(stepper, idx) {
     if (stepper) {
       if (idx === 0) {
@@ -75,30 +71,31 @@ export class LoginComponent implements OnInit {
       this.loading = true;
 
       this.userService.checkUser(user)
-        .subscribe(res => {
-          if (!res._id) {
+        .subscribe(
+          res => {
+            if (!res._id) {
+              this.loading = false;
+              this.clicked = true;
+              this.changeStep(stepper, idx);
+            } else {
+              // Set cookie
+              this.cookieService.put('userId', res._id, this.cookieOptions);
+
+              // Save login status
+              this.userService.setCurrentUser(res);
+
+              this.hideError();
+              this.loading = false;
+
+              // Redirect to saved URL or home
+              this.router.navigateByUrl(this.returnUrl);
+            }
+          },
+          err => {
+            this.showError();
             this.loading = false;
-            this.clicked = true;
-            this.changeStep(stepper, idx);
-          } else {
-            // Set cookie
-            this.cookieService.put('userId', res._id, this.cookieOptions);
-
-            // Save login status
-            this.userService.loggedIn = true;
-            this.userService.setCurrentUser(res);
-
-            this.hideError();
-            this.loading = false;
-
-            // Redirect to saved URL or home
-            this.router.navigateByUrl(this.returnUrl);
           }
-        },
-        err => {
-          this.showError();
-          this.loading = false;
-        });
+        );
     }
     return false;
   }
@@ -139,24 +136,25 @@ export class LoginComponent implements OnInit {
       this.loading = true;
 
       this.userService.createUser(user)
-        .subscribe(res => {
-          // Set cookie
-          this.cookieService.put('userId', res._id, this.cookieOptions);
+        .subscribe(
+          res => {
+            // Set cookie
+            this.cookieService.put('userId', res._id, this.cookieOptions);
 
-          // Save login status
-          this.userService.loggedIn = true;
-          this.userService.setCurrentUser(res);
+            // Save login status
+            this.userService.setCurrentUser(res);
 
-          this.hideError();
-          this.loading = false;
+            this.hideError();
+            this.loading = false;
 
-          // Redirect to saved URL or home
-          this.router.navigateByUrl(this.returnUrl);
-        },
-        err => {
-          this.showError();
-          this.loading = false;
-        });
+            // Redirect to saved URL or home
+            this.router.navigateByUrl(this.returnUrl);
+          },
+          err => {
+            this.showError();
+            this.loading = false;
+          }
+        );
     }
     return false;
   }

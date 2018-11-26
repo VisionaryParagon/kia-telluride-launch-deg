@@ -1,13 +1,12 @@
 export class User {
   _id?: string;
+  email: string;
   first_name: string;
   last_name: string;
   dealer: string;
-  kid: string;
+  kuid: string;
   session: string;
   team: string;
-  email?: string;
-  optin?: number;
   notes?: Note[];
   quizzes?: Quiz[];
   created?: Date;
@@ -22,33 +21,83 @@ export class Note {
 
 export class Quiz {
   name: string;
-  answer01: string;
-  points01: number;
-  time01: number;
-  answer02: string;
-  points02: number;
-  time02: number;
-  answer03: string;
-  points03: number;
-  time03: number;
-  answer04: string;
-  points04: number;
-  time04: number;
-  answer05: string;
-  points05: number;
-  time05: number;
-  answer06: string;
-  points06: number;
-  time06: number;
-  answer07: string;
-  points07: number;
-  time07: number;
-  answer08: string;
-  points08: number;
-  time08: number;
+  answers: Answer[] = new Array<Answer>();
+}
+
+export class Answer {
+  answer = '';
+  points = 0;
+  time = 0;
+}
+
+export class QuizData {
+  name: string;
+  isCert: boolean;
+  passcode?: string;
+  questions: QuizQuestion[];
+}
+
+export class QuizQuestion {
+  key: string;
+  question: string;
+  options: QuizAnswer[];
+}
+
+export class QuizAnswer {
+  answer: string;
+  value: string;
 }
 
 export class Admin {
   username: string;
   password: string;
+}
+
+export class Group {
+  _id?: string;
+  dealer: string;
+  session: string;
+  teams: Team[];
+}
+
+export class Team {
+  name: string;
+  value: number;
+}
+
+export class Employee {
+  kuid: string;
+  first_name: string;
+  last_name: string;
+  dealer: string;
+}
+
+export class Report {
+  kuid: string;
+  first_name: string;
+  last_name: string;
+  dealer: string;
+  session: string;
+  team: string;
+  email: string;
+  quiz1?: string;
+  quiz1c?: string | number;
+  quiz1i?: string | number;
+  quiz2?: string;
+  quiz2c?: string | number;
+  quiz2i?: string | number;
+  quiz3?: string;
+  quiz3c?: string | number;
+  quiz3i?: string | number;
+  quiz4?: string;
+  quiz4c?: string | number;
+  quiz4i?: string | number;
+  quiz5?: string;
+  quiz5c?: string | number;
+  quiz5i?: string | number;
+  quiz6?: string;
+  quiz6c?: string | number;
+  quiz6i?: string | number;
+  created?: Date;
+  modified?: Date;
 }

@@ -39,6 +39,11 @@ p {
   font-family: $client-font;
 }
 
+h1,
+h2 {
+  margin: 1rem 0;
+}
+
 
 /*~~  Forms and Buttons ~~*/
 
@@ -175,6 +180,10 @@ fieldset {
 form.quiz {
   fieldset {
     &.form-group {
+      legend {
+        font-size: 1.2rem;
+      }
+
       .form-check {
         display: block;
         margin: 15px 0;
@@ -185,16 +194,17 @@ form.quiz {
         }
 
         .selector {
-          flex: 0 0 60px;
-          height: 60px;
+          flex: 0 0 40px;
+          font-size: 26px;
+          height: 40px;
           margin: 0 10px 0 0;
 
           &.selected {
-            border: 7px solid $client-red;
+            border: 5px solid $client-red;
           }
 
           fa-icon {
-            font-size: 35px;
+            font-size: 26px;
             z-index: 2;
           }
 
@@ -300,6 +310,11 @@ form.quiz {
     width: 100%;
   }
 
+  &.dialog {
+    margin: 0 0 0 .5rem;
+    min-width: auto;
+  }
+
   &:hover {
     background: $client-red;
     color: #fff;
@@ -312,8 +327,8 @@ form.quiz {
   }
 
   input {
-    border-color: $error-color;
-    color: $error-color;
+    border-color: $error-color !important;
+    color: $error-color !important;
   }
 }
 
@@ -371,7 +386,7 @@ header {
       border: none;
       cursor: pointer;
       height: 50px;
-      font-size: 36px;
+      font-size: 26px;
       left: -50px;
       padding: 0;
       position: absolute;
@@ -561,6 +576,17 @@ header {
 }
 
 
+/*~~  Content ~~*/
+
+section {
+  padding: 50px 0;
+}
+
+.container {
+  max-width: 768px;
+}
+
+
 /*~~  Login ~~*/
 
 #login {
@@ -606,10 +632,17 @@ header {
 }
 
 
-/*~~  Content ~~*/
+/*~~  GameON ~~*/
 
-section {
-  padding: 50px 0;
+.blippar {
+  font-family: blippar;
+  font-size: 4rem;
+  line-height: 4rem;
+  margin: 0 0 1rem;
+
+  &::after {
+    content: "\e90c";
+  }
 }
 
 .container {
@@ -617,7 +650,28 @@ section {
 }
 
 
+/*~~  Quizzes ~~*/
+
+.recap {
+  border-bottom: 1px dotted #fff;
+  margin: 0 0 1rem;
+
+  &:last-child {
+    border: none;
+    margin: 0;
+  }
+}
+
+
 /*~~  Material Design Elements ~~*/
+
+.mat-spinner circle {
+  stroke: $client-red;
+}
+
+.kiaBtn .mat-spinner circle {
+  stroke: $client-gray;
+}
 
 mat-horizontal-stepper.mat-stepper-horizontal,
 mat-vertical-stepper.mat-stepper-vertical {
@@ -633,12 +687,95 @@ mat-vertical-stepper.mat-stepper-vertical {
   }
 }
 
-.mat-spinner circle {
-  stroke: $client-red;
+mat-dialog-container.mat-dialog-container {
+  padding: 1rem;
+  position: relative;
+
+  .mat-dialog-title {
+    margin: 0 0 1rem;
+  }
+
+  .mat-dialog-content {
+    background: #fff;
+    border-top: 1px solid $client-light-gray;
+    margin: 0 -1rem;
+    max-height: 70vh;
+    padding: 0 1rem;
+    z-index: 0;
+  }
+
+  .mat-dialog-actions {
+    border-top: 1px solid $client-light-gray;
+    bottom: 0;
+    justify-content: flex-end;
+    left: 0;
+    margin: 0;
+    padding: .5rem;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .mat-dialog-close {
+    padding: .5rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
 }
 
-.kiaBtn .mat-spinner circle {
-  stroke: $client-gray;
+.snackError {
+  background: $error-color;
+  color: #fff;
+  font-weight: bold;
+}
+
+mat-tab-group.mat-tab-group {
+  font-family: inherit;
+  padding: 1rem 0;
+
+  .mat-tab-label {
+    background: $client-gray;
+    border-radius: .5rem .5rem 0 0;
+    color: #fff;
+    flex-grow: 1;
+    font-weight: normal;
+
+    &.mat-tab-label-active {
+      font-weight: bold;
+      opacity: 1;
+    }
+  }
+
+  .mat-tab-body {
+    background: $client-light-gray;
+    border-radius: 0 0 .5rem .5rem;
+    padding: .5rem;
+  }
+
+  &.mat-primary {
+    .mat-ink-bar {
+      background-color: $client-red;
+    }
+  }
+}
+
+
+/*~~ ngx-charts Elements ~~*/
+
+ngx-charts-pie-chart {
+  .ngx-charts-outer {
+    margin: 0 auto;
+
+    .ngx-charts {
+      float: none;
+      -moz-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      -o-transform: rotate(180deg);
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+    }
+  }
 }
 
 

@@ -1,0 +1,116 @@
+<h1 mat-dialog-title>{{data.quiz.name}}</h1>
+
+<button class="mat-dialog-close" [mat-dialog-close]="user">&times;</button>
+
+<div *ngIf="!verified">
+  <form #pwForm="ngForm" novalidate>
+    <div mat-dialog-content>
+      <div class="form-group my-4" [class.nope]="err.length || (passcode.errors && (passcode.touched || submitted))">
+        <label for="passcode">Enter Passcode</label>
+        <input type="text" class="form-control" autocomplete="off" required [(ngModel)]="pw" name="passcode" #passcode="ngModel" (ngModelChange)="hideError()">
+
+        <div class="errorMsg" [@topDown]="true" *ngIf="passcode.errors && (passcode.touched || submitted)">
+          <p *ngIf="passcode.errors.required">Passcode is required</p>
+        </div>
+        <div class="errorMsg" [@topDown]="true" *ngIf="err.length">
+          <p>{{ err }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div mat-dialog-actions>
+      <button class="kiaBtn dialog" [disabled]="loading" (click)="startQuiz(passcode)">
+        <span *ngIf="!loading">Let&rsquo;s Do This!</span>
+        <span *ngIf="loading">
+          <mat-spinner class="mx-auto" [diameter]="20" [strokeWidth]="3"></mat-spinner>
+        </span>
+      </button>
+    </div>
+  </form>
+</div>
+
+<div [@fade]="true" *ngIf="verified">
+  <form class="quiz" #quizForm="ngForm" novalidate>
+    <div mat-dialog-content>
+      <div [@fade]="true" *ngIf="!hasAnswers">
+        <div *ngFor="let question of data.quiz.questions; let i = index; trackBy: trackByIndex">
+          <fieldset class="form-group text-center" *ngIf="activeQuestion === i">
+            <legend class="text-left">{{ i + 1 }}. {{ question.question }}</legend>
+            <div class="form-check" *ngFor="let option of question.options; let idx = index">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" required [(ngModel)]="quiz.answers[i].answer" [name]="question.key" [value]="option.value" (ngModelChange)="setAnswer(); hideError()">
+                <div class="selector" [class.selected]="quiz.answers[i].answer === option.value" [class.nope]="error">
+                  <fa-icon [icon]="['fas', 'check']" *ngIf="quiz.answers[i].answer === option.value"></fa-icon>
+                  <span *ngIf="idx === 0">A</span>
+                  <span *ngIf="idx === 1">B</span>
+                  <span *ngIf="idx === 2">C</span>
+                  <span *ngIf="idx === 3">D</span>
+                  <span *ngIf="idx === 4">E</span>
+                </div>
+                <div class="answer">
+                  {{ option.answer }}
+                </div>
+              </label>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+
+      <div [@fade]="true" *ngIf="hasAnswers">
+        <mat-tab-group dynamicHeight>
+          <mat-tab label="Score">
+            <div class="text-center">
+              <div *ngIf="finalAnswers[0].value > 0">
+                <h4>Congratulations!</h4>
+
+                <p class="mb-0">You earned <strong>{{ totalPoints }} Points</strong> for <strong>{{ user.team }}</strong>!</p>
+              </div>
+
+              <div *ngIf="finalAnswers[0].value === 0">
+                <h4>Oh No!</h4>
+
+                <p class="mb-0">You didn&rsquo;t earn any points for <strong>{{ user.team }}</strong>...</p>
+              </div>
+
+              <ngx-charts-pie-chart [view]="chartView" [scheme]="colorScheme" [results]="finalAnswers" [doughnut]="true" [tooltipDisabled]="true"></ngx-charts-pie-chart>
+
+              <h4>{{ finalAnswers[0].value }} {{ finalAnswers[0].name }}<br> {{ finalAnswers[1].value }} {{ finalAnswers[1].name }}</h4>
+            </div>
+          </mat-tab>
+          <mat-tab label="Recap">
+            <div class="recap" *ngFor="let question of data.quiz.questions; let i = index; trackBy: trackByIndex">
+              <h6>{{ i + 1 }}. {{ question.question }}</h6>
+
+              <div *ngIf="(quiz.answers[i].answer || finishedQuiz.answers[i].answer) === '0'">
+                <h6 class="text-success">Correct!<br>
+                  <strong>{{ correctAnswer(i) }}</strong></h6>
+              </div>
+
+              <div *ngIf="(quiz.answers[i].answer || finishedQuiz.answers[i].answer) !== '0'">
+                <p class="text-danger">Your Answer:<br>
+                  <strong *ngFor="let wrong of wrongAnswers(i)">
+                    <span *ngIf="(quiz.answers[i].answer || finishedQuiz.answers[i].answer) === wrong.value">{{ wrong.answer }}</span>
+                  </strong></p>
+
+                <p class="text-success">Correct Answer:<br>
+                  <strong>{{ correctAnswer(i) }}</strong></p>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+    <div mat-dialog-actions>
+      <button class="kiaBtn dialog" type="button" *ngIf="!hasAnswers && activeQuestion !== 0" (click)="prev()">Back</button>
+      <button class="kiaBtn dialog" type="button" *ngIf="!hasAnswers && activeQuestion !== data.quiz.questions.length - 1" (click)="next()">Next</button>
+      <button class="kiaBtn dialog" *ngIf="!hasAnswers && activeQuestion === data.quiz.questions.length - 1" [disabled]="loading" (click)="submit(quizForm.valid)">
+        <span *ngIf="!loading">Submit</span>
+        <span *ngIf="loading">
+          <mat-spinner class="mx-auto" [diameter]="20" [strokeWidth]="3"></mat-spinner>
+        </span>
+      </button>
+      <button class="kiaBtn dialog" type="button" *ngIf="hasAnswers && isCert" (click)="resetQuiz()">Retry</button>
+      <button class="kiaBtn dialog" type="button" *ngIf="hasAnswers" [mat-dialog-close]="user">Close</button>
+    </div>
+  </form>
+</div>

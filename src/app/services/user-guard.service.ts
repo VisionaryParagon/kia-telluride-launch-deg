@@ -16,17 +16,14 @@ export class UserGuardService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (this.cookieService.get('userId')) {
-      // Set loggedIn to true
-      this.userService.loggedIn = true;
-
       return true;
     }
 
     // Save redirect URL
     this.userService.returnUrl = state.url;
 
-    // Set loggedIn to false
-    this.userService.loggedIn = false;
+    // Clear current user
+    this.userService.clearCurrentUser();
 
     // Navigate to the login page
     this.router.navigate(['/login']);

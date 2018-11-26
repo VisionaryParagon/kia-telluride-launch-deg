@@ -9,6 +9,7 @@ import {
   MatPaginatorModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
+  MatSnackBarModule,
   MatSortModule,
   MatStepperModule,
   MatTableModule,
@@ -18,6 +19,7 @@ import {
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
+  faAngleDown,
   faCaretDown,
   faCheck,
   faChevronDown,
@@ -31,11 +33,14 @@ import {
   faTrophy
 } from '@fortawesome/free-solid-svg-icons';
 
+import { NgxChartsModule } from "@swimlane/ngx-charts";
+
 import { CookieModule } from 'ngx-cookie';
 
 // Directives
 
 // Icons for fontawesome library
+library.add(faAngleDown);
 library.add(faCaretDown);
 library.add(faCheck);
 library.add(faChevronDown);
@@ -59,11 +64,13 @@ library.add(faTrophy);
     MatPaginatorModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule,
     MatSortModule,
     MatStepperModule,
     MatTableModule,
     MatTabsModule,
     FontAwesomeModule,
+    NgxChartsModule,
     CookieModule.forRoot()
   ],
   declarations: [],
@@ -77,11 +84,13 @@ library.add(faTrophy);
     MatPaginatorModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule,
     MatSortModule,
     MatStepperModule,
     MatTableModule,
     MatTabsModule,
     FontAwesomeModule,
+    NgxChartsModule,
     CookieModule
   ]
 })

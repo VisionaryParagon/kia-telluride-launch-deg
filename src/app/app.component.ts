@@ -4,6 +4,7 @@ import { Location, PopStateEvent } from '@angular/common';
 
 import { CookieService } from 'ngx-cookie';
 
+import { User } from './services/classes';
 import { GoogleAnalyticsEventsService } from './services/google-analytics-events.service';
 import { UserService } from './services/user.service';
 import { AdminService } from './services/admin.service';
@@ -19,8 +20,9 @@ declare let ga: Function;
   animations: [ NavAnimation ]
 })
 export class AppComponent implements OnInit {
-  private lastPoppedUrl: string;
-  private yScrollStack: number[] = [];
+  user: User = this.userService.getCurrentUser();
+  lastPoppedUrl: string;
+  yScrollStack: number[] = [];
   isLoggedIn = false;
   isLoggedInAdmin = false;
   isAdmin = false;
@@ -115,13 +117,13 @@ export class AppComponent implements OnInit {
 
   closeNav() {
     this.state = 'inactive';
-    document.body.classList.remove('modal-open');
+    document.documentElement.classList.remove('modal-open');
   }
 
   outsideNav() {
     if (this.state === 'active') {
       this.state = 'inactive';
-      document.body.classList.remove('modal-open');
+      document.documentElement.classList.remove('modal-open');
     }
   }
 

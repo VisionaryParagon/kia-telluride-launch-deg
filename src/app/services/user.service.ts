@@ -47,44 +47,6 @@ export class UserService {
     this.loggedIn = false;
   }
 
-  // get quiz answers
-  getAnswers(quiz) {
-    const allAnswers = [
-      {
-        name: 'Correct',
-        value: 0
-      },
-      {
-        name: 'Incorrect',
-        value: 0
-      }
-    ];
-
-    const quizLength = Object.keys(quiz)
-      .filter(k => k.indexOf('answer') === 0).length;
-    const correctAnswers = (<any>Object).values(quiz)
-      .filter(val => val === '0').length;
-
-    allAnswers[0].value = correctAnswers;
-    allAnswers[1].value = quizLength - correctAnswers;
-
-    return allAnswers;
-  }
-
-  // get quiz points
-  getPoints(quiz) {
-    const points = Object.keys(quiz)
-      .filter(k => k.indexOf('points') === 0)
-      .reduce((newData, k) => {
-        newData[k] = quiz[k];
-        return newData;
-      }, {});
-
-    const pointsSum = obj => (<any>Object).values(obj).reduce((a, b) => a + b);
-
-    return pointsSum(points);
-  }
-
   // get all current user answers
   getAllAnswers() {
     let i = 0;
@@ -133,16 +95,6 @@ export class UserService {
     return totalPoints;
   }
 
-  // create new user
-  createUser(user) {
-    return this.http.post<User>(this.userUrl, user)
-      .pipe(
-        retry(3),
-        tap(res => this.setCurrentUser(res)),
-        catchError(this.handleError)
-      );
-  }
-
   // get top 20 users
   getTop20(data) {
     return this.http.post<any>(this.userUrl + '/top', data)
@@ -166,6 +118,16 @@ export class UserService {
     return this.http.post<any>(this.userUrl + '/ratings', data)
       .pipe(
         retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  // create new user
+  createUser(user) {
+    return this.http.post<User>(this.userUrl, user)
+      .pipe(
+        retry(3),
+        tap(res => this.setCurrentUser(res)),
         catchError(this.handleError)
       );
   }

@@ -1,0 +1,66 @@
+<section [@fade]="true">
+  <div class="container text-center">
+    <h1>Game(ON)</h1>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          Agenda
+        </mat-expansion-panel-header>
+
+        <ng-template matExpansionPanelContent>
+          <p>Game(ON) &ndash; 20 minutes</p>
+          <p>Switched(ON) &ndash; 50-55 minutes</p>
+          <p>It&rsaquo;s (ON) &ndash; 50-55 minutes</p>
+          <p>Rock(ON) &ndash; 20 minutes</p>
+        </ng-template>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          Press Reviews
+        </mat-expansion-panel-header>
+
+        <ng-template matExpansionPanelContent>
+          <p><a href="#" target="_blank">Motor Trend Review</a></p>
+          <p><a href="#" target="_blank">Car &amp; Driver Review</a></p>
+        </ng-template>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          BlippAR
+        </mat-expansion-panel-header>
+
+        <ng-template matExpansionPanelContent>
+          <div class="blippar"></div>
+
+          <p>Blippar is a free augmented reality app that we&rsquo;ll be using during this event. Please download the app using one of the options below:</p>
+
+          <div class="d-flex justify-content-around">
+            <a href="https://itunes.apple.com/gb/app/blippar/id410604563" target="_blank"><img src="../../../assets/images/apple-app-store-badge.png" height="36px" alt="Download on the App Store"></a>
+            <a href="https://play.google.com/store/apps/details?hl=en_GB&id=com.blippar.ar.android" target="_blank"><img src="../../../assets/images/google-play-badge.png" height="36px" alt="Get it on Google Play"></a>
+          </div>
+        </ng-template>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          {{ quizName }}
+        </mat-expansion-panel-header>
+
+        <ng-template matExpansionPanelContent>
+          <p>Quizzes are graded on accuracy and speed. The faster you select the correct answer, the more points you get for your team.</p>
+
+          <p>When you&rsquo;re ready, launch the {{ quizName }} below. Good luck!</p>
+
+          <div *ngIf="!error.length">
+            <button class="kiaBtn" *ngIf="!hasAnswers" (click)="launchQuiz()">Launch Quiz</button>
+            <button class="kiaBtn" *ngIf="hasAnswers" (click)="launchQuiz()">View Quiz Results</button>
+          </div>
+
+          <div class="errorMsg" [@topDown]="true" *ngIf="error.length">
+            <p>{{ error }}</p>
+          </div>
+        </ng-template>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</section>
