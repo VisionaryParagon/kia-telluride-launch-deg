@@ -18,7 +18,7 @@ import { FadeAnimation, TopDownAnimation } from '../../animations';
 export class LoginComponent implements OnInit {
   returnUrl: string;
   user: User = new User();
-  userCookie = this.cookieService.get('userId');
+  userId = this.cookieService.get('userId');
   cookieExp = new Date();
   cookieOptions: CookieOptions = {
     expires: new Date()
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (this.userCookie) {
+    if (this.userId) {
       this.router.navigate(['../']);
     }
 

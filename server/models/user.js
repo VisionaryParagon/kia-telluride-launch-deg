@@ -8,12 +8,12 @@ const UserSchema = new mongoose.Schema({
   session: String,
   team: String,
   email: String,
-  optin: {
+  notes: Array,
+  quizzes: Array,
+  totalPoints: {
     type: Number,
     default: 0
   },
-  notes: Array,
-  quizzes: Array,
   created: {
     type: Date,
     default: Date.now

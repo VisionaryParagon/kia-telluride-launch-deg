@@ -9,6 +9,7 @@ export class User {
   team: string;
   notes?: Note[];
   quizzes?: Quiz[];
+  totalPoints?: number;
   created?: Date;
   modified?: Date;
 }

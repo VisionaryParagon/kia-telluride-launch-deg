@@ -73,5 +73,120 @@
         ]
       }
     ]
+  },
+  {
+    "name": "Certification Test",
+    "isCert": true,
+    "passcode": "2020",
+    "questions": [
+      {
+        "key": "q1",
+        "question": "What does the cat say?",
+        "options": [
+          {
+            "answer": "Woof",
+            "value": "1"
+          },
+          {
+            "answer": "Moo",
+            "value": "2"
+          },
+          {
+            "answer": "Meow",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "key": "q2",
+        "question": "What does the dog say?",
+        "options": [
+          {
+            "answer": "Woof",
+            "value": "0"
+          },
+          {
+            "answer": "Moo",
+            "value": "1"
+          },
+          {
+            "answer": "Meow",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "key": "q3",
+        "question": "What does the fox say?",
+        "options": [
+          {
+            "answer": "Woof",
+            "value": "1"
+          },
+          {
+            "answer": "Rrrrrricktickticktick Rrricktick KAKOW!!",
+            "value": "0"
+          },
+          {
+            "answer": "Meow",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "key": "q4",
+        "question": "What does the cow say?",
+        "options": [
+          {
+            "answer": "Woof",
+            "value": "1"
+          },
+          {
+            "answer": "Moo",
+            "value": "0"
+          },
+          {
+            "answer": "Meow",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "key": "q5",
+        "question": "What does the frog say?",
+        "options": [
+          {
+            "answer": "Ribbet",
+            "value": "0"
+          },
+          {
+            "answer": "Moo",
+            "value": "1"
+          },
+          {
+            "answer": "Meow",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "key": "q6",
+        "question": "What does the chicken say?",
+        "options": [
+          {
+            "answer": "Ribbet",
+            "value": "1"
+          },
+          {
+            "answer": "Moo",
+            "value": "2"
+          },
+          {
+            "answer": "Bockbock",
+            "value": "0"
+          }
+        ]
+      }
+    ]
   }
 ]

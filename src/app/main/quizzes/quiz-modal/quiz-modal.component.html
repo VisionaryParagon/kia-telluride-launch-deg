@@ -60,16 +60,34 @@
         <mat-tab-group dynamicHeight>
           <mat-tab label="Score">
             <div class="text-center">
-              <div *ngIf="finalAnswers[0].value > 0">
-                <h4>Congratulations!</h4>
+              <div *ngIf="!isCert">
+                <div *ngIf="finalAnswers[0].value > 0">
+                  <h4>Congratulations!</h4>
 
-                <p class="mb-0">You earned <strong>{{ totalPoints }} Points</strong> for <strong>{{ user.team }}</strong>!</p>
+                  <p class="mb-0">You earned <strong>{{ totalPoints }} Points</strong> for <strong>{{ user.team }}</strong>!</p>
+                </div>
+
+                <div *ngIf="finalAnswers[0].value === 0">
+                  <h4>Oh No!</h4>
+
+                  <p class="mb-0">You didn&rsquo;t earn any points for <strong>{{ user.team }}</strong>...</p>
+                </div>
               </div>
+              
+              <div *ngIf="isCert">
+                <div *ngIf="certPassed">
+                  <h4>Congratulations!</h4>
 
-              <div *ngIf="finalAnswers[0].value === 0">
-                <h4>Oh No!</h4>
+                  <p class="mb-0">You passed with a score of <strong>{{ certScore * 100 }}%</strong>!</p>
+                </div>
 
-                <p class="mb-0">You didn&rsquo;t earn any points for <strong>{{ user.team }}</strong>...</p>
+                <div *ngIf="!certPassed">
+                  <h4>So Close!</h4>
+
+                  <p>You earned a score of <strong>{{ certScore * 100 }}%</strong>...</p>
+
+                  <p class="mb-0">In order to receive certification, you must pass with a score of {{ requiredScore * 100 }}% or better. Please try again.</p>
+                </div>
               </div>
 
               <ngx-charts-pie-chart [view]="chartView" [scheme]="colorScheme" [results]="finalAnswers" [doughnut]="true" [tooltipDisabled]="true"></ngx-charts-pie-chart>
@@ -109,7 +127,7 @@
           <mat-spinner class="mx-auto" [diameter]="20" [strokeWidth]="3"></mat-spinner>
         </span>
       </button>
-      <button class="kiaBtn dialog" type="button" *ngIf="hasAnswers && isCert" (click)="resetQuiz()">Retry</button>
+      <button class="kiaBtn dialog" type="button" *ngIf="hasAnswers && isCert && !certPassed" (click)="resetQuiz()">Retry</button>
       <button class="kiaBtn dialog" type="button" *ngIf="hasAnswers" [mat-dialog-close]="user">Close</button>
     </div>
   </form>
