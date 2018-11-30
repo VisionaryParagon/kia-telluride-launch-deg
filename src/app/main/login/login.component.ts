@@ -103,6 +103,8 @@ export class LoginComponent implements OnInit {
     this.userChecked = true;
 
     if (user.first_name && user.last_name && user.dealer) {
+      this.loading = true;
+
       this.employeeService.getKuid(user)
         .subscribe(
           res => {
@@ -137,8 +139,6 @@ export class LoginComponent implements OnInit {
                     }
                   }
                 );
-                // if dup found, show warning modal and redirect to email (this.startOver() no clear)
-                // else, set kuid and continue with reg
             } else {
               const dialogRef = this.dialog.open(KuidWarningComponent, {
                 data: { hasKuid: false },
@@ -154,10 +154,10 @@ export class LoginComponent implements OnInit {
                       this.user.kuid = '';
 
                       this.changeStep(stepper, idx);
-
-                      this.userChecked = false;
-                      this.loading = false;
                     }
+
+                    this.userChecked = false;
+                    this.loading = false;
                   }
                 );
             }
@@ -219,7 +219,7 @@ export class LoginComponent implements OnInit {
   }
 
   startOver(clear?) {
-    this.submitted = this.userChecked = this.sessionChecked = this.regSubmitted = false;
+    this.submitted = this.userChecked = this.sessionChecked = this.regSubmitted = this.loading = false;
     if (clear) {
       this.user = new User();
     }

@@ -19,7 +19,7 @@
     </div>
 
     <div mat-dialog-actions>
-      <button class="kiaBtn dialog" [disabled]="loading" (click)="startQuiz(passcode)">
+      <button class="kiaBtn dialog primary" [disabled]="loading" (click)="startQuiz(passcode)">
         <span *ngIf="!loading">Let&rsquo;s Do This!</span>
         <span *ngIf="loading">
           <mat-spinner class="mx-auto" [diameter]="20" [strokeWidth]="3"></mat-spinner>
@@ -119,16 +119,16 @@
       </div>
     </div>
     <div mat-dialog-actions>
-      <button class="kiaBtn dialog" type="button" *ngIf="!hasAnswers && activeQuestion !== 0" (click)="prev()">Back</button>
-      <button class="kiaBtn dialog" type="button" *ngIf="!hasAnswers && activeQuestion !== quizQuestions.length - 1" (click)="next()">Next</button>
-      <button class="kiaBtn dialog" *ngIf="!hasAnswers && activeQuestion === quizQuestions.length - 1" [disabled]="loading" (click)="submit(quizForm.valid)">
+      <button class="kiaBtn dialog secondary" type="button" *ngIf="!hasAnswers && activeQuestion !== 0" (click)="prev()">Back</button>
+      <button class="kiaBtn dialog primary" type="button" *ngIf="!hasAnswers && activeQuestion !== quizQuestions.length - 1" (click)="next()">Next</button>
+      <button class="kiaBtn dialog primary" *ngIf="!hasAnswers && activeQuestion === quizQuestions.length - 1" [disabled]="loading" (click)="submit(quizForm.valid)">
         <span *ngIf="!loading">Submit</span>
         <span *ngIf="loading">
           <mat-spinner class="mx-auto" [diameter]="20" [strokeWidth]="3"></mat-spinner>
         </span>
       </button>
-      <button class="kiaBtn dialog" type="button" *ngIf="hasAnswers && isCert && !certPassed" (click)="resetQuiz()">Retry</button>
-      <button class="kiaBtn dialog" type="button" *ngIf="hasAnswers" [mat-dialog-close]="user">Close</button>
+      <button class="kiaBtn dialog secondary" type="button" *ngIf="hasAnswers && isCert && !certPassed" (click)="resetQuiz()">Retry</button>
+      <button class="kiaBtn dialog primary" type="button" *ngIf="hasAnswers" [mat-dialog-close]="user">Close</button>
     </div>
   </form>
 </div>

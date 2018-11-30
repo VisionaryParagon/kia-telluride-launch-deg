@@ -316,8 +316,15 @@ form.quiz {
     min-width: auto;
   }
 
-  &:hover {
+  &:hover,
+  &.primary {
     background: $client-red;
+    color: #fff;
+  }
+
+  &.secondary {
+    background: $client-gray;
+    border-color: $client-gray;
     color: #fff;
   }
 }

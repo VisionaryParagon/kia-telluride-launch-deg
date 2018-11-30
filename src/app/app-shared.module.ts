@@ -33,7 +33,7 @@ import {
   faTrophy
 } from '@fortawesome/free-solid-svg-icons';
 
-import { NgxChartsModule } from "@swimlane/ngx-charts";
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { CookieModule } from 'ngx-cookie';
 

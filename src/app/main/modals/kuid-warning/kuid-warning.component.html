@@ -17,9 +17,7 @@
 </div>
 
 <div mat-dialog-actions>
-  <button class="kiaBtn dialog" *ngIf="!data.hasKuid" [mat-dialog-close]="false">Edit</button>
-  <button class="kiaBtn dialog" [mat-dialog-close]="true">
-    <span *ngIf="data.hasKuid">Go Back</span>
-    <span *ngIf="!data.hasKuid">Proceed</span>
-  </button>
+  <button class="kiaBtn dialog secondary"*ngIf="!data.hasKuid" [mat-dialog-close]="true">Proceed</button>
+  <button class="kiaBtn dialog primary" *ngIf="!data.hasKuid" [mat-dialog-close]="false">Edit</button>
+  <button class="kiaBtn dialog primary" *ngIf="data.hasKuid" [mat-dialog-close]="true">Go Back</button>
 </div>
