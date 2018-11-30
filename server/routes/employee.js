@@ -3,55 +3,33 @@ const router = express.Router();
 const passport = require('passport');
 
 // admin model
-const employee = require('../models/employee');
+const employees = require('../models/employee');
 
-// check sid duplicate
-router.post('/users/dup-sid', function (req, res) {
-  employee.findOne({
-    sid: req.body.sid
+// get kuid
+router.post('/kuid', function (req, res) {
+  employees.findOne({
+    dealer: {
+      $regex: '^' + req.body.dealer + '$',
+      $options: 'i'
+    },
+    first_name: {
+      $regex: '^' + req.body.first_name + '$',
+      $options: 'i'
+    },
+    last_name: {
+      $regex: '^' + req.body.last_name + '$',
+      $options: 'i'
+    }
   }, function (err, data) {
-    let code = {
-      exists: false
-    };
     if (err) return res.status(500).send(err);
-    if (!data) return res.status(200).send(code);
-    code.exists = true;
-    return res.status(200).send(code);
-  });
-});
-
-// check sid validity
-router.post('/users/valid-sid', function (req, res) {
-  employee.findOne({
-    sid: req.body.sid
-  }, function (err, data) {
-    let code = {
-      message: 'Invalid SID code'
-    };
-    if (err) return res.status(500).send(err);
-    if (!data) return res.status(200).send(code);
+    if (!data) return res.status(200).send(req.body);
     return res.status(200).send(data);
   });
 });
 
-// check dealer validity
-router.post('/users/valid-dealer', function (req, res) {
-  employee.findOne({
-    dealer: req.body.dealer
-  }, function (err, data) {
-    let code = {
-      exists: false
-    };
-    if (err) return res.status(500).send(err);
-    if (!data) return res.status(200).send(code);
-    code.exists = true;
-    return res.status(200).send(code);
-  });
-});
-
 // create new employee
-router.post('/users', function (req, res) {
-  employee.create(req.body, function (err, user) {
+router.post('/new', function (req, res) {
+  employees.create(req.body, function (err, user) {
     if (err) return res.status(500).send(err);
     return res.status(200).send(user);
   });

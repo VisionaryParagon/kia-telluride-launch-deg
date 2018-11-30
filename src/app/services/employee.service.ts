@@ -4,37 +4,21 @@ import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/htt
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry, tap } from 'rxjs/operators';
 
+import { Employee } from './classes';
+
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
-  private employeeUrl = '/emp/users';
+  private employeeUrl = '/emp/';
 
   constructor(
     private http: HttpClient
   ) { }
 
-  // check duplicate sid
-  checkKid(value) {
-    return this.http.post<any>(this.employeeUrl + '/dup-sid', value)
-      .pipe(
-        retry(3),
-        catchError(this.handleError)
-      );
-  }
-
-  // validate sid
-  validateKid(value) {
-    return this.http.post<any>(this.employeeUrl + '/valid-sid', value)
-      .pipe(
-        retry(3),
-        catchError(this.handleError)
-      );
-  }
-
-  // validate dealer
-  validateDealer(value) {
-    return this.http.post<any>(this.employeeUrl + '/valid-dealer', value)
+  // get kuid
+  getKuid(data) {
+    return this.http.post<Employee>(this.employeeUrl + 'kuid', data)
       .pipe(
         retry(3),
         catchError(this.handleError)
@@ -43,7 +27,7 @@ export class EmployeeService {
 
   // create new user
   createUser(user) {
-    return this.http.post<any>(this.employeeUrl, user)
+    return this.http.post<Employee>(this.employeeUrl + 'new', user)
       .pipe(
         retry(3),
         catchError(this.handleError)

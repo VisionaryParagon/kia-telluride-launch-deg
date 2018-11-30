@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>KUID
+  <span *ngIf="data.hasKuid">Already Registered</span>
+  <span *ngIf="!data.hasKuid">Not Found</span></h1>
+
+<div mat-dialog-content>
+  <div *ngIf="data.hasKuid">
+    <p>Your KUID has already been registered to another email address.</p>
+
+    <p>Please go back and enter the correct email address on file.</p>
+  </div>
+
+  <div *ngIf="!data.hasKuid">
+    <p>We were unable to find a KUID assigned to your name and dealer code. Proceeding without an assigned KUID may prevent you from receiving certification for this training event.</p>
+
+    <p>Would you like to proceed without a KUID, or edit your information and try again?</p>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button class="kiaBtn dialog" *ngIf="!data.hasKuid" [mat-dialog-close]="false">Edit</button>
+  <button class="kiaBtn dialog" [mat-dialog-close]="true">
+    <span *ngIf="data.hasKuid">Go Back</span>
+    <span *ngIf="!data.hasKuid">Proceed</span>
+  </button>
+</div>

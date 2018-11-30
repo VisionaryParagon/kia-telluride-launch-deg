@@ -21,9 +21,18 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-  // validate user
+  // validate user email
   checkUser(value) {
     return this.http.post<any>(this.userUrl + '/email', value)
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  // validate user kuid
+  checkKuid(value) {
+    return this.http.post<any>(this.userUrl + '/kuid', value)
       .pipe(
         retry(3),
         catchError(this.handleError)

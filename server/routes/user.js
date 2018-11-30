@@ -4,10 +4,24 @@ const router = express.Router();
 // user model
 const user = require('../models/user');
 
-// check if user exists
+// check if user email exists
 router.post('/users/email', function (req, res) {
   user.findOne({
     email: req.body.email
+  }, function (err, data) {
+    const notFound = {
+      message: 'User not in system'
+    };
+    if (err) return res.status(500).send(err);
+    if (!data) return res.status(200).send(notFound);
+    return res.status(200).send(data);
+  });
+});
+
+// check if user kuid exists
+router.post('/users/kuid', function (req, res) {
+  user.findOne({
+    kuid: req.body.kuid
   }, function (err, data) {
     const notFound = {
       message: 'User not in system'

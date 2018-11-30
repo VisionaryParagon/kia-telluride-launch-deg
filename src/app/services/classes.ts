@@ -67,7 +67,8 @@ export class Team {
 }
 
 export class Employee {
-  kuid: string;
+  _id?: string;
+  kuid?: string;
   first_name: string;
   last_name: string;
   dealer: string;

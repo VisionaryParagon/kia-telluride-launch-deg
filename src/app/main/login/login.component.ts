@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
 
 import { CookieService, CookieOptions } from 'ngx-cookie';
 
@@ -8,6 +9,8 @@ import { EmployeeService } from '../../services/employee.service';
 import { User } from '../../services/classes';
 
 import { FadeAnimation, TopDownAnimation } from '../../animations';
+
+import { KuidWarningComponent } from '../modals/kuid-warning/kuid-warning.component';
 
 @Component({
   selector: 'app-login',
@@ -33,8 +36,9 @@ export class LoginComponent implements OnInit {
   error = false;
 
   constructor(
-    private cookieService: CookieService,
     private router: Router,
+    private dialog: MatDialog,
+    private cookieService: CookieService,
     private userService: UserService,
     private employeeService: EmployeeService
   ) { }
@@ -55,11 +59,6 @@ export class LoginComponent implements OnInit {
 
   changeStep(stepper, idx) {
     if (stepper) {
-      if (idx === 0) {
-        this.user = new User();
-        this.hideError();
-        this.userChecked = this.sessionChecked = this.regSubmitted = false;
-      }
       stepper.selectedIndex = idx;
     }
   }
@@ -104,10 +103,70 @@ export class LoginComponent implements OnInit {
     this.userChecked = true;
 
     if (user.first_name && user.last_name && user.dealer) {
-      this.changeStep(stepper, idx);
+      this.employeeService.getKuid(user)
+        .subscribe(
+          res => {
+            if (res.kuid) {
+              this.user.kuid = res.kuid;
 
-      this.userChecked = false;
-      this.loading = false;
+              // check for duplicate kuid
+              this.userService.checkKuid(this.user)
+                .subscribe(
+                  resKuid => {
+                    if (!resKuid._id) {
+                      this.changeStep(stepper, idx);
+
+                      this.userChecked = false;
+                      this.loading = false;
+                    } else {
+                      const dialogRef = this.dialog.open(KuidWarningComponent, {
+                        data: { hasKuid: true },
+                        height: '80vh',
+                        maxWidth: '90vw',
+                        width: '90vw'
+                      });
+
+                      dialogRef.afterClosed()
+                        .subscribe(
+                          proceed => {
+                            if (proceed) {
+                              this.startOver();
+                            }
+                          }
+                        );
+                    }
+                  }
+                );
+                // if dup found, show warning modal and redirect to email (this.startOver() no clear)
+                // else, set kuid and continue with reg
+            } else {
+              const dialogRef = this.dialog.open(KuidWarningComponent, {
+                data: { hasKuid: false },
+                height: '80vh',
+                maxWidth: '90vw',
+                width: '90vw'
+              });
+
+              dialogRef.afterClosed()
+                .subscribe(
+                  proceed => {
+                    if (proceed) {
+                      this.user.kuid = '';
+
+                      this.changeStep(stepper, idx);
+
+                      this.userChecked = false;
+                      this.loading = false;
+                    }
+                  }
+                );
+            }
+          },
+          err => {
+            this.showError();
+            this.loading = false;
+          }
+        );
     } else {
       this.loading = false;
     }
@@ -159,9 +218,11 @@ export class LoginComponent implements OnInit {
     return false;
   }
 
-  startOver() {
+  startOver(clear?) {
     this.submitted = this.userChecked = this.sessionChecked = this.regSubmitted = false;
-    this.user = new User();
+    if (clear) {
+      this.user = new User();
+    }
     this.clicked = false;
   }
 
