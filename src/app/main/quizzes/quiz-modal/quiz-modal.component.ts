@@ -5,7 +5,7 @@ import { Subscription, timer } from 'rxjs';
 
 import { CookieService, CookieOptions } from 'ngx-cookie';
 
-import { User, Quiz, Answer, QuizData } from '../../../services/classes';
+import { User, Quiz, Answer, QuizQuestion } from '../../../services/classes';
 import { UserService } from '../../../services/user.service';
 import { QuizService } from '../../../services/quiz.service';
 
@@ -20,10 +20,10 @@ import { FadeAnimation, TopDownAnimation } from '../../../animations';
 export class QuizModalComponent implements OnInit, OnDestroy {
   user: User = this.userService.getCurrentUser();
   quiz: Quiz = new Quiz();
-  finishedQuiz: Quiz;
+  quizQuestions: QuizQuestion[];
   isCert: boolean;
   certScore: number;
-  requiredScore = 0.8;
+  requiredScore: number;
   certPassed: boolean;
   hasAnswers: boolean;
   cookieExp = new Date();
@@ -63,12 +63,15 @@ export class QuizModalComponent implements OnInit, OnDestroy {
     this.cookieExp.setDate(this.cookieExp.getDate() + 7);
     this.cookieOptions.expires = this.cookieExp;
 
+    // Set quiz data
     if (this.data) {
-      this.quiz.name = this.data.quiz.name;
-      this.data.quiz.questions.forEach(question => this.quiz.answers.push(new Answer()));
-      this.isCert = this.data.quiz.isCert;
       this.hasAnswers = this.data.hasAnswers;
+      this.isCert = this.data.quiz.isCert;
+      this.requiredScore = this.data.quiz.requiredScore;
 
+      this.setQuizData();
+
+      // Run quiz
       if (!this.hasAnswers) {
         if (this.data.quiz.passcode) {
           if (this.cookieService.get(this.quiz.name)) {
@@ -83,16 +86,46 @@ export class QuizModalComponent implements OnInit, OnDestroy {
         }
       } else {
         this.verified = true;
-      }
 
-      if (this.hasAnswers) {
-        this.finishedQuiz = this.user.quizzes.filter(quiz => quiz.name === this.quiz.name)[0];
+        this.quiz = this.user.quizzes.filter(quiz => quiz.name === this.quiz.name)[0];
 
-        this.finalAnswers = this.quizService.getAnswers(this.finishedQuiz);
+        this.finalAnswers = this.quizService.getAnswers(this.quiz);
 
-        this.totalPoints = this.quizService.getPoints(this.finishedQuiz);
+        if (!this.isCert) {
+          this.totalPoints = this.quizService.getPoints(this.quiz);
+        } else {
+          this.certScore = this.finalAnswers[0].value / this.quiz.answers.length;
+
+          if (this.certScore >= this.requiredScore) {
+            this.certPassed = true;
+          } else {
+            this.certPassed = false;
+          }
+        }
       }
     }
+  }
+
+  randomizeArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  setQuizData() {
+    this.quiz.name = this.data.quiz.name;
+
+    // Set quiz questions
+    if (!this.isCert) {
+      this.quizQuestions = this.data.quiz.questions;
+    } else {
+      this.quizQuestions = this.randomizeArray(this.data.quiz.questions).slice(0, 5);
+    }
+
+    // Preset user answers
+    this.quizQuestions.forEach(question => this.quiz.answers.push(new Answer(question.key)));
   }
 
   runTimer() {
@@ -144,7 +177,7 @@ export class QuizModalComponent implements OnInit, OnDestroy {
   next() {
     const currentAnswer = this.quiz.answers[this.activeQuestion];
 
-    if (currentAnswer.answer) {
+    if (currentAnswer.answer.length) {
       this.sub.unsubscribe();
       this.activeQuestion++;
       this.runTimer();
@@ -184,9 +217,12 @@ export class QuizModalComponent implements OnInit, OnDestroy {
 
         // Count total points
         this.totalPoints = this.quizService.getPoints(this.quiz);
+
+        // Tally user's total points
+        this.user.totalPoints += this.totalPoints;
       } else {
         // Check pass/fail
-        this.certScore = this.finalAnswers[0].value / this.data.quiz.questions.length;
+        this.certScore = this.finalAnswers[0].value / this.quizQuestions.length;
 
         if (this.certScore >= this.requiredScore) {
           this.certPassed = true;
@@ -197,9 +233,6 @@ export class QuizModalComponent implements OnInit, OnDestroy {
 
       // Push quiz to user
       this.user.quizzes.push(this.quiz);
-
-      // Tally user's total points
-      this.user.totalPoints += this.totalPoints;
 
       // Submit quiz to user database
       this.userService.updateUser(this.user)
@@ -234,20 +267,23 @@ export class QuizModalComponent implements OnInit, OnDestroy {
     return false;
   }
 
-  correctAnswer(index) {
-    return this.data.quiz.questions[index].options.filter(ans => ans.value === '0')[0].answer;
+  getQuestion(key) {
+    return this.data.quiz.questions.filter(q => q.key === key)[0].question;
   }
 
-  wrongAnswers(index) {
-    return this.data.quiz.questions[index].options.filter(ans => ans.value !== '0');
+  correctAnswer(key) {
+    return this.data.quiz.questions.filter(q => q.key === key)[0].options.filter(a => a.value === '0')[0].answer;
+  }
+
+  wrongAnswers(key) {
+    return this.data.quiz.questions.filter(q => q.key === key)[0].options.filter(a => a.value !== '0');
   }
 
   resetQuiz() {
-    this.quiz = new Quiz();
-    this.quiz.name = this.data.quiz.name;
-    this.data.quiz.questions.forEach(question => this.quiz.answers.push(new Answer()));
-    this.activeQuestion = 0;
     this.user.quizzes.splice(this.user.quizzes.findIndex(quiz => quiz.name === this.data.quiz.name), 1);
+    this.quiz = new Quiz();
+    this.setQuizData();
+    this.activeQuestion = 0;
     this.hasAnswers = false;
     this.runTimer();
   }

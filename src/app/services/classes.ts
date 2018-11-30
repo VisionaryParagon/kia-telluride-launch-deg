@@ -26,14 +26,20 @@ export class Quiz {
 }
 
 export class Answer {
+  key = '';
   answer = '';
   points = 0;
   time = 0;
+
+  constructor(key) {
+    this.key = key;
+  }
 }
 
 export class QuizData {
   name: string;
   isCert: boolean;
+  requiredScore: number;
   passcode?: string;
   questions: QuizQuestion[];
 }

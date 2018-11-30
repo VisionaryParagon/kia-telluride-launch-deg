@@ -2,6 +2,7 @@
   {
     "name": "Ignition Quiz",
     "isCert": false,
+    "requiredScore": 0,
     "passcode": "2020",
     "questions": [
       {
@@ -77,6 +78,7 @@
   {
     "name": "Certification Test",
     "isCert": true,
+    "requiredScore": 0.8,
     "passcode": "2020",
     "questions": [
       {

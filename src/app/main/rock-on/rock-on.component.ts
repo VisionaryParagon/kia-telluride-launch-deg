@@ -49,20 +49,9 @@ export class RockOnComponent implements OnInit {
 
     this.quizService.getQuizData()
       .subscribe(
-        res => {
-          this.quizData = res.filter(quiz => quiz.name === this.quizName)[0];
-          this.quizData.questions = this.randomizeArray(this.quizData.questions).slice(0, 10);
-        },
+        res => this.quizData = res.filter(quiz => quiz.name === this.quizName)[0],
         err => this.error = 'Quiz data could not be retrieved. Please refresh this page to try again.'
       );
-  }
-
-  randomizeArray(arr) {
-    for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
   }
 
   checkQuiz() {

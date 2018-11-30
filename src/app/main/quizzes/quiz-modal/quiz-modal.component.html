@@ -33,7 +33,7 @@
   <form class="quiz" #quizForm="ngForm" novalidate>
     <div mat-dialog-content>
       <div [@fade]="true" *ngIf="!hasAnswers">
-        <div *ngFor="let question of data.quiz.questions; let i = index; trackBy: trackByIndex">
+        <div *ngFor="let question of quizQuestions; let i = index; trackBy: trackByIndex">
           <fieldset class="form-group text-center" *ngIf="activeQuestion === i">
             <legend class="text-left">{{ i + 1 }}. {{ question.question }}</legend>
             <div class="form-check" *ngFor="let option of question.options; let idx = index">
@@ -96,22 +96,22 @@
             </div>
           </mat-tab>
           <mat-tab label="Recap">
-            <div class="recap" *ngFor="let question of data.quiz.questions; let i = index; trackBy: trackByIndex">
-              <h6>{{ i + 1 }}. {{ question.question }}</h6>
+            <div class="recap" *ngFor="let answer of quiz.answers; let i = index; trackBy: trackByIndex">
+              <h6>{{ i + 1 }}. {{ getQuestion(answer.key) }}</h6>
 
-              <div *ngIf="(quiz.answers[i].answer || finishedQuiz.answers[i].answer) === '0'">
+              <div *ngIf="answer.answer === '0'">
                 <h6 class="text-success">Correct!<br>
-                  <strong>{{ correctAnswer(i) }}</strong></h6>
+                  <strong>{{ correctAnswer(answer.key) }}</strong></h6>
               </div>
 
-              <div *ngIf="(quiz.answers[i].answer || finishedQuiz.answers[i].answer) !== '0'">
+              <div *ngIf="answer.answer !== '0'">
                 <p class="text-danger">Your Answer:<br>
-                  <strong *ngFor="let wrong of wrongAnswers(i)">
-                    <span *ngIf="(quiz.answers[i].answer || finishedQuiz.answers[i].answer) === wrong.value">{{ wrong.answer }}</span>
+                  <strong *ngFor="let wrong of wrongAnswers(answer.key)">
+                    <span *ngIf="answer.answer === wrong.value">{{ wrong.answer }}</span>
                   </strong></p>
 
                 <p class="text-success">Correct Answer:<br>
-                  <strong>{{ correctAnswer(i) }}</strong></p>
+                  <strong>{{ correctAnswer(answer.key) }}</strong></p>
               </div>
             </div>
           </mat-tab>
@@ -120,8 +120,8 @@
     </div>
     <div mat-dialog-actions>
       <button class="kiaBtn dialog" type="button" *ngIf="!hasAnswers && activeQuestion !== 0" (click)="prev()">Back</button>
-      <button class="kiaBtn dialog" type="button" *ngIf="!hasAnswers && activeQuestion !== data.quiz.questions.length - 1" (click)="next()">Next</button>
-      <button class="kiaBtn dialog" *ngIf="!hasAnswers && activeQuestion === data.quiz.questions.length - 1" [disabled]="loading" (click)="submit(quizForm.valid)">
+      <button class="kiaBtn dialog" type="button" *ngIf="!hasAnswers && activeQuestion !== quizQuestions.length - 1" (click)="next()">Next</button>
+      <button class="kiaBtn dialog" *ngIf="!hasAnswers && activeQuestion === quizQuestions.length - 1" [disabled]="loading" (click)="submit(quizForm.valid)">
         <span *ngIf="!loading">Submit</span>
         <span *ngIf="loading">
           <mat-spinner class="mx-auto" [diameter]="20" [strokeWidth]="3"></mat-spinner>
