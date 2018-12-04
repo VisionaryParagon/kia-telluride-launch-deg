@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 
 import { Subscription, timer } from 'rxjs';
@@ -59,6 +59,12 @@ export class QuizModalComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.dialogRef.disableClose = true;
+    this.dialogRef.backdropClick()
+      .subscribe(
+        res => this.closeDialog()
+      );
+
     // Set cookie exp
     this.cookieExp.setDate(this.cookieExp.getDate() + 7);
     this.cookieOptions.expires = this.cookieExp;
@@ -103,6 +109,16 @@ export class QuizModalComponent implements OnInit, OnDestroy {
           }
         }
       }
+    }
+  }
+
+  @HostListener('window:keyup.esc') onKeyUp() {
+    this.closeDialog();
+  }
+
+  @HostListener('window:beforeunload', ['$event']) unloadHandler(event: Event) {
+    if (!this.hasAnswers) {
+      event.returnValue = false;
     }
   }
 
@@ -300,6 +316,16 @@ export class QuizModalComponent implements OnInit, OnDestroy {
   hideError() {
     this.err = '';
     this.error = false;
+  }
+
+  closeDialog() {
+    if (!this.hasAnswers) {
+      if (confirm('This quiz hasnt been submitted yet. Are you sure you want to leave?')) {
+        this.dialogRef.close(this.user);
+      }
+    } else {
+      this.dialogRef.close(this.user);
+    }
   }
 
   ngOnDestroy() {

@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>{{data.quiz.name}}</h1>
 
-<button class="mat-dialog-close" [mat-dialog-close]="user">&times;</button>
+<button class="mat-dialog-close" (click)="closeDialog()">&times;</button>
 
 <div *ngIf="!verified">
   <form #pwForm="ngForm" novalidate>
@@ -128,7 +128,7 @@
         </span>
       </button>
       <button class="kiaBtn dialog secondary" type="button" *ngIf="hasAnswers && isCert && !certPassed" (click)="resetQuiz()">Retry</button>
-      <button class="kiaBtn dialog primary" type="button" *ngIf="hasAnswers" [mat-dialog-close]="user">Close</button>
+      <button class="kiaBtn dialog primary" type="button" *ngIf="hasAnswers" (click)="closeDialog()">Close</button>
     </div>
   </form>
 </div>
