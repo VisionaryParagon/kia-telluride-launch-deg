@@ -1,6 +1,6 @@
 <section [@fade]="true">
   <div class="container text-center">
-    <h1>Rock(ON)</h1>
+    <h1>RockON</h1>
 
     <mat-accordion>
       <mat-expansion-panel>
@@ -11,7 +11,7 @@
         <ng-template matExpansionPanelContent>
           <p>This is your official Kia Telluride Certification Test. In order to receive your certification, you must pass this test with an 80% or better.</p>
 
-          <p>When you&rsquo;re ready, launch the {{ quizName }} below. Good luck!</p>
+          <p>When you’re ready, launch the {{ quizName }} below. Good luck!</p>
 
           <div *ngIf="!error.length">
             <button class="kiaBtn" *ngIf="!hasAnswers" (click)="launchQuiz()">Launch Test</button>

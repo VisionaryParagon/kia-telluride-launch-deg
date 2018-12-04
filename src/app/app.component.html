@@ -18,8 +18,9 @@
   <div id="navMenu" [@navMenu]="state">
     <div *ngIf="!isAdmin">
       <a routerLink="/" (click)="closeNav(); closeSubNav()">Home</a>
-      <a routerLink="/game-on" (click)="closeNav(); closeSubNav()">Game(ON)</a>
-      <a routerLink="/switched-on" (click)="closeNav(); closeSubNav()">Switched(ON)</a>
+      <a routerLink="/pre-session" (click)="closeNav(); closeSubNav()">Pre-Session</a>
+      <a routerLink="/game-on" (click)="closeNav(); closeSubNav()">GameON</a>
+      <a routerLink="/switched-on" (click)="closeNav(); closeSubNav()">SwitchedON</a>
       <!--
       <a (click)="toggleSubNav(1)">Wrangler Generations <fa-icon [icon]="['fas', 'angle-down']" [class.up]="subState1 === 'active'"></fa-icon></a>
       <div class="subNav" [@navMenu]="subState1">
@@ -29,12 +30,12 @@
         <a routerLink="/generations/key-takeaways" (click)="closeNav()">Key Takeaways</a>
       </div>
       -->
-      <a (click)="toggleSubNav(2)">It&rsquo;s(ON) <fa-icon [icon]="['fas', 'angle-down']" [class.up]="subState2 === 'active'"></fa-icon></a>
+      <a (click)="toggleSubNav(2)">It’sON <fa-icon [icon]="['fas', 'angle-down']" [class.up]="subState2 === 'active'"></fa-icon></a>
       <div class="subNav" [@navMenu]="subState2">
         <a routerLink="/its-on/hands-on-comparison" (click)="closeNav()">Hands-On Comparison</a>
         <a routerLink="/its-on/street-drive" (click)="closeNav()">Back2Back Street Drive</a>
       </div>
-      <a routerLink="/rock-on" (click)="closeNav(); closeSubNav()">Rock(ON)</a>
+      <a routerLink="/rock-on" (click)="closeNav(); closeSubNav()">RockON</a>
       <a (click)="closeNav(); closeSubNav(); openNotes()">Notes</a>
       <a (click)="closeNav(); closeSubNav(); openLeaderboard()">Leaderboards</a>
       <a (click)="closeNav(); closeSubNav(); logout()">Logout</a>

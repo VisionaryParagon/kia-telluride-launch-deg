@@ -9,13 +9,16 @@ import { MainComponent } from './main.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 
-// Game(ON)
+// Pre-Session
+import { PreSessionComponent } from './pre-session/pre-session.component';
+
+// GameON
 import { GameOnComponent } from './game-on/game-on.component';
 
-// Switched(ON)
+// SwitchedON
 import { SwitchedOnComponent } from './switched-on/switched-on.component';
 
-// It's(ON)
+// It'sON
 import { ItsOnComponent } from './its-on/its-on.component';
 import { ItsOnMainComponent } from './its-on/its-on-main/its-on-main.component';
 import { HandsOnComparisonComponent } from './its-on/hands-on-comparison/hands-on-comparison.component';
@@ -26,7 +29,7 @@ import { SecondThirdRowComponent } from './its-on/hands-on-comparison/second-thi
 import { CargoComponent } from './its-on/hands-on-comparison/cargo/cargo.component';
 import { StreetDriveComponent } from './its-on/street-drive/street-drive.component';
 
-// Rock(ON)
+// RockON
 import { RockOnComponent } from './rock-on/rock-on.component';
 
 const routes: Routes = [
@@ -44,24 +47,31 @@ const routes: Routes = [
             component: HomeComponent
           },
           {
+            path: 'pre-session',
+            component: PreSessionComponent,
+            data: {
+              noteModule: 'Pre-Session'
+            }
+          },
+          {
             path: 'game-on',
             component: GameOnComponent,
             data: {
-              noteModule: 'Game(ON)'
+              noteModule: 'GameON'
             }
           },
           {
             path: 'switched-on',
             component: SwitchedOnComponent,
             data: {
-              noteModule: 'Switched(ON)'
+              noteModule: 'SwitchedON'
             }
           },
           {
             path: 'its-on',
             component: ItsOnComponent,
             data: {
-              noteModule: 'It’s(ON)'
+              noteModule: 'It’sON'
             },
             children: [
               {
@@ -104,7 +114,7 @@ const routes: Routes = [
             path: 'rock-on',
             component: RockOnComponent,
             data: {
-              noteModule: 'Rock(ON)'
+              noteModule: 'RockON'
             }
           }
         ]

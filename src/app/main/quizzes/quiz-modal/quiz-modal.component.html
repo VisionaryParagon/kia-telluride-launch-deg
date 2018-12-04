@@ -20,7 +20,7 @@
 
     <div mat-dialog-actions>
       <button class="kiaBtn dialog primary" [disabled]="loading" (click)="startQuiz(passcode)">
-        <span *ngIf="!loading">Let&rsquo;s Do This!</span>
+        <span *ngIf="!loading">Let’s Do This!</span>
         <span *ngIf="loading">
           <mat-spinner class="mx-auto" [diameter]="20" [strokeWidth]="3"></mat-spinner>
         </span>
@@ -70,7 +70,7 @@
                 <div *ngIf="finalAnswers[0].value === 0">
                   <h4>Oh No!</h4>
 
-                  <p class="mb-0">You didn&rsquo;t earn any points for <strong>{{ user.team }}</strong>...</p>
+                  <p class="mb-0">You didn’t earn any points for <strong>{{ user.team }}</strong>...</p>
                 </div>
               </div>
               

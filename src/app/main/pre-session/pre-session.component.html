@@ -1,33 +1,36 @@
 <section [@fade]="true">
   <div class="container text-center">
-    <h1>GameON</h1>
+    <h1>Pre-Session</h1>
 
     <mat-accordion>
-      <mat-expansion-panel>
+      <mat-expansion-panel [expanded]="true">
         <mat-expansion-panel-header>
           Agenda
         </mat-expansion-panel-header>
 
         <ng-template matExpansionPanelContent>
-          <p>GameON &ndash; 20 minutes</p>
-          <p>SwitchedON &ndash; 50-55 minutes</p>
-          <p>It&rsaquo;s ON &ndash; 50-55 minutes</p>
-          <p>RockON &ndash; 20 minutes</p>
+          <p><strong>Buckle up. It’s going to be a great day of active learning and fun!</strong></p>
+          <ul>
+            <li>GameON (Opening Kickoff)</li>
+            <li>Team Prestige
+              <ul>
+                <li>It’sON (Comparison + Drive)</li>
+                <li>SwitchedON (Brand + Segment + Customer Deep Dive)</li>
+              </ul>
+            </li>
+            <li>Team Innovative
+              <ul>
+                <li>SwitchedON (Brand + Segment + Customer Deep Dive)</li>
+                <li>It’sON (Comparison + Drive)</li>
+              </ul>
+            </li>
+            <li>RockON (Competition + Certification)</li>
+          </ul>
         </ng-template>
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          Press Reviews
-        </mat-expansion-panel-header>
-
-        <ng-template matExpansionPanelContent>
-          <p><a href="#" target="_blank">Motor Trend Review</a></p>
-          <p><a href="#" target="_blank">Car &amp; Driver Review</a></p>
-        </ng-template>
-      </mat-expansion-panel>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          BlippAR
+          BlippAR Download
         </mat-expansion-panel-header>
 
         <ng-template matExpansionPanelContent>
@@ -43,22 +46,12 @@
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          {{ quizName }}
+          Press Reviews
         </mat-expansion-panel-header>
 
         <ng-template matExpansionPanelContent>
-          <p>Quizzes are graded on accuracy and speed. The faster you select the correct answer, the more points you get for your team.</p>
-
-          <p>When you’re ready, launch the {{ quizName }} below. Good luck!</p>
-
-          <div *ngIf="!error.length">
-            <button class="kiaBtn" *ngIf="!hasAnswers" (click)="launchQuiz()">Launch Quiz</button>
-            <button class="kiaBtn" *ngIf="hasAnswers" (click)="launchQuiz()">View Quiz Results</button>
-          </div>
-
-          <div class="errorMsg" [@topDown]="true" *ngIf="error.length">
-            <p>{{ error }}</p>
-          </div>
+          <p><a href="#" target="_blank">Motor Trend Review</a></p>
+          <p><a href="#" target="_blank">Car &amp; Driver Review</a></p>
         </ng-template>
       </mat-expansion-panel>
     </mat-accordion>
