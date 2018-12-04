@@ -10,7 +10,7 @@ import { User } from '../../services/classes';
 
 import { FadeAnimation, TopDownAnimation } from '../../animations';
 
-import { KuidWarningComponent } from '../modals/kuid-warning/kuid-warning.component';
+import { KuidWarningComponent } from '../../modals/kuid-warning/kuid-warning.component';
 
 @Component({
   selector: 'app-login',

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 import { CookieService } from 'ngx-cookie';
+
 import { UserService } from './user.service';
 
 @Injectable({
@@ -9,9 +10,9 @@ import { UserService } from './user.service';
 })
 export class UserGuardService implements CanActivate {
   constructor(
+    private router: Router,
     private cookieService: CookieService,
-    private userService: UserService,
-    private router: Router
+    private userService: UserService
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {

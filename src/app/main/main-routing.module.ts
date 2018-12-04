@@ -45,15 +45,24 @@ const routes: Routes = [
           },
           {
             path: 'game-on',
-            component: GameOnComponent
+            component: GameOnComponent,
+            data: {
+              noteModule: 'Game(ON)'
+            }
           },
           {
             path: 'switched-on',
-            component: SwitchedOnComponent
+            component: SwitchedOnComponent,
+            data: {
+              noteModule: 'Switched(ON)'
+            }
           },
           {
             path: 'its-on',
             component: ItsOnComponent,
+            data: {
+              noteModule: 'It’s(ON)'
+            },
             children: [
               {
                 path: '',
@@ -93,7 +102,10 @@ const routes: Routes = [
           },
           {
             path: 'rock-on',
-            component: RockOnComponent
+            component: RockOnComponent,
+            data: {
+              noteModule: 'Rock(ON)'
+            }
           }
         ]
       }

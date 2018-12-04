@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { Location, PopStateEvent } from '@angular/common';
+import { MatDialog } from '@angular/material';
 
 import { CookieService } from 'ngx-cookie';
 
 import { User } from './services/classes';
 import { GoogleAnalyticsEventsService } from './services/google-analytics-events.service';
 import { UserService } from './services/user.service';
+import { NotesService } from './services/notes.service';
 import { AdminService } from './services/admin.service';
+
+import { NotesComponent } from './modals/notes/notes.component';
 
 import { NavAnimation } from './animations';
 
@@ -21,6 +25,7 @@ declare let ga: Function;
 })
 export class AppComponent implements OnInit {
   user: User = this.userService.getCurrentUser();
+  userId: string = this.cookieService.get('userId');
   lastPoppedUrl: string;
   yScrollStack: number[] = [];
   isLoggedIn = false;
@@ -36,8 +41,10 @@ export class AppComponent implements OnInit {
     public googleAnalyticsEventsService: GoogleAnalyticsEventsService,
     private router: Router,
     private location: Location,
+    private dialog: MatDialog,
     private cookieService: CookieService,
     private userService: UserService,
+    private notesService: NotesService,
     private adminService: AdminService
   ) { }
 
@@ -66,6 +73,17 @@ export class AppComponent implements OnInit {
         }
 
         // check user status
+        if (this.userId && !this.user._id) {
+          this.userService.getUser(this.userId)
+            .subscribe(
+              res => {
+                this.userService.setCurrentUser(res);
+                this.user = this.userService.getCurrentUser();
+                this.isLoggedIn = this.userService.loggedIn;
+              },
+              err => {/* this.error = err */}
+            );
+        }
         this.isLoggedIn = this.userService.loggedIn;
         this.isLoggedInAdmin = this.adminService.loggedIn;
 
@@ -83,7 +101,7 @@ export class AppComponent implements OnInit {
             this.isAdmin = false;
           }
 
-          if (ev.url.indexOf(this.userService.noteUrl) === 0 && this.notHome) {
+          if (ev.url.indexOf(this.notesService.noteUrl) === 0 && this.notHome) {
             this.hasNotes = true;
           } else {
             this.hasNotes = false;
@@ -91,6 +109,8 @@ export class AppComponent implements OnInit {
         // }, 250);
       }
     });
+
+    this.notesService.addNoteData();
   }
 
   goBack() {
@@ -98,7 +118,16 @@ export class AppComponent implements OnInit {
   }
 
   openNotes() {
-    // this.modal = this.modalService.show(NotesComponent);
+    const dialogRef = this.dialog.open(NotesComponent, {
+      height: '90vh',
+      maxWidth: '90vw',
+      width: '90vw'
+    });
+
+    dialogRef.afterClosed()
+      .subscribe(
+        user => console.log(user)
+      );
   }
 
   openLeaderboard() {

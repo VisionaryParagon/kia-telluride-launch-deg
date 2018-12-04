@@ -9,10 +9,14 @@ import { MainModule } from './main/main.module';
 
 // Components
 import { AppComponent } from './app.component';
+import { KuidWarningComponent } from './modals/kuid-warning/kuid-warning.component';
+import { NotesComponent } from './modals/notes/notes.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    KuidWarningComponent,
+    NotesComponent
   ],
   imports: [
     BrowserModule,
@@ -20,6 +24,10 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     AppSharedModule,
     MainModule
+  ],
+  entryComponents: [
+    KuidWarningComponent,
+    NotesComponent
   ],
   providers: [],
   bootstrap: [

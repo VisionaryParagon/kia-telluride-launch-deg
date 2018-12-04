@@ -1,0 +1,58 @@
+<h1 mat-dialog-title>Notes</h1>
+
+<button class="mat-dialog-close" [mat-dialog-close]="user">&times;</button>
+
+<div mat-dialog-content>
+  <div [@topDown]="true" *ngIf="error">
+    <h4 class="text-center">Something went wrong...</h4>
+
+    <p class="errorMsg text-center">It appears there was an issue connecting to your user data. Please make sure you have a WiFi or mobile data connection and try refreshing your browser. Then open this page&nbsp;again.</p>
+  </div>
+
+  <mat-accordion *ngIf="!error">
+    <mat-expansion-panel *ngIf="module" [expanded]="module">
+      <mat-expansion-panel-header>
+        Current Module
+      </mat-expansion-panel-header>
+
+      <h5>{{ module }}</h5>
+
+      <textarea class="form-control" rows="5" placeholder="Write notes here..." [(ngModel)]="notes"></textarea>
+
+      <button type="button" class="kiaBtn" (click)="save(notes)">Save Notes</button>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="!module">
+      <mat-expansion-panel-header>
+        All Notes
+      </mat-expansion-panel-header>
+
+      <div *ngIf="!allNotes.length">
+        <p>You haven&rsquo;t taken any notes yet...</p>
+      </div>
+
+      <div *ngIf="allNotes.length">
+        <ng-container *ngFor="let note of allNotes; let idx = index">
+          <div class="noteContainer">
+            <h5><a routerLink="{{ note.url }}" (click)="activeModal.hide()">{{ note.module }}</a></h5>
+
+            <div [@fade]="true" *ngIf="editing !== idx">
+              <p class="notes">{{ allNotes[idx].notes }}</p>
+
+              <a (click)="editNote(idx)">Edit...</a>
+            </div>
+
+            <div [@fade]="true" *ngIf="editing === idx">
+              <textarea class="form-control" rows="5" placeholder="Write notes here..." [(ngModel)]="allNotes[idx].notes"></textarea>
+
+              <button type="button" class="kiaBtn" (click)="saveInline(allNotes[idx])">Save Notes</button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+<div mat-dialog-actions>
+  <button type="button" class="kiaBtn dialog primary" [mat-dialog-close]="user">Close</button>
+</div>

@@ -9,7 +9,8 @@ sans-serif;
 $client-red: #bb162b;
 $client-light-gray: #e4e5e6;
 $client-gray: #7e8083;
-$error-color: #f00;
+$error-color: #dc3545;
+$success-color: #28a745;
 
 * {
   box-sizing: border-box;
@@ -43,6 +44,29 @@ h1,
 h2,
 p {
   margin: 1rem 0;
+}
+
+a {
+  color: $client-red;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $client-red;
+    opacity: 0.9;
+    text-decoration: none;
+  }
+
+  &:not([href]):not([tabindex]) {
+    color: $client-red;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $client-red;
+      opacity: 0.9;
+    }
+  }
 }
 
 
@@ -671,6 +695,20 @@ section {
 }
 
 
+/*~~  Notes ~~*/
+
+.noteContainer {
+  border-bottom: 1px dotted #000;
+  margin: 0 0 1rem;
+  padding: 0 0 1rem;
+
+  &:last-child {
+    border: none;
+    margin: 0;
+  }
+}
+
+
 /*~~  Material Design Elements ~~*/
 
 .mat-spinner circle {
@@ -707,7 +745,7 @@ mat-dialog-container.mat-dialog-container {
     border-top: 1px solid $client-light-gray;
     margin: 0 -1rem;
     max-height: 70vh;
-    padding: 0 1rem;
+    padding: 1rem 1rem 4rem;
     z-index: 0;
   }
 
@@ -738,9 +776,14 @@ mat-dialog-container.mat-dialog-container {
   font-weight: bold;
 }
 
+.snackSuccess {
+  background: $success-color;
+  color: #fff;
+  font-weight: bold;
+}
+
 mat-tab-group.mat-tab-group {
   font-family: inherit;
-  padding: 1rem 0;
 
   .mat-tab-label {
     background: $client-gray;

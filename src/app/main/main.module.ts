@@ -30,7 +30,6 @@ import { StreetDriveComponent } from './its-on/street-drive/street-drive.compone
 import { RockOnComponent } from './rock-on/rock-on.component';
 
 // Modals
-import { KuidWarningComponent } from './modals/kuid-warning/kuid-warning.component';
 import { QuizModalComponent } from './quizzes/quiz-modal/quiz-modal.component';
 
 @NgModule({
@@ -54,11 +53,9 @@ import { QuizModalComponent } from './quizzes/quiz-modal/quiz-modal.component';
     CargoComponent,
     StreetDriveComponent,
     RockOnComponent,
-    KuidWarningComponent,
     QuizModalComponent
   ],
   entryComponents: [
-    KuidWarningComponent,
     QuizModalComponent
   ]
 })
