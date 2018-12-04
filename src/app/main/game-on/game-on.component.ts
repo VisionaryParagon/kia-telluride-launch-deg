@@ -57,6 +57,8 @@ export class GameOnComponent implements OnInit {
   checkQuiz() {
     if (this.user.quizzes) {
       this.hasAnswers = this.user.quizzes.filter(quiz => quiz.name === this.quizName).length > 0;
+    } else {
+      this.error = 'User data could not be retrieved. Please refresh this page to try again.';
     }
   }
 

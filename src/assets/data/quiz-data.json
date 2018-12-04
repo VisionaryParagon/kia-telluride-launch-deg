@@ -58,20 +58,6 @@
             "value": "2"
           }
         ]
-      },
-      {
-        "key": "q4",
-        "question": "Catdog is real.",
-        "options": [
-          {
-            "answer": "True",
-            "value": "1"
-          },
-          {
-            "answer": "False",
-            "value": "0"
-          }
-        ]
       }
     ]
   },

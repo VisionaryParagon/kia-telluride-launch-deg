@@ -3,55 +3,30 @@
     <h1>GameON</h1>
 
     <mat-accordion>
-      <mat-expansion-panel>
+      <mat-expansion-panel [expanded]="true">
         <mat-expansion-panel-header>
-          Agenda
+          Fun Fact
         </mat-expansion-panel-header>
 
         <ng-template matExpansionPanelContent>
-          <p>GameON &ndash; 20 minutes</p>
-          <p>SwitchedON &ndash; 50-55 minutes</p>
-          <p>It&rsaquo;s ON &ndash; 50-55 minutes</p>
-          <p>RockON &ndash; 20 minutes</p>
+          <p>Did you know that ON was the vehicle code for Telluride during development?</p>
+          
+          <p>GameON!</p>
+          
+          <p><em>(See what we did there?)</em></p>
         </ng-template>
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          Press Reviews
+          Round 1 Competition
         </mat-expansion-panel-header>
 
         <ng-template matExpansionPanelContent>
-          <p><a href="#" target="_blank">Motor Trend Review</a></p>
-          <p><a href="#" target="_blank">Car &amp; Driver Review</a></p>
-        </ng-template>
-      </mat-expansion-panel>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          BlippAR
-        </mat-expansion-panel-header>
-
-        <ng-template matExpansionPanelContent>
-          <div class="blippar"></div>
-
-          <p>Blippar is a free augmented reality app that we’ll be using during this event. Please download the app using one of the options below:</p>
-
-          <div class="d-flex justify-content-around">
-            <a href="https://itunes.apple.com/gb/app/blippar/id410604563" target="_blank"><img src="../../../assets/images/apple-app-store-badge.png" height="36px" alt="Download on the App Store"></a>
-            <a href="https://play.google.com/store/apps/details?hl=en_GB&id=com.blippar.ar.android" target="_blank"><img src="../../../assets/images/google-play-badge.png" height="36px" alt="Get it on Google Play"></a>
-          </div>
-        </ng-template>
-      </mat-expansion-panel>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          {{ quizName }}
-        </mat-expansion-panel-header>
-
-        <ng-template matExpansionPanelContent>
-          <p>Quizzes are graded on accuracy and speed. The faster you select the correct answer, the more points you get for your team.</p>
-
-          <p>When you’re ready, launch the {{ quizName }} below. Good luck!</p>
-
           <div *ngIf="!error.length">
+            <p>Quizzes are graded on accuracy and speed. The faster you select the correct answer, the more points you get for your team.</p>
+
+            <p>When you’re ready, launch the {{ quizName }} below. Good luck!</p>
+
             <button class="kiaBtn" *ngIf="!hasAnswers" (click)="launchQuiz()">Launch Quiz</button>
             <button class="kiaBtn" *ngIf="hasAnswers" (click)="launchQuiz()">View Quiz Results</button>
           </div>
