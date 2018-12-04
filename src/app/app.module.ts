@@ -11,12 +11,14 @@ import { MainModule } from './main/main.module';
 import { AppComponent } from './app.component';
 import { KuidWarningComponent } from './modals/kuid-warning/kuid-warning.component';
 import { NotesComponent } from './modals/notes/notes.component';
+import { QuizComponent } from './modals/quiz/quiz.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     KuidWarningComponent,
-    NotesComponent
+    NotesComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,8 @@ import { NotesComponent } from './modals/notes/notes.component';
   ],
   entryComponents: [
     KuidWarningComponent,
-    NotesComponent
+    NotesComponent,
+    QuizComponent
   ],
   providers: [],
   bootstrap: [

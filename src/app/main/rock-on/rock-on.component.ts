@@ -9,7 +9,7 @@ import { QuizService } from '../../services/quiz.service';
 
 import { FadeAnimation, TopDownAnimation } from '../../animations';
 
-import { QuizModalComponent } from '../quizzes/quiz-modal/quiz-modal.component';
+import { QuizComponent } from '../../modals/quiz/quiz.component';
 
 @Component({
   selector: 'app-rock-on',
@@ -61,7 +61,7 @@ export class RockOnComponent implements OnInit {
   }
 
   launchQuiz() {
-    const dialogRef = this.dialog.open(QuizModalComponent, {
+    const dialogRef = this.dialog.open(QuizComponent, {
       data: { quiz: this.quizData, hasAnswers: this.hasAnswers },
       height: '90vh',
       maxWidth: '90vw',

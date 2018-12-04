@@ -5,19 +5,19 @@ import { Subscription, timer } from 'rxjs';
 
 import { CookieService, CookieOptions } from 'ngx-cookie';
 
-import { User, Quiz, Answer, QuizQuestion } from '../../../services/classes';
-import { UserService } from '../../../services/user.service';
-import { QuizService } from '../../../services/quiz.service';
+import { User, Quiz, Answer, QuizQuestion } from '../../services/classes';
+import { UserService } from '../../services/user.service';
+import { QuizService } from '../../services/quiz.service';
 
-import { FadeAnimation, TopDownAnimation } from '../../../animations';
+import { FadeAnimation, TopDownAnimation } from '../../animations';
 
 @Component({
-  selector: 'app-quiz-modal',
-  templateUrl: './quiz-modal.component.html',
-  styleUrls: ['./quiz-modal.component.scss'],
+  selector: 'app-quiz',
+  templateUrl: './quiz.component.html',
+  styleUrls: ['./quiz.component.scss'],
   animations: [ FadeAnimation, TopDownAnimation ]
 })
-export class QuizModalComponent implements OnInit, OnDestroy {
+export class QuizComponent implements OnInit, OnDestroy {
   user: User = this.userService.getCurrentUser();
   quiz: Quiz = new Quiz();
   quizQuestions: QuizQuestion[];
@@ -53,7 +53,7 @@ export class QuizModalComponent implements OnInit, OnDestroy {
     private cookieService: CookieService,
     private userService: UserService,
     private quizService: QuizService,
-    public dialogRef: MatDialogRef<QuizModalComponent>,
+    public dialogRef: MatDialogRef<QuizComponent>,
     public snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data
   ) { }

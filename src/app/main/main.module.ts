@@ -32,9 +32,6 @@ import { StreetDriveComponent } from './its-on/street-drive/street-drive.compone
 // RockON
 import { RockOnComponent } from './rock-on/rock-on.component';
 
-// Modals
-import { QuizModalComponent } from './quizzes/quiz-modal/quiz-modal.component';
-
 @NgModule({
   imports: [
     AppSharedModule,
@@ -56,11 +53,7 @@ import { QuizModalComponent } from './quizzes/quiz-modal/quiz-modal.component';
     SecondThirdRowComponent,
     CargoComponent,
     StreetDriveComponent,
-    RockOnComponent,
-    QuizModalComponent
-  ],
-  entryComponents: [
-    QuizModalComponent
+    RockOnComponent
   ]
 })
 export class MainModule { }
