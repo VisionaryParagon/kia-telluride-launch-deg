@@ -50,6 +50,30 @@ export class QuizService {
     return allAnswers;
   }
 
+  // get all current user answers
+  getAllAnswers(user) {
+    const allAnswers = [
+      {
+        name: 'Correct',
+        value: 0
+      },
+      {
+        name: 'Incorrect',
+        value: 0
+      }
+    ];
+
+    user.quizzes.forEach(quiz => {
+      const quizLength = quiz.answers.length;
+      const correctAnswers = quiz.answers.filter(answer => answer.answer === '0').length;
+
+      allAnswers[0].value = correctAnswers;
+      allAnswers[1].value = quizLength - correctAnswers;
+    });
+
+    return allAnswers;
+  }
+
   // get quiz points
   getPoints(quiz) {
     let sum = 0;

@@ -10,11 +10,7 @@ router.post('/teams/valid', function (req, res) {
     dealer: req.body.dealer,
     session: req.body.session
   }, function (err, data) {
-    let code = {
-      exists: false
-    };
     if (err) return res.status(500).send(err);
-    if (data.length === 0) return res.status(200).send(code);
     return res.status(200).send(data);
   });
 });

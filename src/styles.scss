@@ -830,12 +830,22 @@ mat-tab-group.mat-tab-group {
 
 /*~~ ngx-charts Elements ~~*/
 
-ngx-charts-pie-chart {
-  .ngx-charts-outer {
-    margin: 0 auto;
+.chartContainer {
+  height: 250px;
+  text-align: center;
+}
 
+div.ngx-charts-outer {
+  margin: 0 auto;
+
+  .ngx-charts {
+    float: none;
+  }
+}
+
+ngx-charts-pie-chart {
+  div.ngx-charts-outer {
     .ngx-charts {
-      float: none;
       -moz-transform: rotate(180deg);
       -ms-transform: rotate(180deg);
       -o-transform: rotate(180deg);

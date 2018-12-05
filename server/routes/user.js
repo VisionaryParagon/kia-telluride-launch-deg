@@ -46,61 +46,31 @@ router.post('/users/points', function (req, res) {
     };
 
     const team1Users = data.filter(user => user.team === teamNames.team1);
-    let team1Data = {
-      index: 0,
-      data: team1Users,
-      length: team1Users.length,
-      points: 0
-    };
-
     const team2Users = data.filter(user => user.team === teamNames.team2);
-    let team2Data = {
-      index: 0,
-      data: team2Users,
-      length: team2Users.length,
-      points: 0
-    };
-
-    const countEm = info => {
+    const countEm = team => {
       let count = 0;
+      let points = 0;
 
-      if (info.length < 1) {
+      if (team.length < 1) {
         count = 1;
       } else {
-        for (info.index; info.index < info.length; info.index++) {
-          let i = 0;
-          const userQuizzes = info.data[info.index].quizzes;
-          const l = userQuizzes.length;
-
-          for (i; i < l; i++) {
-            const quiz = userQuizzes[i];
-            const points = Object.keys(quiz)
-              .filter(k => k.indexOf('points') === 0)
-              .reduce((newData, k) => {
-                newData[k] = quiz[k];
-                return newData;
-              }, {});
-
-            const pointsSum = obj => Object.values(obj).reduce((a, b) => a + b);
-
-            info.points = info.points + pointsSum(points);
-          }
-
+        team.forEach(user => {
+          points += user.totalPoints;
           count++;
-        }
+        });
       }
 
-      return info.points / count;
+      return points / count;
     }
 
     const allPoints = [
       {
         name: teamNames.team1,
-        value: countEm(team1Data)
+        value: countEm(team1Users)
       },
       {
         name: teamNames.team2,
-        value: countEm(team2Data)
+        value: countEm(team2Users)
       }
     ];
 

@@ -11,6 +11,7 @@ import { UserService } from './services/user.service';
 import { NotesService } from './services/notes.service';
 import { AdminService } from './services/admin.service';
 
+import { LeaderboardComponent } from './modals/leaderboard/leaderboard.component';
 import { NotesComponent } from './modals/notes/notes.component';
 
 import { NavAnimation } from './animations';
@@ -123,15 +124,14 @@ export class AppComponent implements OnInit {
       maxWidth: '90vw',
       width: '90vw'
     });
-
-    dialogRef.afterClosed()
-      .subscribe(
-        user => console.log(user)
-      );
   }
 
   openLeaderboard() {
-    // this.modal = this.modalService.show(LeaderboardsComponent);
+    const dialogRef = this.dialog.open(LeaderboardComponent, {
+      height: '90vh',
+      maxWidth: '90vw',
+      width: '90vw'
+    });
   }
 
   toggleNav() {

@@ -56,54 +56,6 @@ export class UserService {
     this.loggedIn = false;
   }
 
-  // get all current user answers
-  getAllAnswers() {
-    let i = 0;
-    const quizzes = this.currentUser.quizzes;
-    const l = quizzes.length;
-    const allAnswers = {
-      correct: 0,
-      incorrect: 0
-    };
-
-    for (i; i < l; i++) {
-      const quiz = quizzes[i];
-      const quizLength = Object.keys(quiz)
-        .filter(k => k.indexOf('answer') === 0).length;
-      const correctAnswers = (<any>Object).values(quiz)
-        .filter(val => val === '0').length;
-
-      allAnswers.correct = allAnswers.correct + correctAnswers;
-      allAnswers.incorrect = allAnswers.incorrect + (quizLength - correctAnswers);
-    }
-
-    return allAnswers;
-  }
-
-  // get current user total points
-  getTotalPoints() {
-    let i = 0;
-    const quizzes = this.currentUser.quizzes;
-    const l = quizzes.length;
-    let totalPoints = 0;
-
-    for (i; i < l; i++) {
-      const quiz = quizzes[i];
-      const points = Object.keys(quiz)
-        .filter(k => k.indexOf('points') === 0)
-        .reduce((newData, k) => {
-          newData[k] = quiz[k];
-          return newData;
-        }, {});
-
-      const pointsSum = obj => (<any>Object).values(obj).reduce((a, b) => a + b);
-
-      totalPoints = totalPoints + pointsSum(points);
-    }
-
-    return totalPoints;
-  }
-
   // get top 20 users
   getTop20(data) {
     return this.http.post<any>(this.userUrl + '/top', data)

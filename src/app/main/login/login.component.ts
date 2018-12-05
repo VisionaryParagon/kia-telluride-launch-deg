@@ -4,9 +4,10 @@ import { MatDialog } from '@angular/material';
 
 import { CookieService, CookieOptions } from 'ngx-cookie';
 
+import { User, Group, Team } from '../../services/classes';
 import { UserService } from '../../services/user.service';
 import { EmployeeService } from '../../services/employee.service';
-import { User } from '../../services/classes';
+import { TeamService } from '../../services/team.service';
 
 import { FadeAnimation, TopDownAnimation } from '../../animations';
 
@@ -28,6 +29,17 @@ export class LoginComponent implements OnInit {
   };
   clicked = false;
   anyVal: any;
+  group: Group = new Group();
+  teams: Team[] = [
+    {
+      name: 'Team Prestige',
+      value: 0
+    },
+    {
+      name: 'Team Innovative',
+      value: 0
+    }
+  ];
   loading = false;
   submitted = false;
   userChecked = false;
@@ -40,7 +52,8 @@ export class LoginComponent implements OnInit {
     private dialog: MatDialog,
     private cookieService: CookieService,
     private userService: UserService,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private teamService: TeamService
   ) { }
 
   ngOnInit() {
@@ -77,17 +90,7 @@ export class LoginComponent implements OnInit {
               this.clicked = true;
               this.changeStep(stepper, idx);
             } else {
-              // Set cookie
-              this.cookieService.put('userId', res._id, this.cookieOptions);
-
-              // Save login status
-              this.userService.setCurrentUser(res);
-
-              this.hideError();
-              this.loading = false;
-
-              // Redirect to saved URL or home
-              this.router.navigateByUrl(this.returnUrl);
+              this.setUser(res);
             }
           },
           err => {
@@ -175,13 +178,45 @@ export class LoginComponent implements OnInit {
 
   checkSession(session, stepper, idx) {
     this.sessionChecked = true;
-    this.loading = true;
 
     if (session) {
-      this.changeStep(stepper, idx);
+      this.loading = true;
 
-      this.sessionChecked = false;
-      this.loading = false;
+      // Check if group exists
+      this.teamService.validateTeam(this.user)
+        .subscribe(
+          res => {
+            if (res.length) {
+              this.changeStep(stepper, idx);
+
+              this.sessionChecked = false;
+              this.loading = false;
+            } else {
+              // Create group if new
+              this.group.dealer = this.user.dealer;
+              this.group.session = this.user.session;
+              this.group.teams = this.teams;
+
+              this.teamService.createTeam(this.group)
+                .subscribe(
+                  grpRes => {
+                    this.changeStep(stepper, idx);
+
+                    this.sessionChecked = false;
+                    this.loading = false;
+                  },
+                  err => {
+                    this.showError();
+                    this.loading = false;
+                  }
+                );
+            }
+          },
+          err => {
+            this.showError();
+            this.loading = false;
+          }
+        );
     } else {
       this.loading = false;
     }
@@ -196,19 +231,7 @@ export class LoginComponent implements OnInit {
 
       this.userService.createUser(user)
         .subscribe(
-          res => {
-            // Set cookie
-            this.cookieService.put('userId', res._id, this.cookieOptions);
-
-            // Save login status
-            this.userService.setCurrentUser(res);
-
-            this.hideError();
-            this.loading = false;
-
-            // Redirect to saved URL or home
-            this.router.navigateByUrl(this.returnUrl);
-          },
+          res => this.setUser(res),
           err => {
             this.showError();
             this.loading = false;
@@ -216,6 +239,20 @@ export class LoginComponent implements OnInit {
         );
     }
     return false;
+  }
+
+  setUser(user) {
+    // Set cookie
+    this.cookieService.put('userId', user._id, this.cookieOptions);
+
+    // Save login status
+    this.userService.setCurrentUser(user);
+
+    this.hideError();
+    this.loading = false;
+
+    // Redirect to saved URL or home
+    this.router.navigateByUrl(this.returnUrl);
   }
 
   startOver(clear?) {

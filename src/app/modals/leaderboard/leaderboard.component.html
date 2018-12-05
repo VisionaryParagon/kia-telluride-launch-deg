@@ -1,0 +1,53 @@
+<h1 mat-dialog-title>Leaderboard</h1>
+
+<button class="mat-dialog-close" [mat-dialog-close]="user">&times;</button>
+
+  <div mat-dialog-content>
+    <mat-tab-group dynamicHeight [(selectedIndex)]="selectedTabIndex">
+      <mat-tab label="Teams">
+        <div *ngIf="!error">
+          <h4 class="text-center">Team Points</h4>
+  
+          <div *ngIf="loading">
+            <mat-spinner class="mx-auto" [diameter]="50" [strokeWidth]="5"></mat-spinner>
+          </div>
+  
+          <div class="chartContainer" *ngIf="!loading">
+            <ngx-charts-bar-vertical id="teamChart" [scheme]="teamColors" [results]="teamPoints" [xAxis]="true" [yAxis]="true"></ngx-charts-bar-vertical>
+          </div>
+        </div>
+  
+        <div *ngIf="error">
+          <h4 class="text-center">Something went wrong...</h4>
+  
+          <p class="errorMsg text-center">It appears there was an issue connecting to the team data. Please make sure you have a WiFi or mobile data connection and try refreshing your browser. Then open this page&nbsp;again.</p>
+        </div>
+      </mat-tab>
+      <mat-tab label="Me">
+        <!--
+        <div *ngIf="!error">
+        -->
+          <h4 class="text-center">Individual Points</h4>
+  
+          <p class="mb-0 text-center">Team: <strong>{{ user.team }}</strong><br> Points Earned: <strong>{{ totalPoints }}</strong></p>
+  
+          <ngx-charts-pie-chart id="individualChart" [view]="chartView" [scheme]="colorScheme" [results]="finalAnswers" [doughnut]="true"></ngx-charts-pie-chart>
+  
+          <p class="mt-0 text-center">{{ finalAnswers[0].value }} {{ finalAnswers[0].name }}<br> {{ finalAnswers[1].value }} {{ finalAnswers[1].name }}</p>
+        <!--
+        </div>
+  
+        <div *ngIf="error">
+          <h4 class="text-center">Something went wrong...</h4>
+  
+          <p class="errorMsg text-center">It appears there was an issue connecting to your user data. Please make sure you have a WiFi or mobile data connection and try refreshing your browser. Then open this page&nbsp;again.</p>
+        </div>
+        -->
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <div mat-dialog-actions>
+    <button type="button" class="kiaBtn dialog primary" [mat-dialog-close]="user">Close</button>
+  </div>
+  

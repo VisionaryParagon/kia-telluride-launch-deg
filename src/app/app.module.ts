@@ -10,6 +10,7 @@ import { MainModule } from './main/main.module';
 // Components
 import { AppComponent } from './app.component';
 import { KuidWarningComponent } from './modals/kuid-warning/kuid-warning.component';
+import { LeaderboardComponent } from './modals/leaderboard/leaderboard.component';
 import { NotesComponent } from './modals/notes/notes.component';
 import { QuizComponent } from './modals/quiz/quiz.component';
 
@@ -17,6 +18,7 @@ import { QuizComponent } from './modals/quiz/quiz.component';
   declarations: [
     AppComponent,
     KuidWarningComponent,
+    LeaderboardComponent,
     NotesComponent,
     QuizComponent
   ],
@@ -29,6 +31,7 @@ import { QuizComponent } from './modals/quiz/quiz.component';
   ],
   entryComponents: [
     KuidWarningComponent,
+    LeaderboardComponent,
     NotesComponent,
     QuizComponent
   ],
