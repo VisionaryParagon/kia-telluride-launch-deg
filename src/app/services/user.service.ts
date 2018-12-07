@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry, tap } from 'rxjs/operators';
@@ -14,8 +14,8 @@ export class UserService {
   currentUser: User = new User();
   returnUrl: string;
   loggedIn = false;
-  noteModule = '';
-  noteUrl: string;
+
+  xmlHeaders: HttpHeaders = new HttpHeaders().set('Content-Type', 'text/xml').set('Accept', 'text/xml');
 
   constructor(
     private http: HttpClient
@@ -75,8 +75,8 @@ export class UserService {
   }
 
   // get all ratings
-  getAllRatings(data) {
-    return this.http.post<any>(this.userUrl + '/ratings', data)
+  createTranscript(data) {
+    return this.http.post<any>('https://stage.kiauniversity.com/docent/bin/docentisapi.dll/lms,KUSTG1,2151/?CMD=LOGIN&file=login/es3data.jsm', data, { headers: this.xmlHeaders })
       .pipe(
         retry(3),
         catchError(this.handleError)

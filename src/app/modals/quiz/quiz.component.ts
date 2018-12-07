@@ -245,6 +245,28 @@ export class QuizComponent implements OnInit, OnDestroy {
         } else {
           this.certPassed = false;
         }
+
+        const xml = `
+          <enroll_students>
+            <attendee>
+              <kuid>` + this.user.kuid + `</kuid>
+              <transcript_id></transcript_id>
+              <score>` + this.certScore * 100 + `</score>
+              <passed>` + this.certPassed ? 'Y' : 'N' + `</passed>
+              <status>C</status>
+              <course_code>SLS-07-168-1-DEV</course_code>
+              <session_code>0001</session_code>
+              <enroll_date>` + new Date().toLocaleDateString() + `</enroll_date>
+              <completion_date>` + new Date().toLocaleDateString() + `</completion_date>
+            </attendee>
+          </enroll_students>
+        `;
+
+        this.userService.createTranscript(xml)
+          .subscribe(
+            res => console.log(res),
+            err => this.setError(err)
+          );
       }
 
       // Push quiz to user
