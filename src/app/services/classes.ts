@@ -7,11 +7,32 @@ export class User {
   kuid: string;
   session: string;
   team: string;
+  streetDrive?: StreetDrive;
   notes?: Note[];
   quizzes?: Quiz[];
   totalPoints?: number;
   created?: Date;
   modified?: Date;
+}
+
+export class Employee {
+  _id?: string;
+  kuid?: string;
+  first_name: string;
+  last_name: string;
+  dealer: string;
+}
+
+export class Group {
+  _id?: string;
+  dealer: string;
+  session: string;
+  teams: Team[];
+}
+
+export class Team {
+  name: string;
+  value: number;
 }
 
 export class Note {
@@ -55,29 +76,47 @@ export class QuizAnswer {
   value: string;
 }
 
+export class StreetDrive {
+  kia: Vehicle;
+  comp: Vehicle;
+
+  constructor() {
+    this.kia = new Vehicle();
+    this.comp = new Vehicle();
+  }
+}
+
+export class Vehicle {
+  one: DriveNotes;
+  two: DriveNotes;
+  three: DriveNotes;
+  four: DriveNotes;
+  five: DriveNotes;
+
+  constructor() {
+    this.one = new DriveNotes();
+    this.two = new DriveNotes();
+    this.three = new DriveNotes();
+    this.four = new DriveNotes();
+    this.five = new DriveNotes();
+  }
+}
+
+export class DriveNotes {
+  driver: string;
+  rowTwo: string;
+  rowThree: string;
+
+  constructor() {
+    this.driver = '';
+    this.rowTwo = '';
+    this.rowThree = '';
+  }
+}
+
 export class Admin {
   username: string;
   password: string;
-}
-
-export class Group {
-  _id?: string;
-  dealer: string;
-  session: string;
-  teams: Team[];
-}
-
-export class Team {
-  name: string;
-  value: number;
-}
-
-export class Employee {
-  _id?: string;
-  kuid?: string;
-  first_name: string;
-  last_name: string;
-  dealer: string;
 }
 
 export class Report {

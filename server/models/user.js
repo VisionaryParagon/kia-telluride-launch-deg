@@ -8,6 +8,7 @@ const UserSchema = new mongoose.Schema({
   session: String,
   team: String,
   email: String,
+  streetDrive: Object,
   notes: Array,
   quizzes: Array,
   totalPoints: {

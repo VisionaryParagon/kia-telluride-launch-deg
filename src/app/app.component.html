@@ -20,7 +20,6 @@
       <a routerLink="/" (click)="closeNav(); closeSubNav()">Home</a>
       <a routerLink="/pre-session" (click)="closeNav(); closeSubNav()">Pre-Session</a>
       <a routerLink="/game-on" (click)="closeNav(); closeSubNav()">GameON</a>
-      <a routerLink="/switched-on" (click)="closeNav(); closeSubNav()">SwitchedON</a>
       <!--
       <a (click)="toggleSubNav(1)">Wrangler Generations <fa-icon [icon]="['fas', 'angle-down']" [class.up]="subState1 === 'active'"></fa-icon></a>
       <div class="subNav" [@navMenu]="subState1">
@@ -30,11 +29,12 @@
         <a routerLink="/generations/key-takeaways" (click)="closeNav()">Key Takeaways</a>
       </div>
       -->
-      <a (click)="toggleSubNav(2)">It’sON <fa-icon [icon]="['fas', 'angle-down']" [class.up]="subState2 === 'active'"></fa-icon></a>
-      <div class="subNav" [@navMenu]="subState2">
+      <a (click)="toggleSubNav(1)">It’sON <fa-icon [icon]="['fas', 'angle-down']" [class.up]="subState1 === 'active'"></fa-icon></a>
+      <div class="subNav" [@navMenu]="subState1">
         <a routerLink="/its-on/hands-on-comparison" (click)="closeNav()">Hands-On Comparison</a>
-        <a routerLink="/its-on/street-drive" (click)="closeNav()">Back2Back Street Drive</a>
+        <a routerLink="/its-on/street-drive" (click)="closeNav()">“Focus on the Family” Drive</a>
       </div>
+      <a routerLink="/switched-on" (click)="closeNav(); closeSubNav()">SwitchedON</a>
       <a routerLink="/rock-on" (click)="closeNav(); closeSubNav()">RockON</a>
       <a (click)="closeNav(); closeSubNav(); openNotes()">Notes</a>
       <a (click)="closeNav(); closeSubNav(); openLeaderboard()">Leaderboards</a>

@@ -1,7 +1,239 @@
 <section [@fade]="true">
-  <div class="container text-center">
-    <h1>Back2Back Street Drive</h1>
+  <div class="container text-center tabMinHeight">
+    <h1>“Focus on the Family” Drive</h1>
 
-    <button class="kiaBtn large">Top 5 Drive Considerations</button>
+    <h4>Top 5 Drive Considerations</h4>
+
+    <p><strong>Challenge:</strong> Conduct back-to-back drives while assuming the same “family” role in each vehicle. Record your notes for each of the top 5 driving considerations. At the end, determine which vehicle your “family” would purchase (and why).</p>
+
+    <div class="container py-5" *ngIf="!dataReady && !error.length">
+      <mat-spinner class="mx-auto my-5"></mat-spinner>
+    </div>
+
+    <mat-tab-group class="text-left" *ngIf="dataReady && !error.length">
+      <mat-tab label="Kia Telluride">
+        <mat-accordion>
+          <mat-expansion-panel [expanded]="active === 1" (opened)="setActive(1)">
+            <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'90px'">
+              <strong>1. Commanding Feel</strong>
+              <br><em>(Torque, Driver’s Perspective, Engine Acoustics)</em>
+            </mat-expansion-panel-header>
+
+            <div class="form-group">
+              <label for="kiaDriver1">Driver</label>
+              <textarea class="form-control" id="kiaDriver1" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.kia.one.driver" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="kiaRowTwo1">2nd Row</label>
+              <textarea class="form-control" id="kiaRowTwo1" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.kia.one.rowTwo" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="kiaRowThree1">3rd Row</label>
+              <textarea class="form-control" id="kiaRowThree1" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.kia.one.rowThree" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel [expanded]="active === 2" (opened)="setActive(2)">
+            <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'90px'">
+              <strong>2. Ride &amp; Handling</strong>
+              <br><em>(Agility, Suspension Compliance)</em>
+            </mat-expansion-panel-header>
+
+            <div class="form-group">
+              <label for="kiaDriver2">Driver</label>
+              <textarea class="form-control" id="kiaDriver2" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.kia.two.driver" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="kiaRowTwo2">2nd Row</label>
+              <textarea class="form-control" id="kiaRowTwo2" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.kia.two.rowTwo" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="kiaRowThree2">3rd Row</label>
+              <textarea class="form-control" id="kiaRowThree2" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.kia.two.rowThree" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel [expanded]="active === 3" (opened)="setActive(3)">
+            <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'90px'">
+              <strong>3. Interior Acoustics</strong>
+              <br><em>(Interior Cabin Noise w/ No Audio; Driver Talk Mode)</em>
+            </mat-expansion-panel-header>
+
+            <div class="form-group">
+              <label for="kiaDriver3">Driver</label>
+              <textarea class="form-control" id="kiaDriver3" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.kia.three.driver" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="kiaRowTwo3">2nd Row</label>
+              <textarea class="form-control" id="kiaRowTwo3" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.kia.three.rowTwo" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="kiaRowThree3">3rd Row</label>
+              <textarea class="form-control" id="kiaRowThree3" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.kia.three.rowThree" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel [expanded]="active === 4" (opened)="setActive(4)">
+            <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'90px'">
+              <strong>4. Audio Quality</strong>
+              <br><em>(Audio Clarity w/ High-Quality Source)</em>
+            </mat-expansion-panel-header>
+
+            <div class="form-group">
+              <label for="kiaDriver4">Driver</label>
+              <textarea class="form-control" id="kiaDriver4" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.kia.four.driver" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="kiaRowTwo4">2nd Row</label>
+              <textarea class="form-control" id="kiaRowTwo4" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.kia.four.rowTwo" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="kiaRowThree4">3rd Row</label>
+              <textarea class="form-control" id="kiaRowThree4" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.kia.four.rowThree" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel [expanded]="active === 5" (opened)="setActive(5)">
+            <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'90px'">
+              <strong>5. Visibility &amp; Spaciousness</strong>
+              <br><em>(2nd &amp; 3rd Row Sightlines; Overall Comfort)</em>
+            </mat-expansion-panel-header>
+
+            <div class="form-group">
+              <label for="kiaDriver5">Driver</label>
+              <textarea class="form-control" id="kiaDriver5" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.kia.five.driver" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="kiaRowTwo5">2nd Row</label>
+              <textarea class="form-control" id="kiaRowTwo5" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.kia.five.rowTwo" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="kiaRowThree5">3rd Row</label>
+              <textarea class="form-control" id="kiaRowThree5" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.kia.five.rowThree" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-tab>
+
+      <mat-tab label="Competitor">
+        <mat-accordion>
+          <mat-expansion-panel [expanded]="active === 1" (opened)="setActive(1)">
+            <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'90px'">
+              <strong>1. Commanding Feel</strong>
+              <br><em>(Torque, Driver’s Perspective, Engine Acoustics)</em>
+            </mat-expansion-panel-header>
+
+            <div class="form-group">
+              <label for="compDriver1">Driver</label>
+              <textarea class="form-control" id="compDriver1" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.comp.one.driver" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="compRowTwo1">2nd Row</label>
+              <textarea class="form-control" id="compRowTwo1" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.comp.one.rowTwo" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="compRowThree1">3rd Row</label>
+              <textarea class="form-control" id="compRowThree1" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.comp.one.rowThree" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel [expanded]="active === 2" (opened)="setActive(2)">
+            <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'90px'">
+              <strong>2. Ride &amp; Handling</strong>
+              <br><em>(Agility, Suspension Compliance)</em>
+            </mat-expansion-panel-header>
+
+            <div class="form-group">
+              <label for="compDriver2">Driver</label>
+              <textarea class="form-control" id="compDriver2" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.comp.two.driver" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="compRowTwo2">2nd Row</label>
+              <textarea class="form-control" id="compRowTwo2" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.comp.two.rowTwo" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="compRowThree2">3rd Row</label>
+              <textarea class="form-control" id="compRowThree2" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.comp.two.rowThree" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel [expanded]="active === 3" (opened)="setActive(3)">
+            <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'90px'">
+              <strong>3. Interior Acoustics</strong>
+              <br><em>(Interior Cabin Noise w/ No Audio; Driver Talk Mode)</em>
+            </mat-expansion-panel-header>
+
+            <div class="form-group">
+              <label for="compDriver3">Driver</label>
+              <textarea class="form-control" id="compDriver3" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.comp.three.driver" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="compRowTwo3">2nd Row</label>
+              <textarea class="form-control" id="compRowTwo3" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.comp.three.rowTwo" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="compRowThree3">3rd Row</label>
+              <textarea class="form-control" id="compRowThree3" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.comp.three.rowThree" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel [expanded]="active === 4" (opened)="setActive(4)">
+            <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'90px'">
+              <strong>4. Audio Quality</strong>
+              <br><em>(Audio Clarity w/ High-Quality Source)</em>
+            </mat-expansion-panel-header>
+
+            <div class="form-group">
+              <label for="compDriver4">Driver</label>
+              <textarea class="form-control" id="compDriver4" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.comp.four.driver" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="compRowTwo4">2nd Row</label>
+              <textarea class="form-control" id="compRowTwo4" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.comp.four.rowTwo" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="compRowThree4">3rd Row</label>
+              <textarea class="form-control" id="compRowThree4" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.comp.four.rowThree" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel [expanded]="active === 5" (opened)="setActive(5)">
+            <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'90px'">
+              <strong>5. Visibility &amp; Spaciousness</strong>
+              <br><em>(2nd &amp; 3rd Row Sightlines; Overall Comfort)</em>
+            </mat-expansion-panel-header>
+
+            <div class="form-group">
+              <label for="compDriver5">Driver</label>
+              <textarea class="form-control" id="compDriver5" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.comp.five.driver" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="compRowTwo5">2nd Row</label>
+              <textarea class="form-control" id="compRowTwo5" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.comp.five.rowTwo" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="compRowThree5">3rd Row</label>
+              <textarea class="form-control" id="compRowThree5" rows="2" placeholder="Write notes here..." [(ngModel)]="streetDrive.comp.five.rowThree" (ngModelChange)="setNotes($event)"></textarea>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-tab>
+    </mat-tab-group>
+
+    <div class="errorMsg" [@topDown]="true" *ngIf="error.length">
+      <p>{{ error }}</p>
+    </div>
   </div>
 </section>

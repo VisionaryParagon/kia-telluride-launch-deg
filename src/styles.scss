@@ -779,6 +779,10 @@ mat-dialog-container.mat-dialog-container {
 mat-expansion-panel.mat-expansion-panel {
   .mat-expansion-panel-header {
     padding: 0 1rem;
+
+    .mat-content {
+      display: block;
+    }
   }
 
   .mat-expansion-panel-body {
@@ -815,8 +819,9 @@ mat-tab-group.mat-tab-group {
   }
 
   .mat-tab-body {
-    background: $client-light-gray;
+    background: $client-gray;
     border-radius: 0 0 .5rem .5rem;
+    color: #fff;
     padding: .5rem;
   }
 
@@ -825,6 +830,10 @@ mat-tab-group.mat-tab-group {
       background-color: $client-red;
     }
   }
+}
+
+.tabMinHeight {
+  min-height: calc(100vh - 100px);
 }
 
 
