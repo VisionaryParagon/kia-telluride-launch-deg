@@ -15,8 +15,6 @@ export class UserService {
   returnUrl: string;
   loggedIn = false;
 
-  xmlHeaders: HttpHeaders = new HttpHeaders().set('Content-Type', 'text/xml').set('Accept', 'text/xml');
-
   constructor(
     private http: HttpClient
   ) { }
@@ -74,9 +72,9 @@ export class UserService {
       );
   }
 
-  // get all ratings
+  // create KU transcript
   createTranscript(data) {
-    return this.http.post<any>('https://stage.kiauniversity.com/docent/bin/docentisapi.dll/lms,KUSTG1,2151/?CMD=LOGIN&file=login/es3data.jsm', data, { headers: this.xmlHeaders })
+    return this.http.post<any>(this.userUrl + '/ku', data)
       .pipe(
         retry(3),
         catchError(this.handleError)
