@@ -34,7 +34,7 @@
     <div mat-dialog-content>
       <div [@fade]="true" *ngIf="!hasAnswers">
         <div *ngFor="let question of quizQuestions; let i = index; trackBy: trackByIndex">
-          <fieldset class="form-group text-center" *ngIf="activeQuestion === i">
+          <fieldset class="form-group" *ngIf="activeQuestion === i">
             <legend class="text-left">{{ i + 1 }}. {{ question.question }}</legend>
             <div class="form-check" *ngFor="let option of question.options; let idx = index">
               <label class="form-check-label">
@@ -92,7 +92,7 @@
 
               <ngx-charts-pie-chart [view]="chartView" [scheme]="colorScheme" [results]="finalAnswers" [doughnut]="true" [tooltipDisabled]="true"></ngx-charts-pie-chart>
 
-              <p class="mt-0 text-center">{{ finalAnswers[0].value }} {{ finalAnswers[0].name }}<br> {{ finalAnswers[1].value }} {{ finalAnswers[1].name }}</p>
+              <p class="mt-0">{{ finalAnswers[0].value }} {{ finalAnswers[0].name }}<br> {{ finalAnswers[1].value }} {{ finalAnswers[1].name }}</p>
             </div>
           </mat-tab>
           <mat-tab label="Recap">

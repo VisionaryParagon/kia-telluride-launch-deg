@@ -6,7 +6,7 @@ const passport = require('passport');
 const employees = require('../models/employee');
 
 // get kuid
-router.post('/kuid', function (req, res) {
+router.post('/kuid', (req, res) => {
   employees.findOne({
     dealer: {
       $regex: '^' + req.body.dealer + '$',
@@ -20,7 +20,7 @@ router.post('/kuid', function (req, res) {
       $regex: '^' + req.body.last_name + '$',
       $options: 'i'
     }
-  }, function (err, data) {
+  }, (err, data) => {
     if (err) return res.status(500).send(err);
     if (!data) return res.status(200).send(req.body);
     return res.status(200).send(data);
@@ -28,8 +28,8 @@ router.post('/kuid', function (req, res) {
 });
 
 // create new employee
-router.post('/new', function (req, res) {
-  employees.create(req.body, function (err, user) {
+router.post('/new', (req, res) => {
+  employees.create(req.body, (err, user) => {
     if (err) return res.status(500).send(err);
     return res.status(200).send(user);
   });

@@ -3,12 +3,6 @@
 <button class="mat-dialog-close" [mat-dialog-close]="user">&times;</button>
 
 <div mat-dialog-content>
-  <div [@topDown]="true" *ngIf="error">
-    <h4 class="text-center">Something went wrong...</h4>
-
-    <p class="errorMsg text-center">It appears there was an issue connecting to your user data. Please make sure you have a WiFi or mobile data connection and try refreshing your browser. Then open this page&nbsp;again.</p>
-  </div>
-
   <mat-accordion *ngIf="!error">
     <mat-expansion-panel *ngIf="module" [expanded]="module">
       <mat-expansion-panel-header>
@@ -51,6 +45,12 @@
       </div>
     </mat-expansion-panel>
   </mat-accordion>
+
+  <div [@topDown]="true" *ngIf="error">
+    <h4>Something went wrong...</h4>
+
+    <p class="errorMsg">It appears there was an issue connecting to your user data. Please make sure you have a WiFi or mobile data connection and try refreshing your browser. Then open this page&nbsp;again.</p>
+  </div>
 </div>
 
 <div mat-dialog-actions>

@@ -1,3 +1,72 @@
-<p>
-  switched-on works!
-</p>
+<section [@fade]="true">
+    <div class="container">
+      <h1>SwitchedON</h1>
+  
+      <mat-accordion>
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            Objectives
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <ul>
+              <li>Acquire showroom-friendly Kia brand talking points that help build trust and credibility with new customers.</li>
+              <li>Gain a sense of the midsize SUV market opportunity that awaits you!</li>
+              <li>Discover simple ways to grow sales and loyalty with the all-new midsize SUV buyer.</li>
+            </ul>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            Exploration Overview
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <ul>
+              <li><strong>Discover:</strong> Work in pairs to find and scan all 8 SwitchedON targets...
+                <br>[blippar target image]</li>
+              <li><strong>Recap:</strong> We’ll recap your findings as a group.</li>
+              <li><strong>Mind Meld:</strong> Your facilitator will share a “gate code” to open a quiz. Work as a team to answers questions with accuracy and speed!</li>
+            </ul>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            BlippAR
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <div class="blippar"></div>
+  
+            <p>Please download and open the app using one of the options below:</p>
+  
+            <div class="d-flex justify-content-center">
+              <a class="px-2" href="https://itunes.apple.com/gb/app/blippar/id410604563" target="_blank"><img src="../../../assets/images/apple-app-store-badge.png" height="36px" alt="Download on the App Store"></a>
+              <a class="px-2" href="https://play.google.com/store/apps/details?hl=en_GB&id=com.blippar.ar.android" target="_blank"><img src="../../../assets/images/google-play-badge.png" height="36px" alt="Get it on Google Play"></a>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            {{ quizName }}
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <div *ngIf="!error.length">
+              <p>Quizzes are graded on accuracy and speed. The faster you select the correct answer, the more points you get for your team.</p>
+  
+              <p>When you’re ready, launch the {{ quizName }} below. Good luck!</p>
+  
+              <button class="kiaBtn" *ngIf="!hasAnswers" (click)="launchQuiz()">Launch Quiz</button>
+              <button class="kiaBtn" *ngIf="hasAnswers" (click)="launchQuiz()">View Quiz Results</button>
+            </div>
+  
+            <div class="errorMsg" [@topDown]="true" *ngIf="error.length">
+              <p>{{ error }}</p>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </section>
+  

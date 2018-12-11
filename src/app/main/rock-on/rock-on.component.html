@@ -1,8 +1,20 @@
 <section [@fade]="true">
-  <div class="container text-center">
+  <div class="container">
     <h1>RockON</h1>
 
     <mat-accordion>
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          Objectives
+        </mat-expansion-panel-header>
+
+        <ng-template matExpansionPanelContent>
+            <ul>
+              <li>“Lock in” essential training points!</li>
+              <li>Crown a session champion!</li>
+            </ul>
+        </ng-template>
+      </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           {{ quizName }}

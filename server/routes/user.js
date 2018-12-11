@@ -56,8 +56,10 @@ router.post('/users/points', (req, res) => {
         count = 1;
       } else {
         team.forEach(user => {
-          points += user.totalPoints;
-          count++;
+          if (user.totalPoints > 0) {
+            points += user.totalPoints;
+            count++;
+          }
         });
       }
 

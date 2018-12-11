@@ -62,10 +62,108 @@
     ]
   },
   {
+    "name": "SwitchedON Quiz",
+    "isCert": false,
+    "requiredScore": 0,
+    "passcode": "KiaRules",
+    "questions": [
+      {
+        "key": "q1",
+        "question": "What does the cat say?",
+        "options": [
+          {
+            "answer": "Woof",
+            "value": "1"
+          },
+          {
+            "answer": "Moo",
+            "value": "2"
+          },
+          {
+            "answer": "Meow",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "key": "q2",
+        "question": "What does the dog say?",
+        "options": [
+          {
+            "answer": "Woof",
+            "value": "0"
+          },
+          {
+            "answer": "Moo",
+            "value": "1"
+          },
+          {
+            "answer": "Meow",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "key": "q3",
+        "question": "What does the fox say?",
+        "options": [
+          {
+            "answer": "Woof",
+            "value": "1"
+          },
+          {
+            "answer": "Rrrrrricktickticktick Rrricktick KAKOW!!",
+            "value": "0"
+          },
+          {
+            "answer": "Meow",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "key": "q4",
+        "question": "What does the frog say?",
+        "options": [
+          {
+            "answer": "Ribbet",
+            "value": "0"
+          },
+          {
+            "answer": "Moo",
+            "value": "1"
+          },
+          {
+            "answer": "Meow",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "key": "q5",
+        "question": "What does the cow say?",
+        "options": [
+          {
+            "answer": "Woof",
+            "value": "1"
+          },
+          {
+            "answer": "Moo",
+            "value": "0"
+          },
+          {
+            "answer": "Meow",
+            "value": "2"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Certification Test",
     "isCert": true,
     "requiredScore": 0.8,
-    "passcode": "2020",
+    "passcode": "Challenger",
     "questions": [
       {
         "key": "q1",
@@ -172,6 +270,258 @@
           {
             "answer": "Bockbock",
             "value": "0"
+          }
+        ]
+      },
+      {
+        "key": "q7",
+        "question": "What does the mouse say?",
+        "options": [
+          {
+            "answer": "Woof",
+            "value": "1"
+          },
+          {
+            "answer": "Moo",
+            "value": "2"
+          },
+          {
+            "answer": "Squeak",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "key": "q8",
+        "question": "What does the pig say?",
+        "options": [
+          {
+            "answer": "Oink",
+            "value": "0"
+          },
+          {
+            "answer": "Moo",
+            "value": "1"
+          },
+          {
+            "answer": "Meow",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "key": "q9",
+        "question": "What does the giraffe say?",
+        "options": [
+          {
+            "answer": "Woof",
+            "value": "1"
+          },
+          {
+            "answer": "????????????",
+            "value": "0"
+          },
+          {
+            "answer": "Meow",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "key": "q10",
+        "question": "What does the snake say?",
+        "options": [
+          {
+            "answer": "Woof",
+            "value": "1"
+          },
+          {
+            "answer": "Ssssssssssssnake",
+            "value": "0"
+          },
+          {
+            "answer": "Meow",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "key": "q11",
+        "question": "What does the sheep say?",
+        "options": [
+          {
+            "answer": "Baaaaahhh",
+            "value": "0"
+          },
+          {
+            "answer": "Moo",
+            "value": "1"
+          },
+          {
+            "answer": "Meow",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "key": "q12",
+        "question": "What does the wolf say?",
+        "options": [
+          {
+            "answer": "Ribbet",
+            "value": "1"
+          },
+          {
+            "answer": "Moo",
+            "value": "2"
+          },
+          {
+            "answer": "Oooowwwwwwwwwwwww",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "key": "q13",
+        "question": "What does the owl say?",
+        "options": [
+          {
+            "answer": "Woof",
+            "value": "1"
+          },
+          {
+            "answer": "Moo",
+            "value": "2"
+          },
+          {
+            "answer": "Whoooo",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "key": "q14",
+        "question": "What does the fish say?",
+        "options": [
+          {
+            "answer": "Blubblub",
+            "value": "0"
+          },
+          {
+            "answer": "Moo",
+            "value": "1"
+          },
+          {
+            "answer": "Meow",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "key": "q15",
+        "question": "What does the monkey say?",
+        "options": [
+          {
+            "answer": "Woof",
+            "value": "1"
+          },
+          {
+            "answer": "Oooh oooh aaah aaah!",
+            "value": "0"
+          },
+          {
+            "answer": "Meow",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "key": "q16",
+        "question": "What does the parrot say?",
+        "options": [
+          {
+            "answer": "Woof",
+            "value": "1"
+          },
+          {
+            "answer": "What does the parrot say?",
+            "value": "0"
+          },
+          {
+            "answer": "Meow",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "key": "q17",
+        "question": "What does the bee say?",
+        "options": [
+          {
+            "answer": "Bzzzzzzzzzz",
+            "value": "0"
+          },
+          {
+            "answer": "Moo",
+            "value": "1"
+          },
+          {
+            "answer": "Meow",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "key": "q18",
+        "question": "What does the lion say?",
+        "options": [
+          {
+            "answer": "Ribbet",
+            "value": "1"
+          },
+          {
+            "answer": "Moo",
+            "value": "2"
+          },
+          {
+            "answer": "RAAWWWRRRR",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "key": "q19",
+        "question": "What does the rabbit say?",
+        "options": [
+          {
+            "answer": "Woof",
+            "value": "1"
+          },
+          {
+            "answer": "Moo",
+            "value": "2"
+          },
+          {
+            "answer": "What’s up, Doc?",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "key": "q20",
+        "question": "What does the bear say?",
+        "options": [
+          {
+            "answer": "Heeeyyyy Booboo! Let’s get some picnic baskets!",
+            "value": "0"
+          },
+          {
+            "answer": "Moo",
+            "value": "1"
+          },
+          {
+            "answer": "Meow",
+            "value": "2"
           }
         ]
       }

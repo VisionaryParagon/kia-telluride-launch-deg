@@ -46,6 +46,11 @@ p {
   margin: 1rem 0;
 }
 
+h1,
+h2 {
+  text-align: center;
+}
+
 a {
   color: $client-red;
 
@@ -316,9 +321,10 @@ form.quiz {
   border: 1px solid $client-red;
   color: #000;
   cursor: pointer;
+  display: block;
   font-family: $client-font;
   font-weight: normal;
-  margin: 1rem 0;
+  margin: 1rem auto;
   min-width: 150px;
   padding: .75rem 1.5rem;
   text-align: center;
@@ -335,7 +341,6 @@ form.quiz {
   }
 
   &.large {
-    display: block;
     padding: 2rem 0;
     text-transform: none;
     width: 100%;
@@ -346,7 +351,6 @@ form.quiz {
     min-width: auto;
   }
 
-  &:hover,
   &.primary {
     background: $client-red;
     color: #fff;
@@ -617,7 +621,7 @@ header {
 /*~~  Content ~~*/
 
 section {
-  padding: 50px 0;
+  padding: 50px 0 30px;
 }
 
 .container {
@@ -677,6 +681,7 @@ section {
   font-size: 4rem;
   line-height: 4rem;
   margin: 0 0 1rem;
+  text-align: center;
 
   &::after {
     content: "\e90c";
@@ -716,6 +721,16 @@ section {
 
 
 /*~~  Material Design Elements ~~*/
+
+div.mat-progress-bar-buffer {
+  background-color: $client-light-gray;
+}
+
+div.mat-progress-bar-fill {
+  &::after {
+    background-color: $client-red;
+  }
+}
 
 .mat-spinner circle {
   stroke: $client-red;
@@ -769,6 +784,8 @@ mat-dialog-container.mat-dialog-container {
   }
 
   .mat-dialog-close {
+    background: none;
+    border: none;
     padding: .5rem;
     position: absolute;
     right: 0;
@@ -805,23 +822,26 @@ mat-expansion-panel.mat-expansion-panel {
 mat-tab-group.mat-tab-group {
   font-family: inherit;
 
-  .mat-tab-label {
-    background: $client-gray;
-    border-radius: .5rem .5rem 0 0;
-    color: #fff;
-    flex-grow: 1;
-    font-weight: normal;
+  .mat-tab-header {
+    border: none;
 
-    &.mat-tab-label-active {
-      font-weight: bold;
-      opacity: 1;
+    .mat-tab-label {
+      background: $client-gray;
+      border-radius: .5rem .5rem 0 0;
+      color: #fff;
+      flex-grow: 1;
+      font-weight: normal;
+
+      &.mat-tab-label-active {
+        font-weight: bold;
+        opacity: 1;
+      }
     }
   }
 
   .mat-tab-body {
-    background: $client-gray;
+    background: $client-light-gray;
     border-radius: 0 0 .5rem .5rem;
-    color: #fff;
     padding: .5rem;
   }
 

@@ -14,7 +14,7 @@ const smtpConfig = {
 const transporter = nodemailer.createTransport(smtpConfig);
 
 // contact emails
-router.post('/notes', function (req, res) {
+router.post('/notes', (req, res) => {
   // get contact data
   const data = req.body;
   const notes = data.notes;
@@ -48,7 +48,7 @@ router.post('/notes', function (req, res) {
   };
 
   // send mail with defined transport object
-  transporter.sendMail(mailOptions, function (error, info) {
+  transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       return res.status(500).send(error);
       // return console.log(error);

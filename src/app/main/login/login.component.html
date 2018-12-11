@@ -12,7 +12,7 @@
       <form #emailForm="ngForm" novalidate>
         <div class="form-group my-4" [class.nope]="email.errors && (email.touched || submitted)">
           <label for="email">Kia University Email</label>
-          <input type="text" class="form-control" autocomplete="off" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" [(ngModel)]="user.email" name="email" #email="ngModel" (ngModelChange)="hideError()">
+          <input type="email" class="form-control" autocomplete="off" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" [(ngModel)]="user.email" name="email" #email="ngModel" (ngModelChange)="hideError()">
 
           <div class="errorMsg" [@topDown]="true" *ngIf="email.errors && (email.touched || submitted)">
             <p *ngIf="email.errors.required">Email is required</p>

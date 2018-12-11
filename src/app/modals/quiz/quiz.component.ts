@@ -137,7 +137,7 @@ export class QuizComponent implements OnInit, OnDestroy {
     if (!this.isCert) {
       this.quizQuestions = this.data.quiz.questions;
     } else {
-      this.quizQuestions = this.randomizeArray(this.data.quiz.questions).slice(0, 5);
+      this.quizQuestions = this.randomizeArray(this.data.quiz.questions).slice(0, 10);
     }
 
     // Preset user answers
@@ -160,7 +160,7 @@ export class QuizComponent implements OnInit, OnDestroy {
     this.submitted = true;
 
     if (code.valid) {
-      if (this.pw === this.data.quiz.passcode) {
+      if (this.pw.toLowerCase() === this.data.quiz.passcode.toLowerCase()) {
         this.cookieService.put(this.quiz.name, 'verified', this.cookieOptions);
         this.verified = true;
         this.runTimer();

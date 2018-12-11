@@ -5,35 +5,35 @@ const router = express.Router();
 const team = require('../models/team');
 
 // check duplicate teams
-router.post('/teams/valid', function (req, res) {
+router.post('/teams/valid', (req, res) => {
   team.find({
     dealer: req.body.dealer,
     session: req.body.session
-  }, function (err, data) {
+  }, (err, data) => {
     if (err) return res.status(500).send(err);
     return res.status(200).send(data);
   });
 });
 
 // create new team
-router.post('/teams', function (req, res) {
-  team.create(req.body, function (err, team) {
+router.post('/teams', (req, res) => {
+  team.create(req.body, (err, team) => {
     if (err) return res.status(500).send(err);
     return res.status(200).send(team);
   });
 });
 
 // get all teams
-router.get('/teams', function (req, res) {
-  team.find({}, function (err, teams) {
+router.get('/teams', (req, res) => {
+  team.find({}, (err, teams) => {
     if (err) return res.status(500).send(err);
     return res.status(200).send(teams);
   });
 });
 
 // get one team
-router.get('/teams/:id', function (req, res) {
-  team.findById(req.params.id, function (err, team) {
+router.get('/teams/:id', (req, res) => {
+  team.findById(req.params.id, (err, team) => {
     let notFound = {
       message: 'Team not in system'
     };
@@ -44,8 +44,8 @@ router.get('/teams/:id', function (req, res) {
 });
 
 // delete team
-router.delete('/teams/:id', function (req, res) {
-  team.findByIdAndRemove(req.params.id, function (err, team) {
+router.delete('/teams/:id', (req, res) => {
+  team.findByIdAndRemove(req.params.id, (err, team) => {
     let deleted = {
       message: 'Team deleted'
     };
@@ -55,10 +55,10 @@ router.delete('/teams/:id', function (req, res) {
 });
 
 // update team
-router.put('/teams/:id', function (req, res) {
+router.put('/teams/:id', (req, res) => {
   team.findByIdAndUpdate(req.params.id, req.body, {
     new: true
-  }, function (err, team) {
+  }, (err, team) => {
     if (err) return res.status(500).send(err);
     res.status(200).send(team);
   });
