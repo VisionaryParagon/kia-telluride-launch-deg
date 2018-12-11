@@ -236,6 +236,12 @@ export class QuizComponent implements OnInit, OnDestroy {
 
         // Tally user's total points
         this.user.totalPoints += this.totalPoints;
+
+        // Push quiz to user
+        this.user.quizzes.push(this.quiz);
+
+        // Update user
+        this.updateUser(this.user);
       } else {
         // Check pass/fail
         this.certScore = this.finalAnswers[0].value / this.quizQuestions.length;
@@ -245,57 +251,69 @@ export class QuizComponent implements OnInit, OnDestroy {
         } else {
           this.certPassed = false;
         }
-      }
 
-      // Push quiz to user
-      this.user.quizzes.push(this.quiz);
+        // Push quiz to user
+        this.user.quizzes.push(this.quiz);
 
-      // Submit quiz to user database
-      this.userService.updateUser(this.user)
-        .subscribe(
-          res => {
-            // Update current user in UserService
-            this.userService.setCurrentUser(res);
+        // Submit transcript to KU and update user
+        const kuData = {
+          kuid: this.user.kuid || '',
+          session: this.user.session_code || '',
+          transcript: this.user.transcript_id || '',
+          score: this.certScore * 100,
+          passed: this.certPassed ? 'Y' : 'N',
+          date: new Date().toLocaleDateString()
+        };
 
-            // Open results
-            this.hasAnswers = true;
-            this.loading = false;
+        this.userService.createTranscript(kuData)
+          .subscribe(
+            res => {
+              if (res.message === 'Success' && res.data.indexOf('CREATED') > -1) {
+                this.user.transcript_id = res.data.split('transcript_id>')[1].slice(0, -2);
+              }
 
-            if (this.isCert) {
-              const kuData = {
-                kuid: this.user.kuid,
-                score: this.certScore * 100,
-                passed: this.certPassed ? 'Y' : 'N',
-                date: new Date().toLocaleDateString()
-              };
+              this.updateUser(this.user);
+            },
+            err => {
+              console.error('Transcript could not be sent to KiaUniversity');
 
-              this.userService.createTranscript(kuData)
-                .subscribe(
-                  kuRes => console.log(kuRes),
-                  err => this.setError(err)
-                );
+              this.updateUser(this.user);
             }
-          },
-          err => {
-            // Update current user in UserService
-            this.userService.setCurrentUser(this.user);
-
-            // Open results
-            this.hasAnswers = true;
-            this.loading = false;
-
-            /*
-            // Show error
-            this.error = true;
-            this.loading = false;
-
-            // Pop quiz from user
-            this.user.quizzes.pop();
-            */
-          }
-        );
+          );
+      }
     }
     return false;
+  }
+
+  updateUser(user) {
+    this.userService.updateUser(user)
+      .subscribe(
+        res => {
+          // Update current user in UserService
+          this.userService.setCurrentUser(this.user);
+
+          // Open results
+          this.hasAnswers = true;
+          this.loading = false;
+        },
+        err => {
+          // Update current user in UserService
+          this.userService.setCurrentUser(this.user);
+
+          // Open results
+          this.hasAnswers = true;
+          this.loading = false;
+
+          /*
+          // Show error
+          this.error = true;
+          this.loading = false;
+
+          // Pop quiz from user
+          this.user.quizzes.pop();
+          */
+        }
+      );
   }
 
   getQuestion(key) {
@@ -335,7 +353,7 @@ export class QuizComponent implements OnInit, OnDestroy {
 
   closeDialog() {
     if (!this.hasAnswers) {
-      if (confirm('This quiz hasnt been submitted yet. Are you sure you want to leave?')) {
+      if (confirm('This quiz hasn’t been submitted yet. Are you sure you want to leave?')) {
         this.dialogRef.close(this.user);
       }
     } else {

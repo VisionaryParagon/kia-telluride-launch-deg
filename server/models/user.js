@@ -1,13 +1,15 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
+  email: String,
   first_name: String,
   last_name: String,
   dealer: String,
-  kuid: String,
   session: String,
   team: String,
-  email: String,
+  kuid: String,
+  session_code: String,
+  transcript_id: String,
   streetDrive: Object,
   notes: Array,
   quizzes: Array,

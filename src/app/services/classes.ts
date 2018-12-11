@@ -4,9 +4,11 @@ export class User {
   first_name: string;
   last_name: string;
   dealer: string;
-  kuid: string;
   session: string;
   team: string;
+  kuid?: string;
+  session_code?: string;
+  transcript_id?: string;
   streetDrive?: StreetDrive;
   notes?: Note[];
   quizzes?: Quiz[];

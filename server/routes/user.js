@@ -86,12 +86,12 @@ router.post('/users/ku', (req, res) => {
   const xml = `<enroll_students>
     <attendee>
       <kuid>${req.body.kuid}</kuid>
-      <transcript_id></transcript_id>
+      <transcript_id>${req.body.transcript}</transcript_id>
       <score>${req.body.score}</score>
       <passed>${req.body.passed}</passed>
       <status>C</status>
       <course_code>SLS-07-168-1-DEV</course_code>
-      <session_code>0001</session_code>
+      <session_code>${req.body.session}</session_code>
       <enroll_date>${req.body.date}</enroll_date>
       <completion_date>${req.body.date}</completion_date>
     </attendee>
@@ -114,7 +114,7 @@ router.post('/users/ku', (req, res) => {
     resp.on('end', () => {
       // console.log('https.request end:', buffer);
       const success = {
-        message: 'success!',
+        message: 'Success',
         data: buffer
       };
       return res.status(200).send(success);
