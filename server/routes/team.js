@@ -25,6 +25,7 @@ router.post('/teams', (req, res) => {
 
 // get all teams
 router.get('/teams', (req, res) => {
+  if (!req.isAuthenticated()) return res.status(401).send({ message: 'User is not authenticated' });
   team.find({}, (err, teams) => {
     if (err) return res.status(500).send(err);
     return res.status(200).send(teams);
@@ -45,6 +46,7 @@ router.get('/teams/:id', (req, res) => {
 
 // delete team
 router.delete('/teams/:id', (req, res) => {
+  if (!req.isAuthenticated()) return res.status(401).send({ message: 'User is not authenticated' });
   team.findByIdAndRemove(req.params.id, (err, team) => {
     let deleted = {
       message: 'Team deleted'
@@ -56,6 +58,7 @@ router.delete('/teams/:id', (req, res) => {
 
 // update team
 router.put('/teams/:id', (req, res) => {
+  if (!req.isAuthenticated()) return res.status(401).send({ message: 'User is not authenticated' });
   team.findByIdAndUpdate(req.params.id, req.body, {
     new: true
   }, (err, team) => {

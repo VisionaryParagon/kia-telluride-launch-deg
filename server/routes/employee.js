@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('passport');
 
 // admin model
 const employees = require('../models/employee');
@@ -29,6 +28,7 @@ router.post('/kuid', (req, res) => {
 
 // create new employee
 router.post('/new', (req, res) => {
+  if (!req.isAuthenticated()) return res.status(401).send({ message: 'User is not authenticated' });
   employees.create(req.body, (err, user) => {
     if (err) return res.status(500).send(err);
     return res.status(200).send(user);

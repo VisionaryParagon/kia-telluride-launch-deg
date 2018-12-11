@@ -140,6 +140,7 @@ router.post('/users', (req, res) => {
 
 // get all users
 router.get('/users', (req, res) => {
+  if (!req.isAuthenticated()) return res.status(401).send({ message: 'User is not authenticated' });
   user.find({}, (err, users) => {
     if (err) return res.status(500).send(err);
     return res.status(200).send(users);
@@ -160,6 +161,7 @@ router.get('/users/:id', (req, res) => {
 
 // delete user
 router.delete('/users/:id', (req, res) => {
+  if (!req.isAuthenticated()) return res.status(401).send({ message: 'User is not authenticated' });
   user.findByIdAndRemove(req.params.id, (err, user) => {
     const deleted = {
       message: 'User deleted'
