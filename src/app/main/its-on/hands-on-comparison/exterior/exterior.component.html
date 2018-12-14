@@ -1,3 +1,152 @@
-<p>
-  exterior works!
-</p>
+<section [@fade]="true">
+    <img src="../../../../../assets/images/exterior-main-header.jpg" width="100%" alt="Exterior (First Impressions, Dimensions, & Performance)">
+
+    <div class="container">
+      <h3>Strong. Bold. Commanding.</h3>
+
+      <ul>
+        <li>These are words midsize SUV customers often used while sharing their first impression of the Kia Telluride in customer clinics.</li>
+        <li>In this exploration section, you’ll take a guided tour of the exterior design, dimensions, and performancethat lend substance to the style.</li>
+        <li>While you’re at it, we’ll conduct some back-to-back comparisons with the featured competitor to see who comes out on top. Let’s get started...</li>
+      </ul>
+
+      <h4>Signature Design Cues</h4>
+
+      <p>How did the Kia design team pull off this broad-shouldered look? Here are a few signature design cues you can point to. Take a moment to get up close with each feature...</p>
+
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'90px'">
+            Iconic “Tiger Nose” Grille w/ Hot Stamping Finish
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/exterior-tiger-nose-grill.jpg" width="100%" alt="Tiger Nose Grille">
+
+            <p>The Kia “tiger nose” grille is our brand’s defining feature. Yet, each vehicle’s tiger nose is unique! For Telluride, notice the large grille insert made of hot stamping mesh. The intention here was to give Telluride a luxurious and sporty feel, while accentuating its wide, commanding stance.</p>
+
+            <mat-checkbox name="q0101" #q0101="ngModel" [(ngModel)]="exterior.q0101" (ngModelChange)="setCheck(q0101)">Hot tip: Design Line grades (S, SX) feature Satin Chrome grill surrounds. LX models offer an unpainted grille surround, EX grade offers Chrome surrounds.</mat-checkbox>
+
+            <div class="form-group">
+              <label for="q0102">What do you think?</label>
+              <textarea class="form-control" id="q0102" rows="2" placeholder="Write something here..." name="q0102" #q0102="ngModel" [(ngModel)]="exterior.q0102" (ngModelChange)="setText(q0102)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'90px'">
+            Vertical LED Headlamps
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/exterior-vertical-led-headlamps.jpg" width="100%" alt="Vertical LED Headlamps">
+
+            <p>The stacked vertical LED headlamps frame the mesh grille, providing a point of contrast that accentuates the Telluride’s athletic, wide stance.</p>
+
+            <mat-checkbox name="q0201" #q0201="ngModel" [(ngModel)]="exterior.q0201" (ngModelChange)="setCheck(q0201)">Have the team in the front row activate the low beams, high beams, and turn signals.</mat-checkbox>
+
+            <mat-checkbox name="q0202" #q0202="ngModel" [(ngModel)]="exterior.q0202" (ngModelChange)="setCheck(q0202)">The goal was to make a statement within the segment while adding unmistakable luxury.</mat-checkbox>
+
+            <div class="form-group">
+              <label for="q0203">What is your impression? Did the development team achieve its goal?</label>
+              <textarea class="form-control" id="q0203" rows="2" placeholder="Write something here..." name="q0203" #q0203="ngModel" [(ngModel)]="exterior.q0203" (ngModelChange)="setText(q0203)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'90px'">
+            Front / Rear Skid Plates (Silver Paint Finish on Design Line)
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/exterior-skid-plate.jpg" width="100%" alt="Skid Plate (decorative)">
+
+            <p>The decorative front/rear skid plates hint at  Telluride’s SUV capabilities (and it looks pretty cool, too). Design Line models receive Silver Paint. LX = Unpainted.</p>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'90px'">
+            7 Exterior Colors: Rich, Luminescent... Quietly Confident
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/exterior-colors.jpg" width="100%" alt="7 Exterior Colors">
+
+            <p>Seven exterior colors, including 4 all-new options, await; each designed to evoke an unmistakable air of “quiet confidence.” The state-of-the-art paint operation in West Point, GA ensures flawless quality and a rich, high-luminance pearl character.</p>
+
+            <div class="form-group">
+              <label for="q0401">Which exterior paint does your Telluride have? Is it an all-new color?</label>
+              <textarea class="form-control" id="q0401" rows="2" placeholder="Write something here..." name="q0401" #q0401="ngModel" [(ngModel)]="exterior.q0401" (ngModelChange)="setText(q0401)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q0402">Compare: How does the exterior paint finish compare to the featured competitor? Which appears more luxurious to your eye?</label>
+              <textarea class="form-control" id="q0402" rows="2" placeholder="Write something here..." name="q0402" #q0402="ngModel" [(ngModel)]="exterior.q0402" (ngModelChange)="setText(q0402)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'90px'">
+            Side
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/exterior-side-profile.jpg" width="100%" alt="Side Profile">
+
+            <p>Work with your partner to observe and/or discuss the following side profile design cues. Then, repeat this exercise with the competitor. Which side view makes more of a “power statement?”</p>
+
+            <mat-checkbox name="q0501" #q0501="ngModel" [(ngModel)]="exterior.q0501" (ngModelChange)="setCheck(q0501)">Long, strong hood</mat-checkbox>
+
+            <mat-checkbox name="q0502" #q0502="ngModel" [(ngModel)]="exterior.q0502" (ngModelChange)="setCheck(q0502)">Longest wheelbase in segment</mat-checkbox>
+
+            <mat-checkbox name="q0503" #q0503="ngModel" [(ngModel)]="exterior.q0503" (ngModelChange)="setCheck(q0503)">Wheel arches pushed outward to the edges</mat-checkbox>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'90px'">
+            Rear Design Cues
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/exterior-rear-design-cues.jpg" width="100%" alt="Rear Design Cues">
+
+            <p>Now, turn your attention to these rear design cues. How does Telluride’s rear design stack up to the competitor?</p>
+
+            <mat-checkbox name="q0601" #q0601="ngModel" [(ngModel)]="exterior.q0601" (ngModelChange)="setCheck(q0601)">Modern and refined aesthetics</mat-checkbox>
+
+            <mat-checkbox name="q0602" #q0602="ngModel" [(ngModel)]="exterior.q0602" (ngModelChange)="setCheck(q0602)">Rear vertical LED to enhance perceptionof luxury and substance</mat-checkbox>
+
+            <mat-checkbox name="q0603" #q0603="ngModel" [(ngModel)]="exterior.q0603" (ngModelChange)="setCheck(q0603)">Skid plate design with premium silver finish hints at SUV capability</mat-checkbox>
+          </ng-template>
+        </mat-expansion-panel>
+
+        <h4>First Impressions</h4>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'90px'">
+            Longest Wheelbase in Segment = Muscular Dimension
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/exterior-long-wheelbase.jpg" width="100%" alt="Longest Wheelbase in Segment">
+
+            <p>Telluride has the longest wheelbase in its competitive set. This is significant&mdash;and intentional: By pushing its wheels further out to its corners than the competition, the Kia design achieved an athletic, muscular stance that makes a strong statement (and enhances interior spaciousness).</p>
+
+            <mat-checkbox name="q0701" #q0701="ngModel" [(ngModel)]="exterior.q0701" (ngModelChange)="setCheck(q0701)">Comparison: Did you know that Exterior Design appeal is one of the top reasons customers buy?</mat-checkbox>
+
+            <mat-checkbox name="q0702" #q0702="ngModel" [(ngModel)]="exterior.q0702" (ngModelChange)="setCheck(q0702)">At first glance, does Telluride stand out from the typical midsize SUV fare you’ve seen?</mat-checkbox>
+
+            <div class="form-group">
+              <label>Stand back and take a good look at Telluride’s overall profile... then repeat this exercise with the competitor. If you were in the design clinic, which vehicle makes a stronger statement&mdash;the Telluride or the featured competitor?</label>
+              <mat-radio-group name="q0703" #q0703="ngModel" [(ngModel)]="exterior.q0703" (ngModelChange)="setRadio(q0703)">
+                <mat-radio-button value="Telluride">Telluride</mat-radio-button>
+                <mat-radio-button value="Competitor">Competitor</mat-radio-button>
+                <mat-radio-button value="Tie">It’s a Tie</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </section>
+  

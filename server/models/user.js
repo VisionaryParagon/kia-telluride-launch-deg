@@ -10,6 +10,7 @@ const UserSchema = new mongoose.Schema({
   kuid: String,
   session_code: String,
   transcript_id: String,
+  deepDive: Object,
   streetDrive: Object,
   notes: Array,
   quizzes: Array,

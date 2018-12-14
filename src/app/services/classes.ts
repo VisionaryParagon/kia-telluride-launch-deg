@@ -9,6 +9,7 @@ export class User {
   kuid?: string;
   session_code?: string;
   transcript_id?: string;
+  deepDive?: DeepDive;
   streetDrive?: StreetDrive;
   notes?: Note[];
   quizzes?: Quiz[];
@@ -76,6 +77,54 @@ export class QuizQuestion {
 export class QuizAnswer {
   answer: string;
   value: string;
+}
+
+export class DeepDive {
+  exterior: ExteriorData;
+  firstRow: FirstRowData;
+  secondThirdRows: SecondThirdRowData;
+  cargo: CargoData;
+
+  constructor() {
+    this.exterior = new ExteriorData();
+    this.firstRow = new FirstRowData();
+    this.secondThirdRows = new SecondThirdRowData();
+    this.cargo = new CargoData();
+  }
+}
+
+export class ExteriorData {
+  q0101: boolean;
+  q0102: string;
+  q0201: boolean;
+  q0202: boolean;
+  q0203: string;
+  q0401: string;
+  q0402: string;
+  q0501: boolean;
+  q0502: boolean;
+  q0503: boolean;
+  q0601: boolean;
+  q0602: boolean;
+  q0603: boolean;
+  q0701: boolean;
+  q0702: boolean;
+  q0703: string;
+}
+
+export class FirstRowData {
+  q0101: boolean;
+  q0102: string;
+}
+
+export class SecondThirdRowData {
+  q0101: boolean;
+  q0102: string;
+}
+
+export class CargoData {
+  q0101: boolean;
+  q0102: string;
 }
 
 export class StreetDrive {

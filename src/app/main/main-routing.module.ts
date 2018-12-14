@@ -91,11 +91,11 @@ const routes: Routes = [
                     component: ExteriorComponent
                   },
                   {
-                    path: '1st-row',
+                    path: 'first-row',
                     component: FirstRowComponent
                   },
                   {
-                    path: '2nd-3rd-row',
+                    path: 'second-third-rows',
                     component: SecondThirdRowComponent
                   },
                   {

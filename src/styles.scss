@@ -38,11 +38,6 @@ h5,
 h6,
 p {
   font-family: $client-font;
-}
-
-h1,
-h2,
-p {
   margin: 1rem 0;
 }
 
@@ -688,8 +683,35 @@ section {
   }
 }
 
-.container {
-  max-width: 768px;
+
+/*~~  It'sON ~~*/
+
+.topDown {
+  border-bottom: 1px dotted $client-light-gray;
+  display: block;
+
+  &.last-child {
+    border: none;
+  }
+
+  div {
+    position: relative;
+
+    h2 {
+      color: #fff;
+      left: 0;
+      margin: 0;
+      position: absolute;
+      text-shadow: 0 2px 5px #000;
+      top: 50%;
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      width: 100%;
+    }
+  }
 }
 
 
@@ -825,6 +847,10 @@ mat-expansion-panel.mat-expansion-panel {
   font-weight: bold;
 }
 
+.tabMinHeight {
+  min-height: calc(100vh - 80px);
+}
+
 mat-tab-group.mat-tab-group {
   font-family: inherit;
 
@@ -858,8 +884,64 @@ mat-tab-group.mat-tab-group {
   }
 }
 
-.tabMinHeight {
-  min-height: calc(100vh - 80px);
+mat-checkbox.mat-checkbox {
+  &.mat-accent {
+    &.mat-checkbox-checked {
+      .mat-checkbox-background {
+        background-color: $client-red;
+      }
+    }
+
+    &:not(.mat-checkbox-disabled) {
+      .mat-checkbox-ripple {
+        .mat-ripple-element {
+          background-color: $client-red;
+        }
+      }
+    }
+  }
+
+  .mat-checkbox-layout {
+    margin: 1rem 0;
+    white-space: normal;
+
+    .mat-checkbox-inner-container {
+      margin: 4px  8px auto auto;
+    }
+  }
+}
+
+mat-radio-button.mat-radio-button {
+  display: block;
+  margin: .5rem 0;
+
+  &.mat-accent {
+    .mat-radio-inner-circle {
+      background-color: $client-red;
+    }
+
+    .mat-radio-ripple {
+      .mat-ripple-element:not(.mat-radio-persistent-ripple) {
+        background-color: $client-red;
+      }
+    }
+
+    &.mat-radio-checked {
+      .mat-radio-outer-circle {
+        border-color: $client-red;
+      }
+
+      .mat-radio-persistent-ripple {
+        background-color: $client-red;
+      }
+    }
+
+    &:active {
+      .mat-radio-persistent-ripple {
+        background-color: $client-red;
+      }
+    }
+  }
 }
 
 
