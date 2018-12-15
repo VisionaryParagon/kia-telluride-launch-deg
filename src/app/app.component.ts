@@ -102,7 +102,7 @@ export class AppComponent implements OnInit {
             this.isAdmin = false;
           }
 
-          if (ev.url.indexOf(this.notesService.noteUrl) === 0 && this.notHome) {
+          if ((this.notesService.noteModule.length > 0 || ev.url.indexOf(this.notesService.noteUrl) === 0) && this.notHome) {
             this.hasNotes = true;
           } else {
             this.hasNotes = false;
