@@ -30,9 +30,11 @@
           <!--
           <div *ngIf="!error">
           -->
-            <h4>Individual Points</h4>
+            <h4>Individual Scores</h4>
     
-            <p class="mb-0">Team: <strong>{{ user.team }}</strong><br> Points Earned: <strong>{{ totalPoints }}</strong></p>
+            <p class="mb-0">Team: <strong>{{ user.team }}</strong>
+              <br>Points Earned: <strong>{{ totalPoints }}</strong>
+              <br>Quiz Results:</p>
     
             <ngx-charts-pie-chart id="individualChart" [view]="chartView" [scheme]="colorScheme" [results]="finalAnswers" [doughnut]="true"></ngx-charts-pie-chart>
     
