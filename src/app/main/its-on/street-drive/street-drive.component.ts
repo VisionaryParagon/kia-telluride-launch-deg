@@ -16,9 +16,9 @@ import { FadeAnimation, TopDownAnimation } from '../../../animations';
 export class StreetDriveComponent implements OnInit {
   user: User = this.userService.getCurrentUser();
   userId: string = this.cookieService.get('userId');
-  active = 0;
   streetDrive: StreetDrive = new StreetDrive();
   dataReady = false;
+  active = 0;
   timeout: any;
   error = '';
 
@@ -47,24 +47,6 @@ export class StreetDriveComponent implements OnInit {
     if (this.user.streetDrive) {
       this.streetDrive = this.user.streetDrive;
     }
-    /* else {
-      this.streetDrive = new StreetDrive();
-
-      this.streetDrive.kia = new Vehicle();
-      this.streetDrive.comp = new Vehicle();
-
-      this.streetDrive.kia.one = new DriveNotes();
-      this.streetDrive.kia.two = new DriveNotes();
-      this.streetDrive.kia.three = new DriveNotes();
-      this.streetDrive.kia.four = new DriveNotes();
-      this.streetDrive.kia.five = new DriveNotes();
-      this.streetDrive.comp.one = new DriveNotes();
-      this.streetDrive.comp.two = new DriveNotes();
-      this.streetDrive.comp.three = new DriveNotes();
-      this.streetDrive.comp.four = new DriveNotes();
-      this.streetDrive.comp.five = new DriveNotes();
-    }
-    */
 
     this.dataReady = true;
   }

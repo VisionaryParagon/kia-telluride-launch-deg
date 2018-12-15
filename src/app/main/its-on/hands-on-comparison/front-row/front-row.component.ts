@@ -2,21 +2,21 @@ import { Component, OnInit } from '@angular/core';
 
 import { CookieService } from 'ngx-cookie';
 
-import { User, DeepDive, ExteriorData } from '../../../../services/classes';
+import { User, DeepDive, FrontRowData } from '../../../../services/classes';
 import { UserService } from '../../../../services/user.service';
 
 import { FadeAnimation } from '../../../../animations';
 
 @Component({
-  selector: 'app-exterior',
-  templateUrl: './exterior.component.html',
-  styleUrls: ['./exterior.component.scss'],
+  selector: 'app-front-row',
+  templateUrl: './front-row.component.html',
+  styleUrls: ['./front-row.component.scss'],
   animations: [ FadeAnimation ]
 })
-export class ExteriorComponent implements OnInit {
+export class FrontRowComponent implements OnInit {
   user: User = this.userService.getCurrentUser();
   userId: string = this.cookieService.get('userId');
-  exterior: ExteriorData;
+  frontRow: FrontRowData;
   dataReady = false;
   fiver = 5;
   tenner = 10;
@@ -47,11 +47,11 @@ export class ExteriorComponent implements OnInit {
   checkAnswers() {
     if (!this.user.deepDive) {
       this.user.deepDive = new DeepDive();
-    } else if (!this.user.deepDive.exterior) {
-      this.user.deepDive.exterior = new ExteriorData();
+    } else if (!this.user.deepDive.frontRow) {
+      this.user.deepDive.frontRow = new FrontRowData();
     }
 
-    this.exterior = {...this.user.deepDive.exterior};
+    this.frontRow = {...this.user.deepDive.frontRow};
 
     this.dataReady = true;
   }
@@ -77,7 +77,7 @@ export class ExteriorComponent implements OnInit {
       this.user.totalPoints -= this.fiver;
     }
 
-    this.user.deepDive.exterior[ev.name] = ev.value;
+    this.user.deepDive.frontRow[ev.name] = ev.value;
     this.updateUser(this.user);
   }
 
@@ -89,7 +89,7 @@ export class ExteriorComponent implements OnInit {
     this.timeout = window.setTimeout(() => {
       this.timeout = null;
 
-      if (this.user.deepDive.exterior.hasOwnProperty(ev.name) && this.user.deepDive.exterior[ev.name].length > 0) {
+      if (this.user.deepDive.frontRow.hasOwnProperty(ev.name) && this.user.deepDive.frontRow[ev.name].length > 0) {
         if (ev.value.length === 0) {
           this.user.totalPoints -= this.tenner;
         }
@@ -99,8 +99,8 @@ export class ExteriorComponent implements OnInit {
         }
       }
 
-      if (this.user.deepDive.exterior[ev.name] !== ev.value) {
-        this.user.deepDive.exterior[ev.name] = ev.value;
+      if (this.user.deepDive.frontRow[ev.name] !== ev.value) {
+        this.user.deepDive.frontRow[ev.name] = ev.value;
         this.updateUser(this.user);
       }
     }, 1000);
@@ -112,7 +112,7 @@ export class ExteriorComponent implements OnInit {
       this.timeout = null;
     }
 
-    if (this.user.deepDive.exterior.hasOwnProperty(ev.name) && this.user.deepDive.exterior[ev.name].length > 0) {
+    if (this.user.deepDive.frontRow.hasOwnProperty(ev.name) && this.user.deepDive.frontRow[ev.name].length > 0) {
       if (ev.value.length === 0) {
         this.user.totalPoints -= this.tenner;
       }
@@ -122,18 +122,18 @@ export class ExteriorComponent implements OnInit {
       }
     }
 
-    if (this.user.deepDive.exterior[ev.name] !== ev.value) {
-      this.user.deepDive.exterior[ev.name] = ev.value;
+    if (this.user.deepDive.frontRow[ev.name] !== ev.value) {
+      this.user.deepDive.frontRow[ev.name] = ev.value;
       this.updateUser(this.user);
     }
   }
 
   setRadio(ev) {
-    if (!this.user.deepDive.exterior.hasOwnProperty(ev.name) || this.user.deepDive.exterior[ev.name].length === 0) {
+    if (!this.user.deepDive.frontRow.hasOwnProperty(ev.name) || this.user.deepDive.frontRow[ev.name].length === 0) {
       this.user.totalPoints += this.fiver;
     }
 
-    this.user.deepDive.exterior[ev.name] = ev.value;
+    this.user.deepDive.frontRow[ev.name] = ev.value;
     this.updateUser(this.user);
   }
 

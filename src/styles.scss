@@ -318,7 +318,7 @@ form.quiz {
   cursor: pointer;
   display: block;
   font-family: $client-font;
-  font-weight: normal;
+  font-weight: 400;
   margin: 1rem auto;
   min-width: 150px;
   padding: .75rem 1.5rem;
@@ -765,7 +765,7 @@ div.mat-progress-bar-fill {
 mat-horizontal-stepper.mat-stepper-horizontal,
 mat-vertical-stepper.mat-stepper-vertical {
   background: none;
-  font-family: $client-font;
+  font: 300 16px/1.5em $client-font;
 
   div.mat-horizontal-stepper-header-container {
     display: none;
@@ -821,32 +821,6 @@ mat-dialog-container.mat-dialog-container {
   }
 }
 
-mat-expansion-panel.mat-expansion-panel {
-  .mat-expansion-panel-header {
-    padding: 0 1rem;
-
-    .mat-content {
-      display: block;
-    }
-  }
-
-  .mat-expansion-panel-body {
-    padding: 0 1rem 1rem;
-  }
-}
-
-.snackError {
-  background: $error-color;
-  color: #fff;
-  font-weight: bold;
-}
-
-.snackSuccess {
-  background: $success-color;
-  color: #fff;
-  font-weight: bold;
-}
-
 .tabMinHeight {
   min-height: calc(100vh - 80px);
 }
@@ -862,10 +836,10 @@ mat-tab-group.mat-tab-group {
       border-radius: .5rem .5rem 0 0;
       color: #fff;
       flex-grow: 1;
-      font-weight: normal;
+      font: 400 16px/1.5em $client-font;
 
       &.mat-tab-label-active {
-        font-weight: bold;
+        font-weight: 700;
         opacity: 1;
       }
     }
@@ -884,7 +858,56 @@ mat-tab-group.mat-tab-group {
   }
 }
 
+mat-expansion-panel.mat-expansion-panel {
+  .mat-expansion-panel-header {
+    font: 700 16px/1.5em $client-font;
+    padding: 1rem;
+
+    em {
+      font-weight: 300;
+    }
+
+    .mat-content {
+      display: block;
+      padding: 0 .5rem 0 0;
+    }
+  }
+
+  .mat-expansion-panel-content {
+    font: 300 16px/1.5em $client-font;
+  }
+
+  .mat-expansion-panel-body {
+    padding: 0 1rem 1rem;
+  }
+}
+
+.snackError {
+  background: $error-color;
+  color: #fff;
+  font-weight: 700;
+}
+
+.snackSuccess {
+  background: $success-color;
+  color: #fff;
+  font-weight: 700;
+}
+
 mat-checkbox.mat-checkbox {
+  display: block;
+  font-family: $client-font;
+  margin: 1rem 0;
+
+  .mat-checkbox-layout {
+    margin: 0;
+    white-space: normal;
+
+    .mat-checkbox-inner-container {
+      margin: 4px  8px auto auto;
+    }
+  }
+
   &.mat-accent {
     &.mat-checkbox-checked {
       .mat-checkbox-background {
@@ -900,19 +923,11 @@ mat-checkbox.mat-checkbox {
       }
     }
   }
-
-  .mat-checkbox-layout {
-    margin: 1rem 0;
-    white-space: normal;
-
-    .mat-checkbox-inner-container {
-      margin: 4px  8px auto auto;
-    }
-  }
 }
 
 mat-radio-button.mat-radio-button {
   display: block;
+  font-family: $client-font;
   margin: .5rem 0;
 
   &.mat-accent {

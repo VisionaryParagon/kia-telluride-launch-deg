@@ -24,7 +24,7 @@ import { ItsOnMainComponent } from './its-on/its-on-main/its-on-main.component';
 import { HandsOnComparisonComponent } from './its-on/hands-on-comparison/hands-on-comparison.component';
 import { HandsOnComparisonMainComponent } from './its-on/hands-on-comparison/hands-on-comparison-main/hands-on-comparison-main.component';
 import { ExteriorComponent } from './its-on/hands-on-comparison/exterior/exterior.component';
-import { FirstRowComponent } from './its-on/hands-on-comparison/first-row/first-row.component';
+import { FrontRowComponent } from './its-on/hands-on-comparison/front-row/front-row.component';
 import { SecondThirdRowComponent } from './its-on/hands-on-comparison/second-third-row/second-third-row.component';
 import { CargoComponent } from './its-on/hands-on-comparison/cargo/cargo.component';
 import { StreetDriveComponent } from './its-on/street-drive/street-drive.component';
@@ -49,7 +49,7 @@ import { RockOnComponent } from './rock-on/rock-on.component';
     HandsOnComparisonComponent,
     HandsOnComparisonMainComponent,
     ExteriorComponent,
-    FirstRowComponent,
+    FrontRowComponent,
     SecondThirdRowComponent,
     CargoComponent,
     StreetDriveComponent,

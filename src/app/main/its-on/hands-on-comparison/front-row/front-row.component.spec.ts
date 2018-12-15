@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FirstRowComponent } from './first-row.component';
+import { FrontRowComponent } from './front-row.component';
 
-describe('FirstRowComponent', () => {
-  let component: FirstRowComponent;
-  let fixture: ComponentFixture<FirstRowComponent>;
+describe('FrontRowComponent', () => {
+  let component: FrontRowComponent;
+  let fixture: ComponentFixture<FrontRowComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FirstRowComponent ]
+      declarations: [ FrontRowComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FirstRowComponent);
+    fixture = TestBed.createComponent(FrontRowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
