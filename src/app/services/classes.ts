@@ -82,13 +82,13 @@ export class QuizAnswer {
 export class DeepDive {
   exterior: ExteriorData;
   frontRow: FrontRowData;
-  secondThirdRows: SecondThirdRowData;
+  secondThirdRow: SecondThirdRowData;
   cargo: CargoData;
 
   constructor() {
     this.exterior = new ExteriorData();
     this.frontRow = new FrontRowData();
-    this.secondThirdRows = new SecondThirdRowData();
+    this.secondThirdRow = new SecondThirdRowData();
     this.cargo = new CargoData();
   }
 }
@@ -263,6 +263,59 @@ export class FrontRowData {
 export class SecondThirdRowData {
   q0101: boolean;
   q0102: string;
+  q0201: string;
+  q0202: boolean;
+  q0203: string;
+  q0204: string;
+  q0301: string;
+  q0302: string;
+  q0401: boolean;
+  q0402: boolean;
+  q0403: boolean;
+  q0404: string;
+  q0501: string;
+  q0502: string;
+  q0503: string;
+  q0504: string;
+  q0505: string;
+  q0506: boolean;
+  q0601: boolean;
+  q0701: string;
+  q0702: string;
+  q0703: string;
+  q0801: boolean;
+  q0802: string;
+  q0803: string;
+  q0901: boolean;
+  q0902: boolean;
+  q0903: string;
+  q0904: string;
+  q0905: string;
+  q1001: boolean;
+  q1002: string;
+  q1101: boolean;
+  q1102: boolean;
+  q1201: boolean;
+  q1202: string;
+  q1301: string;
+  q1401: boolean;
+  q1402: string;
+  q1501: boolean;
+  q1502: boolean;
+  q1503: boolean;
+  q1504: boolean;
+  q1601: boolean;
+  q1602: boolean;
+  q1701: boolean;
+  q1702: string;
+  q1801: boolean;
+  q1802: boolean;
+  q1803: string;
+  q1804: string;
+  q1805: boolean;
+  q1901: string;
+  q1902: string;
+  q1903: string;
 }
 
 export class CargoData {

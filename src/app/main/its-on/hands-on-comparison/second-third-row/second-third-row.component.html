@@ -1,3 +1,467 @@
-<p>
-  second-third-row works!
-</p>
+<section [@fade]="true">
+    <img src="../../../../../assets/images/second-third-row-main-header.jpg" width="100%" alt="2nd and 3rd Row (No Second-Class Citizens!)">
+
+    <div class="container">
+      <p>Telluride delivers class-leading spaciousness and all the comforts of home. Dive deeper and you’ll discover several “surprise and delight” features new to the midsize SUV segment. And to top it all off: Telluride comfortably accommodates 6' tall adults in all three rows at the same time! With Telluride, there are no “second class citizens” in any seat... and we’ll prove it!</p>
+
+      <h4>Best-in-Class 2<sup>nd</sup> Row Accommodations</h4>
+
+      <!--
+      <img src="../../../../../assets/images/second-third-row-workmanship.jpg" width="100%" alt="“Class Above” Workmanship">
+      -->
+
+      <p>Step inside the second row of the Telluride and you’ll immediately notice a gap between it and the competition. Let’s explore the essential features that make it all happen...</p>
+
+      <div class="container py-5" *ngIf="!dataReady && !error.length">
+        <mat-spinner class="mx-auto my-5"></mat-spinner>
+      </div>
+
+      <mat-accordion *ngIf="dataReady && !error.length">
+        <mat-expansion-panel id="panel01" (opened)="scroll('panel01')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            Assist Handle
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/second-third-row-assist-handle.jpg" width="100%" alt="Assist Handle">
+
+            <mat-checkbox name="q0101" #q0101="ngModel" [(ngModel)]="secondThirdRow.q0101" (ngModelChange)="setCheck(q0101)">Notice and use the Assist Handle that has been thoughtfully designed into the B-pillar.</mat-checkbox>
+
+            <div class="form-group">
+              <label for="q0102">What types of customers may appreciate this feature?</label>
+              <textarea class="form-control" id="q0102" rows="2" placeholder="Write something here..." name="q0102" #q0102="ngModel" [(ngModel)]="secondThirdRow.q0102" (ngModelChange)="setText(q0102)"(blur)="setTextBlur(q0102)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel02" (opened)="scroll('panel02')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            Class-Leading 2<sup>nd</sup> Row Legroom
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <!--
+            <img src="../../../../../assets/images/second-third-row-door-open-close.jpg" width="100%" alt="Door Open/Close Test">
+            -->
+
+            <p>Telluride’s class-leading wheelbase translates to class-leading interior spaciousness. This includes best-in-class 2<sup>nd</sup> row legroom. Here’s the breakdown:</p>
+
+            <ul>
+              <li>Telluride 42.4"</li>
+              <li>Highlander 41.89"</li>
+              <li>Pilot 39.25"</li>
+              <li>Explorer 39.25"</li>
+            </ul>
+
+            <div class="form-group">
+              <label for="q0201">How much more legroom does Telluride provide over its competitors?</label>
+              <textarea class="form-control" id="q0201" rows="2" placeholder="Write something here..." name="q0201" #q0201="ngModel" [(ngModel)]="secondThirdRow.q0201" (ngModelChange)="setText(q0201)"(blur)="setTextBlur(q0201)"></textarea>
+            </div>
+
+            <mat-checkbox name="q0202" #q0202="ngModel" [(ngModel)]="secondThirdRow.q0202" (ngModelChange)="setCheck(q0202)">Adjust the 2<sup>nd</sup> row seat glide lever to experience the full 2.63" range of 2<sup>nd</sup>-row adjustability.</mat-checkbox>
+
+            <div class="form-group">
+              <label for="q0203">Where is your “sweet spot" for overall comfort?</label>
+              <textarea class="form-control" id="q0203" rows="2" placeholder="Write something here..." name="q0203" #q0203="ngModel" [(ngModel)]="secondThirdRow.q0203" (ngModelChange)="setText(q0203)"(blur)="setTextBlur(q0203)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q0204">How does the combination of 2<sup>nd</sup> row legroom and slide adjustment benefit 3<sup>rd</sup> row passengers too?</label>
+              <textarea class="form-control" id="q0204" rows="2" placeholder="Write something here..." name="q0204" #q0204="ngModel" [(ngModel)]="secondThirdRow.q0204" (ngModelChange)="setText(q0204)"(blur)="setTextBlur(q0204)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel03" (opened)="scroll('panel03')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            Outstanding Footwell Room 
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/second-third-row-generous-footwell-room.jpg" width="100%" alt="Generous Footwell Room">
+
+            <p>Legroom is great, but to many, footwell room is the <em>difference maker</em>.</p>
+
+            <div class="form-group">
+              <label>Observe the foot well room on Telluride vs. the competitor.</label>
+              <mat-radio-group name="q0301" #q0301="ngModel" [(ngModel)]="exterior.q0301" (ngModelChange)="setRadio(q0301)">
+                <mat-radio-button value="Win">Win</mat-radio-button>
+                <mat-radio-button value="Lose">Lose</mat-radio-button>
+                <mat-radio-button value="Draw">Draw?</mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+            <div class="form-group">
+              <label for="q0302">How does footwell room affect comfort on a long trip?</label>
+              <textarea class="form-control" id="q0302" rows="2" placeholder="Write something here..." name="q0302" #q0302="ngModel" [(ngModel)]="secondThirdRow.q0302" (ngModelChange)="setText(q0302)"(blur)="setTextBlur(q0302)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+
+        <h4>2<sup>nd</sup> Row “Surprise and Delight” Features</h4>
+
+        <p>Kia user experience (UX) engineers responded to several “unmet needs” identified within the midsize SUV segment. We call these “surprise and delight” features&mdash;and Telluride is loaded with them!</p>
+
+        <mat-expansion-panel id="panel04" (opened)="scroll('panel04')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            2<sup>nd</sup> Row Ventilated Captain’s Seats (SX Prestige)
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/second-third-row-heated-ventilated-seats.jpg" width="100%" alt="2nd Row Heated / Ventilated Seats (SX w/ Prestige Package)">
+
+            <mat-checkbox name="q0401" #q0401="ngModel" [(ngModel)]="secondThirdRow.q0401" (ngModelChange)="setCheck(q0401)">A Kia first&mdash;and a segment exclusive!</mat-checkbox>
+
+            <mat-checkbox name="q0402" #q0402="ngModel" [(ngModel)]="secondThirdRow.q0402" (ngModelChange)="setCheck(q0402)">Put the ventilated 2<sup>nd</sup> row captain’s chair to the test (SX w/ Prestige Package).</mat-checkbox>
+
+            <mat-checkbox name="q0403" #q0403="ngModel" [(ngModel)]="secondThirdRow.q0403" (ngModelChange)="setCheck(q0403)">Note its comfort and overall adjustability.</mat-checkbox>
+
+            <div class="form-group">
+              <label for="q0404">Repeat with the competitor: Win, Lose, or Draw? Discuss.</label>
+              <textarea class="form-control" id="q0404" rows="2" placeholder="Write something here..." name="q0404" #q0404="ngModel" [(ngModel)]="secondThirdRow.q0404" (ngModelChange)="setText(q0404)"(blur)="setTextBlur(q0404)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel05" (opened)="scroll('panel05')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            Mobile Pocket / USB Terminals
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/second-third-row-phone-pocket-usb-port.jpg" width="100%" alt="Mobile Pocket & USB Port">
+
+            <p>Mobile device charging is a significant buying factor for many modern active families. In response, the Telluride design team developed some extremely clever charging capabilities. Here are a few your “power users” will surely love...</p>
+
+            <div class="form-group">
+              <label for="q0501">What is unique about the USB terminal placement on the Telluride?</label>
+              <textarea class="form-control" id="q0501" rows="2" placeholder="Write something here..." name="q0501" #q0501="ngModel" [(ngModel)]="secondThirdRow.q0501" (ngModelChange)="setText(q0501)"(blur)="setTextBlur(q0501)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q0502">Where are the 2<sup>nd</sup> row USB terminals positioned on our competitors?</label>
+              <textarea class="form-control" id="q0502" rows="2" placeholder="Write something here..." name="q0502" #q0502="ngModel" [(ngModel)]="secondThirdRow.q0502" (ngModelChange)="setText(q0502)"(blur)="setTextBlur(q0502)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q0503">How does the mobile pocket (on the back of the front-row seat) add to the convenience factor (Hint: There are at least two benefits)?</label>
+              <textarea class="form-control" id="q0503" rows="2" placeholder="Write something here..." name="q0503" #q0503="ngModel" [(ngModel)]="secondThirdRow.q0503" (ngModelChange)="setText(q0503)"(blur)="setTextBlur(q0503)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q0504">In total, how many USB terminals can you find in the Telluride SX Prestige?</label>
+              <textarea class="form-control" id="q0504" rows="2" placeholder="Write something here..." name="q0504" #q0504="ngModel" [(ngModel)]="secondThirdRow.q0504" (ngModelChange)="setText(q0504)"(blur)="setTextBlur(q0504)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q0505">How many in the competitor?</label>
+              <textarea class="form-control" id="q0505" rows="2" placeholder="Write something here..." name="q0505" #q0505="ngModel" [(ngModel)]="secondThirdRow.q0505" (ngModelChange)="setText(q0505)"(blur)="setTextBlur(q0505)"></textarea>
+            </div>
+
+            <mat-checkbox name="q0506" #q0506="ngModel" [(ngModel)]="secondThirdRow.q0506" (ngModelChange)="setCheck(q0506)">With your partner, demonstrate how you could involve a customer when presenting this “gotta have it” feature.</mat-checkbox>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel06" (opened)="scroll('panel06')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            Shopping Hooks
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/second-third-row-hooks.jpg" width="100%" alt="Hooks (Back of Front-Row Seats">
+
+            <p>What are the hooks on the back of the front seat for?</p>
+
+            <mat-checkbox name="q0601" #q0601="ngModel" [(ngModel)]="secondThirdRow.q0601" (ngModelChange)="setCheck(q0601)">Use the shopping bag provided and test out the hook for yourself.</mat-checkbox>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel07" (opened)="scroll('panel07')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            Rear Cup Holder
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/second-third-row-rear-cup-holders.jpg" width="100%" alt="Rear Cup Holders">
+
+            <p>Get familiar with the rear cup holders located on the first row sliding tray.</p>
+
+            <div class="form-group">
+              <label for="q0701">Including this pair, how many cupholders can you count?</label>
+              <textarea class="form-control" id="q0701" rows="2" placeholder="Write something here..." name="q0701" #q0701="ngModel" [(ngModel)]="secondThirdRow.q0701" (ngModelChange)="setText(q0701)"(blur)="setTextBlur(q0701)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q0702">Are there any varying dimensions?</label>
+              <textarea class="form-control" id="q0702" rows="2" placeholder="Write something here..." name="q0702" #q0702="ngModel" [(ngModel)]="secondThirdRow.q0702" (ngModelChange)="setText(q0702)"(blur)="setTextBlur(q0702)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q0703">How do they rate to the competitor?</label>
+              <textarea class="form-control" id="q0703" rows="2" placeholder="Write something here..." name="q0703" #q0703="ngModel" [(ngModel)]="secondThirdRow.q0703" (ngModelChange)="setText(q0703)"(blur)="setTextBlur(q0703)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel08" (opened)="scroll('panel08')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            Ceiling Mounted Rear Climate Controls (segment first)
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/second-third-row-ceiling-mounted-climate-controls.jpg" width="100%" alt="Ceiling Mounted Rear Climate Controls (segment first)">
+
+            <p>Ceiling mounted climate controls seek to enhance convenience when using the rear cup holders.</p>
+
+            <mat-checkbox name="q0801" #q0801="ngModel" [(ngModel)]="secondThirdRow.q0801" (ngModelChange)="setCheck(q0801)">Get familiar with the climate control console placement and functionality.</mat-checkbox>
+
+            <div class="form-group">
+              <label for="q0802">Compare to the competition. Which system offers easier access?</label>
+              <textarea class="form-control" id="q0802" rows="2" placeholder="Write something here..." name="q0802" #q0802="ngModel" [(ngModel)]="secondThirdRow.q0802" (ngModelChange)="setText(q0802)"(blur)="setTextBlur(q0802)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q0803">With your partner, come up with a story that could help customers visualize the benefit of this segment-first feature. (Thought starter: Imagine a car full of passengers returning home from a shopping mall on a hot afternoon... and everyone has a large drink in their hand!)</label>
+              <textarea class="form-control" id="q0803" rows="2" placeholder="Write something here..." name="q0803" #q0803="ngModel" [(ngModel)]="secondThirdRow.q0803" (ngModelChange)="setText(q0803)"(blur)="setTextBlur(q0803)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel09" (opened)="scroll('panel09')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            Rear Ceiling Vent Diffusers
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/second-third-row-ceiling-vent-diffusers.jpg" width="100%" alt="Rear Ceiling Vent Diffusers (Industry First)">
+
+            <img src="../../../../../assets/images/second-third-row-ceiling-diffuser-action-illustration.jpg" width="100%" alt="increasing the angle of wind (22 -> 38°)">
+
+            <p>Ready for something really <em>cool</em>?</p>
+
+            <mat-checkbox name="q0901" #q0901="ngModel" [(ngModel)]="secondThirdRow.q0901" (ngModelChange)="setCheck(q0901)">Look up at the ceiling and notice the vent diffuser.</mat-checkbox>
+
+            <mat-checkbox name="q0902" #q0902="ngModel" [(ngModel)]="secondThirdRow.q0902" (ngModelChange)="setCheck(q0902)">Look up at the ceiling and notice the vent diffuser.</mat-checkbox>
+
+            <div class="form-group">
+              <label for="q0903">Notice any difference in the vent pressure?</label>
+              <textarea class="form-control" id="q0903" rows="2" placeholder="Write something here..." name="q0903" #q0903="ngModel" [(ngModel)]="secondThirdRow.q0903" (ngModelChange)="setText(q0903)"(blur)="setTextBlur(q0903)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q0904">What is the core benefit of <strong><em>diffusing</em></strong> the climate control ventilation?</label>
+              <textarea class="form-control" id="q0904" rows="2" placeholder="Write something here..." name="q0904" #q0904="ngModel" [(ngModel)]="secondThirdRow.q0904" (ngModelChange)="setText(q0904)"(blur)="setTextBlur(q0904)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q0905">What kind of usage story can you come up with that may connect with a customer? Discuss with your partner and record/jot down a few thought starters.</label>
+              <textarea class="form-control" id="q0905" rows="2" placeholder="Write something here..." name="q0905" #q0905="ngModel" [(ngModel)]="secondThirdRow.q0905" (ngModelChange)="setText(q0905)"(blur)="setTextBlur(q0905)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+
+        <h4>3<sup>rd</sup> Row: Thoughtful Access. Exceptional Convenience.</h4>
+
+        <img src="../../../../../assets/images/second-third-row-access.jpg" width="100%" alt="3rd Row (6-footers Welcome!)">
+
+        <p>The 3<sup>rd</sup> row is no longer afterthought. Midsize customers expect a 3<sup>rd</sup> row that is spacious, inviting, and easy to get in and out of. As you’ll see, Telluride has come to play, introducing many new-to-segment features that up the ante.</p>
+
+        <p>Challenge: As you explore these features, make a point to discuss this question: “How can you involve the customer in the presentation vs. doing all the work yourself?”</p>
+
+        <mat-expansion-panel id="panel10" (opened)="scroll('panel10')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            One-touch Entry Exit 2<sup>nd</sup> Row (standard)
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/second-third-row-one-touch-entry-seating.jpg" width="100%" alt="One-touch Entry Exit 2nd Row (standard)">
+
+            <p>Passengers of any age will love the electro-mechanically actuated one-touch sliding second row.</p>
+
+            <mat-checkbox name="q1001" #q1001="ngModel" [(ngModel)]="secondThirdRow.q1001" (ngModelChange)="setCheck(q1001)">Test out both sides... and both buttons (side of 2<sup>nd</sup> row seat, back of 2<sup>nd</sup> row seat)</mat-checkbox>
+
+            <div class="form-group">
+              <label for="q1002">Compare this experience to the competitor. What are your thoughts?</label>
+              <textarea class="form-control" id="q1002" rows="2" placeholder="Write something here..." name="q1002" #q1002="ngModel" [(ngModel)]="secondThirdRow.q1002" (ngModelChange)="setText(q1002)"(blur)="setTextBlur(q1002)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel11" (opened)="scroll('panel11')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            Molded Door Sill Assist Step
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/second-third-row-molded-door-sill-assist.jpg" width="100%" alt="Molded Door Sill Assist">
+
+            <mat-checkbox name="q1101" #q1101="ngModel" [(ngModel)]="secondThirdRow.q1101" (ngModelChange)="setCheck(q1101)">A thoughtful segment first</mat-checkbox>
+
+            <mat-checkbox name="q1102" #q1102="ngModel" [(ngModel)]="secondThirdRow.q1102" (ngModelChange)="setCheck(q1102)">Plant your foot on the extra-wide step</mat-checkbox>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel12" (opened)="scroll('panel12')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            Entry/Exit Assist Handles
+          </mat-expansion-panel-header>
+
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/second-third-row-entry-exit-handles.jpg" width="100%" alt="3rd Row Entry/Exit Assist Handles">
+
+            <p>Here’s something you don’t see every day: 3<sup>rd</sup>-row entry and exit assist handles! Just another thought “surprise and delight” feature introduced by the Kia user experience team!</p>
+
+            <mat-checkbox name="q1201" #q1201="ngModel" [(ngModel)]="secondThirdRow.q1201" (ngModelChange)="setCheck(q1201)">Locate each and put them to the test, entering and exiting the Telluride 3<sup>rd</sup> row.</mat-checkbox>
+
+            <div class="form-group">
+              <label for="q1202">Repeat this process in the competitor. Which is easier?</label>
+              <textarea class="form-control" id="q1202" rows="2" placeholder="Write something here..." name="q1202" #q1202="ngModel" [(ngModel)]="secondThirdRow.q1202" (ngModelChange)="setText(q1202)"(blur)="setTextBlur(q1202)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel13" (opened)="scroll('panel13')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            3<sup>rd</sup> Row Entry / Exit &ndash; Putting It All Together
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <!--
+            <img src="../../../../../assets/images/second-third-row-blind-spot-view-monitor-camera.jpg" width="100%" alt="Blind Spot View Monitor">
+            -->
+
+            <p>Now, how might you coach a customer through this experience?</p>
+
+            <div class="form-group">
+              <label for="q1301">Practice with your partners to come up with a “dialed in” approach.</label>
+              <textarea class="form-control" id="q1301" rows="2" placeholder="Write something here..." name="q1301" #q1301="ngModel" [(ngModel)]="secondThirdRow.q1301" (ngModelChange)="setText(q1301)"(blur)="setTextBlur(q1301)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel14" (opened)="scroll('panel14')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            Reclining 3<sup>rd</sup> Row Seat (Kia SUV First)
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <!--
+            <img src="../../../../../assets/images/second-third-row-rear-occupant-alert.jpg" width="100%" alt="Rear Occupant Alert">
+            -->
+
+            <p>Telluride delivers the first-ever reclining 3<sup>rd</sup>-row seat in a Kia SUV.</p>
+  
+            <mat-checkbox name="q1401" #q1401="ngModel" [(ngModel)]="secondThirdRow.q1401" (ngModelChange)="setCheck(q1401)">Try it out</mat-checkbox>
+
+            <div class="form-group">
+              <label for="q1402">How do you think this feature will aid in overall comfort?</label>
+              <textarea class="form-control" id="q1402" rows="2" placeholder="Write something here..." name="q1402" #q1402="ngModel" [(ngModel)]="secondThirdRow.q1402" (ngModelChange)="setText(q1402)"(blur)="setTextBlur(q1402)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel15" (opened)="scroll('panel15')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            Extremely Competitive 3<sup>rd</sup> Row Space
+          </mat-expansion-panel-header>
+
+          <ng-template matExpansionPanelContent>
+            <!--
+            <img src="../../../../../assets/images/second-third-row-safe-exit-assist.jpg" width="100%" alt="Safe Exit Assist">
+            -->
+
+            <p>When seated, the Telluride’s third-row accommodations are extremely competitive (and arguably best-in-class), even for 6 feet tall adults. Here’s some key data...</p>
+
+            <p>3<sup>rd</sup> Row Leg Room</p>
+
+            <mat-checkbox name="q1501" #q1501="ngModel" [(ngModel)]="secondThirdRow.q1501" (ngModelChange)="setCheck(q1501)">33.15" Explorer</mat-checkbox>
+
+            <mat-checkbox name="q1502" #q1502="ngModel" [(ngModel)]="secondThirdRow.q1502" (ngModelChange)="setCheck(q1502)">31.42" Telluride</mat-checkbox>
+
+            <mat-checkbox name="q1503" #q1503="ngModel" [(ngModel)]="secondThirdRow.q1503" (ngModelChange)="setCheck(q1503)">29.92" Pilot</mat-checkbox>
+
+            <mat-checkbox name="q1504" #q1504="ngModel" [(ngModel)]="secondThirdRow.q1504" (ngModelChange)="setCheck(q1504)">27.72" Highlander</mat-checkbox>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel16" (opened)="scroll('panel16')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            Beyond the Numbers: Effective 3<sup>rd</sup> Row Comfort
+          </mat-expansion-panel-header>
+
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/second-third-row-effective-third-row-comfort.jpg" width="100%" alt="3rd-Row Comfort Analysis">
+
+            <p>Sure, Ford Explorer has a 3<sup>rd</sup>-row legroom advantage, however, did you know that Telluride can more comfortably accommodate taller passengers? Here’s what Kia marketing found out during its testing.</p>
+
+            <mat-checkbox name="q1601" #q1601="ngModel" [(ngModel)]="secondThirdRow.q1601" (ngModelChange)="setCheck(q1601)">It’s true, Telluride has 1.61" of additional headroom at the most common “2 step” seat recline configuration.</mat-checkbox>
+
+            <mat-checkbox name="q1602" #q1602="ngModel" [(ngModel)]="secondThirdRow.q1602" (ngModelChange)="setCheck(q1602)">In real-world testing, this allows Telluride to overcome Explorer’s 3<sup>rd</sup> row leg room advantage and offer greater overall comfort for taller 3<sup>rd</sup> row passengers.</mat-checkbox>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel17" (opened)="scroll('panel17')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            “6 x 3” Challenge
+          </mat-expansion-panel-header>
+
+          <ng-template matExpansionPanelContent>
+            <p>Three 6' tall adults can be comfortably seated in all 3 rows at the same time, making Telluride perfect for growing and active families.</p>
+
+            <mat-checkbox name="q1701" #q1701="ngModel" [(ngModel)]="secondThirdRow.q1701" (ngModelChange)="setCheck(q1701)">Try to repeat this process with your group (you may need some cooperation from another team. Ask nicely!)</mat-checkbox>
+
+            <div class="form-group">
+              <label for="q1702">How can you help your customers experience this claim during a presentation?</label>
+              <textarea class="form-control" id="q1702" rows="2" placeholder="Write something here..." name="q1702" #q1702="ngModel" [(ngModel)]="secondThirdRow.q1702" (ngModelChange)="setText(q1702)"(blur)="setTextBlur(q1702)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel18" (opened)="scroll('panel18')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            USB Charger (Best In Class) / Side Tray / Armrest Combo
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/second-third-row-usb-armrest.jpg" width="100%" alt="3rd-Row USB Charger (Best in Class) / Side Tray / Armrest Combo">
+
+            <mat-checkbox name="q1801" #q1801="ngModel" [(ngModel)]="secondThirdRow.q1801" (ngModelChange)="setCheck(q1801)">Note the design and function of the 3<sup>rd</sup> row USB charger.</mat-checkbox>
+
+            <mat-checkbox name="q1802" #q1802="ngModel" [(ngModel)]="secondThirdRow.q1802" (ngModelChange)="setCheck(q1802)">Check out the side tray and armrest while you’re at it.</mat-checkbox>
+
+            <div class="form-group">
+              <label for="q1803">How does this stack up with the featured competitor?</label>
+              <textarea class="form-control" id="q1803" rows="2" placeholder="Write something here..." name="q1803" #q1803="ngModel" [(ngModel)]="secondThirdRow.q1803" (ngModelChange)="setText(q1803)"(blur)="setTextBlur(q1803)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q1804">How many devices can be charged in the 3<sup>rd</sup> row? How many in total?</label>
+              <textarea class="form-control" id="q1804" rows="2" placeholder="Write something here..." name="q1804" #q1804="ngModel" [(ngModel)]="secondThirdRow.q1804" (ngModelChange)="setText(q1804)"(blur)="setTextBlur(q1804)"></textarea>
+            </div>
+
+            <mat-checkbox name="q1805" #q1805="ngModel" [(ngModel)]="secondThirdRow.q1805" (ngModelChange)="setCheck(q1805)">Confused? Use the diagram to locate all USB ports.</mat-checkbox>
+
+            <img src="../../../../../assets/images/second-third-row-usb-ports-overhead.jpg" width="100%" alt="USB Ports Overhead">
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel19" (opened)="scroll('panel19')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            3<sup>rd</sup> Row: Putting It All Together
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <div class="form-group">
+              <label for="q1901">Overall, how does this 3<sup>rd</sup> row stack up with your featured competitor?</label>
+              <textarea class="form-control" id="q1901" rows="2" placeholder="Write something here..." name="q1901" #q1901="ngModel" [(ngModel)]="secondThirdRow.q1901" (ngModelChange)="setText(q1901)"(blur)="setTextBlur(q1901)"></textarea>
+            </div>
+
+            <p>Work with your partner to summarize these key elements?</p>
+
+            <div class="form-group">
+              <label for="q1902">Spaciousness</label>
+              <textarea class="form-control" id="q1902" rows="2" placeholder="Write something here..." name="q1902" #q1902="ngModel" [(ngModel)]="secondThirdRow.q1902" (ngModelChange)="setText(q1902)"(blur)="setTextBlur(q1902)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q1903">Accommodations</label>
+              <textarea class="form-control" id="q1903" rows="2" placeholder="Write something here..." name="q1903" #q1903="ngModel" [(ngModel)]="secondThirdRow.q1903" (ngModelChange)="setText(q1903)"(blur)="setTextBlur(q1903)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+
+        <h4>Congratulations!</h4>
+  
+        <p>You’ve completed your 2<sup>nd</sup> and 3<sup>rd</sup> Row Explorations and Comparisons. Rotate to the <a routerLink="/its-on/hands-on-comparison/cargo">Rear / Cargo</a> section...</p>
+      </mat-accordion>
+
+      <div class="errorMsg" [@topDown]="true" *ngIf="error.length">
+        <p>{{ error }}</p>
+      </div>
+    </div>
+  </section>
+  
