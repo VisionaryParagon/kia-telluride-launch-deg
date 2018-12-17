@@ -336,9 +336,14 @@ form.quiz {
   }
 
   &.large {
-    padding: 2rem 0;
+    font-size: 18px;
+    padding: 2rem 1rem;
     text-transform: none;
     width: 100%;
+
+    span {
+      font-size: 14px;
+    }
   }
 
   &.dialog {
