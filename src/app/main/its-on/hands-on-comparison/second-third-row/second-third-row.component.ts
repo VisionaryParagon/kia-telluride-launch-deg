@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { CookieService } from 'ngx-cookie';
 
-import { User, DeepDive, SecondThirdRowData } from '../../../../services/classes';
+import { User, DeepDive, DeepDiveData } from '../../../../services/classes';
 import { UserService } from '../../../../services/user.service';
 
 import { FadeAnimation } from '../../../../animations';
@@ -16,7 +16,7 @@ import { FadeAnimation } from '../../../../animations';
 export class SecondThirdRowComponent implements OnInit {
   user: User = this.userService.getCurrentUser();
   userId: string = this.cookieService.get('userId');
-  secondThirdRow: SecondThirdRowData;
+  secondThirdRow: DeepDiveData;
   dataReady = false;
   fiver = 5;
   tenner = 10;
@@ -48,7 +48,7 @@ export class SecondThirdRowComponent implements OnInit {
     if (!this.user.deepDive) {
       this.user.deepDive = new DeepDive();
     } else if (!this.user.deepDive.secondThirdRow) {
-      this.user.deepDive.secondThirdRow = new SecondThirdRowData();
+      this.user.deepDive.secondThirdRow = new DeepDiveData();
     }
 
     this.secondThirdRow = {...this.user.deepDive.secondThirdRow};

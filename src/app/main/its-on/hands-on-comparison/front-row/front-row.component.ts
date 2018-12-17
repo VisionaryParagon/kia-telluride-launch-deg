@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { CookieService } from 'ngx-cookie';
 
-import { User, DeepDive, FrontRowData } from '../../../../services/classes';
+import { User, DeepDive, DeepDiveData } from '../../../../services/classes';
 import { UserService } from '../../../../services/user.service';
 
 import { FadeAnimation } from '../../../../animations';
@@ -16,7 +16,7 @@ import { FadeAnimation } from '../../../../animations';
 export class FrontRowComponent implements OnInit {
   user: User = this.userService.getCurrentUser();
   userId: string = this.cookieService.get('userId');
-  frontRow: FrontRowData;
+  frontRow: DeepDiveData;
   dataReady = false;
   fiver = 5;
   tenner = 10;
@@ -48,7 +48,7 @@ export class FrontRowComponent implements OnInit {
     if (!this.user.deepDive) {
       this.user.deepDive = new DeepDive();
     } else if (!this.user.deepDive.frontRow) {
-      this.user.deepDive.frontRow = new FrontRowData();
+      this.user.deepDive.frontRow = new DeepDiveData();
     }
 
     this.frontRow = {...this.user.deepDive.frontRow};
