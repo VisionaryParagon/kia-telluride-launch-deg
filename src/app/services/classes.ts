@@ -204,6 +204,11 @@ export class DeepDiveData {
   q1108: boolean | string;
   q1109: boolean | string;
   q1110: boolean | string;
+  q1111: boolean | string;
+  q1112: boolean | string;
+  q1113: boolean | string;
+  q1114: boolean | string;
+  q1115: boolean | string;
   q1201: boolean | string;
   q1202: boolean | string;
   q1203: boolean | string;

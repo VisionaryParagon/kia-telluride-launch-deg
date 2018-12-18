@@ -1,3 +1,355 @@
-<p>
-  cargo works!
-</p>
+<section [@fade]="true">
+    <img src="../../../../../assets/images/cargo-main-header.jpg" width="100%" alt="Rear / Cargo (Standout Capability / Class-Leading Capacity)">
+
+    <div class="container">
+      <p>As Kia’s flagship SUV, Telluride is designed to keep pace with today’s active families. In this exploration section, you’ll get familiar with Telluride’s class-leading cargo capacity, clever storage and functional solutions, and authentic SUV capability. We’ll start from the outside and work our way inward...</p>
+
+      <h4>Exterior Showcase Features</h4>
+
+      <div class="container py-5" *ngIf="!dataReady && !error.length">
+        <mat-spinner class="mx-auto my-5"></mat-spinner>
+      </div>
+
+      <mat-accordion *ngIf="dataReady && !error.length">
+        <mat-expansion-panel id="panel01" (opened)="scroll('panel01')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            Towing Package (N/A on LX, available on all other grades)
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/cargo-self-leveling-suspension.jpg" width="100%" alt="Self-Leveling Suspension">
+
+            <p>The available Towing Package comes witha Class III towing hitch and a self-leveling suspension, making it easy for owners to enjoy the standard 5,000-lb. towing capacity.</p>
+
+            <div class="form-group">
+              <label for="q0101">Does the model you’re looking at have the towing package?(Hint: do you have tow hitch?)</label>
+              <textarea class="form-control" id="q0101" rows="2" placeholder="Write something here..." name="q0101" #q0101="ngModel" [(ngModel)]="cargo.q0101" (ngModelChange)="setText(q0101)"(blur)="setTextBlur(q0101)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q0102">How would the self-leveling suspension help to improve overall safety when towing a boat or trailer? (Explain why to your partner.)</label>
+              <textarea class="form-control" id="q0102" rows="2" placeholder="Write something here..." name="q0102" #q0102="ngModel" [(ngModel)]="cargo.q0102" (ngModelChange)="setText(q0102)"(blur)="setTextBlur(q0102)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel02" (opened)="scroll('panel02')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            Smart Power Tailgate (included, EX and above)
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/cargo-smart-power-tailgate.jpg" width="100%" alt="Smart Power Tailgate">
+
+            <p>Telluride’s Smart Power Tailgate can be activated four ways. Try your hand at several of these...</p>
+
+            <mat-checkbox name="q0201" #q0201="ngModel" [(ngModel)]="cargo.q0201" (ngModelChange)="setCheck(q0201)">The “Smart” Way: Stand next to the rear of the vehicle with the fob > hear <strong>3 slow beeps</strong> then 3 quick beeps > then it opens. Press liftgate button to the right of the latch to close the liftgate.</mat-checkbox>
+
+            <mat-checkbox name="q0202" #q0202="ngModel" [(ngModel)]="cargo.q0202" (ngModelChange)="setCheck(q0202)">Key Fob: Press and hold the button on the Smart Key fob until you hear a beep.</mat-checkbox>
+
+            <mat-checkbox name="q0203" #q0203="ngModel" [(ngModel)]="cargo.q0203" (ngModelChange)="setCheck(q0203)">Driver’s Seat: Press the liftgate button on the dash to the left of the steering wheel.  Can be closed this way also.</mat-checkbox>
+
+            <mat-checkbox name="q0204" #q0204="ngModel" [(ngModel)]="cargo.q0204" (ngModelChange)="setCheck(q0204)">Old School: The liftgate can also be operated manually.</mat-checkbox>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel03" (opened)="scroll('panel03')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            Liftgate Height + Speed Adjustability
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/cargo-tailgate-height-adjustability.jpg" width="100%" alt="Tailgate Height Adjustability">
+
+            <mat-checkbox name="q0301" #q0301="ngModel" [(ngModel)]="cargo.q0301" (ngModelChange)="setCheck(q0301)">Height adjustment: Can you adjust the Tailgate height? (Hint: Manually adjust the height > Hold liftgate button ON the liftgate until you hear an audible tone)</mat-checkbox>
+
+            <mat-checkbox name="q0302" #q0302="ngModel" [(ngModel)]="cargo.q0302" (ngModelChange)="setCheck(q0302)">Speed adjustment: Can you adjust the <strong>speed</strong> between Normal (6.0 sec) and Fast (4.5 sec)? (Hint: Use the Driver Information Center + Steering Wheel controls)</mat-checkbox>
+
+            <div class="form-group">
+              <label for="q0303">Customer engagement challenge: How would you coach a customer through these actions vs. having them watch YOU demo them?</label>
+              <textarea class="form-control" id="q0303" rows="2" placeholder="Write something here..." name="q0303" #q0303="ngModel" [(ngModel)]="cargo.q0303" (ngModelChange)="setText(q0303)"(blur)="setTextBlur(q0303)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q0304">Sales challenge: Think of 2-3 real-world scenarios where this feature would come in handy for our target customers.</label>
+              <textarea class="form-control" id="q0304" rows="2" placeholder="Write something here..." name="q0304" #q0304="ngModel" [(ngModel)]="cargo.q0304" (ngModelChange)="setText(q0304)"(blur)="setTextBlur(q0304)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+
+        <h4>Best-In-Class Cargo Capacity</h4>
+
+        <img src="../../../../../assets/images/cargo-capacity.gif" width="100%" alt="Best-In-Class Cargo Capacity">
+
+        <ul>
+          <li>Midsize SUV customers won’t be caught dead in a minivan... but they often need to use their SUV like a minivan.</li>
+          <li>This means they are toting a lot of people... or a lot of stuff... and sometimes, a lot of people AND stuff! It’s cool.</li>
+          <li>Telluride has your back. With a class-leading 21 cubic feet of storage space behind the 3<sup>rd</sup> row, Telluride has come to play. Here are some features that support this story...</li>
+        </ul>
+
+        <mat-expansion-panel id="panel04" (opened)="scroll('panel04')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            What’s a Cubic Foot?
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <p>In the US, storage capacity is measured in cubic feet. Here are a couple of images to help you visualize the significance of this measurement as it pertains to cargo storage.</p>
+
+            <img src="../../../../../assets/images/cargo-cubic-foot-illustration.jpg" width="100%" alt="Examples of one cubic foot">
+
+            <div class="form-group">
+              <label for="q0401">What types of items do you think most closely match up with the illustrations?</label>
+              <textarea class="form-control" id="q0401" rows="2" placeholder="Write something here..." name="q0401" #q0401="ngModel" [(ngModel)]="cargo.q0401" (ngModelChange)="setText(q0401)"(blur)="setTextBlur(q0401)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel05" (opened)="scroll('panel05')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            Two-Step Luggage Board: Intro
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/cargo-two-step-luggage-board.jpg" width="100%" alt="Two-Step Luggage Board">
+
+            <p>The two-step luggage board allows the Telluride cargo area to “shape shift” in seconds, providing outstanding flexibility for active families.</p>
+
+            <mat-checkbox name="q0501" #q0501="ngModel" [(ngModel)]="cargo.q0501" (ngModelChange)="setCheck(q0501)">Work with your partner to complete all three luggage board configurations.</mat-checkbox>
+
+            <div class="form-group">
+              <label for="q0502">Identify a “day in the life” usecase for each position.</label>
+              <textarea class="form-control" id="q0502" rows="2" placeholder="Write something here..." name="q0502" #q0502="ngModel" [(ngModel)]="cargo.q0502" (ngModelChange)="setText(q0502)"(blur)="setTextBlur(q0502)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q0503">How would you coach a customer so that THEY experience this useful feature?</label>
+              <textarea class="form-control" id="q0503" rows="2" placeholder="Write something here..." name="q0503" #q0503="ngModel" [(ngModel)]="cargo.q0503" (ngModelChange)="setText(q0503)"(blur)="setTextBlur(q0503)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q0504">How does our luggage board solution stack up to the featured competitor?</label>
+              <textarea class="form-control" id="q0504" rows="2" placeholder="Write something here..." name="q0504" #q0504="ngModel" [(ngModel)]="cargo.q0504" (ngModelChange)="setText(q0504)"(blur)="setTextBlur(q0504)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+
+        <h4>Storage Exercises</h4>
+
+        <mat-expansion-panel id="panel06" (opened)="scroll('panel06')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            21 cu. ft. Behind 3<sup>rd</sup> Row
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <p>Move the two-step luggage board to the bottom position. When you want to showcase the full 21 cu. ft. of storage behind the 3<sup>rd</sup> row, this is how you do it.</p>
+
+            <img src="../../../../../assets/images/cargo-behind-3rd-row.jpg" width="100%" alt="Cargo Behind 3rd Row (21 cu. ft. capacity)">
+
+            <img src="../../../../../assets/images/cargo-3rd-row-cargo-comps-raw.jpg" width="100%" alt="Large space behind 3rd seat, board bottom">
+
+            <p>Now you’ve got all 21 cubic feet to work with. Here’s a couple of real-world combinations that are great stories to share with customers. Work together to create a quick selling story for each scenario.</p>
+
+            <div class="form-group">
+              <label for="q0601">100 qt. Cooler. + Backpack + Baby Carriage</label>
+              <textarea class="form-control" id="q0601" rows="2" placeholder="Write something here..." name="q0601" #q0601="ngModel" [(ngModel)]="cargo.q0601" (ngModelChange)="setText(q0601)"(blur)="setTextBlur(q0601)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q0602">28" Suitcases (qty. 2): Yep, those are checked bags, not carry-on luggage</label>
+              <textarea class="form-control" id="q0602" rows="2" placeholder="Write something here..." name="q0602" #q0602="ngModel" [(ngModel)]="cargo.q0602" (ngModelChange)="setText(q0602)"(blur)="setTextBlur(q0602)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q0603">How does this space compare to the competitor?</label>
+              <textarea class="form-control" id="q0603" rows="2" placeholder="Write something here..." name="q0603" #q0603="ngModel" [(ngModel)]="cargo.q0603" (ngModelChange)="setText(q0603)"(blur)="setTextBlur(q0603)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel07" (opened)="scroll('panel07')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            46 cu. ft. Behind 2<sup>nd</sup> Row
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/cargo-behind-2nd-row.jpg" width="100%" alt="Cargo Behind 2nd Row (46 cu. ft. capacity)">
+
+            <div class="form-group">
+              <label for="q0701">Work with a partner to fold the 3<sup>rd</sup> row flat. Are there any unique features that make this process family friendly?</label>
+              <textarea class="form-control" id="q0701" rows="2" placeholder="Write something here..." name="q0701" #q0701="ngModel" [(ngModel)]="cargo.q0701" (ngModelChange)="setText(q0701)"(blur)="setTextBlur(q0701)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q0702">How would you coach a customer through this process?</label>
+              <textarea class="form-control" id="q0702" rows="2" placeholder="Write something here..." name="q0702" #q0702="ngModel" [(ngModel)]="cargo.q0702" (ngModelChange)="setText(q0702)"(blur)="setTextBlur(q0702)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q0703">Compare to the competition. Any impressions?</label>
+              <textarea class="form-control" id="q0703" rows="2" placeholder="Write something here..." name="q0703" #q0703="ngModel" [(ngModel)]="cargo.q0703" (ngModelChange)="setText(q0703)"(blur)="setTextBlur(q0703)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel08" (opened)="scroll('panel08')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            87 cu. ft. Behind 1st Row
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/cargo-behind-1st-row.jpg" width="100%" alt="Cargo Behind 1st Row (87 cu. ft. capacity)">
+
+            <mat-checkbox name="q0801" #q0801="ngModel" [(ngModel)]="cargo.q0801" (ngModelChange)="setCheck(q0801)">Find and activate the 2<sup>nd</sup> Row Fold-Flat Controls (Driver-Side 3<sup>rd</sup> Row Panel). If safe to do so, fold both 2<sup>nd</sup> row seats flat</mat-checkbox>
+
+            <div class="form-group">
+              <label for="q0802">What are your impressions of the overall usable space? Is this an “IKEA friendly” space?</label>
+              <textarea class="form-control" id="q0802" rows="2" placeholder="Write something here..." name="q0802" #q0802="ngModel" [(ngModel)]="cargo.q0802" (ngModelChange)="setText(q0802)"(blur)="setTextBlur(q0802)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q0803">How wide is the cargo floor between the wheel wells? What is significant about this dimension?</label>
+              <textarea class="form-control" id="q0803" rows="2" placeholder="Write something here..." name="q0803" #q0803="ngModel" [(ngModel)]="cargo.q0803" (ngModelChange)="setText(q0803)"(blur)="setTextBlur(q0803)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel09" (opened)="scroll('panel09')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            Reset It All Up!
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <img src="../../../../../assets/images/cargo-power-fold-flat-2nd-row-seat-controls.jpg" width="100%" alt="Power 2nd Row Seats Fold-Flat Controls">
+
+            <mat-checkbox name="q0901" #q0901="ngModel" [(ngModel)]="cargo.q0901" (ngModelChange)="setCheck(q0901)">Use the Power 2<sup>nd</sup> Row Fold-Flat Controls to reset the 2<sup>nd</sup> row seats</mat-checkbox>
+
+            <mat-checkbox name="q0902" #q0902="ngModel" [(ngModel)]="cargo.q0902" (ngModelChange)="setCheck(q0902)">Reset the 3<sup>rd</sup> Seats</mat-checkbox>
+
+            <div class="form-group">
+              <label for="q0903">How easy is the process?</label>
+              <textarea class="form-control" id="q0903" rows="2" placeholder="Write something here..." name="q0903" #q0903="ngModel" [(ngModel)]="cargo.q0903" (ngModelChange)="setText(q0903)"(blur)="setTextBlur(q0903)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q0904">How would you coach a customer through this process during a presentation?</label>
+              <textarea class="form-control" id="q0904" rows="2" placeholder="Write something here..." name="q0904" #q0904="ngModel" [(ngModel)]="cargo.q0904" (ngModelChange)="setText(q0904)"(blur)="setTextBlur(q0904)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q0905">What stories can you use to help customers see the value of all of this flexibility?</label>
+              <textarea class="form-control" id="q0905" rows="2" placeholder="Write something here..." name="q0905" #q0905="ngModel" [(ngModel)]="cargo.q0905" (ngModelChange)="setText(q0905)"(blur)="setTextBlur(q0905)"></textarea>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+
+        <h4>ADAS Touchpoint Tour</h4>
+
+        <p>Telluride introduces the mid-size SUV segment’s most comprehensive <strong>standard</strong> suite of advanced driver assistance systems (ADAS). Take a look around the Telluride and see if you can identify the various <strong>external</strong> sensing systems that power a wide range of ADAS features.</p>
+
+        <mat-expansion-panel id="panel10" (opened)="scroll('panel10')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            Exterior ADAS Systems Overview
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <p>While ADAS is integrated throughout the vehicle, the exterior ADAS sensors play a vital part in detecting objects in real-time. Can you spot each of these sensors?</p>
+
+            <mat-checkbox name="q1001" #q1001="ngModel" [(ngModel)]="cargo.q1001" (ngModelChange)="setCheck(q1001)">Radar (see front/rear bumpers): Radar uses <strong>radio waves</strong> to measure the presence and distance of objects.</mat-checkbox>
+
+            <mat-checkbox name="q1002" #q1002="ngModel" [(ngModel)]="cargo.q1002" (ngModelChange)="setCheck(q1002)">LiDAR (Light Detection And Ranging radar&mdash;see front windshield) uses a stream of lasers to measure distance, interpret road signs, markings, and support Level 2 semi-autonomous driving.</mat-checkbox>
+
+            <mat-checkbox name="q1003" #q1003="ngModel" [(ngModel)]="cargo.q1003" (ngModelChange)="setCheck(q1003)">Cameras (front grille, rear tailgate, OSRV mirrors): When activated, four cameras offer live video feed of driving conditions. During reverse or low-speed driving, the four cameras are “stitched together” to provide a surround view of the Telluride’s perimeter.</mat-checkbox>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel id="panel11" (opened)="scroll('panel11')">
+          <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+            ADAS External Tour and Discussion
+          </mat-expansion-panel-header>
+  
+          <ng-template matExpansionPanelContent>
+            <p>Work with your partner to see if you can determine which sensors (radar, LiDAR, and/or cameras) work with each of the following ADAS systems:</p>
+
+            <div class="form-group">
+              <label for="q1101">Blind Spot Collision-Avoidance Assist-Rear (BCA-R)*</label>
+              <textarea class="form-control" id="q1101" rows="2" placeholder="Write something here..." name="q1101" #q1101="ngModel" [(ngModel)]="cargo.q1101" (ngModelChange)="setText(q1101)"(blur)="setTextBlur(q1101)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q1102">Blind-Spot View Monitor (BVM)*</label>
+              <textarea class="form-control" id="q1102" rows="2" placeholder="Write something here..." name="q1102" #q1102="ngModel" [(ngModel)]="cargo.q1102" (ngModelChange)="setText(q1102)"(blur)="setTextBlur(q1102)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q1103">Forward Collision Avoidance w/ Pedestrian Detection*</label>
+              <textarea class="form-control" id="q1103" rows="2" placeholder="Write something here..." name="q1103" #q1103="ngModel" [(ngModel)]="cargo.q1103" (ngModelChange)="setText(q1103)"(blur)="setTextBlur(q1103)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q1104">Forward Collision Warning (FCS)*</label>
+              <textarea class="form-control" id="q1104" rows="2" placeholder="Write something here..." name="q1104" #q1104="ngModel" [(ngModel)]="cargo.q1104" (ngModelChange)="setText(q1104)"(blur)="setTextBlur(q1104)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q1105">High Beam Assist*</label>
+              <textarea class="form-control" id="q1105" rows="2" placeholder="Write something here..." name="q1105" #q1105="ngModel" [(ngModel)]="cargo.q1105" (ngModelChange)="setText(q1105)"(blur)="setTextBlur(q1105)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q1106">Highway Driving Assist (HDA) &ndash; SX grade*</label>
+              <textarea class="form-control" id="q1106" rows="2" placeholder="Write something here..." name="q1106" #q1106="ngModel" [(ngModel)]="cargo.q1106" (ngModelChange)="setText(q1106)"(blur)="setTextBlur(q1106)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q1107">Lane Departure Warning (LDW)*</label>
+              <textarea class="form-control" id="q1107" rows="2" placeholder="Write something here..." name="q1107" #q1107="ngModel" [(ngModel)]="cargo.q1107" (ngModelChange)="setText(q1107)"(blur)="setTextBlur(q1107)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q1108">Lane Following Assist (LFA)*</label>
+              <textarea class="form-control" id="q1108" rows="2" placeholder="Write something here..." name="q1108" #q1108="ngModel" [(ngModel)]="cargo.q1108" (ngModelChange)="setText(q1108)"(blur)="setTextBlur(q1108)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q1109">Lane Keeping Assist (LKA)*</label>
+              <textarea class="form-control" id="q1109" rows="2" placeholder="Write something here..." name="q1109" #q1109="ngModel" [(ngModel)]="cargo.q1109" (ngModelChange)="setText(q1109)"(blur)="setTextBlur(q1109)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q1110">Parking Distance Warning &ndash; Reverse (PDW-R)*</label>
+              <textarea class="form-control" id="q1110" rows="2" placeholder="Write something here..." name="q1110" #q1110="ngModel" [(ngModel)]="cargo.q1110" (ngModelChange)="setText(q1110)"(blur)="setTextBlur(q1110)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q1111">Parking Distance Warning &ndash; Forward (PDW-F)*</label>
+              <textarea class="form-control" id="q1111" rows="2" placeholder="Write something here..." name="q1111" #q1111="ngModel" [(ngModel)]="cargo.q1111" (ngModelChange)="setText(q1111)"(blur)="setTextBlur(q1111)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q1112">Rear Cross-Traffic Collision &ndash; Avoidance Assist (RCCA)*</label>
+              <textarea class="form-control" id="q1112" rows="2" placeholder="Write something here..." name="q1112" #q1112="ngModel" [(ngModel)]="cargo.q1112" (ngModelChange)="setText(q1112)"(blur)="setTextBlur(q1112)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q1113">Rear View Monitor &ndash; RVM w/ Parking Guidance-Dynamic*</label>
+              <textarea class="form-control" id="q1113" rows="2" placeholder="Write something here..." name="q1113" #q1113="ngModel" [(ngModel)]="cargo.q1113" (ngModelChange)="setText(q1113)"(blur)="setTextBlur(q1113)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q1114">Smart Cruise Control w/ STOP &amp; GO*</label>
+              <textarea class="form-control" id="q1114" rows="2" placeholder="Write something here..." name="q1114" #q1114="ngModel" [(ngModel)]="cargo.q1114" (ngModelChange)="setText(q1114)"(blur)="setTextBlur(q1114)"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="q1115">Surround View Monitor (SVM)*</label>
+              <textarea class="form-control" id="q1115" rows="2" placeholder="Write something here..." name="q1115" #q1115="ngModel" [(ngModel)]="cargo.q1115" (ngModelChange)="setText(q1115)"(blur)="setTextBlur(q1115)"></textarea>
+            </div>
+
+            <p>* See the Product Reference Guide for a full description of the function and disclaimer for each ADAS technology.</p>
+          </ng-template>
+        </mat-expansion-panel>
+
+        <h4>Congratulations!</h4>
+  
+        <p>You’ve completed your Rear / Cargo Explorations and Comparisons. Rotate to the <a routerLink="/its-on/hands-on-comparison/exterior">Exterior / Front</a> section.</p>
+      </mat-accordion>
+
+      <div class="errorMsg" [@topDown]="true" *ngIf="error.length">
+        <p>{{ error }}</p>
+      </div>
+    </div>
+  </section>
+  
