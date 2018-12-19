@@ -18,7 +18,7 @@
   <div id="navMenu" [@navMenu]="state">
     <div *ngIf="!isAdmin">
       <a routerLink="/" (click)="closeNav(); closeSubNav()">Home</a>
-      <a routerLink="/pre-session" (click)="closeNav(); closeSubNav()">Pre-Session</a>
+      <a routerLink="/pre-game" (click)="closeNav(); closeSubNav()">PreGame</a>
       <a routerLink="/game-on" (click)="closeNav(); closeSubNav()">GameON</a>
       <!--
       <a (click)="toggleSubNav(1)">Wrangler Generations <fa-icon [icon]="['fas', 'angle-down']" [class.up]="subState1 === 'active'"></fa-icon></a>

@@ -10,7 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 
 // Pre-Session
-import { PreSessionComponent } from './pre-session/pre-session.component';
+import { PreGameComponent } from './pre-game/pre-game.component';
 
 // GameON
 import { GameOnComponent } from './game-on/game-on.component';
@@ -41,7 +41,7 @@ import { RockOnComponent } from './rock-on/rock-on.component';
     MainComponent,
     HomeComponent,
     LoginComponent,
-    PreSessionComponent,
+    PreGameComponent,
     GameOnComponent,
     SwitchedOnComponent,
     ItsOnComponent,

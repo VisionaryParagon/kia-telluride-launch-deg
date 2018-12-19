@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PreSessionComponent } from './pre-session.component';
+import { PreGameComponent } from './pre-game.component';
 
-describe('PreSessionComponent', () => {
-  let component: PreSessionComponent;
-  let fixture: ComponentFixture<PreSessionComponent>;
+describe('PreGameComponent', () => {
+  let component: PreGameComponent;
+  let fixture: ComponentFixture<PreGameComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PreSessionComponent ]
+      declarations: [ PreGameComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PreSessionComponent);
+    fixture = TestBed.createComponent(PreGameComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
