@@ -194,11 +194,11 @@
 
         <img src="../../../../../assets/images/exterior-two-track-grade-strategy.jpg" width="100%" alt="Two Track Grade Strategy">
 
-        <p>The five Telluride trims are segmented into two grades: the Design Lineand Convenience Line. The idea here: simplify the ordering process and appeal to two unique customer preferences. Using the featured model, let’s take a visual tour of the <em>signature</em> exterior features <em>unique</em> to each grade.</p>
+        <p>The five Telluride trims are segmented into two grades: the Design Line and Convenience Line. The idea here: simplify the ordering process and appeal to two unique customer preferences. Using the featured model, let’s take a visual tour of the <em>signature</em> exterior features <em>unique</em> to each grade.</p>
 
         <mat-expansion-panel id="panel10" (opened)="scroll('panel10')">
           <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
-            Design Line Visual Tour (S, SX, SX Prestige)
+            Design Line Visual Tour (S, SX, SX with Prestige Package)
           </mat-expansion-panel-header>
   
           <ng-template matExpansionPanelContent>
@@ -306,8 +306,6 @@
               <label for="q1406">Compare: How do these numbers stack up to your featured competitor?</label>
               <textarea class="form-control" id="q1406" rows="2" placeholder="Write something here..." name="q1406" #q1406="ngModel" [(ngModel)]="exterior.q1406" (ngModelChange)="setText(q1406)"(blur)="setTextBlur(q1406)"></textarea>
             </div>
-
-            <p class="text-danger">[lightbox with HP/Torque specs for featured competitors: Toyota Highlander, Jeep Grand Cherokee, and Ford Explorer]</p>
           </ng-template>
         </mat-expansion-panel>
         <mat-expansion-panel id="panel15" (opened)="scroll('panel15')">
@@ -334,7 +332,7 @@
 
             <p>Drive Mode seeks to inspire driver confidence by calibrating engine/throttle output and transmission shift points to achieve unique drive-performance characteristics.</p>
 
-            <mat-checkbox name="q1601" #q1601="ngModel" [(ngModel)]="exterior.q1601" (ngModelChange)="setCheck(q1601)">Can you locate the controls in the 1<sup>st</sup> row?</mat-checkbox>
+            <mat-checkbox name="q1601" #q1601="ngModel" [(ngModel)]="exterior.q1601" (ngModelChange)="setCheck(q1601)">Can you locate the controls in the 1<sup>st</sup> row (you may need to ask the Front Row team for help)?</mat-checkbox>
 
             <div class="form-group">
               <label for="q1602">What settings are available?</label>
@@ -367,7 +365,7 @@
         </mat-expansion-panel>
         <mat-expansion-panel id="panel18" (opened)="scroll('panel18')">
           <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
-            All Wheel Drive (AWD, Standard on SX Prestige)
+            All Wheel Drive (AWD, Standard on SX with Prestige Package)
           </mat-expansion-panel-header>
 
           <ng-template matExpansionPanelContent>
@@ -375,9 +373,9 @@
 
             <p>Did you know that Telluride’s AWD system is <em>constantly</em> monitoring engine throttle, vehicle speed, wheel speed, steering angle, ABS, and stability control inputs? It’s true! Based on real-time feedback, the AWD system’s sophisticated control unit will:</p>
 
-            <mat-checkbox name="q1801" #q1801="ngModel" [(ngModel)]="exterior.q1801" (ngModelChange)="setCheck(q1801)">Transfer power from the front wheels to the rear wheels(for peak efficiency, the system is primarily a front-wheel-drive layout until the system detects the need to shift power).</mat-checkbox>
+            <mat-checkbox name="q1801" #q1801="ngModel" [(ngModel)]="exterior.q1801" (ngModelChange)="setCheck(q1801)">Transfer power from the front wheels to the rear wheels (for peak efficiency, the system is primarily a front-wheel-drive layout until the system detects the need to shift power).</mat-checkbox>
 
-            <mat-checkbox name="q1802" #q1802="ngModel" [(ngModel)]="exterior.q1802" (ngModelChange)="setCheck(q1802)">Utilize its rear differential unit to distribute power side-to-sideto maximize traction.</mat-checkbox>
+            <mat-checkbox name="q1802" #q1802="ngModel" [(ngModel)]="exterior.q1802" (ngModelChange)="setCheck(q1802)">Utilize its rear differential unit to distribute power side-to-side to maximize traction.</mat-checkbox>
 
             <mat-checkbox name="q1803" #q1803="ngModel" [(ngModel)]="exterior.q1803" (ngModelChange)="setCheck(q1803)">During all of this, no driver input is necessary, further enhancing driver confidence.</mat-checkbox>
           </ng-template>

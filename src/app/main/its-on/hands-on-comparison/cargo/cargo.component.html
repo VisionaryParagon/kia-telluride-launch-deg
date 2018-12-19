@@ -75,15 +75,17 @@
           </ng-template>
         </mat-expansion-panel>
 
-        <h4>Best-In-Class Cargo Capacity</h4>
+        <h4>Best-In-Class Cargo Capacity*</h4>
 
         <img src="../../../../../assets/images/cargo-capacity.gif" width="100%" alt="Best-In-Class Cargo Capacity">
 
         <ul>
           <li>Midsize SUV customers won’t be caught dead in a minivan... but they often need to use their SUV like a minivan.</li>
-          <li>This means they are toting a lot of people... or a lot of stuff... and sometimes, a lot of people AND stuff! It’s cool.</li>
-          <li>Telluride has your back. With a class-leading 21 cubic feet of storage space behind the 3<sup>rd</sup> row, Telluride has come to play. Here are some features that support this story...</li>
+          <li>This means they are toting a lot of people... or a lot of stuff... and sometimes, a lot of people AND stuff!</li>
+          <li>It’s cool, Telluride has your back. With a class-leading 21 cubic feet of storage space behind the 3<sup>rd</sup> row, Telluride has come to play. Here are some features that support this story...</li>
         </ul>
+
+        <p class="disclaimer">* Best-in-class cargo capacity behind 3rd row. Never load cargo above seat height.</p>
 
         <mat-expansion-panel id="panel04" (opened)="scroll('panel04')">
           <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
@@ -338,7 +340,7 @@
               <textarea class="form-control" id="q1115" rows="2" placeholder="Write something here..." name="q1115" #q1115="ngModel" [(ngModel)]="cargo.q1115" (ngModelChange)="setText(q1115)"(blur)="setTextBlur(q1115)"></textarea>
             </div>
 
-            <p>* See the Product Reference Guide for a full description of the function and disclaimer for each ADAS technology.</p>
+            <p class="disclaimer">* See the Product Reference Guide for a full description of the function and disclaimer for each ADAS technology.</p>
           </ng-template>
         </mat-expansion-panel>
 

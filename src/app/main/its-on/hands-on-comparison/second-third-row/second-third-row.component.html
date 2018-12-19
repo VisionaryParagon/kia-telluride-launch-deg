@@ -2,7 +2,7 @@
     <img src="../../../../../assets/images/second-third-row-main-header.jpg" width="100%" alt="2nd and 3rd Row (No Second-Class Citizens!)">
 
     <div class="container">
-      <p>Telluride delivers class-leading spaciousness and all the comforts of home. Dive deeper and you’ll discover several “surprise and delight” features new to the midsize SUV segment. And to top it all off: Telluride comfortably accommodates 6' tall adults in all three rows at the same time! With Telluride, there are no “second class citizens” in any seat... and we’ll prove it!</p>
+      <p>Telluride delivers class-leading spaciousness and all the comforts of home. Dive deeper and you’ll discover several “surprise and delight” features new to the midsize SUV segment. And to top it all off: Telluride comfortably accommodates 6' tall adults in all three rows at the same time! With Telluride, there are no “second-class citizens” in any seat... and we’ll prove it!</p>
 
       <h4>Best-in-Class 2<sup>nd</sup> Row Accommodations</h4>
 
@@ -102,7 +102,7 @@
 
         <mat-expansion-panel id="panel04" (opened)="scroll('panel04')">
           <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
-            2<sup>nd</sup> Row Ventilated Captain’s Seats (SX Prestige)
+            2<sup>nd</sup> Row Ventilated Captain’s Seats (SX with Prestige Package)
           </mat-expansion-panel-header>
   
           <ng-template matExpansionPanelContent>
@@ -146,7 +146,7 @@
             </div>
 
             <div class="form-group">
-              <label for="q0504">In total, how many USB terminals can you find in the Telluride SX Prestige?</label>
+              <label for="q0504">In total, how many USB terminals can you find in the Telluride SX with Prestige Package?</label>
               <textarea class="form-control" id="q0504" rows="2" placeholder="Write something here..." name="q0504" #q0504="ngModel" [(ngModel)]="secondThirdRow.q0504" (ngModelChange)="setText(q0504)"(blur)="setTextBlur(q0504)"></textarea>
             </div>
 
@@ -166,23 +166,29 @@
           <ng-template matExpansionPanelContent>
             <img src="../../../../../assets/images/second-third-row-hooks.jpg" width="100%" alt="Hooks (Back of Front-Row Seats">
 
-            <p>What are the hooks on the back of the front seat for?</p>
+            <div class="form-group">
+              <label for="q0601">What are the hooks on the back of the front seat for?</label>
+              <textarea class="form-control" id="q0601" rows="2" placeholder="Write something here..." name="q0601" #q0601="ngModel" [(ngModel)]="secondThirdRow.q0601" (ngModelChange)="setText(q0601)"(blur)="setTextBlur(q0601)"></textarea>
+            </div>
 
-            <mat-checkbox name="q0601" #q0601="ngModel" [(ngModel)]="secondThirdRow.q0601" (ngModelChange)="setCheck(q0601)">Use the shopping bag provided and test out the hook for yourself.</mat-checkbox>
+            <div class="form-group">
+              <label for="q0602">Discuss a few benefits of this feature with your partner.</label>
+              <textarea class="form-control" id="q0602" rows="2" placeholder="Write something here..." name="q0602" #q0602="ngModel" [(ngModel)]="secondThirdRow.q0602" (ngModelChange)="setText(q0602)"(blur)="setTextBlur(q0602)"></textarea>
+            </div>
           </ng-template>
         </mat-expansion-panel>
         <mat-expansion-panel id="panel07" (opened)="scroll('panel07')">
           <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
-            Rear Cup Holder
+            Rear Cup Holders
           </mat-expansion-panel-header>
   
           <ng-template matExpansionPanelContent>
             <img src="../../../../../assets/images/second-third-row-rear-cup-holders.jpg" width="100%" alt="Rear Cup Holders">
 
-            <p>Get familiar with the rear cup holders located on the first row sliding tray.</p>
+            <p>The rear cup holder accommodates a wide variety of cup/bottle sizes and is placed conveniently at the back of the front row’s center console.</p>
 
             <div class="form-group">
-              <label for="q0701">Including this pair, how many cupholders can you count?</label>
+              <label for="q0701">Including this pair, how many cup holders can you count (look around the 2nd row)?</label>
               <textarea class="form-control" id="q0701" rows="2" placeholder="Write something here..." name="q0701" #q0701="ngModel" [(ngModel)]="secondThirdRow.q0701" (ngModelChange)="setText(q0701)"(blur)="setTextBlur(q0701)"></textarea>
             </div>
 
@@ -205,18 +211,13 @@
           <ng-template matExpansionPanelContent>
             <img src="../../../../../assets/images/second-third-row-ceiling-mounted-climate-controls.jpg" width="100%" alt="Ceiling Mounted Rear Climate Controls (segment first)">
 
-            <p>Ceiling mounted climate controls seek to enhance convenience when using the rear cup holders.</p>
+            <p>Telluride is one of the first in the segment to place the rear climate controls on the ceiling (most competitors place them on the back of the front-row center console).</p>
 
             <mat-checkbox name="q0801" #q0801="ngModel" [(ngModel)]="secondThirdRow.q0801" (ngModelChange)="setCheck(q0801)">Get familiar with the climate control console placement and functionality.</mat-checkbox>
 
             <div class="form-group">
               <label for="q0802">Compare to the competition. Which system offers easier access?</label>
               <textarea class="form-control" id="q0802" rows="2" placeholder="Write something here..." name="q0802" #q0802="ngModel" [(ngModel)]="secondThirdRow.q0802" (ngModelChange)="setText(q0802)"(blur)="setTextBlur(q0802)"></textarea>
-            </div>
-
-            <div class="form-group">
-              <label for="q0803">With your partner, come up with a story that could help customers visualize the benefit of this segment-first feature. (Thought starter: Imagine a car full of passengers returning home from a shopping mall on a hot afternoon... and everyone has a large drink in their hand!)</label>
-              <textarea class="form-control" id="q0803" rows="2" placeholder="Write something here..." name="q0803" #q0803="ngModel" [(ngModel)]="secondThirdRow.q0803" (ngModelChange)="setText(q0803)"(blur)="setTextBlur(q0803)"></textarea>
             </div>
           </ng-template>
         </mat-expansion-panel>
