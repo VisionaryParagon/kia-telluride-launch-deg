@@ -7,57 +7,72 @@
     "questions": [
       {
         "key": "q1",
-        "question": "What does the cat say?",
+        "question": "Which phrase reflects Telluride’s approach to entering the mid-size SUV segment?",
         "options": [
           {
-            "answer": "Woof",
+            "answer": "Cost-Cutting Alternative",
             "value": "1"
           },
           {
-            "answer": "Moo",
+            "answer": "Equivalent Quality",
             "value": "2"
           },
           {
-            "answer": "Meow",
+            "answer": "Class-Above Quality",
             "value": "0"
+          },
+          {
+            "answer": "Hybrid Performance",
+            "value": "3"
           }
-        ]
+        ],
+        "feedback": "Kia’s designers and engineers worked to deliver a product on par with luxury vehicles literally “a class above” the mass market mid-size SUV segment."
       },
       {
         "key": "q2",
-        "question": "What does the dog say?",
+        "question": "How should you refer to the Kia Telluride?",
         "options": [
           {
-            "answer": "Woof",
-            "value": "0"
-          },
-          {
-            "answer": "Moo",
+            "answer": "Kia’s 3-Row SUV",
             "value": "1"
           },
           {
-            "answer": "Meow",
+            "answer": "Kia’s Flagship SUV",
+            "value": "0"
+          },
+          {
+            "answer": "Our Ford Explorer Clone",
             "value": "2"
+          },
+          {
+            "answer": "One Great Minivan Alternative",
+            "value": "3"
           }
-        ]
+        ],
+        "feedback": "Telluride is our new flagship SUV. It is the perfect “bookend” to Stinger’s performance luxury story."
       },
       {
         "key": "q3",
-        "question": "What does the fox say?",
+        "question": "What type of brand will Kia ALWAYS be?",
         "options": [
           {
-            "answer": "Woof",
+            "answer": "A Complacent Brand",
             "value": "1"
           },
           {
-            "answer": "Rrrrrricktickticktick Rrricktick KAKOW!!",
-            "value": "0"
+            "answer": "An Aggressive Brand",
+            "value": "2"
           },
           {
-            "answer": "Meow",
-            "value": "2"
+            "answer": "A Conservative Brand",
+            "value": "3"
+          },
+          {
+            "answer": "A Challenger Brand",
+            "value": "0"
           }
-        ]
+        ],
+        "feedback": "Kia will always remain a Challenger at heart. We will stay committed to being ambitious with a strong desire to achieve ever-greater quality, sales, and loyalty."
       }
     ]
   },
@@ -69,93 +84,118 @@
     "questions": [
       {
         "key": "q1",
-        "question": "What does the cat say?",
+        "question": "What are four thought starters for your Kia elevator pitch?",
         "options": [
           {
-            "answer": "Woof",
+            "answer": "Highest Volume, Award-Winning, Lowest Cost, Best Resale",
             "value": "1"
           },
           {
-            "answer": "Moo",
+            "answer": "Lowest Cost, Best Warranty, Award-Winning, USA Mfg.",
             "value": "2"
           },
           {
-            "answer": "Meow",
+            "answer": "Challenger Mentality, Lowest Cost, Award-Winning, USA Mfg.",
+            "value": "3"
+          },
+          {
+            "answer": "Challenger Mentality, Evolving Brand, Award-Winning, USA Mfg.",
             "value": "0"
           }
-        ]
+        ],
+        "feedback": "An elevator pitch needs to tell your brand’s story quickly. The concepts of our Challenger mentality, our evolving brand presence, award-winning quality and commitment to the North American market are outstanding points to consider working into the mix."
       },
       {
         "key": "q2",
-        "question": "What does the dog say?",
+        "question": "What is our #1 Kia IQS message?",
         "options": [
           {
-            "answer": "Woof",
-            "value": "0"
-          },
-          {
-            "answer": "Moo",
+            "answer": "We Are Gaining On Honda",
             "value": "1"
           },
           {
-            "answer": "Meow",
+            "answer": "Honda is Catching Up To Us",
             "value": "2"
+          },
+          {
+            "answer": "Highest Ranking Mass Market Brand 4 Years Running",
+            "value": "0"
+          },
+          {
+            "answer": "Our warranty is why our IQS is so high",
+            "value": "3"
           }
-        ]
+        ],
+        "feedback": "You know this one! Kia is an elite brand for initial quality. The highest-ranking mass-market brand for initial quality as measured by J.D. Power & Associates, 4 years running! Let’s keep the streak alive!"
       },
       {
         "key": "q3",
-        "question": "What does the fox say?",
+        "question": "Which of the following are Accessory sales best practices?",
         "options": [
           {
-            "answer": "Woof",
+            "answer": "Sell Below Invoice + Dealer Add On",
             "value": "1"
           },
           {
-            "answer": "Rrrrrricktickticktick Rrricktick KAKOW!!",
+            "answer": "Present Monthly Payment + Packaged Solutions",
             "value": "0"
           },
           {
-            "answer": "Meow",
+            "answer": "Hide Total Price + Present Monthly Payments",
             "value": "2"
+          },
+          {
+            "answer": "Accessorize Every Vehicle + Sell Below Dealer Net",
+            "value": "3"
           }
-        ]
+        ],
+        "feedback": "You have 40 accessories to sell, so make it easy for customers to buy by presenting affordable monthly payments as well as packaged accessory solutions. Doing so is a “win-win” for all parties."
       },
       {
         "key": "q4",
-        "question": "What does the frog say?",
+        "question": "What does “Fun To Drive” mean to mid-size SUV customers?",
         "options": [
           {
-            "answer": "Ribbet",
-            "value": "0"
-          },
-          {
-            "answer": "Moo",
+            "answer": "Lateral G Agility",
             "value": "1"
           },
           {
-            "answer": "Meow",
+            "answer": "Strong 1/4 Mile Times",
             "value": "2"
+          },
+          {
+            "answer": "Highest MPG Efficiency",
+            "value": "3"
+          },
+          {
+            "answer": "Many Different Things",
+            "value": "0"
           }
-        ]
+        ],
+        "feedback": "Fun to drive is the #1 driver of customer satisfaction, but each mid-size SUV customer has a very unique interpretation. Take the time to understand what this means to each customer and help them see how Telluride is ready to deliver the FUN in a big way."
       },
       {
         "key": "q5",
-        "question": "What does the cow say?",
+        "question": "What is the baseline launch sales goal for Telluride?",
         "options": [
           {
-            "answer": "Woof",
+            "answer": "20,000",
             "value": "1"
           },
           {
-            "answer": "Moo",
+            "answer": "40,000",
+            "value": "2"
+          },
+          {
+            "answer": "60,000",
             "value": "0"
           },
           {
-            "answer": "Meow",
-            "value": "2"
+            "answer": "100,000",
+            "value": "3"
           }
-        ]
+        ],
+        "feedback": "The mid-size market is a HOT market. With an initial target of 60,000 units, Kia is well positioned to win more than its fair share of market share by offering “class above” quality, design, and technology. We want to be the BEST option... not necessarily the BIGGEST seller. (Well, for starters :-)"
       }
     ]
   },
@@ -163,367 +203,463 @@
     "name": "Certification Test",
     "isCert": true,
     "requiredScore": 0.8,
-    "passcode": "Challenger",
+    "passcode": "Engage",
     "questions": [
       {
         "key": "q1",
-        "question": "What does the cat say?",
+        "question": "What are four thought starters for your Kia elevator pitch?",
         "options": [
           {
-            "answer": "Woof",
+            "answer": "Highest Volume, Award-Winning, Lowest Cost, Best Resale",
             "value": "1"
           },
           {
-            "answer": "Moo",
+            "answer": "Lowest Cost, Best Warranty, Award-Winning, USA Mfg.",
             "value": "2"
           },
           {
-            "answer": "Meow",
+            "answer": "Challenger Mentality, Lowest Cost, Award-Winning, USA Mfg.",
+            "value": "3"
+          },
+          {
+            "answer": "Challenger Mentality, Evolving Brand, Award-Winning, USA Mfg.",
             "value": "0"
           }
-        ]
+        ],
+        "feedback": "An elevator pitch needs to tell your brand’s story quickly. The concepts of our Challenger mentality, our evolving brand presence, award-winning quality and commitment to the North American market are outstanding points to consider working into the mix."
       },
       {
         "key": "q2",
-        "question": "What does the dog say?",
+        "question": "What is our #1 Kia IQS message?",
         "options": [
           {
-            "answer": "Woof",
-            "value": "0"
-          },
-          {
-            "answer": "Moo",
+            "answer": "We Are Gaining On Honda",
             "value": "1"
           },
           {
-            "answer": "Meow",
+            "answer": "Honda is Catching Up To Us",
             "value": "2"
+          },
+          {
+            "answer": "Highest Ranking Mass Market Brand 4 Years Running",
+            "value": "0"
+          },
+          {
+            "answer": "Our warranty is why our IQS is so high",
+            "value": "3"
           }
-        ]
+        ],
+        "feedback": "You know this one! Kia is an elite brand for initial quality. The highest-ranking mass-market brand for initial quality as measured by J.D. Power & Associates, 4 years running! Let’s keep the streak alive!"
       },
       {
         "key": "q3",
-        "question": "What does the fox say?",
+        "question": "Which of the following are Accessory sales best practices?",
         "options": [
           {
-            "answer": "Woof",
+            "answer": "Sell Below Invoice + Dealer Add On",
             "value": "1"
           },
           {
-            "answer": "Rrrrrricktickticktick Rrricktick KAKOW!!",
+            "answer": "Present Monthly Payment + Packaged Solutions",
             "value": "0"
           },
           {
-            "answer": "Meow",
+            "answer": "Hide Total Price + Present Monthly Payments",
             "value": "2"
+          },
+          {
+            "answer": "Accessorize Every Vehicle + Sell Below Dealer Net",
+            "value": "3"
           }
-        ]
+        ],
+        "feedback": "You have 40 accessories to sell, so make it easy for customers to buy by presenting affordable monthly payments as well as packaged accessory solutions. Doing so is a “win-win” for all parties."
       },
       {
         "key": "q4",
-        "question": "What does the cow say?",
+        "question": "What does “Fun To Drive” mean to mid-size SUV customers?",
         "options": [
           {
-            "answer": "Woof",
+            "answer": "Lateral G Agility",
             "value": "1"
           },
           {
-            "answer": "Moo",
-            "value": "0"
+            "answer": "Strong 1/4 Mile Times",
+            "value": "2"
           },
           {
-            "answer": "Meow",
-            "value": "2"
+            "answer": "Highest MPG Efficiency",
+            "value": "3"
+          },
+          {
+            "answer": "Unique for Each Customer",
+            "value": "0"
           }
-        ]
+        ],
+        "feedback": "Fun to drive is the #1 driver of customer satisfaction, but each mid-size SUV customer has a very unique interpretation. Take the time to understand what this means to each customer and help them see how Telluride is ready to deliver the FUN in a big way."
       },
       {
         "key": "q5",
-        "question": "What does the frog say?",
+        "question": "What is the baseline launch sales goal for Telluride?",
         "options": [
           {
-            "answer": "Ribbet",
-            "value": "0"
-          },
-          {
-            "answer": "Moo",
+            "answer": "20,000",
             "value": "1"
           },
           {
-            "answer": "Meow",
+            "answer": "40,000",
             "value": "2"
+          },
+          {
+            "answer": "60,000",
+            "value": "0"
+          },
+          {
+            "answer": "100,000",
+            "value": "3"
           }
-        ]
+        ],
+        "feedback": "The mid-size market is a HOT market. With an initial target of 60,000 units, Kia is well positioned to win more than its fair share of market share by offering “class above” quality, design, and technology. We want to be the BEST option... not necessarily the BIGGEST seller. (Well, for starters :-)"
       },
       {
         "key": "q6",
-        "question": "What does the chicken say?",
+        "question": "What type of brand will Kia ALWAYS be?",
         "options": [
           {
-            "answer": "Ribbet",
+            "answer": "A Complacent Brand",
             "value": "1"
           },
           {
-            "answer": "Moo",
+            "answer": "An Aggressive Brand",
             "value": "2"
           },
           {
-            "answer": "Bockbock",
+            "answer": "A Conservative Brand",
+            "value": "3"
+          },
+          {
+            "answer": "A Challenger Brand",
             "value": "0"
           }
-        ]
+        ],
+        "feedback": "Kia will always remain a Challenger at heart. We will stay committed to being ambitious with a strong desire to achieve ever-greater quality, sales, and loyalty."
       },
       {
         "key": "q7",
-        "question": "What does the mouse say?",
+        "question": "How should you refer to the Kia Telluride?",
         "options": [
           {
-            "answer": "Woof",
+            "answer": "Kia’s 3-Row SUV",
             "value": "1"
           },
           {
-            "answer": "Moo",
+            "answer": "Kia’s Flagship SUV",
+            "value": "0"
+          },
+          {
+            "answer": "Our Ford Explorer Clone",
             "value": "2"
           },
           {
-            "answer": "Squeak",
-            "value": "0"
+            "answer": "One Great Minivan Alternative",
+            "value": "3"
           }
-        ]
+        ],
+        "feedback": "Telluride is our new flagship SUV. It is the perfect “bookend” to Stinger’s performance luxury story."
       },
       {
         "key": "q8",
-        "question": "What does the pig say?",
+        "question": "Which phrase reflects Telluride’s approach to entering the mid-size SUV segment?",
         "options": [
           {
-            "answer": "Oink",
-            "value": "0"
-          },
-          {
-            "answer": "Moo",
+            "answer": "Cost-Cutting Alternative",
             "value": "1"
           },
           {
-            "answer": "Meow",
+            "answer": "Equivalent Quality",
             "value": "2"
+          },
+          {
+            "answer": "Class-Above Quality",
+            "value": "0"
+          },
+          {
+            "answer": "Hybrid Performance",
+            "value": "3"
           }
-        ]
+        ],
+        "feedback": "Kia’s designers and engineers worked to deliver a product on par with luxury vehicles literally “a class above” the mass market mid-size SUV segment."
       },
       {
         "key": "q9",
-        "question": "What does the giraffe say?",
+        "question": "How large is the all-new HD infotainment display (EX and above)?",
         "options": [
           {
-            "answer": "Woof",
+            "answer": "8\"",
             "value": "1"
           },
           {
-            "answer": "????????????",
+            "answer": "9.25\"",
+            "value": "2"
+          },
+          {
+            "answer": "10.25\"",
             "value": "0"
           },
           {
-            "answer": "Meow",
-            "value": "2"
+            "answer": "11.25\"",
+            "value": "3"
           }
-        ]
+        ],
+        "feedback": "EX trims and above enjoy a class-leading 10.25\" true HD Split View Monitor display."
       },
       {
         "key": "q10",
-        "question": "What does the snake say?",
+        "question": "What are the peak HP/Torque ratings for Telluride’s 3.8L V6?",
         "options": [
           {
-            "answer": "Woof",
+            "answer": "255 hp / 265 lb.-ft.",
             "value": "1"
           },
           {
-            "answer": "Ssssssssssssnake",
+            "answer": "291 hp / 262 lb.-ft.",
             "value": "0"
           },
           {
-            "answer": "Meow",
+            "answer": "281 hp / 305 lb.-ft.",
             "value": "2"
+          },
+          {
+            "answer": "262 hp / 291 lb.-ft.",
+            "value": "3"
           }
-        ]
+        ],
+        "feedback": "From the first buttery-smooth throttle tip-in, it is evident that the 3.8L V6 in the Telluride is one premium engine. All-aluminum, DOHC valvetrain w/ continuously-variable valve timing, Gasoline Direct Injection, and Atkinson Cycle timing for peak efficiency during relaxed cruising. Excellent power, outstanding acoustics. Need we say more?"
       },
       {
         "key": "q11",
-        "question": "What does the sheep say?",
+        "question": "What is the lead CARGO story for Telluride?",
         "options": [
           {
-            "answer": "Baaaaahhh",
-            "value": "0"
-          },
-          {
-            "answer": "Moo",
+            "answer": "Competitive cargo volume",
             "value": "1"
           },
           {
-            "answer": "Meow",
+            "answer": "Most cargo volume behind 2nd row",
             "value": "2"
+          },
+          {
+            "answer": "Easiest-to-fold 3rd Row seats",
+            "value": "3"
+          },
+          {
+            "answer": "Most cargo volume behind 3rd Row*",
+            "value": "0"
           }
-        ]
+        ],
+        "feedback": "OK, there are a lot of cargo stories, but Telluride can claim to offer the MOST total cu. ft. of cargo space behind the 3rd-row seats. For families that tote passengers and cargo, this is a major WIN for Telluride."
       },
       {
         "key": "q12",
-        "question": "What does the wolf say?",
+        "question": "Which competitor has more 2nd-row legroom than Telluride?",
         "options": [
           {
-            "answer": "Ribbet",
+            "answer": "Jeep Grand Cherokee",
             "value": "1"
           },
           {
-            "answer": "Moo",
+            "answer": "Ford Explorer",
             "value": "2"
           },
           {
-            "answer": "Oooowwwwwwwwwwwww",
+            "answer": "Toyota Highlander",
+            "value": "3"
+          },
+          {
+            "answer": "None. Telluride is #1",
             "value": "0"
           }
-        ]
+        ],
+        "feedback": "Repeat after me: No Second-Class Seating! Thanks to the longest wheelbase in its class, Telluride passengers enjoy best-in-class second-row legroom. Thanks to the sliding 2nd-row seats, this can contribute greatly to improving 3rd-row comfort as well. Share the love!"
       },
       {
         "key": "q13",
-        "question": "What does the owl say?",
+        "question": "What is the Telluride USB story?",
         "options": [
           {
-            "answer": "Woof",
+            "answer": "5-6 USBs + Mobile Pockets",
+            "value": "0"
+          },
+          {
+            "answer": "4 USBs + Footwell Mounted",
             "value": "1"
           },
           {
-            "answer": "Moo",
+            "answer": "10 USBs",
             "value": "2"
           },
           {
-            "answer": "Whoooo",
-            "value": "0"
+            "answer": "8 USBs",
+            "value": "3"
           }
-        ]
+        ],
+        "feedback": "Telluride is charged up—literally! With the most thoughtful USB placement (side of 1st-row seats, side of 3rd row panels), Telluride’s standard 5 USB ports are going to delight those “data vampires” in the back seats!"
       },
       {
         "key": "q14",
-        "question": "What does the fish say?",
+        "question": "Which feature allows drivers to communicate with 3rd row passengers?",
         "options": [
           {
-            "answer": "Blubblub",
-            "value": "0"
-          },
-          {
-            "answer": "Moo",
+            "answer": "Quiet Mode",
             "value": "1"
           },
           {
-            "answer": "Meow",
+            "answer": "Driver Talk",
+            "value": "0"
+          },
+          {
+            "answer": "Smart Cruise with STOP & GO",
             "value": "2"
+          },
+          {
+            "answer": "ADAS",
+            "value": "3"
           }
-        ]
+        ],
+        "feedback": "When activated, Driver Talk allows parents to issue warning to 3rd row passengers in a calm, hushed tones."
       },
       {
         "key": "q15",
-        "question": "What does the monkey say?",
+        "question": "Which Telluride grades enjoy heated and ventilated 1st and 2nd row seats?",
         "options": [
           {
-            "answer": "Woof",
+            "answer": "All grades",
             "value": "1"
           },
           {
-            "answer": "Oooh oooh aaah aaah!",
-            "value": "0"
+            "answer": "EX and above",
+            "value": "2"
           },
           {
-            "answer": "Meow",
-            "value": "2"
+            "answer": "SX and above",
+            "value": "3"
+          },
+          {
+            "answer": "SX with Prestige Package",
+            "value": "0"
           }
-        ]
+        ],
+        "feedback": "Telluride SX grades with the Prestige Package offer a first-in-class feature: heated and ventilated first and second row seating! Talk about “class above” accommodations!"
       },
       {
         "key": "q16",
-        "question": "What does the parrot say?",
+        "question": "Which is the correct “2-Track” Grade Strategy?",
         "options": [
           {
-            "answer": "Woof",
+            "answer": "Convenience Line + Performance Line",
             "value": "1"
           },
           {
-            "answer": "What does the parrot say?",
+            "answer": "Design Line + Convenience Line",
             "value": "0"
           },
           {
-            "answer": "Meow",
+            "answer": "Design Line + Efficiency Line",
             "value": "2"
+          },
+          {
+            "answer": "Value Line + Convenience Line",
+            "value": "3"
           }
-        ]
+        ],
+        "feedback": "Design Line models deliver “ultimate exterior style and refinement.” Convenience Line models are ready to delight “value and feature-driven customers.” Be sure to note that each “track” offers unique price points, which should help YOU help customers find the perfect Telluride for their tastes... and budget!"
       },
       {
         "key": "q17",
-        "question": "What does the bee say?",
+        "question": "Which grade line features 20\" wheels and 2nd-row Captain’s chairs?",
         "options": [
           {
-            "answer": "Bzzzzzzzzzz",
+            "answer": "Design Line",
             "value": "0"
           },
           {
-            "answer": "Moo",
+            "answer": "Convenience Line",
             "value": "1"
           },
           {
-            "answer": "Meow",
+            "answer": "They both do",
             "value": "2"
+          },
+          {
+            "answer": "Neither do",
+            "value": "3"
           }
-        ]
+        ],
+        "feedback": "If customers want to roll on “all 20s” with Captain’s Chairs, the Design Line (S, SX, or SX with Prestige Package) is your jam."
       },
       {
         "key": "q18",
-        "question": "What does the lion say?",
+        "question": "If a customer wants 8-passenger seating, which Telluride trims would you recommend?",
         "options": [
           {
-            "answer": "Ribbet",
+            "answer": "Any Grade Will Work",
             "value": "1"
           },
           {
-            "answer": "Moo",
+            "answer": "Design Line (S, SX)",
             "value": "2"
           },
           {
-            "answer": "RAAWWWRRRR",
+            "answer": "Convenience Line (LX, EX)",
             "value": "0"
           }
-        ]
+        ],
+        "feedback": "If 8-passenger seating is your customer’s major motivation, direct them to a Convenience Line offering (LX, EX)."
       },
       {
         "key": "q19",
-        "question": "What does the rabbit say?",
+        "question": "What is the standard tow rating for Telluride?",
         "options": [
           {
-            "answer": "Woof",
+            "answer": "2,000 lbs.",
             "value": "1"
           },
           {
-            "answer": "Moo",
+            "answer": "3,000 lbs.",
             "value": "2"
           },
           {
-            "answer": "What’s up, Doc?",
+            "answer": "4,000 lbs.",
+            "value": "3"
+          },
+          {
+            "answer": "5,000 lbs.",
             "value": "0"
           }
-        ]
+        ],
+        "feedback": "Hey, Telluride is an authentic SUV. While most mid-size SUVs make do with a standard 3,500-lb. tow rating, we step up to the plate with a 5,000-lb. rating. Add the optional Tow Package and customers will enjoy a Class III hitch and a self-leveling suspension with Trailer Stability Assist."
       },
       {
         "key": "q20",
-        "question": "What does the bear say?",
+        "question": "What is the TOP story for the 3rd row?",
         "options": [
           {
-            "answer": "Heeeyyyy Booboo! Let’s get some picnic baskets!",
-            "value": "0"
-          },
-          {
-            "answer": "Moo",
+            "answer": "Widest 3rd row entry in class!",
             "value": "1"
           },
           {
-            "answer": "Meow",
+            "answer": "Rated for 6-footers!",
             "value": "2"
+          },
+          {
+            "answer": "Thoughtful entry/exit assist handles!",
+            "value": "3"
+          },
+          {
+            "answer": "All of the above",
+            "value": "0"
           }
-        ]
+        ],
+        "feedback": "When it comes to passengers, Telluride is an embarrassment of riches. The reclining 3rd-row is great for 6-footers, the assist handles and step make it easy to get in and out of the 3rd row, and the one-touch entry-exit seating... well, it just piles on to the thoughtfulness."
       }
     ]
   }

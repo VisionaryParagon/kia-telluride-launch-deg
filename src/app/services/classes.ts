@@ -72,6 +72,7 @@ export class QuizQuestion {
   key: string;
   question: string;
   options: QuizAnswer[];
+  feedback: string;
 }
 
 export class QuizAnswer {

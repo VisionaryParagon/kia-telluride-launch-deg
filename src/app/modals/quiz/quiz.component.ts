@@ -329,6 +329,10 @@ export class QuizComponent implements OnInit, OnDestroy {
     return this.data.quiz.questions.filter(q => q.key === key)[0].options.filter(a => a.value !== '0');
   }
 
+  getFeedback(key) {
+    return this.data.quiz.questions.filter(q => q.key === key)[0].feedback;
+  }
+
   resetQuiz() {
     this.user.quizzes.splice(this.user.quizzes.findIndex(quiz => quiz.name === this.data.quiz.name), 1);
     this.quiz = new Quiz();
