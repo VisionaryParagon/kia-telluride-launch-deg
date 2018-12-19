@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const https = require('https');
+const request = require('request');
 
 // user model
 const user = require('../models/user');
@@ -83,51 +83,19 @@ router.post('/users/points', (req, res) => {
 
 // create KU transcript
 router.post('/users/ku', (req, res) => {
-  const xml = `<enroll_students>
-    <attendee>
-      <kuid>${req.body.kuid}</kuid>
-      <transcript_id>${req.body.transcript}</transcript_id>
-      <score>${req.body.score}</score>
-      <passed>${req.body.passed}</passed>
-      <status>C</status>
-      <course_code>SLS-07-168-1-DEV</course_code>
-      <session_code>${req.body.session}</session_code>
-      <enroll_date>${req.body.date}</enroll_date>
-      <completion_date>${req.body.date}</completion_date>
-    </attendee>
-  </enroll_students>`;
-
   const options = {
-    host: 'stage.kiauniversity.com',
-    path: '/docent/bin/docentisapi.dll/lms,KUSTG1,2151/?CMD=LOGIN&file=login/es3data.jsm',
-    method: 'POST',
-    headers: {
-      'Content-Type': 'text/xml',
-      'Accept': 'text/xml',
-      'Content-Length': Buffer.byteLength(xml)
-    }
+    url: process.env.PROXY,
+    form: req.body
   };
 
-  const request = https.request(options, resp => {
-    let buffer = '';
-    resp.on('data', data => buffer += data);
-    resp.on('end', () => {
-      // console.log('https.request end:', buffer);
-      const success = {
-        message: 'Success',
-        data: buffer
-      };
-      return res.status(200).send(success);
-    });
+  request.post(options, (err, httpResponse, body) => {
+    if (err) return res.status(500).send(err);
+    const success = {
+      message: 'Success',
+      data: body
+    };
+    return res.status(200).send(success);
   });
-
-  request.on('error', e => {
-    // console.error(`problem with https.request: ${e.message}`);
-    return res.status(500).send(e);
-  });
-
-  request.write(xml);
-  request.end();
 });
 
 // create new user
