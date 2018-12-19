@@ -258,6 +258,7 @@ export class QuizComponent implements OnInit, OnDestroy {
         // Submit transcript to KU and update user
         const kuData = {
           kuid: this.user.kuid || '',
+          course: 'SLS-04-019-1', // 'SLS-07-168-1-DEV',
           session: this.user.session_code || '',
           transcript: this.user.transcript_id || '',
           score: this.certScore * 100,
