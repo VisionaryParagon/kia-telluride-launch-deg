@@ -128,7 +128,24 @@ router.post('/users/top', (req, res) => {
 });
 
 // create KU transcript
-router.post('/users/ku', (req, res) => {
+router.post('/users/transcript', (req, res) => {
+  const options = {
+    url: process.env.PROXY,
+    form: req.body
+  };
+
+  request.post(options, (err, httpResponse, body) => {
+    if (err) return res.status(500).send(err);
+    const success = {
+      message: 'Success',
+      data: body
+    };
+    return res.status(200).send(success);
+  });
+});
+
+// create KU session
+router.post('/users/session', (req, res) => {
   const options = {
     url: process.env.PROXY,
     form: req.body

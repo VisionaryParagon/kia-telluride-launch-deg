@@ -74,7 +74,16 @@ export class UserService {
 
   // create KU transcript
   createTranscript(data) {
-    return this.http.post<any>(this.userUrl + '/ku', data)
+    return this.http.post<any>(this.userUrl + '/transcript', data)
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  // create KU session
+  createSession(data) {
+    return this.http.post<any>(this.userUrl + '/session', data)
       .pipe(
         retry(3),
         catchError(this.handleError)
