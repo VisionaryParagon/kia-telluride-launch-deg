@@ -946,8 +946,10 @@ mat-radio-button.mat-radio-button {
     }
 
     .mat-radio-ripple {
-      .mat-ripple-element:not(.mat-radio-persistent-ripple) {
-        background-color: $client-red;
+      .mat-ripple-element {
+        &:not(.mat-radio-persistent-ripple) {
+          background-color: $client-red;
+        }
       }
     }
 
@@ -964,6 +966,40 @@ mat-radio-button.mat-radio-button {
     &:active {
       .mat-radio-persistent-ripple {
         background-color: $client-red;
+      }
+    }
+  }
+}
+
+table.mat-table {
+  border-radius: .25rem;
+  font-family: $client-font;
+  width: 100%;
+
+  tr.mat-header-row {
+    height: 2rem;
+
+    th.mat-header-cell {
+      border-bottom: 2px solid $client-red;
+      border-right: 1px solid $client-light-gray;
+      border-radius: .25rem;
+      padding: 0 .5rem !important;
+    }
+  }
+
+  tr.mat-row,
+  tr.mat-footer-row {
+    height: 2.5rem;
+
+    td.mat-cell,
+    td.mat-footer-cell {
+      border-bottom-color: transparent;
+      border-right: 1px solid $client-light-gray;
+      border-radius: .25rem;
+      padding: 0 .5rem !important;
+
+      &:last-of-type {
+        border-right: none;
       }
     }
   }

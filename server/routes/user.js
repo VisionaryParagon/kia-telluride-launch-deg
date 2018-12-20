@@ -81,6 +81,52 @@ router.post('/users/points', (req, res) => {
   });
 });
 
+// get top scoring users
+router.post('/users/top', (req, res) => {
+  user.find({
+    dealer: req.body.dealer,
+    session: req.body.session
+  }, (err, data) => {
+    if (err) return res.status(500).send(err);
+
+    const newData = [];
+    const averageSpeed = quizzes => {
+      let answerTime = 0;
+      let answerNum = 0;
+
+      if (quizzes.length) {
+        quizzes.forEach(quiz => {
+          quiz.answers.forEach(ans => {
+            answerTime += ans.time;
+            answerNum++;
+          });
+        });
+
+        return (Math.round((answerTime / answerNum) * 100) / 100) + 's';
+      } else {
+        return '';
+      }
+    }
+
+    data.forEach(user => {
+      let filteredUser = {
+        name: user.first_name + ' ' + user.last_name.charAt(0) + '.',
+        team: user.team.replace('Team ', ''),
+        points: user.totalPoints,
+        speed: averageSpeed(user.quizzes)
+      };
+
+      newData.push(filteredUser);
+    });
+
+    const top20 = newData.sort((a, b) => {
+      return b['points'] - a['points'] || a['speed'] - b['speed'];
+    }).slice(0, 20);
+
+    return res.status(200).send(top20);
+  });
+});
+
 // create KU transcript
 router.post('/users/ku', (req, res) => {
   const options = {

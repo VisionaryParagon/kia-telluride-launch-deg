@@ -30,6 +30,15 @@ export class LeaderboardComponent implements OnInit {
     domain: ['#5AA454', '#A10A28']
   };
 
+  // Top 20 data setup
+  topTwenty: any[];
+  topTwentyCol = [
+    'name',
+    'team',
+    'points',
+    'speed'
+  ];
+
   constructor(
     private userService: UserService,
     private quizService: QuizService,
@@ -38,6 +47,7 @@ export class LeaderboardComponent implements OnInit {
 
   ngOnInit() {
     this.getTeams();
+    this.getTop();
   }
 
   // get all team points
@@ -77,6 +87,15 @@ export class LeaderboardComponent implements OnInit {
       );
   }
 
+  // get top 20 list
+  getTop() {
+    this.userService.getTop20(this.user)
+      .subscribe(
+        res => this.topTwenty = res,
+        () => this.showError()
+      );
+  }
+
   showError() {
     this.error = true;
   }
@@ -84,5 +103,4 @@ export class LeaderboardComponent implements OnInit {
   hideError() {
     this.error = false;
   }
-
 }

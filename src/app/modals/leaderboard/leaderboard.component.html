@@ -6,7 +6,7 @@
     <mat-tab-group dynamicHeight [(selectedIndex)]="selectedTabIndex">
       <mat-tab label="Teams">
         <div class="text-center">
-          <div *ngIf="!error">
+          <div *ngIf="!error && selectedTabIndex === 0">
             <h4>Team Points</h4>
 
             <div *ngIf="loading">
@@ -27,19 +27,18 @@
       </mat-tab>
       <mat-tab label="Me">
         <div class="text-center">
-          <!--
-          <div *ngIf="!error">
-          -->
+          <div *ngIf="!error && selectedTabIndex === 1">
             <h4>Individual Scores</h4>
     
             <p class="mb-0">Team: <strong>{{ user.team }}</strong>
               <br>Points Earned: <strong>{{ totalPoints }}</strong>
-              <br>Quiz Results:</p>
+              <span *ngIf="user.quizzes.length"><br>Quiz Results:</span></p>
     
-            <ngx-charts-pie-chart id="individualChart" [view]="chartView" [scheme]="colorScheme" [results]="finalAnswers" [doughnut]="true"></ngx-charts-pie-chart>
-    
-            <p class="mt-0">{{ finalAnswers[0].value }} {{ finalAnswers[0].name }}<br> {{ finalAnswers[1].value }} {{ finalAnswers[1].name }}</p>
-          <!--
+            <div *ngIf="user.quizzes.length">
+              <ngx-charts-pie-chart id="individualChart" [view]="chartView" [scheme]="colorScheme" [results]="finalAnswers" [doughnut]="true"></ngx-charts-pie-chart>
+      
+              <p class="mt-0">{{ finalAnswers[0].value }} {{ finalAnswers[0].name }}<br> {{ finalAnswers[1].value }} {{ finalAnswers[1].name }}</p>
+            </div>
           </div>
     
           <div *ngIf="error">
@@ -47,7 +46,46 @@
     
             <p class="errorMsg">It appears there was an issue connecting to your user data. Please make sure you have a WiFi or mobile data connection and try refreshing your browser. Then open this page&nbsp;again.</p>
           </div>
-          -->
+        </div>
+      </mat-tab>
+      <mat-tab label="Top">
+        <div *ngIf="!error && selectedTabIndex === 2">
+          <h4 class="text-center">Top Performers</h4>
+  
+          <table mat-table [dataSource]="topTwenty">
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef>Name</th>
+              <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+            </ng-container>
+          
+            <!-- Team Column -->
+            <ng-container matColumnDef="team">
+              <th mat-header-cell *matHeaderCellDef>Team</th>
+              <td mat-cell *matCellDef="let element">{{ element.team }}</td>
+            </ng-container>
+          
+            <!-- Points Column -->
+            <ng-container matColumnDef="points">
+              <th mat-header-cell *matHeaderCellDef>Points</th>
+              <td mat-cell *matCellDef="let element">{{ element.points }}</td>
+            </ng-container>
+          
+            <!-- Speed Column -->
+            <ng-container matColumnDef="speed">
+              <th mat-header-cell *matHeaderCellDef>Speed</th>
+              <td mat-cell *matCellDef="let element">{{ element.speed }}</td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="topTwentyCol; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: topTwentyCol;"></tr>
+          </table>
+        </div>
+  
+        <div *ngIf="error">
+          <h4 class="text-center">Something went wrong...</h4>
+  
+          <p class="errorMsg text-center">It appears there was an issue connecting to the user data. Please make sure you have a WiFi or mobile data connection and try refreshing your browser. Then open this page&nbsp;again.</p>
         </div>
       </mat-tab>
     </mat-tab-group>
