@@ -130,7 +130,7 @@ router.post('/users/top', (req, res) => {
 // create KU transcript
 router.post('/users/transcript', (req, res) => {
   const options = {
-    url: process.env.PROXY,
+    url: process.env.PROXY + 'transcript',
     form: req.body
   };
 
@@ -147,7 +147,7 @@ router.post('/users/transcript', (req, res) => {
 // create KU session
 router.post('/users/session', (req, res) => {
   const options = {
-    url: process.env.PROXY,
+    url: process.env.PROXY + 'session',
     form: req.body
   };
 
