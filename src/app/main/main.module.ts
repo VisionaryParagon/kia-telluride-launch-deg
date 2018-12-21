@@ -32,6 +32,9 @@ import { StreetDriveComponent } from './its-on/street-drive/street-drive.compone
 // RockON
 import { RockOnComponent } from './rock-on/rock-on.component';
 
+// KeepON
+import { KeepOnComponent } from './keep-on/keep-on.component';
+
 @NgModule({
   imports: [
     AppSharedModule,
@@ -53,7 +56,8 @@ import { RockOnComponent } from './rock-on/rock-on.component';
     SecondThirdRowComponent,
     CargoComponent,
     StreetDriveComponent,
-    RockOnComponent
+    RockOnComponent,
+    KeepOnComponent
   ]
 })
 export class MainModule { }

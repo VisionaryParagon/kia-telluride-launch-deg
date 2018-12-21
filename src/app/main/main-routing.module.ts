@@ -32,6 +32,9 @@ import { StreetDriveComponent } from './its-on/street-drive/street-drive.compone
 // RockON
 import { RockOnComponent } from './rock-on/rock-on.component';
 
+// KeepON
+import { KeepOnComponent } from './keep-on/keep-on.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -115,6 +118,13 @@ const routes: Routes = [
             component: RockOnComponent,
             data: {
               noteModule: 'RockON'
+            }
+          },
+          {
+            path: 'keep-on',
+            component: KeepOnComponent,
+            data: {
+              noteModule: 'KeepON'
             }
           }
         ]
