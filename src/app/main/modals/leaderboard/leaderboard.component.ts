@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { User } from '../../services/classes';
-import { UserService } from '../../services/user.service';
-import { QuizService } from '../../services/quiz.service';
-import { TeamService } from '../../services/team.service';
+import { User } from '../../../services/classes';
+import { UserService } from '../../../services/user.service';
+import { QuizService } from '../../../services/quiz.service';
+import { TeamService } from '../../../services/team.service';
 
 @Component({
   selector: 'app-leaderboard',

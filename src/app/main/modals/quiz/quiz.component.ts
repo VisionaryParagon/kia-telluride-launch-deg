@@ -5,11 +5,11 @@ import { Subscription, timer } from 'rxjs';
 
 import { CookieService, CookieOptions } from 'ngx-cookie';
 
-import { User, Quiz, Answer, QuizQuestion } from '../../services/classes';
-import { UserService } from '../../services/user.service';
-import { QuizService } from '../../services/quiz.service';
+import { User, Quiz, Answer, QuizQuestion } from '../../../services/classes';
+import { UserService } from '../../../services/user.service';
+import { QuizService } from '../../../services/quiz.service';
 
-import { FadeAnimation, TopDownAnimation } from '../../animations';
+import { FadeAnimation, TopDownAnimation } from '../../../animations';
 
 @Component({
   selector: 'app-quiz',

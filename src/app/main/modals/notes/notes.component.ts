@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 
-import { Note, User } from '../../services/classes';
-import { NotesService } from '../../services/notes.service';
-import { UserService } from '../../services/user.service';
+import { Note, User } from '../../../services/classes';
+import { NotesService } from '../../../services/notes.service';
+import { UserService } from '../../../services/user.service';
 
-import { FadeAnimation, TopDownAnimation } from '../../animations';
+import { FadeAnimation, TopDownAnimation } from '../../../animations';
 
 @Component({
   selector: 'app-notes',

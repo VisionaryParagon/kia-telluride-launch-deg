@@ -53,7 +53,7 @@ const routes: Routes = [
             path: 'pre-game',
             component: PreGameComponent,
             data: {
-              noteModule: 'Pre-Session'
+              noteModule: 'PreGame'
             }
           },
           {
