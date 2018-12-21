@@ -1,3 +1,42 @@
-<p>
-  admin-login works!
-</p>
+<section [@fade]="true">
+  <div class="container">
+    <h1>Admin</h1>
+
+    <form #adminForm="ngForm" novalidate>
+      <div class="form-group" [class.nope]="invalidUsername || (username.errors && (username.touched || submitted))">
+        <label for="username">Username*</label>
+        <input type="text" class="form-control" autocomplete="off" required [(ngModel)]="admin.username" name="username" #username="ngModel" (ngModelChange)="hideError()">
+
+        <div class="errorMsg" [@topDown]="true" *ngIf="username.errors && (username.touched || submitted)">
+          <p *ngIf="username.errors.required">Username is required</p>
+        </div>
+      </div>
+
+      <div class="form-group" [class.nope]="invalidPassword || (password.errors && (password.touched || submitted))">
+        <label for="password">Password*</label>
+        <input type="password" class="form-control" autocomplete="off" required [(ngModel)]="admin.password" name="password" #password="ngModel" (ngModelChange)="hideError()">
+
+        <div class="errorMsg" [@topDown]="true" *ngIf="password.errors && (password.touched || submitted)">
+          <p *ngIf="password.errors.required">Password is required</p>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <div class="errorMsg">
+          <p [@topDown]="true" *ngIf="invalid">{{ error }}</p>
+
+          <p [@topDown]="true" *ngIf="err">Something went wrong... Please make sure you have a WiFi or mobile data connection and try refreshing your&nbsp;browser.</p>
+        </div>
+
+        <p class="disclaimer">* Required field</p>
+
+        <button class="kiaBtn" [disabled]="loading" (click)="login(admin, adminForm.valid)">
+          <span *ngIf="!loading">Submit</span>
+          <span *ngIf="loading">
+            <mat-spinner class="mx-auto" [diameter]="20" [strokeWidth]="3"></mat-spinner>
+          </span>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

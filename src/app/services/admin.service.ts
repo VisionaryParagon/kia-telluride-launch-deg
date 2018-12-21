@@ -1,13 +1,8 @@
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry, tap } from 'rxjs/operators';
-
-import { environment } from '../../environments/environment';
-
-import { Admin } from './classes';
 
 @Injectable({
   providedIn: 'root'
@@ -18,15 +13,13 @@ export class AdminService {
   loggedIn = false;
 
   constructor(
-    private http: HttpClient,
-    @Inject(PLATFORM_ID) private platformId: Object
+    private http: HttpClient
   ) { }
 
   // login
   login(user) {
     return this.http.post<any>(this.adminUrlRoot + 'login', user)
       .pipe(
-        retry(3),
         tap(res => this.loggedIn = true),
         catchError(this.handleError)
       );
@@ -36,7 +29,6 @@ export class AdminService {
   logout() {
     return this.http.get<any>(this.adminUrlRoot + 'logout')
       .pipe(
-        retry(3),
         tap(res => this.loggedIn = false),
         catchError(this.handleError)
       );
@@ -53,19 +45,15 @@ export class AdminService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    if (isPlatformBrowser(this.platformId)) {
-      if (error.error instanceof ErrorEvent) {
-        // A client-side or network error occurred. Handle it accordingly.
-        console.error('An error occurred:', error.error.message);
-      } else {
-        // The backend returned an unsuccessful response code.
-        // The response body may contain clues as to what went wrong,
-        console.error(
-          `Backend returned code ${error.status}, ` +
-          `body was: ${error.message}`);
-      }
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error.message);
     } else {
-      console.log(error);
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.message}`);
     }
     // return an observable with a user-facing error message
     return throwError(error);

@@ -1,14 +1,14 @@
 <header>
   <nav>
-    <button id="backBtn" [class.on]="notHome" *ngIf="isLoggedIn" (touchstart)="outsideNav(); closeSubNav()" (click)="goBack()"><fa-icon [icon]="['fas', 'chevron-left']"></fa-icon></button>
+    <button id="backBtn" [class.on]="notHome" *ngIf="isLoggedIn || isLoggedInAdmin" (touchstart)="outsideNav(); closeSubNav()" (click)="goBack()"><fa-icon [icon]="['fas', 'chevron-left']"></fa-icon></button>
 
-    <button id="logoBtn" [class.centered]="isLoggedIn && notHome" routerLink="/" (touchstart)="outsideNav(); closeSubNav()"><img src="../assets/images/kia-logo.png" height="100%" alt="Jeep Logo"></button>
+    <button id="logoBtn" [class.centered]="(isLoggedIn || isLoggedInAdmin) && notHome" routerLink="/" (touchstart)="outsideNav(); closeSubNav()"><img src="../assets/images/kia-logo.png" height="100%" alt="Kia Logo"></button>
 
     <button id="notesBtn" [class.hasNotes]="hasNotes" *ngIf="isLoggedIn" (touchstart)="outsideNav()" (click)="openNotes()"><fa-icon [icon]="['fas', 'edit']"></fa-icon></button>
 
     <button id="leaderBtn" *ngIf="isLoggedIn" (touchstart)="outsideNav()" (click)="openLeaderboard()"><fa-icon [icon]="['fas', 'trophy']"></fa-icon></button>
 
-    <button id="navBtn" [class.open]="state === 'active'" (click)="toggleNav()"><!-- *ngIf="isLoggedIn || isLoggedInAdmin" -->
+    <button id="navBtn" [class.open]="state === 'active'" *ngIf="isLoggedIn || isLoggedInAdmin" (click)="toggleNav()">
       <span></span>
       <span></span>
       <span></span>
@@ -20,15 +20,6 @@
       <a routerLink="/" (click)="closeNav(); closeSubNav()">Home</a>
       <a routerLink="/pre-game" (click)="closeNav(); closeSubNav()">PreGame</a>
       <a routerLink="/game-on" (click)="closeNav(); closeSubNav()">GameON</a>
-      <!--
-      <a (click)="toggleSubNav(1)">Wrangler Generations <fa-icon [icon]="['fas', 'angle-down']" [class.up]="subState1 === 'active'"></fa-icon></a>
-      <div class="subNav" [@navMenu]="subState1">
-        <a routerLink="/generations/press-quotes" (click)="closeNav()">Press Quotes</a>
-        <a routerLink="/generations/hands-on" (click)="closeNav()">Hands-on Comparison</a>
-        <a routerLink="/generations/4x4-essentials" (click)="closeNav()">4x4 Essentials</a>
-        <a routerLink="/generations/key-takeaways" (click)="closeNav()">Key Takeaways</a>
-      </div>
-      -->
       <a (click)="toggleSubNav(1)">It’sON <fa-icon [icon]="['fas', 'angle-down']" [class.up]="subState1 === 'active'"></fa-icon></a>
       <div class="subNav" [@navMenu]="subState1">
         <a routerLink="/its-on/hands-on-comparison" (click)="closeNav()">Hands-On Comparison</a>

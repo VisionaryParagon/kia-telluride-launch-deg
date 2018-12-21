@@ -90,19 +90,19 @@ export class AppComponent implements OnInit {
 
         // route checks for nav
         // setTimeout(() => {
-          if (ev.url === ('/' || '/admin')) {
+          if (ev.urlAfterRedirects === ('/') || ev.urlAfterRedirects === ('/admin')) {
             this.notHome = false;
           } else {
             this.notHome = true;
           }
 
-          if (ev.url.indexOf('/admin') === 0) {
+          if (ev.urlAfterRedirects.indexOf('/admin') === 0) {
             this.isAdmin = true;
           } else {
             this.isAdmin = false;
           }
 
-          if ((this.notesService.noteModule.length > 0 || ev.url.indexOf(this.notesService.noteUrl) === 0) && this.notHome) {
+          if ((this.notesService.noteModule.length > 0 || ev.urlAfterRedirects.indexOf(this.notesService.noteUrl) === 0) && this.notHome) {
             this.hasNotes = true;
           } else {
             this.hasNotes = false;
@@ -180,9 +180,11 @@ export class AppComponent implements OnInit {
 
   logoutAdmin() {
     this.cookieService.removeAll();
-    this.adminService.logout();
     this.adminService.loggedIn = false;
-
-    this.router.navigate(['/admin/login']);
+    this.adminService.logout()
+      .subscribe(
+        res => this.router.navigate(['/admin/login']),
+        err => console.log('Could not log out admin')
+      );
   }
 }
