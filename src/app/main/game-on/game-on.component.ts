@@ -9,7 +9,7 @@ import { QuizService } from '../../services/quiz.service';
 
 import { FadeAnimation, TopDownAnimation } from '../../animations';
 
-import { QuizComponent } from '../../modals/quiz/quiz.component';
+import { QuizComponent } from '../modals/quiz/quiz.component';
 
 @Component({
   selector: 'app-game-on',

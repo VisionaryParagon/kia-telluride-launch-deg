@@ -9,10 +9,10 @@ import { MainModule } from './main/main.module';
 
 // Components
 import { AppComponent } from './app.component';
-import { KuidWarningComponent } from './modals/kuid-warning/kuid-warning.component';
-import { LeaderboardComponent } from './modals/leaderboard/leaderboard.component';
-import { NotesComponent } from './modals/notes/notes.component';
-import { QuizComponent } from './modals/quiz/quiz.component';
+import { KuidWarningComponent } from './main/modals/kuid-warning/kuid-warning.component';
+import { LeaderboardComponent } from './main/modals/leaderboard/leaderboard.component';
+import { NotesComponent } from './main/modals/notes/notes.component';
+import { QuizComponent } from './main/modals/quiz/quiz.component';
 
 @NgModule({
   declarations: [
