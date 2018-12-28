@@ -72,7 +72,7 @@
 
               <div class="form-group my-4" [class.nope]="dealer.errors && userChecked">
                 <label for="dealer">Dealer Code</label>
-                <input type="text" class="form-control" autocomplete="off" required [(ngModel)]="user.dealer" name="dealer" #dealer="ngModel" (ngModelChange)="hideError()">
+                <input uppercaseInput type="text" class="form-control" autocomplete="off" required [(ngModel)]="user.dealer" name="dealer" #dealer="ngModel" (ngModelChange)="hideError()">
 
                 <div class="errorMsg" [@topDown]="true" *ngIf="dealer.errors && userChecked">
                   <p>Dealer Code is required</p>

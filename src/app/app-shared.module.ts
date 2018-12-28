@@ -38,6 +38,7 @@ import {
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { CookieModule } from 'ngx-cookie';
+import { UppercaseInputDirective } from './directives/uppercase-input/uppercase-input.directive';
 
 // Directives
 
@@ -77,7 +78,9 @@ library.add(faTrophy);
     NgxChartsModule,
     CookieModule.forRoot()
   ],
-  declarations: [],
+  declarations: [
+    UppercaseInputDirective
+  ],
   exports: [
     CommonModule,
     HttpClientModule,
@@ -97,7 +100,8 @@ library.add(faTrophy);
     MatTabsModule,
     FontAwesomeModule,
     NgxChartsModule,
-    CookieModule
+    CookieModule,
+    UppercaseInputDirective
   ]
 })
 export class AppSharedModule { }
