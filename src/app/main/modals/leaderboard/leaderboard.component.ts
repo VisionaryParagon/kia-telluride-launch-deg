@@ -64,7 +64,7 @@ export class LeaderboardComponent implements OnInit {
               tm => {
                 const temp = {};
 
-                pointsArray = pointsArray.concat(tm[0].teams);
+                pointsArray = pointsArray.concat(tm.teams);
 
                 pointsArray.forEach(x => {
                   temp[x.name] = temp[x.name] || { name: x.name, value: 0 };
