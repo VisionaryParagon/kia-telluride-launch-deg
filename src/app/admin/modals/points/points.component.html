@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>{{ selected.name }} | {{ selected.value }}&nbsp;Points</h1>
+
+<button class="mat-dialog-close" mat-dialog-close>&times;</button>
+
+<div mat-dialog-content>
+  <h6 class="text-center">Add or Subtract Points</h6>
+
+  <div class="d-flex">
+    <button class="btn btn-success adminBtn" (click)="addPoints(5)">+5</button>
+    <button class="btn btn-danger adminBtn" (click)="addPoints(-5)">-5</button>
+  </div>
+
+  <div class="d-flex">
+    <button class="btn btn-success adminBtn" (click)="addPoints(10)">+10</button>
+    <button class="btn btn-danger adminBtn" (click)="addPoints(-10)">-10</button>
+  </div>
+
+  <div class="d-flex">
+    <button class="btn btn-success adminBtn" (click)="addPoints(20)">+20</button>
+    <button class="btn btn-danger adminBtn" (click)="addPoints(-20)">-20</button>
+  </div>
+
+  <div class="d-flex">
+    <button class="btn btn-success adminBtn" (click)="addPoints(50)">+50</button>
+    <button class="btn btn-danger adminBtn" (click)="addPoints(-50)">-50</button>
+  </div>
+
+  <p class="errorMsg" [@topDown]="true" *ngIf="error">It appears there was an issue connecting to the team data. Please make sure you have a WiFi or mobile data connection and try refreshing your browser. Then open this page&nbsp;again.</p>
+
+  <div class="pointCallback text-success" [@addPoints]="plus" *ngIf="plus">+{{ pointVal }}</div>
+  <div class="pointCallback text-danger" [@subPoints]="minus" *ngIf="minus">{{ pointVal }}</div>
+</div>
+<div mat-dialog-actions>
+  <button class="kiaBtn dialog primary" type="button" mat-dialog-close>Close</button>
+</div>

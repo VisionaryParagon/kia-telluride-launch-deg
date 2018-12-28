@@ -752,6 +752,26 @@ section {
 }
 
 
+/*~~  Admin ~~*/
+
+.adminBtn {
+  font-size: 20px;
+  margin: .5rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+.pointCallback {
+  font-size: 150px;
+  font-weight: bold;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}
+
+
 /*~~  Material Design Elements ~~*/
 
 div.mat-progress-bar-buffer {
@@ -1013,6 +1033,11 @@ table.mat-table {
   text-align: center;
 }
 
+.adminContainer {
+  height: 380px;
+  width: 100%;
+}
+
 div.ngx-charts-outer {
   margin: 0 auto;
 
@@ -1058,7 +1083,11 @@ ngx-charts-pie-chart {
 
 @media all and (max-width: 991px) and (orientation: landscape) {}
 
-@media all and (min-width: 768px) {}
+@media all and (min-width: 768px) {
+  .adminContainer {
+    height: 580px;
+  }
+}
 
 @media all and (min-width: 992px) {
   #login {

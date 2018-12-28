@@ -6,8 +6,15 @@ import { AdminRoutingModule } from './admin-routing.module';
 
 // Main
 import { AdminComponent } from './admin.component';
-import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { AdminReportComponent } from './admin-report/admin-report.component';
+
+// Modals
+import { SessionsComponent } from './modals/sessions/sessions.component';
+import { PointsComponent } from './modals/points/points.component';
+import { UserFormComponent } from './modals/user-form/user-form.component';
+import { UserDeleteComponent } from './modals/user-delete/user-delete.component';
 
 @NgModule({
   imports: [
@@ -16,8 +23,19 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
   ],
   declarations: [
     AdminComponent,
+    AdminLoginComponent,
     AdminHomeComponent,
-    AdminLoginComponent
+    AdminReportComponent,
+    SessionsComponent,
+    PointsComponent,
+    UserFormComponent,
+    UserDeleteComponent
+  ],
+  entryComponents: [
+    SessionsComponent,
+    PointsComponent,
+    UserFormComponent,
+    UserDeleteComponent
   ]
 })
 export class AdminModule { }

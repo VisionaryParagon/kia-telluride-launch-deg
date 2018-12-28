@@ -1,0 +1,58 @@
+<h1 mat-dialog-title>Select Session</h1>
+
+<button class="mat-dialog-close" mat-dialog-close>&times;</button>
+
+<form #sessionForm="ngForm" novalidate>
+  <div mat-dialog-content>
+    <div class="form-group my-4" [class.nope]="invalid || (dealer.errors && (dealer.touched || submitted))">
+      <label for="dealer">Dealer Code</label>
+      <input uppercaseInput type="text" class="form-control" autocomplete="off" required [(ngModel)]="group.dealer" name="dealer" #dealer="ngModel" (ngModelChange)="hideError()">
+
+      <div class="errorMsg" [@topDown]="true" *ngIf="dealer.errors && (dealer.touched || submitted)">
+        <p>Dealer Code is required</p>
+      </div>
+    </div>
+
+    <fieldset class="form-group">
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" value="AM" required [(ngModel)]="group.session" name="session" #session="ngModel" (ngModelChange)="hideError()">
+          <div class="selector" [class.selected]="group.session === 'AM'" [class.nope]="invalid || (session.errors && submitted)">
+            <fa-icon [icon]="['fas', 'check']" *ngIf="group.session === 'AM'"></fa-icon>
+            <span>AM</span>
+          </div>
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" value="PM" required [(ngModel)]="group.session" name="session" #session="ngModel" (ngModelChange)="hideError()">
+          <div class="selector" [class.selected]="group.session === 'PM'" [class.nope]="invalid || (session.errors && submitted)">
+            <fa-icon [icon]="['fas', 'check']" *ngIf="group.session === 'PM'"></fa-icon>
+            <span>PM</span>
+          </div>
+        </label>
+      </div>
+
+      <div class="errorMsg" [@topDown]="true" *ngIf="session.errors && submitted">
+        <p>Please select a session</p>
+      </div>
+    </fieldset>
+
+    <div class="errorMsg" [@topDown]="true" *ngIf="invalid">
+      <p>Invalid data. Please enter a different Dealer Code and/or select another session.</p>
+    </div>
+
+    <div class="errorMsg" [@topDown]="true" *ngIf="error">
+      <p>Something went wrong... Please make sure you have a WiFi or mobile data connection and try refreshing your&nbsp;browser.</p>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button class="kiaBtn dialog secondary" type="button" mat-dialog-close>Cancel</button>
+    <button class="kiaBtn dialog primary" [disabled]="loading" (click)="submit(group, sessionForm.valid)">
+      <span *ngIf="!loading">Submit</span>
+      <span *ngIf="loading">
+        <mat-spinner class="mx-auto" [diameter]="20" [strokeWidth]="3"></mat-spinner>
+      </span>
+    </button>
+  </div>
+</form>

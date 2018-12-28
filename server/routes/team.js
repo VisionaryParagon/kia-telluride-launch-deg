@@ -10,44 +10,48 @@ router.post('/teams/valid', (req, res) => {
     dealer: req.body.dealer,
     session: req.body.session
   }, (err, data) => {
+    const notFound = {
+      message: 'Team not in system'
+    };
     if (err) return res.status(500).send(err);
-    return res.status(200).send(data);
+    if (!data.length) return res.status(200).send(notFound);
+    return res.status(200).send(data[0]);
   });
 });
 
 // create new team
 router.post('/teams', (req, res) => {
-  team.create(req.body, (err, team) => {
+  team.create(req.body, (err, data) => {
     if (err) return res.status(500).send(err);
-    return res.status(200).send(team);
+    return res.status(200).send(data);
   });
 });
 
 // get all teams
 router.get('/teams', (req, res) => {
   if (!req.isAuthenticated()) return res.status(401).send({ message: 'User is not authenticated' });
-  team.find({}, (err, teams) => {
+  team.find({}, (err, data) => {
     if (err) return res.status(500).send(err);
-    return res.status(200).send(teams);
+    return res.status(200).send(data);
   });
 });
 
 // get one team
 router.get('/teams/:id', (req, res) => {
-  team.findById(req.params.id, (err, team) => {
-    let notFound = {
+  team.findById(req.params.id, (err, data) => {
+    const notFound = {
       message: 'Team not in system'
     };
     if (err) return res.status(500).send(err);
-    if (!team) return res.status(404).send(notFound);
-    return res.status(200).send(team);
+    if (!data) return res.status(200).send(notFound);
+    return res.status(200).send(data);
   });
 });
 
 // delete team
 router.delete('/teams/:id', (req, res) => {
   if (!req.isAuthenticated()) return res.status(401).send({ message: 'User is not authenticated' });
-  team.findByIdAndRemove(req.params.id, (err, team) => {
+  team.findByIdAndRemove(req.params.id, (err, data) => {
     let deleted = {
       message: 'Team deleted'
     };
@@ -61,9 +65,9 @@ router.put('/teams/:id', (req, res) => {
   if (!req.isAuthenticated()) return res.status(401).send({ message: 'User is not authenticated' });
   team.findByIdAndUpdate(req.params.id, req.body, {
     new: true
-  }, (err, team) => {
+  }, (err, data) => {
     if (err) return res.status(500).send(err);
-    res.status(200).send(team);
+    res.status(200).send(data);
   });
 });
 

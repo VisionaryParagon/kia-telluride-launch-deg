@@ -4,7 +4,7 @@ import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/htt
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry, tap } from 'rxjs/operators';
 
-import { Group, Team } from './classes';
+import { Group } from './classes';
 
 @Injectable({
   providedIn: 'root'
@@ -42,8 +42,8 @@ export class TeamService {
   }
 
   // create team
-  createTeam(team) {
-    return this.http.post<Team>(this.teamUrl, team)
+  createTeam(data) {
+    return this.http.post<Group>(this.teamUrl, data)
       .pipe(
         retry(3),
         catchError(this.handleError)
@@ -52,7 +52,7 @@ export class TeamService {
 
   // get all team points
   getTeams() {
-    return this.http.get<Team[]>(this.teamUrl)
+    return this.http.get<Group[]>(this.teamUrl)
       .pipe(
         retry(3),
         catchError(this.handleError)
@@ -62,7 +62,7 @@ export class TeamService {
   // get one team points by _id
   getTeam(id) {
     const idUrl = this.teamUrl + '/' + id;
-    return this.http.get<Team>(idUrl)
+    return this.http.get<Group>(idUrl)
       .pipe(
         retry(3),
         catchError(this.handleError)
@@ -70,8 +70,8 @@ export class TeamService {
   }
 
   // delete team
-  deleteTeam(team) {
-    const idUrl = this.teamUrl + '/' + team._id;
+  deleteTeam(data) {
+    const idUrl = this.teamUrl + '/' + data._id;
     return this.http.delete(idUrl)
       .pipe(
         retry(3),
@@ -80,9 +80,9 @@ export class TeamService {
   }
 
   // update team points
-  updateTeam(team) {
-    const idUrl = this.teamUrl + '/' + team._id;
-    return this.http.put<Team>(idUrl, team)
+  updateTeam(data) {
+    const idUrl = this.teamUrl + '/' + data._id;
+    return this.http.put<Group>(idUrl, data)
       .pipe(
         retry(3),
         catchError(this.handleError)

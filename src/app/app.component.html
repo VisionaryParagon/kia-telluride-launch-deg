@@ -1,12 +1,12 @@
 <header>
   <nav>
-    <button id="backBtn" [class.on]="notHome" *ngIf="isLoggedIn || isLoggedInAdmin" (touchstart)="outsideNav(); closeSubNav()" (click)="goBack()"><fa-icon [icon]="['fas', 'chevron-left']"></fa-icon></button>
+    <button id="backBtn" [class.on]="notHome" *ngIf="isLoggedIn && !isAdmin" (touchstart)="outsideNav(); closeSubNav()" (click)="goBack()"><fa-icon [icon]="['fas', 'chevron-left']"></fa-icon></button>
 
-    <button id="logoBtn" [class.centered]="(isLoggedIn || isLoggedInAdmin) && notHome" routerLink="/" (touchstart)="outsideNav(); closeSubNav()"><img src="../assets/images/kia-logo.png" height="100%" alt="Kia Logo"></button>
+    <button id="logoBtn" [class.centered]="isLoggedIn && !isAdmin && notHome" routerLink="/" (touchstart)="outsideNav(); closeSubNav()"><img src="../assets/images/kia-logo.png" height="100%" alt="Kia Logo"></button>
 
-    <button id="notesBtn" [class.hasNotes]="hasNotes" *ngIf="isLoggedIn" (touchstart)="outsideNav()" (click)="openNotes()"><fa-icon [icon]="['fas', 'edit']"></fa-icon></button>
+    <button id="notesBtn" [class.hasNotes]="hasNotes" *ngIf="isLoggedIn && !isAdmin" (touchstart)="outsideNav()" (click)="openNotes()"><fa-icon [icon]="['fas', 'edit']"></fa-icon></button>
 
-    <button id="leaderBtn" *ngIf="isLoggedIn" (touchstart)="outsideNav()" (click)="openLeaderboard()"><fa-icon [icon]="['fas', 'trophy']"></fa-icon></button>
+    <button id="leaderBtn" *ngIf="isLoggedIn && !isAdmin" (touchstart)="outsideNav()" (click)="openLeaderboard()"><fa-icon [icon]="['fas', 'trophy']"></fa-icon></button>
 
     <button id="navBtn" [class.open]="state === 'active'" *ngIf="isLoggedIn || isLoggedInAdmin" (click)="toggleNav()">
       <span></span>
@@ -33,13 +33,8 @@
       <a (click)="closeNav(); closeSubNav(); logout()">Logout</a>
     </div>
     <div *ngIf="isAdmin">
-      <a routerLink="/admin" (click)="closeNav(); closeSubNav()">Admin Home</a>
-      <!--
-      <a routerLink="/admin/group" (click)="closeNav(); closeSubNav()">Select Group</a>
-      <a routerLink="/admin/users" (click)="closeNav(); closeSubNav()">New User</a>
-      <a routerLink="/admin/showdown" (click)="closeNav(); closeSubNav()">Showdown</a>
+      <a routerLink="/admin" (click)="closeNav(); closeSubNav()">Leaderboard</a>
       <a routerLink="/admin/report" (click)="closeNav(); closeSubNav()">User Report</a>
-      -->
       <a (click)="closeNav(); closeSubNav(); logoutAdmin()">Logout</a>
     </div>
   </div>

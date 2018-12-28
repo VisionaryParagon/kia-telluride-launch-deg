@@ -185,7 +185,7 @@ router.get('/users/:id', (req, res) => {
       message: 'User not in system'
     };
     if (err) return res.status(500).send(err);
-    if (!user) return res.status(404).send(notFound);
+    if (!user) return res.status(200).send(notFound);
     return res.status(200).send(user);
   });
 });
