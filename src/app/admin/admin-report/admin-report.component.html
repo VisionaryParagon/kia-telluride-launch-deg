@@ -1,6 +1,81 @@
-<section [@fade]="true">
+<section class="pb-3" [@fade]="true">
   <div class="container">
-    <h1>User Report</h1>
+    <div #tableFunctions>
+      <h1>User Report</h1>
+
+      <div class="row">
+        <div class="col-12 col-sm-6 order-sm-last text-center text-sm-right">
+          <button class="btn btn-success mb-3 mx-1">New</button>
+          <button class="btn btn-warning mb-3 mx-1" [disabled]="!selectedUser">Edit</button>
+          <button class="btn btn-danger mb-3 mx-1" [disabled]="!selectedUser">Delete</button>
+          <button class="btn btn-primary mb-3 mx-1">Export</button>
+        </div>
+
+        <div class="col-12 col-sm-6 order-sm-first">
+          <input type="text" class="form-control mb-3" placeholder="Search..." (keyup)="filter($event.target.value)">
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="loading">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+
+    <div class="adminTable" #tableContainer>
+      <table mat-table [dataSource]="dataSource" matSort matSortActive="modified" matSortDirection="desc">
+
+        <!-- KUID Column -->
+        <ng-container matColumnDef="kuid">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> KUID </th>
+          <td mat-cell *matCellDef="let element"> {{element.kuid}} </td>
+        </ng-container>
+      
+        <!-- First Name Column -->
+        <ng-container matColumnDef="first_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> First&nbsp;Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.first_name}} </td>
+        </ng-container>
+      
+        <!-- Last Name Column -->
+        <ng-container matColumnDef="last_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Last&nbsp;Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.last_name}} </td>
+        </ng-container>
+      
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+      
+        <!-- Dealer Code Column -->
+        <ng-container matColumnDef="dealer">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Dealer&nbsp;Code </th>
+          <td mat-cell *matCellDef="let element"> {{element.dealer}} </td>
+        </ng-container>
+      
+        <!-- Session Column -->
+        <ng-container matColumnDef="session">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Session </th>
+          <td mat-cell *matCellDef="let element"> {{element.session}} </td>
+        </ng-container>
+      
+        <!-- Created Column -->
+        <ng-container matColumnDef="created">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Created&nbsp;Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.created | date:'medium'}} </td>
+        </ng-container>
+      
+        <!-- Modified Column -->
+        <ng-container matColumnDef="modified">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Modified&nbsp;Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.modified | date:'medium'}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" [class.selectedRow]="selectedUser === row" (click)="select(row)"></tr>
+      </table>
+    </div>
   </div>
 </section>
   

@@ -771,6 +771,25 @@ section {
   width: 100%;
 }
 
+.adminTable {
+  overflow: auto;
+  width: 100%;
+
+  tr.mat-row {
+    &:nth-child(2n) {
+      background: #f0f0f0;
+    }
+
+    &.selectedRow {
+      background: rgba(187, 22, 43, 0.5);
+    }
+
+    td.mat-cell {
+      border-radius: 0 !important;
+    }
+  }
+}
+
 
 /*~~  Material Design Elements ~~*/
 
@@ -1003,7 +1022,7 @@ table.mat-table {
       border-bottom: 2px solid $client-red;
       border-right: 1px solid $client-light-gray;
       border-radius: .25rem;
-      padding: 0 .5rem !important;
+      padding: .25rem .5rem !important;
     }
   }
 
@@ -1016,7 +1035,7 @@ table.mat-table {
       border-bottom-color: transparent;
       border-right: 1px solid $client-light-gray;
       border-radius: .25rem;
-      padding: 0 .5rem !important;
+      padding: .25rem .5rem !important;
 
       &:last-of-type {
         border-right: none;
@@ -1078,6 +1097,8 @@ ngx-charts-pie-chart {
 
 
 /*~~ Media Queries ~~*/
+
+@media all and (min-width: 576px) {}
 
 @media all and (orientation: portrait) {}
 
