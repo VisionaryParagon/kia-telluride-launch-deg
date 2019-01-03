@@ -37,7 +37,10 @@ import {
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+
 import { CookieModule } from 'ngx-cookie';
+
 import { UppercaseInputDirective } from './directives/uppercase-input/uppercase-input.directive';
 
 // Directives
@@ -76,6 +79,7 @@ library.add(faTrophy);
     MatTabsModule,
     FontAwesomeModule,
     NgxChartsModule,
+    ZXingScannerModule,
     CookieModule.forRoot()
   ],
   declarations: [
@@ -100,6 +104,7 @@ library.add(faTrophy);
     MatTabsModule,
     FontAwesomeModule,
     NgxChartsModule,
+    ZXingScannerModule,
     CookieModule,
     UppercaseInputDirective
   ]

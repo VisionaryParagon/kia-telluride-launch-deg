@@ -10,6 +10,7 @@ import { QuizService } from '../../services/quiz.service';
 import { FadeAnimation, TopDownAnimation } from '../../animations';
 
 import { QuizComponent } from '../modals/quiz/quiz.component';
+import { ScannerComponent } from '../modals/scanner/scanner.component';
 
 @Component({
   selector: 'app-switched-on',
@@ -51,6 +52,21 @@ export class SwitchedOnComponent implements OnInit {
       .subscribe(
         res => this.quizData = res.filter(quiz => quiz.name === this.quizName)[0],
         err => this.error = 'Quiz data could not be retrieved. Please refresh this page to try again.'
+      );
+  }
+
+  openScanner() {
+    const dialogRef = this.dialog.open(ScannerComponent, {
+      height: '90vh',
+      maxWidth: '90vw',
+      width: '90vw'
+    });
+
+    dialogRef.afterClosed()
+      .subscribe(
+        data => {
+          // console.log('Updated user:', data);
+        }
       );
   }
 

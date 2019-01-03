@@ -32,18 +32,15 @@
         </mat-expansion-panel>
         <mat-expansion-panel>
           <mat-expansion-panel-header>
-            BlippAR
+            QR Code Scanner
           </mat-expansion-panel-header>
   
           <ng-template matExpansionPanelContent>
-            <div class="blippar"></div>
+            <p>Use the built-in QR code scanner to open additional content.</p>
   
-            <p>Please download and open the app using one of the options below:</p>
+            <p>iPhone users: If you are having issues with the scanner, please make sure you are using your default Safari web browser.</p>
   
-            <div class="d-flex justify-content-center">
-              <a class="px-2" href="https://itunes.apple.com/gb/app/blippar/id410604563" target="_blank"><img src="../../../assets/images/apple-app-store-badge.png" height="36px" alt="Download on the App Store"></a>
-              <a class="px-2" href="https://play.google.com/store/apps/details?hl=en_GB&id=com.blippar.ar.android" target="_blank"><img src="../../../assets/images/google-play-badge.png" height="36px" alt="Get it on Google Play"></a>
-            </div>
+            <button class="kiaBtn" (click)="openScanner()">Open Scanner</button>
           </ng-template>
         </mat-expansion-panel>
         <mat-expansion-panel>
