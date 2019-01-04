@@ -1,0 +1,24 @@
+<section [@fade]="true">
+  <div class="container">
+    <h1>QR Code Scanner</h1>
+
+    <div class="scannerBox text-center">
+      <div *ngIf="!hasCameras && hasPermission === true">
+        <p>Connecting to device cameras...</p>
+      </div>
+
+      <div *ngIf="hasPermission === undefined">
+        <h2>Waiting for permissions.</h2>
+
+        <p>If your device does not have cameras, no permissions will be asked.</p>
+      </div>
+
+      <div *ngIf="hasPermission === false">
+        <p>You denied the camera permissions.</p>
+      </div>
+
+      <zxing-scanner #scanner [scannerEnabled]="startScanning" [device]="selectedDevice" (scanSuccess)="handleQrCodeResult($event)"></zxing-scanner>
+    </div>
+  </div>
+</section>
+  

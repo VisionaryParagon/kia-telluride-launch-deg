@@ -5,12 +5,12 @@ import { ZXingScannerComponent } from '@zxing/ngx-scanner';
 import { FadeAnimation, TopDownAnimation } from '../../../animations';
 
 @Component({
-  selector: 'app-scanner',
-  templateUrl: './scanner.component.html',
-  styleUrls: ['./scanner.component.scss'],
+  selector: 'app-qr-scanner',
+  templateUrl: './qr-scanner.component.html',
+  styleUrls: ['./qr-scanner.component.scss'],
   animations: [ FadeAnimation, TopDownAnimation ]
 })
-export class ScannerComponent implements OnInit {
+export class QrScannerComponent implements OnInit {
   hasCameras: boolean;
   hasPermission: boolean;
   startScanning = false;

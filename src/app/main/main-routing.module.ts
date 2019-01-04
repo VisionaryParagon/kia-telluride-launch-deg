@@ -15,9 +15,6 @@ import { PreGameComponent } from './pre-game/pre-game.component';
 // GameON
 import { GameOnComponent } from './game-on/game-on.component';
 
-// SwitchedON
-import { SwitchedOnComponent } from './switched-on/switched-on.component';
-
 // It'sON
 import { ItsOnComponent } from './its-on/its-on.component';
 import { ItsOnMainComponent } from './its-on/its-on-main/its-on-main.component';
@@ -28,6 +25,11 @@ import { FrontRowComponent } from './its-on/hands-on-comparison/front-row/front-
 import { SecondThirdRowComponent } from './its-on/hands-on-comparison/second-third-row/second-third-row.component';
 import { CargoComponent } from './its-on/hands-on-comparison/cargo/cargo.component';
 import { StreetDriveComponent } from './its-on/street-drive/street-drive.component';
+
+// SwitchedON
+import { SwitchedOnComponent } from './switched-on/switched-on.component';
+import { SwitchedOnMainComponent } from './switched-on/switched-on-main/switched-on-main.component';
+import { QrScannerComponent } from './switched-on/qr-scanner/qr-scanner.component';
 
 // RockON
 import { RockOnComponent } from './rock-on/rock-on.component';
@@ -68,7 +70,17 @@ const routes: Routes = [
             component: SwitchedOnComponent,
             data: {
               noteModule: 'SwitchedON'
-            }
+            },
+            children: [
+              {
+                path: '',
+                component: SwitchedOnMainComponent
+              },
+              {
+                path: 'qr-scanner',
+                component: QrScannerComponent
+              }
+            ]
           },
           {
             path: 'its-on',

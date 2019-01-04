@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ScannerComponent } from './scanner.component';
+import { SwitchedOnMainComponent } from './switched-on-main.component';
 
-describe('ScannerComponent', () => {
-  let component: ScannerComponent;
-  let fixture: ComponentFixture<ScannerComponent>;
+describe('SwitchedOnMainComponent', () => {
+  let component: SwitchedOnMainComponent;
+  let fixture: ComponentFixture<SwitchedOnMainComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ScannerComponent ]
+      declarations: [ SwitchedOnMainComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ScannerComponent);
+    fixture = TestBed.createComponent(SwitchedOnMainComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

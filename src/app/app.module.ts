@@ -13,7 +13,6 @@ import { KuidWarningComponent } from './main/modals/kuid-warning/kuid-warning.co
 import { LeaderboardComponent } from './main/modals/leaderboard/leaderboard.component';
 import { NotesComponent } from './main/modals/notes/notes.component';
 import { QuizComponent } from './main/modals/quiz/quiz.component';
-import { ScannerComponent } from './main/modals/scanner/scanner.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +20,7 @@ import { ScannerComponent } from './main/modals/scanner/scanner.component';
     KuidWarningComponent,
     LeaderboardComponent,
     NotesComponent,
-    QuizComponent,
-    ScannerComponent
+    QuizComponent
   ],
   imports: [
     BrowserModule,
@@ -35,8 +33,7 @@ import { ScannerComponent } from './main/modals/scanner/scanner.component';
     KuidWarningComponent,
     LeaderboardComponent,
     NotesComponent,
-    QuizComponent,
-    ScannerComponent
+    QuizComponent
   ],
   providers: [],
   bootstrap: [
