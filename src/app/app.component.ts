@@ -29,6 +29,7 @@ export class AppComponent implements OnInit {
   userId: string = this.cookieService.get('userId');
   lastPoppedUrl: string;
   yScrollStack: number[] = [];
+  parentRoute: string;
   isLoggedIn = false;
   isLoggedInAdmin = false;
   isAdmin = false;
@@ -89,25 +90,25 @@ export class AppComponent implements OnInit {
         this.isLoggedInAdmin = this.adminService.loggedIn;
 
         // route checks for nav
-        // setTimeout(() => {
-          if (ev.urlAfterRedirects === ('/') || ev.urlAfterRedirects === ('/admin')) {
-            this.notHome = false;
-          } else {
-            this.notHome = true;
-          }
+        this.parentRoute = ev.urlAfterRedirects.split('/').slice(0, -1).join('/');
 
-          if (ev.urlAfterRedirects.indexOf('/admin') === 0) {
-            this.isAdmin = true;
-          } else {
-            this.isAdmin = false;
-          }
+        if (ev.urlAfterRedirects === ('/') || ev.urlAfterRedirects === ('/admin')) {
+          this.notHome = false;
+        } else {
+          this.notHome = true;
+        }
 
-          if ((this.notesService.noteModule.length > 0 || ev.urlAfterRedirects.indexOf(this.notesService.noteUrl) === 0) && this.notHome) {
-            this.hasNotes = true;
-          } else {
-            this.hasNotes = false;
-          }
-        // }, 250);
+        if (ev.urlAfterRedirects.indexOf('/admin') === 0) {
+          this.isAdmin = true;
+        } else {
+          this.isAdmin = false;
+        }
+
+        if ((this.notesService.noteModule.length > 0 || ev.urlAfterRedirects.indexOf(this.notesService.noteUrl) === 0) && this.notHome) {
+          this.hasNotes = true;
+        } else {
+          this.hasNotes = false;
+        }
       }
     });
 
@@ -115,7 +116,7 @@ export class AppComponent implements OnInit {
   }
 
   goBack() {
-    this.location.back();
+    this.router.navigate([this.parentRoute]);
   }
 
   openNotes() {
