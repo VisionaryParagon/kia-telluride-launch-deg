@@ -2,7 +2,7 @@
   <nav>
     <button id="backBtn" [class.on]="notHome" *ngIf="isLoggedIn && !isAdmin" (touchstart)="outsideNav(); closeSubNav()" (click)="goBack()"><fa-icon [icon]="['fas', 'chevron-left']"></fa-icon></button>
 
-    <button id="logoBtn" [class.centered]="isLoggedIn && !isAdmin && notHome" routerLink="/" (touchstart)="outsideNav(); closeSubNav()"><img src="../assets/images/kia-logo.png" height="100%" alt="Kia Logo"></button>
+    <button id="logoBtn" [class.centered]="isLoggedIn && !isAdmin && notHome" routerLink="/" (touchstart)="outsideNav(); closeSubNav()"><img src="../assets/images/kia-university-logo.png" height="100%" alt="Kia Logo"></button>
 
     <button id="notesBtn" [class.hasNotes]="hasNotes" *ngIf="isLoggedIn && !isAdmin" (touchstart)="outsideNav()" (click)="openNotes()"><fa-icon [icon]="['fas', 'edit']"></fa-icon></button>
 
