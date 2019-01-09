@@ -13,16 +13,21 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 // db
+/*
 mongoose.connect('mongodb://' + process.env.DBUSR + ':' + process.env.DBPWD + '@ds145043.mlab.com:45043/kia-telluride-launch', {
   reconnectTries: Number.MAX_VALUE,
   reconnectInterval: 1000
-});
-/*
-mongoose.connect('mongodb://' + process.env.DBUSR + ':' + process.env.DBPWD + '@ds135197-a0.mlab.com:35197,ds135197-a1.mlab.com:35197/jeep-wrangler-deg?replicaSet=rs-ds135197', {
+})
+  .then(dbRes => console.log('Connected to DB', dbRes.connections[0].name))
+  .catch(dbErr => console.log('Error connecting to DB', dbErr));
+*/
+
+mongoose.connect('mongodb://' + process.env.DBUSR + ':' + process.env.DBPWD + '@ds153524-a0.mlab.com:53524,ds153524-a1.mlab.com:53524/kia-telluride-launch?replicaSet=rs-ds153524', {
   reconnectTries: Number.MAX_VALUE,
   reconnectInterval: 1000
-});
-*/
+})
+  .then(dbRes => console.log('Connected to DB', dbRes.connections[0].name))
+  .catch(dbErr => console.log('Error connecting to DB', dbErr));
 
 // models
 const admin = require('./server/models/admin');
