@@ -1,14 +1,14 @@
 <header>
   <nav>
-    <button id="backBtn" [class.on]="notHome" *ngIf="isLoggedIn && !isAdmin" (touchstart)="outsideNav(); closeSubNav()" (click)="goBack()"><fa-icon [icon]="['fas', 'chevron-left']"></fa-icon></button>
+    <button id="backBtn" [class.on]="notHome" *ngIf="isLoggedIn.loggedIn && !isAdmin" (touchstart)="outsideNav(); closeSubNav()" (click)="goBack()"><fa-icon [icon]="['fas', 'chevron-left']"></fa-icon></button>
 
-    <button id="logoBtn" [class.centered]="isLoggedIn && !isAdmin && notHome" routerLink="/" (touchstart)="outsideNav(); closeSubNav()"><img src="../assets/images/kia-university-logo.png" height="100%" alt="Kia Logo"></button>
+    <button id="logoBtn" [class.centered]="isLoggedIn.loggedIn && !isAdmin && notHome" routerLink="/" (touchstart)="outsideNav(); closeSubNav()"><img src="../assets/images/kia-university-logo.png" height="100%" alt="Kia Logo"></button>
 
-    <button id="notesBtn" [class.hasNotes]="hasNotes" *ngIf="isLoggedIn && !isAdmin" (touchstart)="outsideNav()" (click)="openNotes()"><fa-icon [icon]="['fas', 'edit']"></fa-icon></button>
+    <button id="notesBtn" [class.hasNotes]="hasNotes" *ngIf="isLoggedIn.loggedIn && !isAdmin" (touchstart)="outsideNav()" (click)="openNotes()"><fa-icon [icon]="['fas', 'edit']"></fa-icon></button>
 
-    <button id="leaderBtn" *ngIf="isLoggedIn && !isAdmin" (touchstart)="outsideNav()" (click)="openLeaderboard()"><fa-icon [icon]="['fas', 'trophy']"></fa-icon></button>
+    <button id="leaderBtn" *ngIf="isLoggedIn.loggedIn && !isAdmin" (touchstart)="outsideNav()" (click)="openLeaderboard()"><fa-icon [icon]="['fas', 'trophy']"></fa-icon></button>
 
-    <button id="navBtn" [class.open]="state === 'active'" *ngIf="isLoggedIn || isLoggedInAdmin" (click)="toggleNav()">
+    <button id="navBtn" [class.open]="state === 'active'" *ngIf="!isLogin && (isLoggedIn.loggedIn || isLoggedInAdmin.loggedIn)" (click)="toggleNav()">
       <span></span>
       <span></span>
       <span></span>

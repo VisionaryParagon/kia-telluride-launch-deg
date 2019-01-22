@@ -13,7 +13,9 @@ export class UserService {
   private userUrl = '/usr/users';
   currentUser: User = new User();
   returnUrl: string;
-  loggedIn = false;
+  state = {
+    loggedIn: false
+  };
 
   constructor(
     private http: HttpClient
@@ -40,7 +42,7 @@ export class UserService {
   // set current user
   setCurrentUser(user) {
     this.currentUser = user;
-    this.loggedIn = true;
+    this.state.loggedIn = true;
   }
 
   // get current user
@@ -51,7 +53,7 @@ export class UserService {
   // clear current user
   clearCurrentUser() {
     this.currentUser = new User();
-    this.loggedIn = false;
+    this.state.loggedIn = false;
   }
 
   // get top 20 users

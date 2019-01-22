@@ -26,7 +26,8 @@ export class AdminReportComponent implements OnInit {
     'created',
     'modified'
   ];
-  selectedUser: User;
+  selectedUser: User = new User();
+  filter = '';
   loading = true;
   error = false;
 
@@ -39,16 +40,7 @@ export class AdminReportComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userService.getUsers()
-      .subscribe(
-        res => {
-          this.dataSource = new MatTableDataSource(res);
-          this.dataSource.sort = this.sort;
-          this.setHeight();
-          this.loading = false;
-        },
-        err => this.showError()
-      );
+    this.getUsers();
   }
 
   @HostListener('window:resize') resize() {
@@ -58,13 +50,31 @@ export class AdminReportComponent implements OnInit {
   setHeight() {
     this.tableContainer.nativeElement.style.height = window.innerHeight - this.tableFunctions.nativeElement.offsetHeight - 85 + 'px';
   }
+  getUsers() {
+    this.userService.getUsers()
+      .subscribe(
+        res => {
+          this.dataSource = new MatTableDataSource(res);
+          this.dataSource.sort = this.sort;
+          this.search(this.filter);
+          this.setHeight();
+          this.loading = false;
+        },
+        err => this.showError()
+      );
+  }
 
-  filter(data) {
+  search(data) {
     this.dataSource.filter = data.trim().toLowerCase();
   }
 
+  clearFilter() {
+    this.filter = '';
+    this.search(this.filter);
+  }
+
   select(user) {
-    this.selectedUser === user ? this.selectedUser = null : this.selectedUser = user;
+    this.selectedUser === user ? this.selectedUser = new User() : this.selectedUser = user;
   }
 
   showError() {

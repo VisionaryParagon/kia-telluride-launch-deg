@@ -108,7 +108,7 @@
   </div>
   <div mat-dialog-actions>
     <button class="kiaBtn dialog secondary" type="button" mat-dialog-close>Cancel</button>
-    <button class="kiaBtn dialog primary" [disabled]="loading" (click)="submit(group, sessionForm.valid)">
+    <button class="kiaBtn dialog primary" [disabled]="loading" (click)="submit(user, sessionForm.valid)">
       <span *ngIf="!loading">Submit</span>
       <span *ngIf="loading">
         <mat-spinner class="mx-auto" [diameter]="20" [strokeWidth]="3"></mat-spinner>

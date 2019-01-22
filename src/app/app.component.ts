@@ -30,8 +30,9 @@ export class AppComponent implements OnInit {
   lastPoppedUrl: string;
   yScrollStack: number[] = [];
   parentRoute: string;
-  isLoggedIn = false;
-  isLoggedInAdmin = false;
+  isLoggedIn = this.userService.state;
+  isLoggedInAdmin = this.adminService.state;
+  isLogin = false;
   isAdmin = false;
   notHome = false;
   hasNotes = false;
@@ -81,13 +82,10 @@ export class AppComponent implements OnInit {
               res => {
                 this.userService.setCurrentUser(res);
                 this.user = this.userService.getCurrentUser();
-                this.isLoggedIn = this.userService.loggedIn;
               },
               err => {/* this.error = err */}
             );
         }
-        this.isLoggedIn = this.userService.loggedIn;
-        this.isLoggedInAdmin = this.adminService.loggedIn;
 
         // route checks for nav
         this.parentRoute = ev.urlAfterRedirects.split('/').slice(0, -1).join('/');
@@ -96,6 +94,12 @@ export class AppComponent implements OnInit {
           this.notHome = false;
         } else {
           this.notHome = true;
+        }
+
+        if (ev.urlAfterRedirects.indexOf('/login') !== -1) {
+          this.isLogin = true;
+        } else {
+          this.isLogin = false;
         }
 
         if (ev.urlAfterRedirects.indexOf('/admin') === 0) {
@@ -181,7 +185,7 @@ export class AppComponent implements OnInit {
 
   logoutAdmin() {
     this.cookieService.removeAll();
-    this.adminService.loggedIn = false;
+    this.adminService.state.loggedIn = false;
     this.adminService.logout()
       .subscribe(
         res => this.router.navigate(['/admin/login']),

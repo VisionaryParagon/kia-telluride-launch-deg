@@ -48,7 +48,7 @@ export class AdminLoginComponent implements OnInit {
               this.hideError();
 
               // Save login status
-              this.adminService.loggedIn = true;
+              this.adminService.state.loggedIn = true;
 
               // Redirect to saved URL or home
               this.router.navigateByUrl(this.returnUrl);

@@ -10,7 +10,9 @@ import { catchError, retry, tap } from 'rxjs/operators';
 export class AdminService {
   adminUrlRoot = '/admn/';
   returnUrl: string;
-  loggedIn = false;
+  state = {
+    loggedIn: false
+  };
 
   constructor(
     private http: HttpClient
@@ -20,7 +22,7 @@ export class AdminService {
   login(user) {
     return this.http.post<any>(this.adminUrlRoot + 'login', user)
       .pipe(
-        tap(res => this.loggedIn = true),
+        tap(res => this.state.loggedIn = true),
         catchError(this.handleError)
       );
   }
@@ -29,7 +31,7 @@ export class AdminService {
   logout() {
     return this.http.get<any>(this.adminUrlRoot + 'logout')
       .pipe(
-        tap(res => this.loggedIn = false),
+        tap(res => this.state.loggedIn = false),
         catchError(this.handleError)
       );
   }
@@ -39,7 +41,7 @@ export class AdminService {
     return this.http.get<any>(this.adminUrlRoot + 'status')
       .pipe(
         retry(3),
-        tap(res => this.loggedIn = res.auth),
+        tap(res => this.state.loggedIn = res.auth),
         catchError(this.handleError)
       );
   }

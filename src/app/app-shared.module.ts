@@ -28,11 +28,13 @@ import {
   faChevronLeft,
   faChevronRight,
   faEdit,
+  faFileExport,
   faPlus,
   faSearch,
   faTimes,
   faTrashAlt,
-  faTrophy
+  faTrophy,
+  faUserPlus
 } from '@fortawesome/free-solid-svg-icons';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -53,11 +55,13 @@ library.add(faChevronDown);
 library.add(faChevronLeft);
 library.add(faChevronRight);
 library.add(faEdit);
+library.add(faFileExport);
 library.add(faPlus);
 library.add(faSearch);
 library.add(faTimes);
 library.add(faTrashAlt);
 library.add(faTrophy);
+library.add(faUserPlus);
 
 @NgModule({
   imports: [

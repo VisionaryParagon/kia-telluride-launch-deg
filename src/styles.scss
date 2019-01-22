@@ -775,6 +775,16 @@ section {
   width: 100%;
 }
 
+.filter {
+  position: relative;
+
+  button {
+    position: absolute;
+    right: 15px;
+    top: 0;
+  }
+}
+
 .adminTable {
   overflow: auto;
   width: 100%;
