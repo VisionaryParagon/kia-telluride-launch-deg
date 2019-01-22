@@ -22,6 +22,7 @@ export class AdminReportComponent implements OnInit {
     'email',
     'dealer',
     'session',
+    'evaluation',
     'created',
     'modified'
   ];

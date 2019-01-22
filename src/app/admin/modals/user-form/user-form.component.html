@@ -1,3 +1,118 @@
-<p>
-  user-form works!
-</p>
+<h1 mat-dialog-title>Select Session</h1>
+
+<button class="mat-dialog-close" mat-dialog-close>&times;</button>
+
+<form #sessionForm="ngForm" novalidate>
+  <div mat-dialog-content>
+    <div class="form-group my-4" [class.nope]="email.errors && (email.touched || submitted)">
+      <label for="email">Kia University Email</label>
+      <input type="email" class="form-control" autocomplete="off" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" [(ngModel)]="user.email" name="email" #email="ngModel" (ngModelChange)="hideError()">
+
+      <div class="errorMsg" [@topDown]="true" *ngIf="email.errors && (email.touched || submitted)">
+        <p *ngIf="email.errors.required">Email is required</p>
+        <p *ngIf="email.errors.pattern">Email is invalid</p>
+      </div>
+
+      <div class="errorMsg" [@topDown]="true" *ngIf="emailUsed">
+        <p>Email is already registered</p>
+      </div>
+    </div>
+
+    <div class="form-group" [class.nope]="first_name.errors && last_name.errors">
+      <label>Name</label>
+      <div [class.nope]="first_name.errors && (first_name.touched || submitted)">
+        <input type="text" class="form-control" autocomplete="off" required placeholder="First Name" [(ngModel)]="user.first_name" name="first_name" #first_name="ngModel" (ngModelChange)="hideError()">
+      </div>
+
+      <div class="errorMsg" [@topDown]="true" *ngIf="first_name.errors && (first_name.touched || submitted)">
+        <p>First Name is required</p>
+      </div>
+
+      <div [class.nope]="last_name.errors && (last_name.touched || submitted)">
+        <input type="text" class="form-control" autocomplete="off" required placeholder="Last Name" [(ngModel)]="user.last_name" name="last_name" #last_name="ngModel" (ngModelChange)="hideError()">
+      </div>
+
+      <div class="errorMsg" [@topDown]="true" *ngIf="last_name.errors && (last_name.touched || submitted)">
+        <p>Last Name is required</p>
+      </div>
+    </div>
+
+    <div class="form-group my-4" [class.nope]="invalid || (dealer.errors && (dealer.touched || submitted))">
+      <label for="dealer">Dealer Code</label>
+      <input uppercaseInput type="text" class="form-control" autocomplete="off" required [(ngModel)]="user.dealer" name="dealer" #dealer="ngModel" (ngModelChange)="hideError()">
+
+      <div class="errorMsg" [@topDown]="true" *ngIf="dealer.errors && (dealer.touched || submitted)">
+        <p>Dealer Code is required</p>
+      </div>
+    </div>
+
+    <fieldset class="form-group">
+      <p>Session</p>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" value="AM" required [(ngModel)]="user.session" name="session" #session="ngModel" (ngModelChange)="hideError()">
+          <div class="selector" [class.selected]="user.session === 'AM'" [class.nope]="invalid || (session.errors && submitted)">
+            <fa-icon [icon]="['fas', 'check']" *ngIf="user.session === 'AM'"></fa-icon>
+            <span>AM</span>
+          </div>
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" value="PM" required [(ngModel)]="user.session" name="session" #session="ngModel" (ngModelChange)="hideError()">
+          <div class="selector" [class.selected]="user.session === 'PM'" [class.nope]="invalid || (session.errors && submitted)">
+            <fa-icon [icon]="['fas', 'check']" *ngIf="user.session === 'PM'"></fa-icon>
+            <span>PM</span>
+          </div>
+        </label>
+      </div>
+
+      <div class="errorMsg" [@topDown]="true" *ngIf="session.errors && submitted">
+        <p>Please select a session</p>
+      </div>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <p>Team</p>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" value="Team Prestige" required [(ngModel)]="user.team" name="team" #team="ngModel" (ngModelChange)="hideError()">
+          <div class="selector" [class.selected]="user.team === 'Team Prestige'" [class.nope]="invalid || (team.errors && submitted)">
+            <fa-icon [icon]="['fas', 'check']" *ngIf="user.team === 'Team Prestige'"></fa-icon>
+            <span>Team Prestige</span>
+          </div>
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" value="Team Innovative" required [(ngModel)]="user.team" name="team" #team="ngModel" (ngModelChange)="hideError()">
+          <div class="selector" [class.selected]="user.team === 'Team Innovative'" [class.nope]="invalid || (team.errors && submitted)">
+            <fa-icon [icon]="['fas', 'check']" *ngIf="user.team === 'Team Innovative'"></fa-icon>
+            <span>Team Innovative</span>
+          </div>
+        </label>
+      </div>
+
+      <div class="errorMsg" [@topDown]="true" *ngIf="team.errors && submitted">
+        <p>Please select a team</p>
+      </div>
+    </fieldset>
+
+    <div class="errorMsg" [@topDown]="true" *ngIf="invalid">
+      <p>Invalid data. Please enter a different Dealer Code and/or select another session.</p>
+    </div>
+
+    <div class="errorMsg" [@topDown]="true" *ngIf="error">
+      <p>Something went wrong... Please make sure you have a WiFi or mobile data connection and try refreshing your&nbsp;browser.</p>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button class="kiaBtn dialog secondary" type="button" mat-dialog-close>Cancel</button>
+    <button class="kiaBtn dialog primary" [disabled]="loading" (click)="submit(group, sessionForm.valid)">
+      <span *ngIf="!loading">Submit</span>
+      <span *ngIf="loading">
+        <mat-spinner class="mx-auto" [diameter]="20" [strokeWidth]="3"></mat-spinner>
+      </span>
+    </button>
+  </div>
+</form>

@@ -1,0 +1,375 @@
+<section [@fade]="true">
+  <div class="container">
+    <h1>Kia Telluride Training Evaluation</h1>
+
+    <div *ngIf="!error && !success">
+      <p>Your participation in this survey is voluntary. You may choose to take part in the survey or exit at any time. Additionally, you may decline to answer any questions you do not wish to answer. By participating in this survey, you consent that your responses may be used by KMA for analytical purposes and to assist KMA in improving its processes. Please refer to the <a href="http://www.kia.com/us/en/content/privacy-and-legal/privacy-policy" target="_blank">Privacy Policy</a> for more details.</p>
+
+      <form class="eval" #evalForm="ngForm" novalidate>
+        <fieldset class="form-group">
+          <legend class="text-left">1. Attending this course improved my performance and ability to satisfy customers back on the job.</legend>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer1" #answer1="ngModel" [value]="'Strongly Agree'" [(ngModel)]="evaluation.answer1">
+              <div class="selector" [class.selected]="evaluation.answer1 === 'Strongly Agree'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer1 === 'Strongly Agree'"></fa-icon>
+                <span>1</span>
+              </div>
+              <div class="answer">
+                Strongly Agree
+              </div>
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer1" #answer1="ngModel" [value]="'Somewhat Agree'" [(ngModel)]="evaluation.answer1">
+              <div class="selector" [class.selected]="evaluation.answer1 === 'Somewhat Agree'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer1 === 'Somewhat Agree'"></fa-icon>
+                <span>2</span>
+              </div>
+              <div class="answer">
+                Somewhat Agree
+              </div>
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer1" #answer1="ngModel" [value]="'Neutral'" [(ngModel)]="evaluation.answer1">
+              <div class="selector" [class.selected]="evaluation.answer1 === 'Neutral'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer1 === 'Neutral'"></fa-icon>
+                <span>3</span>
+              </div>
+              <div class="answer">
+                Neutral
+              </div>
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer1" #answer1="ngModel" [value]="'Somewhat Disagree'" [(ngModel)]="evaluation.answer1">
+              <div class="selector" [class.selected]="evaluation.answer1 === 'Somewhat Disagree'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer1 === 'Somewhat Disagree'"></fa-icon>
+                <span>4</span>
+              </div>
+              <div class="answer">
+                Somewhat Disagree
+              </div>
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer1" #answer1="ngModel" [value]="'Strongly Disagree'" [(ngModel)]="evaluation.answer1">
+              <div class="selector" [class.selected]="evaluation.answer1 === 'Strongly Disagree'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer1 === 'Strongly Disagree'"></fa-icon>
+                <span>5</span>
+              </div>
+              <div class="answer">
+                Strongly Disagree
+              </div>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-group">
+          <legend class="text-left">2. This course was delivered with the right balance of instruction and practice to meet my needs.</legend>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer2" #answer2="ngModel" [value]="'Strongly Agree'" [(ngModel)]="evaluation.answer2">
+              <div class="selector" [class.selected]="evaluation.answer2 === 'Strongly Agree'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer2 === 'Strongly Agree'"></fa-icon>
+                <span>1</span>
+              </div>
+              <div class="answer">
+                Strongly Agree
+              </div>
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer2" #answer2="ngModel" [value]="'Somewhat Agree'" [(ngModel)]="evaluation.answer2">
+              <div class="selector" [class.selected]="evaluation.answer2 === 'Somewhat Agree'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer2 === 'Somewhat Agree'"></fa-icon>
+                <span>2</span>
+              </div>
+              <div class="answer">
+                Somewhat Agree
+              </div>
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer2" #answer2="ngModel" [value]="'Neutral'" [(ngModel)]="evaluation.answer2">
+              <div class="selector" [class.selected]="evaluation.answer2 === 'Neutral'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer2 === 'Neutral'"></fa-icon>
+                <span>3</span>
+              </div>
+              <div class="answer">
+                Neutral
+              </div>
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer2" #answer2="ngModel" [value]="'Somewhat Disagree'" [(ngModel)]="evaluation.answer2">
+              <div class="selector" [class.selected]="evaluation.answer2 === 'Somewhat Disagree'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer2 === 'Somewhat Disagree'"></fa-icon>
+                <span>4</span>
+              </div>
+              <div class="answer">
+                Somewhat Disagree
+              </div>
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer2" #answer2="ngModel" [value]="'Strongly Disagree'" [(ngModel)]="evaluation.answer2">
+              <div class="selector" [class.selected]="evaluation.answer2 === 'Strongly Disagree'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer2 === 'Strongly Disagree'"></fa-icon>
+                <span>5</span>
+              </div>
+              <div class="answer">
+                Strongly Disagree
+              </div>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-group">
+          <legend class="text-left">3. The facilitator was well-prepared, knowledgeable, and effectively explained the material.</legend>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer3" #answer3="ngModel" [value]="'Strongly Agree'" [(ngModel)]="evaluation.answer3">
+              <div class="selector" [class.selected]="evaluation.answer3 === 'Strongly Agree'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer3 === 'Strongly Agree'"></fa-icon>
+                <span>1</span>
+              </div>
+              <div class="answer">
+                Strongly Agree
+              </div>
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer3" #answer3="ngModel" [value]="'Somewhat Agree'" [(ngModel)]="evaluation.answer3">
+              <div class="selector" [class.selected]="evaluation.answer3 === 'Somewhat Agree'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer3 === 'Somewhat Agree'"></fa-icon>
+                <span>2</span>
+              </div>
+              <div class="answer">
+                Somewhat Agree
+              </div>
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer3" #answer3="ngModel" [value]="'Neutral'" [(ngModel)]="evaluation.answer3">
+              <div class="selector" [class.selected]="evaluation.answer3 === 'Neutral'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer3 === 'Neutral'"></fa-icon>
+                <span>3</span>
+              </div>
+              <div class="answer">
+                Neutral
+              </div>
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer3" #answer3="ngModel" [value]="'Somewhat Disagree'" [(ngModel)]="evaluation.answer3">
+              <div class="selector" [class.selected]="evaluation.answer3 === 'Somewhat Disagree'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer3 === 'Somewhat Disagree'"></fa-icon>
+                <span>4</span>
+              </div>
+              <div class="answer">
+                Somewhat Disagree
+              </div>
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer3" #answer3="ngModel" [value]="'Strongly Disagree'" [(ngModel)]="evaluation.answer3">
+              <div class="selector" [class.selected]="evaluation.answer3 === 'Strongly Disagree'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer3 === 'Strongly Disagree'"></fa-icon>
+                <span>5</span>
+              </div>
+              <div class="answer">
+                Strongly Disagree
+              </div>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-group">
+          <legend class="text-left">4. The instructor provided meaningful feedback and guidance regarding my progress and answered all my questions.</legend>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer4" #answer4="ngModel" [value]="'Strongly Agree'" [(ngModel)]="evaluation.answer4">
+              <div class="selector" [class.selected]="evaluation.answer4 === 'Strongly Agree'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer4 === 'Strongly Agree'"></fa-icon>
+                <span>1</span>
+              </div>
+              <div class="answer">
+                Strongly Agree
+              </div>
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer4" #answer4="ngModel" [value]="'Somewhat Agree'" [(ngModel)]="evaluation.answer4">
+              <div class="selector" [class.selected]="evaluation.answer4 === 'Somewhat Agree'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer4 === 'Somewhat Agree'"></fa-icon>
+                <span>2</span>
+              </div>
+              <div class="answer">
+                Somewhat Agree
+              </div>
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer4" #answer4="ngModel" [value]="'Neutral'" [(ngModel)]="evaluation.answer4">
+              <div class="selector" [class.selected]="evaluation.answer4 === 'Neutral'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer4 === 'Neutral'"></fa-icon>
+                <span>3</span>
+              </div>
+              <div class="answer">
+                Neutral
+              </div>
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer4" #answer4="ngModel" [value]="'Somewhat Disagree'" [(ngModel)]="evaluation.answer4">
+              <div class="selector" [class.selected]="evaluation.answer4 === 'Somewhat Disagree'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer4 === 'Somewhat Disagree'"></fa-icon>
+                <span>4</span>
+              </div>
+              <div class="answer">
+                Somewhat Disagree
+              </div>
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer4" #answer4="ngModel" [value]="'Strongly Disagree'" [(ngModel)]="evaluation.answer4">
+              <div class="selector" [class.selected]="evaluation.answer4 === 'Strongly Disagree'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer4 === 'Strongly Disagree'"></fa-icon>
+                <span>5</span>
+              </div>
+              <div class="answer">
+                Strongly Disagree
+              </div>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-group">
+          <legend class="text-left">5. I found this course appropriate to my professional development and would recommend it to others.</legend>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer5" #answer5="ngModel" [value]="'Strongly Agree'" [(ngModel)]="evaluation.answer5">
+              <div class="selector" [class.selected]="evaluation.answer5 === 'Strongly Agree'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer5 === 'Strongly Agree'"></fa-icon>
+                <span>1</span>
+              </div>
+              <div class="answer">
+                Strongly Agree
+              </div>
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer5" #answer5="ngModel" [value]="'Somewhat Agree'" [(ngModel)]="evaluation.answer5">
+              <div class="selector" [class.selected]="evaluation.answer5 === 'Somewhat Agree'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer5 === 'Somewhat Agree'"></fa-icon>
+                <span>2</span>
+              </div>
+              <div class="answer">
+                Somewhat Agree
+              </div>
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer5" #answer5="ngModel" [value]="'Neutral'" [(ngModel)]="evaluation.answer5">
+              <div class="selector" [class.selected]="evaluation.answer5 === 'Neutral'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer5 === 'Neutral'"></fa-icon>
+                <span>3</span>
+              </div>
+              <div class="answer">
+                Neutral
+              </div>
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer5" #answer5="ngModel" [value]="'Somewhat Disagree'" [(ngModel)]="evaluation.answer5">
+              <div class="selector" [class.selected]="evaluation.answer5 === 'Somewhat Disagree'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer5 === 'Somewhat Disagree'"></fa-icon>
+                <span>4</span>
+              </div>
+              <div class="answer">
+                Somewhat Disagree
+              </div>
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer5" #answer5="ngModel" [value]="'Strongly Disagree'" [(ngModel)]="evaluation.answer5">
+              <div class="selector" [class.selected]="evaluation.answer5 === 'Strongly Disagree'">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer5 === 'Strongly Disagree'"></fa-icon>
+                <span>5</span>
+              </div>
+              <div class="answer">
+                Strongly Disagree
+              </div>
+            </label>
+          </div>
+        </fieldset>
+          
+        <div class="form-group my-4">
+          <label for="dealer">6. Please provide any suggestions to help us improve future Kia University courses and workshops.</label>
+          <textarea class="form-control" name="answer6" #answer6="ngModel" [(ngModel)]="evaluation.answer6"></textarea>
+        </div>
+    
+        <fieldset class="form-group optin">
+          <legend class="text-left">Would you like to discuss your experience in this course with a Kia University manager?</legend>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer7" #answer7="ngModel" [value]="true" [(ngModel)]="evaluation.answer7">
+              <div class="selector" [class.selected]="evaluation.answer7 === true">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer7 === true"></fa-icon>
+                <span>Yes</span>
+              </div>
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="answer7" #answer7="ngModel" [value]="false" [(ngModel)]="evaluation.answer7">
+              <div class="selector" [class.selected]="evaluation.answer7 === false">
+                <fa-icon [icon]="['fas', 'check']" *ngIf="evaluation.answer7 === false"></fa-icon>
+                <span>No</span>
+              </div>
+            </label>
+          </div>
+        </fieldset>
+      
+        <button class="kiaBtn" [disabled]="loading" (click)="submit(evaluation, evalForm.valid)">
+          <span *ngIf="!loading">Submit</span>
+          <span *ngIf="loading">
+            <mat-spinner class="mx-auto" [diameter]="20" [strokeWidth]="3"></mat-spinner>
+          </span>
+        </button>
+      </form>
+    </div>
+
+    <div [@fade]="true" *ngIf="success">
+      <p>Thank you for completing the evaluation! Your feedback is greatly appreciated!</p>
+
+      <button class="kiaBtn" routerLink="/">Go Home</button>
+    </div>
+
+    <div class="errorMsg" [@fade]="true" *ngIf="error">
+      <p>Something went wrong... Please make sure you have a WiFi or mobile data connection and try refreshing your&nbsp;browser.</p>
+    </div>
+  </div>
+</section>

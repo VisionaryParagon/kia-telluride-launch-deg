@@ -14,6 +14,7 @@ export class User {
   notes?: Note[];
   quizzes?: Quiz[];
   totalPoints?: number;
+  evaluation?: Evaluation;
   created?: Date;
   modified?: Date;
 }
@@ -417,6 +418,40 @@ export class DriveNotes {
     this.driver = '';
     this.rowTwo = '';
     this.rowThree = '';
+  }
+}
+
+export class Evaluation {
+  question1: string;
+  answer1: string;
+  question2: string;
+  answer2: string;
+  question3: string;
+  answer3: string;
+  question4: string;
+  answer4: string;
+  question5: string;
+  answer5: string;
+  question6: string;
+  answer6: string;
+  question7: string;
+  answer7: boolean;
+
+  constructor() {
+    this.question1 = 'Attending this course improved my performance and ability to satisfy customers back on the job.';
+    this.answer1 = '';
+    this.question2 = 'This course was delivered with the right balance of instruction and practice to meet my needs.';
+    this.answer2 = '';
+    this.question3 = 'The facilitator was well-prepared, knowledgeable, and effectively explained the material.';
+    this.answer3 = '';
+    this.question4 = 'The instructor provided meaningful feedback and guidance regarding my progress and answered all my questions.';
+    this.answer4 = '';
+    this.question5 = 'I found this course appropriate to my professional development and would recommend it to others.';
+    this.answer5 = '';
+    this.question6 = 'Please provide any suggestions to help us improve future Kia University courses and workshops.';
+    this.answer6 = '';
+    this.question7 = 'Would you like to discuss your experience in this course with a Kia University manager?';
+    this.answer7 = null;
   }
 }
 

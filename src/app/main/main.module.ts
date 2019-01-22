@@ -37,6 +37,9 @@ import { RockOnComponent } from './rock-on/rock-on.component';
 // KeepON
 import { KeepOnComponent } from './keep-on/keep-on.component';
 
+// Evaluation
+import { EvaluationComponent } from './evaluation/evaluation.component';
+
 @NgModule({
   imports: [
     AppSharedModule,
@@ -61,7 +64,8 @@ import { KeepOnComponent } from './keep-on/keep-on.component';
     SwitchedOnMainComponent,
     QrScannerComponent,
     RockOnComponent,
-    KeepOnComponent
+    KeepOnComponent,
+    EvaluationComponent
   ]
 })
 export class MainModule { }

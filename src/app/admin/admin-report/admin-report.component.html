@@ -60,6 +60,12 @@
           <td mat-cell *matCellDef="let element"> {{element.session}} </td>
         </ng-container>
       
+        <!-- Evaluation Column -->
+        <ng-container matColumnDef="evaluation">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Evaluation </th>
+          <td mat-cell *matCellDef="let element"> {{element.evaluation | json}} </td>
+        </ng-container>
+      
         <!-- Created Column -->
         <ng-container matColumnDef="created">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Created&nbsp;Date </th>

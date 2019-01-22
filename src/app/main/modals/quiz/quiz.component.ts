@@ -1,4 +1,5 @@
 import { Component, HostListener, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 
 import { Subscription, timer } from 'rxjs';
@@ -50,6 +51,7 @@ export class QuizComponent implements OnInit, OnDestroy {
   error = false;
 
   constructor(
+    private router: Router,
     private cookieService: CookieService,
     private userService: UserService,
     private quizService: QuizService,
@@ -354,6 +356,11 @@ export class QuizComponent implements OnInit, OnDestroy {
   hideError() {
     this.err = '';
     this.error = false;
+  }
+
+  openEval() {
+    this.router.navigate(['/evaluation']);
+    this.closeDialog();
   }
 
   closeDialog() {

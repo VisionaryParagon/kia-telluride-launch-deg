@@ -71,7 +71,7 @@ export class SwitchedOnMainComponent implements OnInit {
     dialogRef.afterClosed()
       .subscribe(
         data => {
-          console.log('Updated user:', data);
+          // console.log('Updated user:', data);
           this.checkQuiz();
         }
       );

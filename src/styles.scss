@@ -253,40 +253,59 @@ form.quiz {
   }
 }
 
-.matching {
+form.eval {
   fieldset {
     &.form-group {
+      legend {
+        font-size: 1rem;
+      }
+
       .form-check {
         display: block;
-        margin: .25rem 0;
-        text-align: center;
+        margin: 15px 0;
+
+        label {
+          align-items: center;
+          display: flex;
+        }
 
         .selector {
-          border-radius: 5px;
-          font-size: 18px;
-          height: 50px;
-          width: 200px;
+          flex: 0 0 40px;
+          font-size: 26px;
+          height: 40px;
+          margin: 0 10px 0 0;
 
-          &.yup {
-            background: none;
-            border-color: #5AA454 !important;
-            border-width: 7px;
-            color: inherit;
-
-            fa-icon {
-              color: #5AA454;
-              font-size: 40px;
-            }
+          &.selected {
+            border: 5px solid $client-red;
           }
 
-          &.nope {
-            border-color: #A10A28 !important;
-            border-width: 7px;
+          fa-icon {
+            font-size: 26px;
+            z-index: 2;
+          }
 
-            fa-icon {
-              color: #A10A28;
-              font-size: 40px;
-            }
+          span {
+            z-index: 1;
+          }
+        }
+
+        .answer {
+          text-align: left;
+        }
+      }
+
+      &.optin {
+        text-align: left;
+
+        .form-check {
+          display: inline-block;
+
+          label {
+            display: inline-block;
+          }
+
+          .selector {
+            width: 75px;
           }
         }
       }

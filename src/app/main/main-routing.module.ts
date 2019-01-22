@@ -37,6 +37,9 @@ import { RockOnComponent } from './rock-on/rock-on.component';
 // KeepON
 import { KeepOnComponent } from './keep-on/keep-on.component';
 
+// Evaluation
+import { EvaluationComponent } from './evaluation/evaluation.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -138,6 +141,10 @@ const routes: Routes = [
             data: {
               noteModule: 'KeepON'
             }
+          },
+          {
+            path: 'evaluation',
+            component: EvaluationComponent
           }
         ]
       }

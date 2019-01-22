@@ -78,7 +78,11 @@
                 <div *ngIf="certPassed">
                   <h4>Congratulations!</h4>
 
-                  <p class="mb-0">You passed with a score of <strong>{{ certScore * 100 }}%</strong>!</p>
+                  <p>You’ve passed the Telluride certification testing process. Look for your printed certification diploma to arrive within a few weeks.</p>
+
+                  <p>As a Challenger brand, we’re always looking to improve. Please tell us about today’s learning experience.</p>
+
+                  <button class="kiaBtn mb-0" (click)="openEval()">Take Evalutation</button>
                 </div>
 
                 <div *ngIf="!certPassed">
