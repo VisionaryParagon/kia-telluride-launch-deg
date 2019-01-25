@@ -1,7 +1,7 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { MatSort, MatTableDataSource } from '@angular/material';
 
-import { User, Report } from '../../services/classes';
+import { User } from '../../services/classes';
 import { UserService } from '../../services/user.service';
 
 import { FadeAnimation, TopDownAnimation } from '../../animations';
