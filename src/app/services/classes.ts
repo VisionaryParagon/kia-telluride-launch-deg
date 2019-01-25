@@ -8,6 +8,7 @@ export class User {
   team: string;
   kuid?: string;
   session_code?: string;
+  instructor?: string;
   transcript_id?: string;
   deepDive?: DeepDive;
   streetDrive?: StreetDrive;
@@ -25,6 +26,14 @@ export class Employee {
   first_name: string;
   last_name: string;
   dealer: string;
+}
+
+export class Session {
+  _id?: string;
+  dealer: string;
+  session: string;
+  session_code: string;
+  instructor: string;
 }
 
 export class Group {
@@ -458,34 +467,4 @@ export class Evaluation {
 export class Admin {
   username: string;
   password: string;
-}
-
-export class Report {
-  kuid: string;
-  first_name: string;
-  last_name: string;
-  dealer: string;
-  session: string;
-  team: string;
-  email: string;
-  quiz1?: string;
-  quiz1c?: string | number;
-  quiz1i?: string | number;
-  quiz2?: string;
-  quiz2c?: string | number;
-  quiz2i?: string | number;
-  quiz3?: string;
-  quiz3c?: string | number;
-  quiz3i?: string | number;
-  quiz4?: string;
-  quiz4c?: string | number;
-  quiz4i?: string | number;
-  quiz5?: string;
-  quiz5c?: string | number;
-  quiz5i?: string | number;
-  quiz6?: string;
-  quiz6c?: string | number;
-  quiz6i?: string | number;
-  created?: Date;
-  modified?: Date;
 }

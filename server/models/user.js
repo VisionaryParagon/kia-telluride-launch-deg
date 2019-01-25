@@ -9,6 +9,7 @@ const UserSchema = new mongoose.Schema({
   team: String,
   kuid: String,
   session_code: String,
+  instructor: String,
   transcript_id: String,
   deepDive: Object,
   streetDrive: Object,

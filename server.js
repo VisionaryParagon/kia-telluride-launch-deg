@@ -38,6 +38,7 @@ const emailRoute = require('./server/routes/email');
 const teamRoute = require('./server/routes/team');
 const adminRoute = require('./server/routes/admin');
 const employeeRoute = require('./server/routes/employee');
+const sessionRoute = require('./server/routes/session');
 
 const app = express();
 
@@ -75,6 +76,7 @@ app.use('/eml', emailRoute);
 app.use('/tm', teamRoute);
 app.use('/admn', adminRoute);
 app.use('/emp', employeeRoute);
+app.use('/ssn', sessionRoute);
 
 // Serve static files from dist folder
 app.use(express.static(path.join(__dirname, 'dist')));
