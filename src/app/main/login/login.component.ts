@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   userChecked = false;
   sessionChecked = false;
+  invalidSession = false;
   regSubmitted = false;
   error = false;
 
@@ -229,7 +230,7 @@ export class LoginComponent implements OnInit {
                   }
                 );
             } else {
-              this.showError();
+              this.invalidSession = true;
               this.loading = false;
             }
           },
