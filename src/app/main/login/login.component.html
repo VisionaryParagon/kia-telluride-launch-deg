@@ -97,7 +97,7 @@
               <fieldset class="form-group">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="radio" class="form-check-input" value="AM" required [(ngModel)]="user.session" name="session" #session="ngModel">
+                    <input type="radio" class="form-check-input" value="AM" required [(ngModel)]="user.session" name="session" #session="ngModel" (ngModelChange)="hideError()">
                     <div class="selector" [class.selected]="user.session === 'AM'" [class.nope]="session.errors && sessionChecked">
                       <fa-icon [icon]="['fas', 'check']" *ngIf="user.session === 'AM'"></fa-icon>
                       <span>AM</span>
@@ -106,7 +106,7 @@
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="radio" class="form-check-input" value="PM" required [(ngModel)]="user.session" name="session" #session="ngModel">
+                    <input type="radio" class="form-check-input" value="PM" required [(ngModel)]="user.session" name="session" #session="ngModel" (ngModelChange)="hideError()">
                     <div class="selector" [class.selected]="user.session === 'PM'" [class.nope]="session.errors && sessionChecked">
                       <fa-icon [icon]="['fas', 'check']" *ngIf="user.session === 'PM'"></fa-icon>
                       <span>PM</span>
@@ -148,7 +148,7 @@
               <fieldset class="form-group my-4">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="radio" class="form-check-input" value="Team Prestige" required [(ngModel)]="user.team" name="team" #team="ngModel">
+                    <input type="radio" class="form-check-input" value="Team Prestige" required [(ngModel)]="user.team" name="team" #team="ngModel" (ngModelChange)="hideError()">
                     <div class="selector teams" id="team1" [class.selected]="user.team === 'Team Prestige'">
                       <!-- <div class="bgOverlay" *ngIf="user.team !== 'Team Prestige'"></div> -->
                       <fa-icon [icon]="['fas', 'check']" *ngIf="user.team === 'Team Prestige'"></fa-icon>
@@ -158,7 +158,7 @@
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input type="radio" class="form-check-input" value="Team Innovative" required [(ngModel)]="user.team" name="team" #team="ngModel">
+                    <input type="radio" class="form-check-input" value="Team Innovative" required [(ngModel)]="user.team" name="team" #team="ngModel" (ngModelChange)="hideError()">
                     <div class="selector teams" id="team2" [class.selected]="user.team === 'Team Innovative'">
                       <!-- <div class="bgOverlay" *ngIf="user.team !== 'Team Innovative'"></div> -->
                       <fa-icon [icon]="['fas', 'check']" *ngIf="user.team === 'Team Innovative'"></fa-icon>

@@ -290,6 +290,7 @@ export class LoginComponent implements OnInit {
   }
 
   hideError() {
+    this.invalidSession = false;
     this.error = false;
   }
 }
