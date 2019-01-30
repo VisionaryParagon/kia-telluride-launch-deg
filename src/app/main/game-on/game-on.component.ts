@@ -67,7 +67,7 @@ export class GameOnComponent implements OnInit {
       data: { quiz: this.quizData, hasAnswers: this.hasAnswers },
       height: '90vh',
       maxWidth: '90vw',
-      width: '90vw'
+      width: '768px'
     });
 
     dialogRef.afterClosed()

@@ -131,7 +131,7 @@ export class LoginComponent implements OnInit {
                         data: { hasKuid: true },
                         height: '80vh',
                         maxWidth: '90vw',
-                        width: '90vw'
+                        width: '768px'
                       });
 
                       dialogRef.afterClosed()
@@ -150,7 +150,7 @@ export class LoginComponent implements OnInit {
                 data: { hasKuid: false },
                 height: '80vh',
                 maxWidth: '90vw',
-                width: '90vw'
+                width: '768px'
               });
 
               dialogRef.afterClosed()

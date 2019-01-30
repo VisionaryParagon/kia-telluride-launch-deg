@@ -127,7 +127,7 @@ export class AppComponent implements OnInit {
     const dialogRef = this.dialog.open(NotesComponent, {
       height: '90vh',
       maxWidth: '90vw',
-      width: '90vw'
+      width: '768px'
     });
   }
 
@@ -135,7 +135,7 @@ export class AppComponent implements OnInit {
     const dialogRef = this.dialog.open(LeaderboardComponent, {
       height: '90vh',
       maxWidth: '90vw',
-      width: '90vw'
+      width: '768px'
     });
   }
 

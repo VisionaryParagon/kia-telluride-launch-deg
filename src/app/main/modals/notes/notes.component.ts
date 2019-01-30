@@ -20,7 +20,7 @@ export class NotesComponent implements OnInit {
   notes: string;
   moduleNotes: Note = new Note();
   hasModule: Note[];
-  allNotes: Note[] = this.user.notes;
+  allNotes: Note[] = this.user.notes || [];
   editing: number;
   error = false;
 
