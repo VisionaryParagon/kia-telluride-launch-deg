@@ -53,7 +53,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(SessionsComponent, {
       height: '90vh',
       maxWidth: '90vw',
-      width: '90vw'
+      width: '768px'
     });
 
     dialogRef.afterClosed()
@@ -117,7 +117,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
       data: { selected: ev, teams: this.group.teams },
       height: '90vh',
       maxWidth: '90vw',
-      width: '90vw'
+      width: '768px'
     });
 
     dialogRef.afterClosed()

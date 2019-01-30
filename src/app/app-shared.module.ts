@@ -43,9 +43,11 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 import { CookieModule } from 'ngx-cookie';
 
+// Directives
 import { UppercaseInputDirective } from './directives/uppercase-input/uppercase-input.directive';
 
-// Directives
+// Pipes
+import { NoBreakSpacePipe } from './pipes/no-break-space.pipe';
 
 // Icons for fontawesome library
 library.add(faAngleDown);
@@ -87,7 +89,8 @@ library.add(faUserPlus);
     CookieModule.forRoot()
   ],
   declarations: [
-    UppercaseInputDirective
+    UppercaseInputDirective,
+    NoBreakSpacePipe
   ],
   exports: [
     CommonModule,
@@ -110,7 +113,8 @@ library.add(faUserPlus);
     NgxChartsModule,
     ZXingScannerModule,
     CookieModule,
-    UppercaseInputDirective
+    UppercaseInputDirective,
+    NoBreakSpacePipe
   ]
 })
 export class AppSharedModule { }

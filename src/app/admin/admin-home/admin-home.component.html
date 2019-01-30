@@ -5,7 +5,8 @@
     <button class="kiaBtn" *ngIf="!error && !groupSelected" (click)="selectSession()">Select Session</button>
 
     <div class="text-center" *ngIf="!error && groupSelected">
-      <p><a (click)="selectSession()">Current Session: {{ group.dealer }} {{ group.session }}</a></p>
+      <p>Current Session: {{ group.dealer }} {{ group.session }}
+        <br><a (click)="selectSession()">Change Session</a></p>
 
       <div class="adminContainer">
         <ngx-charts-bar-vertical id="teamChart" [scheme]="teamColors" [results]="teamPoints" [xAxis]="true" [yAxis]="true" [tooltipDisabled]="true" (select)="onSelect($event)"></ngx-charts-bar-vertical>

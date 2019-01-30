@@ -16,6 +16,9 @@ import { PointsComponent } from './modals/points/points.component';
 import { UserFormComponent } from './modals/user-form/user-form.component';
 import { UserDeleteComponent } from './modals/user-delete/user-delete.component';
 
+// CSV components
+import { UserCsvComponent } from './csv/user-csv/user-csv.component';
+
 @NgModule({
   imports: [
     AppSharedModule,
@@ -29,7 +32,8 @@ import { UserDeleteComponent } from './modals/user-delete/user-delete.component'
     SessionsComponent,
     PointsComponent,
     UserFormComponent,
-    UserDeleteComponent
+    UserDeleteComponent,
+    UserCsvComponent
   ],
   entryComponents: [
     SessionsComponent,
