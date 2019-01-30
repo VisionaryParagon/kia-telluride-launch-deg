@@ -15,4 +15,7 @@ export class ItsOnMainComponent implements OnInit {
   ngOnInit() {
   }
 
+  goTo(url) {
+    window.open(url, '_self');
+  }
 }

@@ -22,8 +22,9 @@
       <a routerLink="/game-on" (click)="closeNav(); closeSubNav()">GameON</a>
       <a (click)="toggleSubNav(1)">It’sON <fa-icon [icon]="['fas', 'angle-down']" [class.up]="subState1 === 'active'"></fa-icon></a>
       <div class="subNav" [@navMenu]="subState1">
-        <a routerLink="/its-on/hands-on-comparison" (click)="closeNav()">Hands-On Comparison</a>
+        <a href="https://rise.articulate.com/share/5xYrUQ8Y56CMo6YDMHVm_1mXnFWoic1g" (click)="closeNav()">Telluride Hands-On Introduction</a>
         <a routerLink="/its-on/street-drive" (click)="closeNav()">“Focus on the Family” Drive</a>
+        <a routerLink="/its-on/hands-on-comparison" (click)="closeNav()">Telluride Self-Study Deep Dive</a>
       </div>
       <a routerLink="/switched-on" (click)="closeNav(); closeSubNav()">SwitchedON</a>
       <a routerLink="/rock-on" (click)="closeNav(); closeSubNav()">RockON</a>
