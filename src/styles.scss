@@ -1027,6 +1027,7 @@ mat-radio-button.mat-radio-button {
 table.mat-table {
   border-radius: .25rem;
   font-family: $client-font;
+  white-space: nowrap;
   width: 100%;
 
   tr.mat-header-row {
@@ -1037,6 +1038,12 @@ table.mat-table {
       border-right: 1px solid $client-light-gray;
       border-radius: .25rem;
       padding: .25rem .5rem !important;
+
+      .mat-sort-header-container {
+        .mat-sort-header-button {
+          text-align: left;
+        }
+      }
     }
   }
 

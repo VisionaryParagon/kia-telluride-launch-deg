@@ -36,6 +36,7 @@
     <div *ngIf="isAdmin">
       <a routerLink="/admin" (click)="closeNav(); closeSubNav()">Leaderboard</a>
       <a routerLink="/admin/report" (click)="closeNav(); closeSubNav()">User Report</a>
+      <a routerLink="/admin/evaluations" (click)="closeNav(); closeSubNav()">Evaluations</a>
       <a (click)="closeNav(); closeSubNav(); logoutAdmin()">Logout</a>
     </div>
   </div>

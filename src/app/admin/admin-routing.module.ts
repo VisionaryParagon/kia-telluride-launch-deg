@@ -10,6 +10,7 @@ import { AdminComponent } from './admin.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminReportComponent } from './admin-report/admin-report.component';
+import { AdminEvalReportComponent } from './admin-eval-report/admin-eval-report.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,11 @@ const routes: Routes = [
       {
         path: 'report',
         component: AdminReportComponent,
+        canActivate: [AdminGuardService]
+      },
+      {
+        path: 'evaluations',
+        component: AdminEvalReportComponent,
         canActivate: [AdminGuardService]
       },
       {

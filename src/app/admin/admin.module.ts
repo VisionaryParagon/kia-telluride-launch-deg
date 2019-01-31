@@ -9,6 +9,7 @@ import { AdminComponent } from './admin.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminReportComponent } from './admin-report/admin-report.component';
+import { AdminEvalReportComponent } from './admin-eval-report/admin-eval-report.component';
 
 // Modals
 import { SessionsComponent } from './modals/sessions/sessions.component';
@@ -18,6 +19,7 @@ import { UserDeleteComponent } from './modals/user-delete/user-delete.component'
 
 // CSV components
 import { UserCsvComponent } from './csv/user-csv/user-csv.component';
+import { EvaluationCsvComponent } from './csv/evaluation-csv/evaluation-csv.component';
 
 @NgModule({
   imports: [
@@ -29,11 +31,13 @@ import { UserCsvComponent } from './csv/user-csv/user-csv.component';
     AdminLoginComponent,
     AdminHomeComponent,
     AdminReportComponent,
+    AdminEvalReportComponent,
     SessionsComponent,
     PointsComponent,
     UserFormComponent,
     UserDeleteComponent,
-    UserCsvComponent
+    UserCsvComponent,
+    EvaluationCsvComponent
   ],
   entryComponents: [
     SessionsComponent,

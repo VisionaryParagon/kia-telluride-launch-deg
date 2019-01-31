@@ -1,0 +1,117 @@
+<section class="pb-3" [@fade]="true">
+    <div class="container-fluid px-lg-5">
+      <div #tableFunctions>
+        <h1>Evaluation Report</h1>
+    
+        <div class="row">
+          <div class="col-12 col-sm-6 order-sm-last text-center text-sm-right">
+            <app-evaluation-csv [data]="evaluations"></app-evaluation-csv>
+          </div>
+  
+          <div class="filter col-12 col-sm-6 order-sm-first">
+            <input type="text" class="form-control mb-3" placeholder="Search..." [(ngModel)]="filter" (keyup)="search($event.target.value)">
+            <button class="btn mb-3" *ngIf="filter.length" (click)="clearFilter()">&times;</button>
+          </div>
+        </div>
+      </div>
+  
+      <div class="adminTable" #tableContainer>
+        <div *ngIf="loading">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+      
+        <table mat-table [dataSource]="dataSource" matSort>
+  
+          <!-- KUID Column -->
+          <ng-container matColumnDef="kuid">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> KUID </th>
+            <td mat-cell *matCellDef="let element"> {{element.kuid}} </td>
+          </ng-container>
+        
+          <!-- First Name Column -->
+          <ng-container matColumnDef="first_name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.first_name}} </td>
+          </ng-container>
+        
+          <!-- Last Name Column -->
+          <ng-container matColumnDef="last_name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.last_name}} </td>
+          </ng-container>
+        
+          <!-- Q1 Column -->
+          <ng-container matColumnDef="answer1">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{evaluation.question1}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.answer1}} </td>
+          </ng-container>
+        
+          <!-- Q2 Column -->
+          <ng-container matColumnDef="answer2">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{evaluation.question2}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.answer2}} </td>
+          </ng-container>
+        
+          <!-- Q3 Column -->
+          <ng-container matColumnDef="answer3">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{evaluation.question3}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.answer3}} </td>
+          </ng-container>
+        
+          <!-- Q4 Column -->
+          <ng-container matColumnDef="answer4">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{evaluation.question4}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.answer4}} </td>
+          </ng-container>
+        
+          <!-- Q5 Column -->
+          <ng-container matColumnDef="answer5">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{evaluation.question5}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.answer5}} </td>
+          </ng-container>
+        
+          <!-- Q6 Column -->
+          <ng-container matColumnDef="answer6">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{evaluation.question6}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.answer6}} </td>
+          </ng-container>
+        
+          <!-- Q7 Column -->
+          <ng-container matColumnDef="answer7">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{evaluation.question7}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.answer7}} </td>
+          </ng-container>
+        
+          <!-- Dealer Code Column -->
+          <ng-container matColumnDef="dealer">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Dealer Code </th>
+            <td mat-cell *matCellDef="let element"> {{element.dealer}} </td>
+          </ng-container>
+        
+          <!-- Session Column -->
+          <ng-container matColumnDef="session">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Session </th>
+            <td mat-cell *matCellDef="let element"> {{element.session}} </td>
+          </ng-container>
+        
+          <!-- Team Column -->
+          <ng-container matColumnDef="team">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Team </th>
+            <td mat-cell *matCellDef="let element"> {{element.team}} </td>
+          </ng-container>
+        
+          <!-- Instructor Column -->
+          <ng-container matColumnDef="instructor">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Instructor </th>
+            <td mat-cell *matCellDef="let element"> {{element.instructor}} </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" [class.selectedRow]="selectedUser === row" (click)="select(row)"></tr>
+        </table>
+  
+        <mat-paginator [pageSizeOptions]="[25, 50, 100]" showFirstLastButtons></mat-paginator>
+      </div>
+    </div>
+  </section>
+    

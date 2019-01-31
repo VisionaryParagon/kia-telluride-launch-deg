@@ -464,6 +464,40 @@ export class Evaluation {
   }
 }
 
+export class UserEval {
+  kuid: string;
+  first_name: string;
+  last_name: string;
+  answer1: string;
+  answer2: string;
+  answer3: string;
+  answer4: string;
+  answer5: string;
+  answer6: string;
+  answer7: string;
+  dealer: string;
+  session: string;
+  team: string;
+  instructor: string;
+
+  constructor() {
+    this.kuid = '';
+    this.first_name = '';
+    this.last_name = '';
+    this.answer1 = '';
+    this.answer2 = '';
+    this.answer3 = '';
+    this.answer4 = '';
+    this.answer5 = '';
+    this.answer6 = '';
+    this.answer7 = '';
+    this.dealer = '';
+    this.session = '';
+    this.team = '';
+    this.instructor = '';
+  }
+}
+
 export class Admin {
   username: string;
   password: string;
