@@ -15,6 +15,7 @@ export class User {
   notes?: Note[];
   quizzes?: Quiz[];
   totalPoints?: number;
+  certScore?: number;
   evaluation?: Evaluation;
   created?: Date;
   modified?: Date;

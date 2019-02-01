@@ -3,6 +3,7 @@ import { MatDialog, MatPaginator, MatSort, MatTableDataSource } from '@angular/m
 
 import { User } from '../../services/classes';
 import { UserService } from '../../services/user.service';
+import { QuizService } from '../../services/quiz.service';
 
 import { FadeAnimation, TopDownAnimation } from '../../animations';
 
@@ -27,6 +28,7 @@ export class AdminReportComponent implements OnInit {
     'session',
     'team',
     'instructor',
+    'certScore',
     'session_code',
     'transcript_id',
     'created',
@@ -44,7 +46,8 @@ export class AdminReportComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private userService: UserService
+    private userService: UserService,
+    private quizService: QuizService
   ) { }
 
   ngOnInit() {
@@ -64,6 +67,19 @@ export class AdminReportComponent implements OnInit {
       .subscribe(
         res => {
           this.users = res;
+
+          this.users.forEach(user => {
+            const certQuiz = user.quizzes.filter(q => q.name === 'Certification Test');
+            if (!user.certScore) {
+              if (certQuiz.length > 0) {
+                const answers = this.quizService.getAnswers(certQuiz[0]);
+                user.certScore = answers[0].value / certQuiz[0].answers.length * 10;
+              } else {
+                user.certScore = 0;
+              }
+            }
+          });
+
           this.dataSource = new MatTableDataSource(res);
           this.dataSource.sort = this.sort;
           this.dataSource.paginator = this.paginator;

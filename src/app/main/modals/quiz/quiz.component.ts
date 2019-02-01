@@ -256,6 +256,7 @@ export class QuizComponent implements OnInit, OnDestroy {
 
         // Push quiz to user
         this.user.quizzes.push(this.quiz);
+        this.user.certScore = this.certScore * 10;
 
         // Submit transcript to KU and update user
         const kuData = {

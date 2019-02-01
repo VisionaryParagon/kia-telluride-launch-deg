@@ -273,6 +273,7 @@ export class UserFormComponent implements OnInit {
             if (data.session === this.userCache.session) {
               if (data.team === this.userCache.team) {
                 this.noChanges = true;
+                this.loading = false;
               } else {
                 this.validateTeam(data);
               }

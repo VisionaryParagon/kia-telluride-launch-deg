@@ -19,6 +19,7 @@ const UserSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
+  certScore: Number,
   evaluation: Object,
   created: {
     type: Date,
