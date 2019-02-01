@@ -673,6 +673,8 @@ section {
     align-items: center;
     bottom: 0;
     display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
     justify-content: center;
     left: 0;
     position: fixed;
