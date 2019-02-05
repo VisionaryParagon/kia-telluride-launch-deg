@@ -160,17 +160,6 @@ export class AdminReportComponent implements OnInit {
   }
 
   updateUser(data) {
-    this.userService.updateUser(data)
-      .subscribe(
-        res => {
-          this.snackBar.open(`${data.first_name} ${data.last_name} successfully updated!`, '', {
-            duration: 2500,
-            panelClass: 'snackSuccess'
-          });
-          this.getUsers();
-        },
-        err => this.showError()
-      );
   }
 
   submitCert(user) {
@@ -200,7 +189,19 @@ export class AdminReportComponent implements OnInit {
             this.selectedUser.transcript_id = res.data.split('transcript_id>')[1].slice(0, -2);
           }
 
-          this.updateUser(this.selectedUser);
+          this.userService.updateUser(this.selectedUser)
+            .subscribe(
+              userRes => {
+                this.snackBar.open(`${userRes.first_name} ${userRes.last_name} successfully updated!`, '', {
+                  duration: 2500,
+                  panelClass: 'snackSuccess'
+                });
+                this.loading = true;
+                this.selectedUser = new User();
+                this.getUsers();
+              },
+              err => this.showError()
+            );
         },
         err => this.showError()
       );
