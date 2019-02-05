@@ -4,7 +4,8 @@ const EmployeeSchema = new mongoose.Schema({
   kuid: String,
   dealer: String,
   first_name: String,
-  last_name: String
+  last_name: String,
+  email: String
 });
 
 module.exports = mongoose.model('employees', EmployeeSchema);

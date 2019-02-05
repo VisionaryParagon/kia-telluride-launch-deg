@@ -29,6 +29,7 @@ import {
   faChevronRight,
   faEdit,
   faFileExport,
+  faGraduationCap,
   faPlus,
   faSearch,
   faTimes,
@@ -55,6 +56,7 @@ library.add(faChevronLeft);
 library.add(faChevronRight);
 library.add(faEdit);
 library.add(faFileExport);
+library.add(faGraduationCap);
 library.add(faPlus);
 library.add(faSearch);
 library.add(faTimes);

@@ -25,6 +25,15 @@ export class EmployeeService {
       );
   }
 
+  // validate dealer
+  checkDealer(data) {
+    return this.http.post<Employee>(this.employeeUrl + 'dealer', data)
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
   // create new user
   createUser(user) {
     return this.http.post<Employee>(this.employeeUrl + 'new', user)

@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material';
 
 import { CookieService, CookieOptions } from 'ngx-cookie';
 
-import { User, Group, Session, Team } from '../../services/classes';
+import { User, Group, Team } from '../../services/classes';
 import { UserService } from '../../services/user.service';
 import { EmployeeService } from '../../services/employee.service';
 import { SessionService } from '../../services/session.service';
@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   userChecked = false;
+  invalidDealer = false;
   sessionChecked = false;
   invalidSession = false;
   regSubmitted = false;
@@ -89,17 +90,43 @@ export class LoginComponent implements OnInit {
         .subscribe(
           res => {
             if (!res._id) {
-              this.loading = false;
-              this.clicked = true;
-              this.changeStep(stepper, idx);
+              this.employeeService.getKuid(user)
+                .subscribe(
+                  kuRes => {
+                    if (kuRes.kuid) {
+                      this.user.kuid = kuRes.kuid;
+                      this.loading = false;
+                      this.clicked = true;
+                      this.changeStep(stepper, idx);
+                    } else {
+                      const dialogRef = this.dialog.open(KuidWarningComponent, {
+                        data: { hasKuid: false, email: user.email },
+                        height: '80vh',
+                        maxWidth: '90vw',
+                        width: '768px'
+                      });
+
+                      dialogRef.afterClosed()
+                        .subscribe(
+                          proceed => {
+                            if (proceed) {
+                              this.user.kuid = '';
+                              this.clicked = true;
+                              this.changeStep(stepper, idx);
+                            }
+
+                            this.loading = false;
+                          }
+                        );
+                    }
+                  },
+                  err => this.showError()
+                );
             } else {
               this.setUser(res);
             }
           },
-          err => {
-            this.showError();
-            this.loading = false;
-          }
+          err => this.showError()
         );
     }
     return false;
@@ -111,66 +138,17 @@ export class LoginComponent implements OnInit {
     if (user.first_name && user.last_name && user.dealer) {
       this.loading = true;
 
-      this.employeeService.getKuid(user)
+      this.employeeService.checkDealer(user)
         .subscribe(
           res => {
-            if (res.kuid) {
-              this.user.kuid = res.kuid;
-
-              // check for duplicate kuid
-              this.userService.checkKuid(this.user)
-                .subscribe(
-                  resKuid => {
-                    if (!resKuid._id) {
-                      this.changeStep(stepper, idx);
-
-                      this.userChecked = false;
-                      this.loading = false;
-                    } else {
-                      const dialogRef = this.dialog.open(KuidWarningComponent, {
-                        data: { hasKuid: true },
-                        height: '80vh',
-                        maxWidth: '90vw',
-                        width: '768px'
-                      });
-
-                      dialogRef.afterClosed()
-                        .subscribe(
-                          proceed => {
-                            if (proceed) {
-                              this.startOver();
-                            }
-                          }
-                        );
-                    }
-                  }
-                );
+            if (res._id) {
+              this.userChecked = false;
+              this.loading = false;
+              this.changeStep(stepper, idx);
             } else {
-              const dialogRef = this.dialog.open(KuidWarningComponent, {
-                data: { hasKuid: false },
-                height: '80vh',
-                maxWidth: '90vw',
-                width: '768px'
-              });
-
-              dialogRef.afterClosed()
-                .subscribe(
-                  proceed => {
-                    if (proceed) {
-                      this.user.kuid = '';
-
-                      this.changeStep(stepper, idx);
-                    }
-
-                    this.userChecked = false;
-                    this.loading = false;
-                  }
-                );
+              this.invalidDealer = true;
+              this.loading = false;
             }
-          },
-          err => {
-            this.showError();
-            this.loading = false;
           }
         );
     } else {
@@ -217,27 +195,18 @@ export class LoginComponent implements OnInit {
                             this.sessionChecked = false;
                             this.loading = false;
                           },
-                          err => {
-                            this.showError();
-                            this.loading = false;
-                          }
+                          err => this.showError()
                         );
                     }
                   },
-                  err => {
-                    this.showError();
-                    this.loading = false;
-                  }
+                  err => this.showError()
                 );
             } else {
               this.invalidSession = true;
               this.loading = false;
             }
           },
-          err => {
-            this.showError();
-            this.loading = false;
-          }
+          err => this.showError()
         );
     } else {
       this.loading = false;
@@ -254,10 +223,7 @@ export class LoginComponent implements OnInit {
       this.userService.createUser(user)
         .subscribe(
           res => this.setUser(res),
-          err => {
-            this.showError();
-            this.loading = false;
-          }
+          err => this.showError()
         );
     }
     return false;
@@ -287,9 +253,11 @@ export class LoginComponent implements OnInit {
 
   showError() {
     this.error = true;
+    this.loading = false;
   }
 
   hideError() {
+    this.invalidDealer = false;
     this.invalidSession = false;
     this.error = false;
   }

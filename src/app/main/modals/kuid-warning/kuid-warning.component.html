@@ -10,9 +10,11 @@
   </div>
 
   <div *ngIf="!data.hasKuid">
-    <p>We were unable to find a KUID assigned to your name and dealer code. Proceeding without an assigned KUID may prevent you from receiving certification for this training event.</p>
+    <p>We were unable to find a KUID assigned to <strong>{{ data.email }}</strong>. Please make sure you enter the email address that was used to register for Kia University (it might be a personal email address, not your dealer email address).</p>
+    
+    <p><strong>NOTE:</strong> Proceeding without an assigned KUID may prevent you from receiving certification for this training event.</p>
 
-    <p>Would you like to proceed without a KUID, or edit your information and try again?</p>
+    <p>Would you like to proceed without a KUID, or edit your email address and try again?</p>
   </div>
 </div>
 

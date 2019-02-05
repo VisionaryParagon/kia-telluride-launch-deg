@@ -7,22 +7,29 @@ const employees = require('../models/employee');
 // get kuid
 router.post('/kuid', (req, res) => {
   employees.findOne({
-    dealer: {
-      $regex: '^' + req.body.dealer + '$',
-      $options: 'i'
-    },
-    first_name: {
-      $regex: '^' + req.body.first_name + '$',
-      $options: 'i'
-    },
-    last_name: {
-      $regex: '^' + req.body.last_name + '$',
+    email: {
+      $regex: '^' + req.body.email + '$',
       $options: 'i'
     }
   }, (err, data) => {
     if (err) return res.status(500).send(err);
     if (!data) return res.status(200).send(req.body);
     return res.status(200).send(data);
+  });
+});
+
+// validate dealer
+router.post('/dealer', (req, res) => {
+  employees.findOne({
+    dealer: req.body.dealer
+  }, (err, data) => {
+    if (err) return res.status(500).send(err);
+    if (!data) return res.status(200).send(req.body);
+    const info = {
+      _id: data._id,
+      dealer: data.dealer
+    };
+    return res.status(200).send(info);
   });
 });
 

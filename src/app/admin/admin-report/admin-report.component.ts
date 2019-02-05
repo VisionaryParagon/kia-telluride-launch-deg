@@ -1,5 +1,5 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatDialog, MatPaginator, MatSnackBar, MatSort, MatTableDataSource } from '@angular/material';
 
 import { User } from '../../services/classes';
 import { UserService } from '../../services/user.service';
@@ -46,6 +46,7 @@ export class AdminReportComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
+    private snackBar: MatSnackBar,
     private userService: UserService,
     private quizService: QuizService
   ) { }
@@ -155,6 +156,53 @@ export class AdminReportComponent implements OnInit {
           this.selectedUser = new User();
           this.getUsers();
         }
+      );
+  }
+
+  updateUser(data) {
+    this.userService.updateUser(data)
+      .subscribe(
+        res => {
+          this.snackBar.open(`${data.first_name} ${data.last_name} successfully updated!`, '', {
+            duration: 2500,
+            panelClass: 'snackSuccess'
+          });
+          this.getUsers();
+        },
+        err => this.showError()
+      );
+  }
+
+  submitCert(user) {
+    let passed = false;
+
+    if (user.certScore >= 8) {
+      passed = true;
+    } else {
+      passed = false;
+    }
+
+    // Submit transcript to KU and update user
+    const kuData = {
+      kuid: user.kuid || '',
+      course: 'SLS-07-168-1', // 'SLS-07-168-1-DEV',
+      session: user.session_code || '',
+      transcript: user.transcript_id || '',
+      score: user.certScore * 10,
+      passed: passed ? 'Y' : 'N',
+      date: new Date().toLocaleDateString()
+    };
+
+    this.userService.createTranscript(kuData)
+      .subscribe(
+        res => {
+          if (res.message === 'Success' && res.data.indexOf('CREATED') > -1) {
+            this.selectedUser.transcript_id = res.data.split('transcript_id>')[1].slice(0, -2);
+          }
+
+          this.updateUser(this.selectedUser);
+        },
+        err => this.showError()
       );
   }
 

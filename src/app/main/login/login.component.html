@@ -70,12 +70,15 @@
                 </div>
               </div>
 
-              <div class="form-group my-4" [class.nope]="dealer.errors && userChecked">
+              <div class="form-group my-4" [class.nope]="invalidDealer || (dealer.errors && userChecked)">
                 <label for="dealer">Dealer Code</label>
                 <input uppercaseInput type="text" class="form-control" autocomplete="off" required [(ngModel)]="user.dealer" name="dealer" #dealer="ngModel" (ngModelChange)="hideError()">
 
                 <div class="errorMsg" [@topDown]="true" *ngIf="dealer.errors && userChecked">
                   <p>Dealer Code is required</p>
+                </div>
+                <div class="errorMsg" [@topDown]="true" *ngIf="invalidDealer">
+                  <p>Dealer Code is invalid</p>
                 </div>
               </div>
 

@@ -38,6 +38,7 @@ export class UserFormComponent implements OnInit {
   loading = false;
   success = false;
   emailUsed = false;
+  invalidDealer = false;
   invalidSession = false;
   error = false;
 
@@ -154,6 +155,30 @@ export class UserFormComponent implements OnInit {
       );
   }
 
+  checkDealer(data) {
+    this.employeeService.checkDealer(data)
+      .subscribe(
+        res => {
+          if ((!this.edit && res._id) || res._id !== data._id) {
+            // Get KU session data
+            if (!this.edit || data.session !== this.userCache.session) {
+              this.getSession(this.user);
+            } else {
+              if (data.team !== this.userCache.team) {
+                this.validateTeam(this.user);
+              } else {
+                this.updateUser(this.user);
+              }
+            }
+          } else {
+            this.invalidDealer = true;
+            this.loading = false;
+          }
+        },
+        err => this.showError('dealer validation error')
+      );
+  }
+
   getKuid(data) {
     this.employeeService.getKuid(data)
       .subscribe(
@@ -161,44 +186,24 @@ export class UserFormComponent implements OnInit {
           if (res.kuid) {
             this.user.kuid = res.kuid;
 
-            // check for duplicate kuid
-            this.userService.checkKuid(this.user)
-              .subscribe(
-                kuRes => {
-                  if (!kuRes._id) {
-                    // Get KU session data
-                    if (!this.edit || data.session !== this.userCache.session) {
-                      this.getSession(this.user);
-                    } else {
-                      if (data.team !== this.userCache.team) {
-                        this.validateTeam(this.user);
-                      } else {
-                        this.updateUser(this.user);
-                      }
-                    }
-                  } else {
-                    const dialogRef = this.dialog.open(KuidWarningComponent, {
-                      data: { hasKuid: true },
-                      height: '80vh',
-                      maxWidth: '90vw',
-                      width: '768px'
-                    });
-
-                    dialogRef.afterClosed()
-                      .subscribe(
-                        proceed => {
-                          if (proceed) {
-                            this.startOver();
-                          }
-                        }
-                      );
-                  }
+            // Validate dealer
+            if (!this.edit || data.dealer !== this.userCache.dealer) {
+              this.checkDealer(this.user);
+            } else {
+              if (data.session !== this.userCache.session) {
+                this.getSession(this.user);
+              } else {
+                if (data.team !== this.userCache.team) {
+                  this.validateTeam(this.user);
+                } else {
+                  this.updateUser(this.user);
                 }
-              );
+              }
+            }
           } else {
             // kuid not found
             const dialogRef = this.dialog.open(KuidWarningComponent, {
-              data: { hasKuid: false },
+              data: { hasKuid: false, email: data.email },
               height: '80vh',
               maxWidth: '90vw',
               width: '768px'
@@ -210,14 +215,18 @@ export class UserFormComponent implements OnInit {
                   if (proceed) {
                     this.user.kuid = '';
 
-                    // Get KU session data
-                    if (!this.edit || data.session !== this.userCache.session) {
-                      this.getSession(this.user);
+                    // Validate dealer
+                    if (!this.edit || data.dealer !== this.userCache.dealer) {
+                      this.checkDealer(this.user);
                     } else {
-                      if (data.team !== this.userCache.team) {
-                        this.validateTeam(this.user);
+                      if (data.session !== this.userCache.session) {
+                        this.getSession(this.user);
                       } else {
-                        this.updateUser(this.user);
+                        if (data.team !== this.userCache.team) {
+                          this.validateTeam(this.user);
+                        } else {
+                          this.updateUser(this.user);
+                        }
                       }
                     }
                   }
@@ -237,16 +246,20 @@ export class UserFormComponent implements OnInit {
         res => {
           if (!res._id) {
             // get employee kuid
-            if (!this.edit || (data.first_name !== this.userCache.first_name || data.last_name !== this.userCache.last_name || data.dealer !== this.userCache.dealer)) {
+            if (!this.edit || data.email !== this.userCache.email) {
               this.getKuid(data);
             } else {
-              if (data.session !== this.userCache.session) {
-                this.getSession(data);
+              if (data.dealer !== this.userCache.dealer) {
+                this.checkDealer(data);
               } else {
-                if (data.team !== this.userCache.team) {
-                  this.validateTeam(data);
+                if (data.session !== this.userCache.session) {
+                  this.getSession(data);
                 } else {
-                  this.updateUser(data);
+                  if (data.team !== this.userCache.team) {
+                    this.validateTeam(data);
+                  } else {
+                    this.updateUser(data);
+                  }
                 }
               }
             }
@@ -269,7 +282,7 @@ export class UserFormComponent implements OnInit {
         this.checkUser(data);
       } else {
         if (data.email === this.userCache.email) {
-          if (data.first_name === this.userCache.first_name && data.last_name === this.userCache.last_name && data.dealer === this.userCache.dealer) {
+          if (data.dealer === this.userCache.dealer) {
             if (data.session === this.userCache.session) {
               if (data.team === this.userCache.team) {
                 this.noChanges = true;
@@ -281,7 +294,7 @@ export class UserFormComponent implements OnInit {
               this.getSession(data);
             }
           } else {
-            this.getKuid(data);
+            this.checkDealer(data);
           }
         } else {
           this.checkUser(data);
@@ -299,6 +312,7 @@ export class UserFormComponent implements OnInit {
 
   hideError() {
     this.emailUsed = false;
+    this.invalidDealer = false;
     this.invalidSession = false;
     this.error = false;
   }
