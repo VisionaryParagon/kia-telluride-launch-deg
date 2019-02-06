@@ -2,6 +2,7 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { MatDialog, MatPaginator, MatSnackBar, MatSort, MatTableDataSource } from '@angular/material';
 
 import { User } from '../../services/classes';
+import { AdminService } from '../../services/admin.service';
 import { UserService } from '../../services/user.service';
 import { QuizService } from '../../services/quiz.service';
 
@@ -17,6 +18,7 @@ import { UserDeleteComponent } from '../modals/user-delete/user-delete.component
   animations: [ FadeAnimation, TopDownAnimation ]
 })
 export class AdminReportComponent implements OnInit {
+  admin = this.adminService.state;
   users: User[];
   dataSource: MatTableDataSource<User>;
   displayedColumns: string[] = [
@@ -47,6 +49,7 @@ export class AdminReportComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private snackBar: MatSnackBar,
+    private adminService: AdminService,
     private userService: UserService,
     private quizService: QuizService
   ) { }
