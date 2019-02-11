@@ -113,7 +113,7 @@ fieldset {
 
       .selector {
         border: 1px solid #ccc;
-        border-radius: 15%;
+        border-radius: 15px;
         font-size: 36px;
         font-weight: 700;
         height: 135px;
@@ -132,7 +132,7 @@ fieldset {
 
         .bgOverlay {
           background-color: $client-red;
-          border-radius: 15%;
+          border-radius: 15px;
           height: 101%;
           opacity: 0.8;
           position: absolute;
@@ -225,13 +225,14 @@ form.quiz {
         }
 
         .selector {
+          border-radius: 7px;
           flex: 0 0 40px;
           font-size: 26px;
           height: 40px;
           margin: 0 10px 0 0;
 
           &.selected {
-            border: 5px solid $client-red;
+            border: 5px solid $client-red !important;
           }
 
           fa-icon {
@@ -270,13 +271,14 @@ form.eval {
         }
 
         .selector {
+          border-radius: 7px;
           flex: 0 0 40px;
           font-size: 26px;
           height: 40px;
           margin: 0 10px 0 0;
 
           &.selected {
-            border: 5px solid $client-red;
+            border: 5px solid $client-red !important;
           }
 
           fa-icon {
