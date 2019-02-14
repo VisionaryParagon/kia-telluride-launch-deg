@@ -102,7 +102,7 @@ export class UserFormComponent implements OnInit {
     this.teamService.validateTeam(data)
       .subscribe(
         res => {
-          if (res.length) {
+          if (res._id) {
             // Proceed if group exists
             if (!this.edit) {
               this.createUser(data);

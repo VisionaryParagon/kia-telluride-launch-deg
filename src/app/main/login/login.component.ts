@@ -175,7 +175,7 @@ export class LoginComponent implements OnInit {
               this.teamService.validateTeam(this.user)
                 .subscribe(
                   tmRes => {
-                    if (tmRes.length) {
+                    if (tmRes._id) {
                       // Proceed if group exists
                       this.changeStep(stepper, idx);
 

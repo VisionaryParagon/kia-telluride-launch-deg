@@ -6,7 +6,7 @@ const team = require('../models/team');
 
 // check duplicate teams
 router.post('/teams/valid', (req, res) => {
-  team.find({
+  team.findOne({
     dealer: req.body.dealer,
     session: req.body.session
   }, (err, data) => {
@@ -14,8 +14,8 @@ router.post('/teams/valid', (req, res) => {
       message: 'Team not in system'
     };
     if (err) return res.status(500).send(err);
-    if (!data.length) return res.status(200).send(notFound);
-    return res.status(200).send(data[0]);
+    if (!data) return res.status(200).send(notFound);
+    return res.status(200).send(data);
   });
 });
 
