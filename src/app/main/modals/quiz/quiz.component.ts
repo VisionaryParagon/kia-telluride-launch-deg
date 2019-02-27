@@ -257,7 +257,9 @@ export class QuizComponent implements OnInit, OnDestroy {
         // Push quiz to user
         this.user.quizzes.push(this.quiz);
         this.user.certScore = this.certScore * 10;
+        this.updateUser(this.user);
 
+        /*
         // Submit transcript to KU and update user
         const kuData = {
           kuid: this.user.kuid || '',
@@ -284,6 +286,7 @@ export class QuizComponent implements OnInit, OnDestroy {
               this.updateUser(this.user);
             }
           );
+        */
       }
     }
     return false;
