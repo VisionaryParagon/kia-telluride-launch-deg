@@ -4,11 +4,10 @@ import { MatDialog } from '@angular/material';
 
 import { CookieService, CookieOptions } from 'ngx-cookie';
 
-import { User, Group, Team } from '../../services/classes';
+import { User } from '../../services/classes';
 import { UserService } from '../../services/user.service';
 import { EmployeeService } from '../../services/employee.service';
 import { SessionService } from '../../services/session.service';
-import { TeamService } from '../../services/team.service';
 
 import { FadeAnimation, TopDownAnimation } from '../../animations';
 
@@ -30,17 +29,6 @@ export class LoginComponent implements OnInit {
   };
   clicked = false;
   anyVal: any;
-  group: Group = new Group();
-  teams: Team[] = [
-    {
-      name: 'Team Prestige',
-      value: 0
-    },
-    {
-      name: 'Team Innovative',
-      value: 0
-    }
-  ];
   loading = false;
   submitted = false;
   userChecked = false;
@@ -56,8 +44,7 @@ export class LoginComponent implements OnInit {
     private cookieService: CookieService,
     private userService: UserService,
     private employeeService: EmployeeService,
-    private sessionService: SessionService,
-    private teamService: TeamService
+    private sessionService: SessionService
   ) { }
 
   ngOnInit() {
@@ -171,36 +158,10 @@ export class LoginComponent implements OnInit {
               this.user.session_code = res.session_code;
               this.user.instructor = res.instructor;
 
-              // Check if group exists
-              this.teamService.validateTeam(this.user)
-                .subscribe(
-                  tmRes => {
-                    if (tmRes._id) {
-                      // Proceed if group exists
-                      this.changeStep(stepper, idx);
+              this.changeStep(stepper, idx);
 
-                      this.sessionChecked = false;
-                      this.loading = false;
-                    } else {
-                      // Create group if new
-                      this.group.dealer = this.user.dealer;
-                      this.group.session = this.user.session;
-                      this.group.teams = this.teams;
-
-                      this.teamService.createTeam(this.group)
-                        .subscribe(
-                          grpRes => {
-                            this.changeStep(stepper, idx);
-
-                            this.sessionChecked = false;
-                            this.loading = false;
-                          },
-                          err => this.showError()
-                        );
-                    }
-                  },
-                  err => this.showError()
-                );
+              this.sessionChecked = false;
+              this.loading = false;
             } else {
               this.invalidSession = true;
               this.loading = false;
