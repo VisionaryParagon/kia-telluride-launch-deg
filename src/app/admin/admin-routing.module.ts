@@ -11,6 +11,8 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminReportComponent } from './admin-report/admin-report.component';
 import { AdminEvalReportComponent } from './admin-eval-report/admin-eval-report.component';
+import { AdminSessionReportComponent } from './admin-session-report/admin-session-report.component';
+import { AdminEmployeeReportComponent } from './admin-employee-report/admin-employee-report.component';
 
 const routes: Routes = [
   {
@@ -30,6 +32,16 @@ const routes: Routes = [
       {
         path: 'evaluations',
         component: AdminEvalReportComponent,
+        canActivate: [AdminGuardService]
+      },
+      {
+        path: 'sessions',
+        component: AdminSessionReportComponent,
+        canActivate: [AdminGuardService]
+      },
+      {
+        path: 'employees',
+        component: AdminEmployeeReportComponent,
         canActivate: [AdminGuardService]
       },
       {

@@ -36,6 +36,7 @@ export class AdminReportComponent implements OnInit {
     'created',
     'modified'
   ];
+  pageIndex = 0;
   selectedUser: User = new User();
   filter = '';
   loading = true;
@@ -64,6 +65,14 @@ export class AdminReportComponent implements OnInit {
 
   setHeight() {
     this.tableContainer.nativeElement.style.height = window.innerHeight - this.tableFunctions.nativeElement.offsetHeight - 85 + 'px';
+  }
+
+  scrollTop() {
+    document.querySelector('.adminTable').scrollTo({
+      left: 0,
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 
   getUsers() {
@@ -97,6 +106,8 @@ export class AdminReportComponent implements OnInit {
 
   search(data) {
     this.dataSource.filter = data.trim().toLowerCase();
+    this.pageIndex = 0;
+    this.scrollTop();
   }
 
   clearFilter() {

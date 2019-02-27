@@ -33,6 +33,7 @@ export class AdminEvalReportComponent implements OnInit {
     'team',
     'instructor'
   ];
+  pageIndex = 0;
   selectedUser: User = new User();
   filter = '';
   loading = true;
@@ -57,6 +58,14 @@ export class AdminEvalReportComponent implements OnInit {
 
   setHeight() {
     this.tableContainer.nativeElement.style.height = window.innerHeight - this.tableFunctions.nativeElement.offsetHeight - 85 + 'px';
+  }
+
+  scrollTop() {
+    document.querySelector('.adminTable').scrollTo({
+      left: 0,
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 
   getUsers() {
@@ -99,6 +108,8 @@ export class AdminEvalReportComponent implements OnInit {
 
   search(data) {
     this.dataSource.filter = data.trim().toLowerCase();
+    this.pageIndex = 0;
+    this.scrollTop();
   }
 
   clearFilter() {

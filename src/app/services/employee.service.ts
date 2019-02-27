@@ -34,9 +34,57 @@ export class EmployeeService {
       );
   }
 
-  // create new user
-  createUser(user) {
-    return this.http.post<Employee>(this.employeeUrl + 'new', user)
+  // validate employee
+  validateEmployee(data) {
+    return this.http.post<any>(this.employeeUrl + 'validate', data)
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  // create employee
+  createEmployee(data) {
+    return this.http.post<Employee>(this.employeeUrl + 'employees', data)
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  // get all employees
+  getEmployees() {
+    return this.http.get<Employee[]>(this.employeeUrl + 'employees')
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  // get one employee by _id
+  getEmployeeId(id) {
+    const idUrl = this.employeeUrl + 'employees/' + id;
+    return this.http.get<Employee>(idUrl)
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  // delete employee
+  deleteEmployee(data) {
+    const idUrl = this.employeeUrl + 'employees/' + data._id;
+    return this.http.delete(idUrl)
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  // update employee
+  updateEmployee(data) {
+    const idUrl = this.employeeUrl + 'employees/' + data._id;
+    return this.http.put<Employee>(idUrl, data)
       .pipe(
         retry(3),
         catchError(this.handleError)

@@ -1,0 +1,68 @@
+<section class="pb-3" [@fade]="true">
+  <div class="container-fluid px-lg-5">
+    <div #tableFunctions>
+      <h1>KU Session Report</h1>
+  
+      <div class="row">
+        <div class="col-12 col-sm-6 order-sm-last text-center text-sm-right">
+          <button class="btn btn-success mb-3 mx-1" *ngIf="admin.permissions === 'automatik'" (click)="newSession()">
+            <fa-icon [icon]="['fas', 'user-plus']"></fa-icon>
+            <span class="d-none d-xl-inline-block">&nbsp;New</span>
+          </button>
+          <button class="btn btn-warning mb-3 mx-1" *ngIf="admin.permissions === 'automatik'" [disabled]="!selectedSession._id" (click)="editSession(selectedSession)">
+            <fa-icon [icon]="['fas', 'edit']"></fa-icon>
+            <span class="d-none d-xl-inline-block">&nbsp;Edit</span>
+          </button>
+          <button class="btn btn-danger mb-3 mx-1" *ngIf="admin.permissions === 'automatik'" [disabled]="!selectedSession._id" (click)="deleteSession(selectedSession)">
+            <fa-icon [icon]="['fas', 'trash-alt']"></fa-icon>
+            <span class="d-none d-xl-inline-block">&nbsp;Delete</span>
+          </button>
+          <app-session-csv [data]="sessions"></app-session-csv>
+        </div>
+
+        <div class="filter col-12 col-sm-6 order-sm-first">
+          <input type="text" class="form-control mb-3" placeholder="Search..." [(ngModel)]="filter" (keyup)="search($event.target.value)">
+          <button class="btn mb-3" *ngIf="filter.length" (click)="clearFilter()">&times;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="adminTable" #tableContainer>
+      <div *ngIf="loading">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    
+      <table mat-table [dataSource]="dataSource" matSort matSortActive="dealer" matSortDirection="asc">
+
+        <!-- Dealer Code Column -->
+        <ng-container matColumnDef="dealer">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Dealer Code </th>
+          <td mat-cell *matCellDef="let element"> {{element.dealer}} </td>
+        </ng-container>
+      
+        <!-- Session Column -->
+        <ng-container matColumnDef="session">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Session </th>
+          <td mat-cell *matCellDef="let element"> {{element.session}} </td>
+        </ng-container>
+      
+        <!-- KU Session Code Column -->
+        <ng-container matColumnDef="session_code">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> KU Session Code </th>
+          <td mat-cell *matCellDef="let element"> {{element.session_code}} </td>
+        </ng-container>
+      
+        <!-- Instructor Column -->
+        <ng-container matColumnDef="instructor">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Instructor </th>
+          <td mat-cell *matCellDef="let element"> {{element.instructor}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" [class.selectedRow]="selectedSession === row" (click)="select(row)"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[25, 50, 100]" showFirstLastButtons (page)="scrollTop()"></mat-paginator>
+    </div>
+  </div>
+</section>

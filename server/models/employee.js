@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const EmployeeSchema = new mongoose.Schema({
   kuid: String,
-  dealer: String,
+  email: String,
   first_name: String,
   last_name: String,
-  email: String
+  dealer: String
 });
 
 module.exports = mongoose.model('employees', EmployeeSchema);

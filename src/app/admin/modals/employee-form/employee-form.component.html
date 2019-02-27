@@ -1,0 +1,89 @@
+<h1 mat-dialog-title *ngIf="!edit">New Employee</h1>
+<h1 mat-dialog-title *ngIf="edit">Editing {{ employee.first_name }} {{ employee.last_name }}</h1>
+
+<button class="mat-dialog-close" (click)="closeDialog()">&times;</button>
+
+<form #employeeForm="ngForm" novalidate>
+  <div mat-dialog-content>
+    <div *ngIf="!error && !success">
+      <div class="form-group my-4" [class.nope]="kuidUsed || (kuid.errors && (kuid.touched || submitted))">
+        <label for="kuid">KUID</label>
+        <input uppercaseInput type="text" class="form-control" autocomplete="off" required [(ngModel)]="employee.kuid" name="kuid" #kuid="ngModel" (ngModelChange)="hideError(); changed()">
+
+        <div class="errorMsg" [@topDown]="true" *ngIf="kuid.errors && (kuid.touched || submitted)">
+          <p>KUID is required</p>
+        </div>
+        <div class="errorMsg" [@topDown]="true" *ngIf="kuidUsed">
+          <p>KUID is already in system</p>
+        </div>
+      </div>
+
+      <div class="form-group my-4" [class.nope]="emailUsed || (email.errors && (email.touched || submitted))">
+        <label for="email">Kia University Email</label>
+        <input type="email" class="form-control" autocomplete="off" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" [(ngModel)]="employee.email" name="email" #email="ngModel" (ngModelChange)="hideError(); changed()">
+
+        <div class="errorMsg" [@topDown]="true" *ngIf="email.errors && (email.touched || submitted)">
+          <p *ngIf="email.errors.required">Email is required</p>
+          <p *ngIf="email.errors.pattern">Email is invalid</p>
+        </div>
+        <div class="errorMsg" [@topDown]="true" *ngIf="emailUsed">
+          <p>Email is already in system</p>
+        </div>
+      </div>
+
+      <div class="form-group" [class.nope]="(first_name.errors && last_name.errors) && submitted">
+        <label>Name</label>
+        <div [class.nope]="first_name.errors && (first_name.touched || submitted)">
+          <input type="text" class="form-control" autocomplete="off" required placeholder="First Name" [(ngModel)]="employee.first_name" name="first_name" #first_name="ngModel" (ngModelChange)="hideError(); changed()">
+        </div>
+
+        <div class="errorMsg" [@topDown]="true" *ngIf="first_name.errors && (first_name.touched || submitted)">
+          <p>First Name is required</p>
+        </div>
+
+        <div [class.nope]="last_name.errors && (last_name.touched || submitted)">
+          <input type="text" class="form-control" autocomplete="off" required placeholder="Last Name" [(ngModel)]="employee.last_name" name="last_name" #last_name="ngModel" (ngModelChange)="hideError(); changed()">
+        </div>
+
+        <div class="errorMsg" [@topDown]="true" *ngIf="last_name.errors && (last_name.touched || submitted)">
+          <p>Last Name is required</p>
+        </div>
+      </div>
+
+      <div class="form-group my-4" [class.nope]="invalid || (dealer.errors && (dealer.touched || submitted))">
+        <label for="dealer">Dealer Code</label>
+        <input uppercaseInput type="text" class="form-control" autocomplete="off" required [(ngModel)]="employee.dealer" name="dealer" #dealer="ngModel" (ngModelChange)="hideError(); changed()">
+
+        <div class="errorMsg" [@topDown]="true" *ngIf="dealer.errors && (dealer.touched || submitted)">
+          <p>Dealer Code is required</p>
+        </div>
+      </div>
+    </div>
+
+    <div [@fade]="true" *ngIf="!error && success">
+      <h4>Success!</h4>
+
+      <p>{{ employee.first_name }} {{ employee.last_name }} has successfully been <span *ngIf="!edit">added</span><span *ngIf="edit">edited</span>.</p>
+    </div>
+
+    <div class="errorMsg" [@topDown]="true" *ngIf="error">
+      <p>Something went wrong... Please make sure you have a WiFi or mobile data connection and try refreshing your&nbsp;browser.</p>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <div class="d-flex" *ngIf="!success">
+      <p class="errorMsg" [@fade]="true" *ngIf="(!employeeForm.valid || emailUsed || invalidSession) && submitted">Please fix errors above</p>
+      <p class="errorMsg" [@fade]="true" *ngIf="edit && noChanges && submitted">No changes have been made</p>
+      <button class="kiaBtn dialog secondary" type="button" (click)="closeDialog()">Cancel</button>
+      <button class="kiaBtn dialog primary" [disabled]="loading" (click)="submit(employee, employeeForm.valid)">
+        <span *ngIf="!loading">Submit</span>
+        <span *ngIf="loading">
+          <mat-spinner class="mx-auto" [diameter]="20" [strokeWidth]="3"></mat-spinner>
+        </span>
+      </button>
+    </div>
+    <div class="d-flex" *ngIf="success">
+      <button class="kiaBtn dialog primary" type="button" mat-dialog-close>Close</button>
+    </div>
+  </div>
+</form>

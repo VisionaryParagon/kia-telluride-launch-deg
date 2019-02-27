@@ -24,6 +24,7 @@ export class User {
 export class Employee {
   _id?: string;
   kuid?: string;
+  email: string;
   first_name: string;
   last_name: string;
   dealer: string;
