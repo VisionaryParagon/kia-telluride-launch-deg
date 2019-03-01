@@ -86,7 +86,7 @@ export class PointsComponent implements OnInit {
             if (this.selected.value === start + num) {
               clearInterval(counter);
             }
-          }, 50);
+          }, 25);
         },
         err => {
           this.showError();
