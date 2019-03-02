@@ -19,6 +19,8 @@ export class PointsComponent implements OnInit {
   teamData = [];
   plus = false;
   minus = false;
+  counter: any;
+  newVal: number;
   error = false;
 
   constructor(
@@ -30,10 +32,27 @@ export class PointsComponent implements OnInit {
   ngOnInit() {
     if (this.data) {
       this.selected = this.data.selected;
+      this.newVal = this.selected.value;
       this.teamData = this.data.teams;
     } else {
       this.showError();
     }
+  }
+
+  runCounter() {
+    if (this.counter) {
+      clearInterval(this.counter);
+    }
+
+    this.counter = setInterval(t => {
+      if (this.selected.value < this.newVal) {
+        this.selected.value++;
+      } else if (this.selected.value > this.newVal) {
+        this.selected.value--;
+      } else {
+        clearInterval(this.counter);
+      }
+    }, 25);
   }
 
   addPoints(num) {
@@ -48,6 +67,7 @@ export class PointsComponent implements OnInit {
     });
 
     this.pointVal = num;
+    this.newVal += num;
 
     const updata = Object.keys(temp).map(k => temp[k]);
 
@@ -75,18 +95,7 @@ export class PointsComponent implements OnInit {
             }, 500);
           }
 
-          const start = this.selected.value;
-          const counter = setInterval(t => {
-            if (num > 0) {
-              this.selected.value++;
-            } else {
-              this.selected.value--;
-            }
-
-            if (this.selected.value === start + num) {
-              clearInterval(counter);
-            }
-          }, 25);
+          this.runCounter();
         },
         err => {
           this.showError();
