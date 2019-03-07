@@ -61,6 +61,7 @@ export class QuizComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    console.log(this.user);
     this.dialogRef.disableClose = true;
     this.dialogRef.backdropClick()
       .subscribe(
@@ -259,34 +260,34 @@ export class QuizComponent implements OnInit, OnDestroy {
         this.user.certScore = this.certScore * 10;
         this.updateUser(this.user);
 
-        /*
         // Submit transcript to KU and update user
-        const kuData = {
-          kuid: this.user.kuid || '',
-          course: 'SLS-07-168-1', // 'SLS-07-168-1-DEV',
-          session: this.user.session_code || '',
-          transcript: this.user.transcript_id || '',
-          score: this.certScore * 100,
-          passed: this.certPassed ? 'Y' : 'N',
-          date: new Date().toLocaleDateString()
-        };
+        if (this.user.transcript_id && this.user.transcript_id.length) {
+          const kuData = {
+            kuid: this.user.kuid || '',
+            course: 'SLS-07-168-1', // 'SLS-07-168-1-DEV',
+            session: this.user.session_code || '',
+            transcript: this.user.transcript_id || '',
+            score: this.certScore * 100,
+            passed: this.certPassed ? 'Y' : 'N',
+            date: new Date().toLocaleDateString()
+          };
 
-        this.userService.createTranscript(kuData)
-          .subscribe(
-            res => {
-              if (res.message === 'Success' && res.data.indexOf('CREATED') > -1) {
-                this.user.transcript_id = res.data.split('transcript_id>')[1].slice(0, -2);
+          this.userService.createTranscript(kuData)
+            .subscribe(
+              res => {
+                if (res.message === 'Success' && res.data.indexOf('CREATED') > -1) {
+                  this.user.transcript_id = res.data.split('transcript_id>')[1].slice(0, -2);
+                }
+
+                this.updateUser(this.user);
+              },
+              err => {
+                console.error('Transcript could not be sent to KiaUniversity');
+
+                this.updateUser(this.user);
               }
-
-              this.updateUser(this.user);
-            },
-            err => {
-              console.error('Transcript could not be sent to KiaUniversity');
-
-              this.updateUser(this.user);
-            }
-          );
-        */
+            );
+        }
       }
     }
     return false;
