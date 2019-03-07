@@ -5,7 +5,7 @@
     
         <div class="row">
           <div class="col-12 col-sm-6 order-sm-last text-center text-sm-right">
-            <app-evaluation-csv [data]="evaluations"></app-evaluation-csv>
+            <app-evaluation-csv [data]="evaluations" [sort]="sorter" [direction]="sortOrder"></app-evaluation-csv>
           </div>
   
           <div class="filter col-12 col-sm-6 order-sm-first">
@@ -20,7 +20,7 @@
           <mat-progress-bar mode="indeterminate"></mat-progress-bar>
         </div>
       
-        <table mat-table [dataSource]="dataSource" matSort>
+        <table mat-table [dataSource]="dataSource" matSort [matSortActive]="sorter" [matSortDirection]="sortOrder" (matSortChange)="sortData($event)">
   
           <!-- KUID Column -->
           <ng-container matColumnDef="kuid">

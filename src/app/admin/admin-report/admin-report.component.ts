@@ -39,6 +39,9 @@ export class AdminReportComponent implements OnInit {
   pageIndex = 0;
   selectedUser: User = new User();
   filter = '';
+  filterTimeout: any;
+  sorter = 'modified';
+  sortOrder = 'desc';
   loading = true;
   error = false;
 
@@ -104,10 +107,25 @@ export class AdminReportComponent implements OnInit {
       );
   }
 
+  sortData(data) {
+    this.sorter = data.active;
+    this.sortOrder = data.direction;
+  }
+
   search(data) {
-    this.dataSource.filter = data.trim().toLowerCase();
-    this.pageIndex = 0;
-    this.scrollTop();
+    this.loading = true;
+
+    if (this.filterTimeout) {
+      clearTimeout(this.filterTimeout);
+    }
+
+    this.filterTimeout = setTimeout(() => {
+      this.dataSource.filter = data.trim().toLowerCase();
+      this.users = this.dataSource.filteredData;
+      this.pageIndex = 0;
+      this.scrollTop();
+      this.loading = false;
+    }, 1000);
   }
 
   clearFilter() {

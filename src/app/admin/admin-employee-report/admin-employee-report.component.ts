@@ -30,6 +30,9 @@ export class AdminEmployeeReportComponent implements OnInit {
   pageIndex = 0;
   selectedEmployee: Employee = new Employee();
   filter = '';
+  filterTimeout: any;
+  sorter = 'kuid';
+  sortOrder = 'asc';
   loading = true;
   error = false;
 
@@ -80,10 +83,25 @@ export class AdminEmployeeReportComponent implements OnInit {
       );
   }
 
+  sortData(data) {
+    this.sorter = data.active;
+    this.sortOrder = data.direction;
+  }
+
   search(data) {
-    this.dataSource.filter = data.trim().toLowerCase();
-    this.pageIndex = 0;
-    this.scrollTop();
+    this.loading = true;
+
+    if (this.filterTimeout) {
+      clearTimeout(this.filterTimeout);
+    }
+
+    this.filterTimeout = setTimeout(() => {
+      this.dataSource.filter = data.trim().toLowerCase();
+      this.employees = this.dataSource.filteredData;
+      this.pageIndex = 0;
+      this.scrollTop();
+      this.loading = false;
+    }, 1000);
   }
 
   clearFilter() {

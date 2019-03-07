@@ -21,7 +21,7 @@
             <fa-icon [icon]="['fas', 'graduation-cap']"></fa-icon>
             <span class="d-none d-xl-inline-block">&nbsp;KU</span>
           </button>
-          <app-user-csv [data]="users"></app-user-csv>
+          <app-user-csv [data]="users" [sort]="sorter" [direction]="sortOrder"></app-user-csv>
         </div>
 
         <div class="filter col-12 col-sm-6 order-sm-first">
@@ -36,7 +36,7 @@
         <mat-progress-bar mode="indeterminate"></mat-progress-bar>
       </div>
     
-      <table mat-table [dataSource]="dataSource" matSort matSortActive="modified" matSortDirection="desc">
+      <table mat-table [dataSource]="dataSource" matSort [matSortActive]="sorter" [matSortDirection]="sortOrder" (matSortChange)="sortData($event)">
 
         <!-- KUID Column -->
         <ng-container matColumnDef="kuid">
