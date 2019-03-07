@@ -40,6 +40,7 @@ const adminRoute = require('./server/routes/admin');
 const employeeRoute = require('./server/routes/employee');
 const sessionRoute = require('./server/routes/session');
 
+// Express server
 const app = express();
 
 // middleware
