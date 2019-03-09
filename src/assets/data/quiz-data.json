@@ -598,10 +598,10 @@
       },
       {
         "key": "q18",
-        "question": "If a customer wants 8-passenger seating, which Telluride trims would you recommend?",
+        "question": "Which Telluride trim line(s) offers STANDARD 8-passenger seating?",
         "options": [
           {
-            "answer": "Any Grade Will Work",
+            "answer": "Any Trim Line",
             "value": "1"
           },
           {
@@ -613,7 +613,7 @@
             "value": "0"
           }
         ],
-        "feedback": "If 8-passenger seating is your customer’s major motivation, direct them to a Convenience Line offering (LX, EX)."
+        "feedback": "If 8-passenger seating is your customer's major motivation, direct them to a Convenience Line offering (LX, EX). However, the S trim line does offer an optional 8 Passenger Seating Package."
       },
       {
         "key": "q19",
