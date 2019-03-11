@@ -31,14 +31,15 @@ export class AdminEvalReportComponent implements OnInit {
     'dealer',
     'session',
     'team',
-    'instructor'
+    'instructor',
+    'date'
   ];
   pageIndex = 0;
   selectedUser: User = new User();
   filter = '';
   filterTimeout: any;
-  sorter = '';
-  sortOrder = '';
+  sorter = 'date';
+  sortOrder = 'desc';
   loading = true;
   error = false;
 
@@ -93,6 +94,7 @@ export class AdminEvalReportComponent implements OnInit {
               userEval.answer5 = user.evaluation.answer5;
               userEval.answer6 = user.evaluation.answer6;
               userEval.answer7 = user.evaluation.answer7 ? 'Yes' : 'No';
+              userEval.date = user.evaluation.date;
 
               this.evaluations.push(userEval);
             }

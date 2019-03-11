@@ -54,6 +54,7 @@ export class EvaluationComponent implements OnInit {
     if (isValid) {
       this.loading = true;
       this.user.evaluation = data;
+      this.user.evaluation.date = new Date();
       this.userService.updateUser(this.user)
         .subscribe(
           res => {

@@ -447,6 +447,7 @@ export class Evaluation {
   answer6: string;
   question7: string;
   answer7: boolean;
+  date: Date;
 
   constructor() {
     this.question1 = 'Attending this course improved my performance and ability to satisfy customers back on the job.';
@@ -463,6 +464,7 @@ export class Evaluation {
     this.answer6 = '';
     this.question7 = 'Would you like to discuss your experience in this course with a Kia University manager?';
     this.answer7 = null;
+    this.date = null;
   }
 }
 
@@ -481,6 +483,7 @@ export class UserEval {
   session: string;
   team: string;
   instructor: string;
+  date: Date;
 
   constructor() {
     this.kuid = '';
@@ -497,6 +500,7 @@ export class UserEval {
     this.session = '';
     this.team = '';
     this.instructor = '';
+    this.date = null;
   }
 }
 
