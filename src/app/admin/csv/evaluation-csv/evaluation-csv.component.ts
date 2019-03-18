@@ -1,6 +1,15 @@
 import { Component, Input, Renderer } from '@angular/core';
+import { DatePipe } from '@angular/common';
+
+import * as moment from 'moment';
 
 import { UserEval, Evaluation } from '../../../services/classes';
+
+class DateTimePipe extends DatePipe {
+  public transform(value): any {
+    return super.transform(value, 'MMMM d, y, h:mm:ss a');
+  }
+}
 
 @Component({
   selector: 'app-evaluation-csv',
@@ -48,7 +57,8 @@ export class EvaluationCsvComponent {
       dealer: '',
       session: '',
       team: '',
-      instructor: ''
+      instructor: '',
+      date: ''
     };
     const keys = Object.keys(headerObj);
     this.headers = [
@@ -65,7 +75,8 @@ export class EvaluationCsvComponent {
       'Dealer Code',
       'Session',
       'Team',
-      'Instructor'
+      'Instructor',
+      'Date Submitted'
     ];
 
     this.headers.forEach(h => {
@@ -94,7 +105,12 @@ export class EvaluationCsvComponent {
     }).forEach(d => {
       keys.forEach(k => {
         if (d.hasOwnProperty(k) && d[k] != null) {
-          tabText += '"' + d[k] + '",';
+          if (moment(d[k], moment.ISO_8601, true).isValid()) {
+            const pipe = new DateTimePipe('en-US');
+            tabText += '"' + pipe.transform(d[k]) + '",';
+          } else {
+            tabText += '"' + d[k] + '",';
+          }
         } else {
           tabText += '"",';
         }

@@ -483,7 +483,7 @@ export class UserEval {
   session: string;
   team: string;
   instructor: string;
-  date: Date;
+  date: Date | string;
 
   constructor() {
     this.kuid = '';

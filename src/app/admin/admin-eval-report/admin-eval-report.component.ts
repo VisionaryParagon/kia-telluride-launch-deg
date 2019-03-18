@@ -94,7 +94,7 @@ export class AdminEvalReportComponent implements OnInit {
               userEval.answer5 = user.evaluation.answer5;
               userEval.answer6 = user.evaluation.answer6;
               userEval.answer7 = user.evaluation.answer7 ? 'Yes' : 'No';
-              userEval.date = user.evaluation.date;
+              userEval.date = user.evaluation.date || new Date('1/1/2019').toISOString();
 
               this.evaluations.push(userEval);
             }
